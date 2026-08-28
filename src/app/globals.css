@@ -1,26 +1,194 @@
 @import "tailwindcss";
 
+/*
+  Design tokens — placeholder brand values.
+  Swap these when the final logo SVG + brand tokens are supplied.
+  Navy = primary/corporate, Orange = accent/CTA.
+*/
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f1b33;
+
+  /* Navy scale */
+  --color-navy-50: #eef2f8;
+  --color-navy-100: #d6e0ee;
+  --color-navy-200: #adc0dd;
+  --color-navy-300: #7f9cc6;
+  --color-navy-400: #4f72a3;
+  --color-navy-500: #2f5280;
+  --color-navy-600: #1e3c66;
+  --color-navy-700: #172f52;
+  --color-navy-800: #10223c;
+  --color-navy-900: #0a1628;
+  --color-navy-950: #060d18;
+
+  /* Orange scale */
+  --color-orange-50: #fff4ec;
+  --color-orange-100: #ffe4cc;
+  --color-orange-200: #ffc699;
+  --color-orange-300: #ffa25c;
+  --color-orange-400: #ff8730;
+  --color-orange-500: #f2710f;
+  --color-orange-600: #d45c07;
+  --color-orange-700: #ad4906;
+  --color-orange-800: #86390a;
+  --color-orange-900: #6b300c;
+
+  /* Neutrals */
+  --color-slate-50: #f6f7f9;
+  --color-slate-100: #eceef2;
+  --color-slate-200: #d9dde5;
+  --color-slate-300: #b9c0cd;
+  --color-slate-400: #8b95a7;
+  --color-slate-500: #5f6b80;
+  --color-slate-600: #465067;
+  --color-slate-700: #333d52;
+  --color-slate-800: #212a3d;
+  --color-slate-900: #141b29;
+
+  --radius-card: 0.875rem;
+  --radius-control: 0.5rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-navy-50: var(--color-navy-50);
+  --color-navy-100: var(--color-navy-100);
+  --color-navy-200: var(--color-navy-200);
+  --color-navy-300: var(--color-navy-300);
+  --color-navy-400: var(--color-navy-400);
+  --color-navy-500: var(--color-navy-500);
+  --color-navy-600: var(--color-navy-600);
+  --color-navy-700: var(--color-navy-700);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-950: var(--color-navy-950);
+
+  --color-orange-50: var(--color-orange-50);
+  --color-orange-100: var(--color-orange-100);
+  --color-orange-200: var(--color-orange-200);
+  --color-orange-300: var(--color-orange-300);
+  --color-orange-400: var(--color-orange-400);
+  --color-orange-500: var(--color-orange-500);
+  --color-orange-600: var(--color-orange-600);
+  --color-orange-700: var(--color-orange-700);
+  --color-orange-800: var(--color-orange-800);
+  --color-orange-900: var(--color-orange-900);
+
+  --color-slate-50: var(--color-slate-50);
+  --color-slate-100: var(--color-slate-100);
+  --color-slate-200: var(--color-slate-200);
+  --color-slate-300: var(--color-slate-300);
+  --color-slate-400: var(--color-slate-400);
+  --color-slate-500: var(--color-slate-500);
+  --color-slate-600: var(--color-slate-600);
+  --color-slate-700: var(--color-slate-700);
+  --color-slate-800: var(--color-slate-800);
+  --color-slate-900: var(--color-slate-900);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-manrope);
+
+  --radius-card: var(--radius-card);
+  --radius-control: var(--radius-control);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mesh gradient backgrounds for dark hero-style sections */
+.mesh-dark {
+  background-color: var(--color-navy-950);
+  background-image:
+    radial-gradient(circle at 15% 20%, color-mix(in oklab, var(--color-orange-500) 35%, transparent) 0%, transparent 42%),
+    radial-gradient(circle at 85% 0%, color-mix(in oklab, var(--color-navy-400) 45%, transparent) 0%, transparent 45%),
+    radial-gradient(circle at 50% 100%, color-mix(in oklab, var(--color-navy-500) 30%, transparent) 0%, transparent 50%);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(color-mix(in oklab, white 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, white 6%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/></svg>");
+}
+
+.text-gradient-orange {
+  background: linear-gradient(90deg, var(--color-orange-300), var(--color-orange-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.duotone-navy {
+  position: relative;
+  isolation: isolate;
+}
+
+.duotone-navy img {
+  filter: grayscale(1) contrast(1.05);
+}
+
+/* Two elevation steps, so cards/panels don't each invent their own shadow. */
+.shadow-elevated {
+  box-shadow: 0 20px 40px -22px rgb(15 27 51 / 0.25);
+}
+
+.shadow-elevated-lg {
+  box-shadow: 0 28px 60px -24px rgb(15 27 51 / 0.28);
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.duotone-navy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, color-mix(in oklab, var(--color-navy-900) 78%, transparent), color-mix(in oklab, var(--color-orange-600) 45%, transparent));
+  mix-blend-mode: color;
+  pointer-events: none;
 }

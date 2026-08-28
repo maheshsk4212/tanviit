@@ -1,0 +1,83 @@
+import Image from "next/image";
+import { Check } from "lucide-react";
+import { services } from "@/lib/site-content";
+import { Reveal } from "@/components/motion/Reveal";
+
+export function ServicesShowcase() {
+  return (
+    <div className="space-y-6 sm:space-y-8">
+      {services.map((service, index) => {
+        const reversed = index % 2 === 1;
+        return (
+          <Reveal key={service.slug} direction={reversed ? "right" : "left"}>
+            <div
+              id={service.slug}
+              className="group grid scroll-mt-24 grid-cols-1 overflow-hidden rounded-card border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:border-orange-200 hover:shadow-elevated-lg lg:grid-cols-2"
+            >
+              <div
+                className={`relative aspect-[4/3] w-full overflow-hidden bg-navy-950 lg:aspect-auto ${
+                  reversed ? "lg:order-2" : ""
+                }`}
+              >
+                <Image
+                  src={service.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                {/* Scrim only where the caption sits, so already-dark photos
+                    keep their detail instead of crushing to black. */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent"
+                  aria-hidden
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-tr from-orange-600/10 via-transparent to-transparent"
+                  aria-hidden
+                />
+
+                <span className="absolute left-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 font-display text-sm font-bold text-navy-900 backdrop-blur">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <p className="absolute inset-x-5 bottom-5 flex items-center gap-2 text-sm font-semibold text-white">
+                  <span className="h-4 w-1 shrink-0 rounded-full bg-orange-500" aria-hidden />
+                  {service.visualNote}
+                </p>
+              </div>
+
+              <div
+                className={`flex flex-col justify-center p-8 sm:p-10 lg:p-12 ${
+                  reversed ? "lg:order-1" : ""
+                }`}
+              >
+                <p className="text-xs font-semibold uppercase tracking-wide text-orange-600">
+                  Practice {String(index + 1).padStart(2, "0")}
+                </p>
+                <h2 className="mt-2 font-display text-2xl font-bold text-navy-900 sm:text-3xl">
+                  {service.name}
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
+                  {service.description}
+                </p>
+
+                <ul className="mt-6 grid grid-cols-1 gap-3 border-t border-slate-100 pt-6 sm:grid-cols-2">
+                  {service.capabilities.map((capability) => (
+                    <li
+                      key={capability}
+                      className="flex items-start gap-2.5 text-sm text-slate-700"
+                    >
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-500" aria-hidden />
+                      {capability}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </Reveal>
+        );
+      })}
+    </div>
+  );
+}

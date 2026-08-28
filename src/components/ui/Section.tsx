@@ -1,0 +1,86 @@
+import { type ReactNode } from "react";
+import { Container } from "./Container";
+import { Reveal } from "@/components/motion/Reveal";
+
+export type SectionTone = "light" | "muted" | "dark";
+
+const toneClasses: Record<SectionTone, string> = {
+  light: "bg-white",
+  muted: "bg-slate-50",
+  dark: "mesh-dark",
+};
+
+export function Section({
+  children,
+  tone = "light",
+  className = "",
+  containerClassName = "",
+}: {
+  children: ReactNode;
+  tone?: SectionTone;
+  className?: string;
+  containerClassName?: string;
+}) {
+  const dark = tone === "dark";
+  return (
+    // overflow-x-clip contains horizontal reveal offsets (Reveal direction
+    // left/right) without creating a scroll container, so `position: sticky`
+    // children keep working.
+    <section
+      className={`relative overflow-x-clip py-16 sm:py-20 lg:py-24 ${toneClasses[tone]} ${className}`}
+    >
+      {dark ? (
+        <>
+          <div className="absolute inset-0 grid-overlay" aria-hidden />
+          <div className="absolute inset-0 noise-overlay opacity-30" aria-hidden />
+        </>
+      ) : null}
+      <Container className={`relative ${containerClassName}`}>{children}</Container>
+    </section>
+  );
+}
+
+export function SectionHeading({
+  eyebrow,
+  title,
+  description,
+  align = "left",
+  tone = "light",
+  className = "",
+}: {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+  tone?: SectionTone;
+  className?: string;
+}) {
+  const dark = tone === "dark";
+  return (
+    <Reveal
+      className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""} ${className}`}
+    >
+      {eyebrow ? (
+        <p
+          className={`mb-3 text-sm font-semibold uppercase tracking-wide ${
+            dark ? "text-orange-400" : "text-orange-600"
+          }`}
+        >
+          {eyebrow}
+        </p>
+      ) : null}
+      <h2
+        className={`font-display text-3xl font-bold tracking-tight sm:text-4xl ${
+          dark ? "text-white" : "text-navy-900"
+        }`}
+      >
+        {title}
+      </h2>
+      {description ? (
+        <p className={`mt-4 text-lg ${dark ? "text-slate-300" : "text-slate-600"}`}>
+          {description}
+        </p>
+      ) : null}
+    </Reveal>
+  );
+}
