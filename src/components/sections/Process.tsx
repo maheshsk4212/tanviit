@@ -1,31 +1,39 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { processSteps } from "@/lib/site-content";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
+const COLS_SM = 2;
+const COLS_LG = 4;
+
 export function Process({ tone = "light" }: { tone?: "light" | "dark" }) {
   const dark = tone === "dark";
-  return (
-    <div className="relative">
-      <div
-        className={`absolute left-0 right-0 top-6 hidden h-px sm:block ${
-          dark ? "bg-white/15" : "bg-slate-200"
-        }`}
-        aria-hidden
-      >
-        <motion.div
-          className="h-full origin-left bg-gradient-to-r from-gold-500 to-ink-400"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-        />
-      </div>
+  const lastIndex = processSteps.length - 1;
 
-      <RevealGroup className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4" stagger={0.1}>
-        {processSteps.map((step, index) => (
+  return (
+    <RevealGroup className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4" stagger={0.1}>
+      {processSteps.map((step, index) => {
+        // The connector runs from each step's marker to the next one. It has to
+        // be drawn per-step (not as one bar across the section) so it also
+        // appears on the second row, and it's hidden wherever a row ends.
+        const endsSmRow = (index + 1) % COLS_SM === 0;
+        const endsLgRow = (index + 1) % COLS_LG === 0;
+        const isLast = index === lastIndex;
+
+        const connector = [
+          "pointer-events-none absolute top-6 left-14 -right-10 h-px",
+          dark ? "bg-white/15" : "bg-slate-200",
+          "hidden",
+          isLast ? "" : endsSmRow ? "sm:hidden" : "sm:block",
+          isLast ? "" : endsLgRow ? "lg:hidden" : "lg:block",
+        ]
+          .filter(Boolean)
+          .join(" ");
+
+        return (
           <RevealItem key={step.title} className="relative">
+            {!isLast && <span className={connector} aria-hidden />}
+
             <span
               className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold-500 font-display text-lg font-bold shadow-sm ${
                 dark ? "bg-ink-950 text-gold-400" : "bg-white text-gold-600"
@@ -48,8 +56,8 @@ export function Process({ tone = "light" }: { tone?: "light" | "dark" }) {
               {step.description}
             </p>
           </RevealItem>
-        ))}
-      </RevealGroup>
-    </div>
+        );
+      })}
+    </RevealGroup>
   );
 }

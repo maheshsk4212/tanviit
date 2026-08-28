@@ -13,11 +13,13 @@ const toneClasses: Record<SectionTone, string> = {
 export function Section({
   children,
   tone = "light",
+  id,
   className = "",
   containerClassName = "",
 }: {
   children: ReactNode;
   tone?: SectionTone;
+  id?: string;
   className?: string;
   containerClassName?: string;
 }) {
@@ -27,7 +29,8 @@ export function Section({
     // left/right) without creating a scroll container, so `position: sticky`
     // children keep working.
     <section
-      className={`relative overflow-x-clip py-16 sm:py-20 lg:py-24 ${toneClasses[tone]} ${className}`}
+      id={id}
+      className={`relative scroll-mt-20 overflow-x-clip py-16 sm:py-20 lg:py-24 ${toneClasses[tone]} ${className}`}
     >
       {dark ? (
         <>
