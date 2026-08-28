@@ -1,14 +1,36 @@
+import Image from "next/image";
 import Link from "next/link";
 
-export function Logo({ className = "" }: { className?: string }) {
+/**
+ * Official Tanvi IT Solutions mark (public/tanvi-it-logo.png — already
+ * transparent, no white plate to strip).
+ *
+ * The artwork is black-on-transparent, so on dark surfaces we invert it
+ * rather than shipping a second file; `brightness-0 invert` renders the
+ * black wordmark white and lifts the mustard to a pale gold that stays
+ * legible on near-black.
+ */
+export function Logo({
+  tone = "light",
+  className = "",
+}: {
+  tone?: "light" | "dark";
+  className?: string;
+}) {
   return (
-    <Link href="/" className={`flex items-center gap-2 ${className}`} aria-label="Tanvi IT home">
-      <span className="flex h-9 w-9 items-center justify-center rounded-control bg-navy-900 font-display text-lg font-bold text-orange-400">
-        T
-      </span>
-      <span className="font-display text-xl font-bold tracking-tight text-navy-900">
-        Tanvi<span className="text-orange-500">IT</span>
-      </span>
+    <Link
+      href="/"
+      className={`inline-flex items-center ${className}`}
+      aria-label="Tanvi IT Solutions — home"
+    >
+      <Image
+        src="/tanvi-it-logo.png"
+        alt="Tanvi IT Solutions"
+        width={167}
+        height={43}
+        priority
+        className={`h-9 w-auto ${tone === "dark" ? "brightness-0 invert" : ""}`}
+      />
     </Link>
   );
 }

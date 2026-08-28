@@ -15,7 +15,7 @@ export function Process({ tone = "light" }: { tone?: "light" | "dark" }) {
         aria-hidden
       >
         <motion.div
-          className="h-full origin-left bg-gradient-to-r from-orange-500 to-navy-400"
+          className="h-full origin-left bg-gradient-to-r from-gold-500 to-ink-400"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -27,15 +27,15 @@ export function Process({ tone = "light" }: { tone?: "light" | "dark" }) {
         {processSteps.map((step, index) => (
           <RevealItem key={step.title} className="relative">
             <span
-              className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-orange-500 font-display text-lg font-bold shadow-sm ${
-                dark ? "bg-navy-950 text-orange-400" : "bg-white text-orange-600"
+              className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold-500 font-display text-lg font-bold shadow-sm ${
+                dark ? "bg-ink-950 text-gold-400" : "bg-white text-gold-600"
               }`}
             >
               {String(index + 1).padStart(2, "0")}
             </span>
             <h3
               className={`mt-4 font-display text-lg font-semibold ${
-                dark ? "text-white" : "text-navy-900"
+                dark ? "text-white" : "text-ink-900"
               }`}
             >
               {step.title}

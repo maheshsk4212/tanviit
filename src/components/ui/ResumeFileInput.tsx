@@ -71,12 +71,12 @@ export function ResumeFileInput({
             onDrop={handleDrop}
             className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-control border-2 border-dashed px-6 py-8 text-center transition-colors ${
               dragging
-                ? "border-orange-400 bg-orange-50/60"
-                : "border-slate-300 hover:border-navy-400 hover:bg-navy-50/50"
+                ? "border-gold-400 bg-gold-50/60"
+                : "border-slate-300 hover:border-ink-400 hover:bg-ink-50/50"
             }`}
           >
-            <Upload className={`h-6 w-6 ${dragging ? "text-orange-500" : "text-slate-400"}`} aria-hidden />
-            <span className="text-sm font-medium text-navy-900">
+            <Upload className={`h-6 w-6 ${dragging ? "text-gold-500" : "text-slate-400"}`} aria-hidden />
+            <span className="text-sm font-medium text-ink-900">
               {dragging ? "Drop your resume" : "Click or drag your resume here"}
             </span>
             <span className="text-xs text-slate-500">PDF or DOCX, up to 10MB</span>
@@ -89,9 +89,9 @@ export function ResumeFileInput({
             exit={{ opacity: 0 }}
             className="flex items-center justify-between rounded-control border border-emerald-200 bg-emerald-50/60 px-4 py-3"
           >
-            <span className="flex min-w-0 items-center gap-2 text-sm text-navy-900">
+            <span className="flex min-w-0 items-center gap-2 text-sm text-ink-900">
               <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" aria-hidden />
-              <FileText className="h-4 w-4 shrink-0 text-navy-500" aria-hidden />
+              <FileText className="h-4 w-4 shrink-0 text-ink-500" aria-hidden />
               <span className="truncate">{fileName}</span>
             </span>
             <button

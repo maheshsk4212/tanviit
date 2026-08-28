@@ -24,8 +24,8 @@ export function WhyUs({
             <span
               className={`mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-control ${
                 dark
-                  ? "border border-white/10 bg-white/5 text-orange-300"
-                  : "bg-navy-50 text-navy-700"
+                  ? "border border-white/10 bg-white/5 text-gold-300"
+                  : "bg-ink-50 text-ink-700"
               }`}
             >
               <Icon className="h-5 w-5" aria-hidden />
@@ -33,7 +33,7 @@ export function WhyUs({
             <div>
               <h3
                 className={`font-display text-lg font-semibold ${
-                  dark ? "text-white" : "text-navy-900"
+                  dark ? "text-white" : "text-ink-900"
                 }`}
               >
                 {item.title}

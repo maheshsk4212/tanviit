@@ -5,12 +5,12 @@ type Variant = "primary" | "ghost" | "ghost-dark";
 type Size = "md" | "lg";
 
 const base =
-  "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-semibold transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+  "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-semibold transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-orange-500 text-white shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_20px_-8px_rgba(242,113,15,0.55)] hover:bg-orange-600 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_14px_28px_-10px_rgba(242,113,15,0.65)]",
-  ghost: "bg-transparent text-navy-900 border border-navy-200 hover:bg-navy-50 hover:border-navy-300",
+    "bg-gold-500 text-white shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_20px_-8px_rgba(242,113,15,0.55)] hover:bg-gold-600 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_14px_28px_-10px_rgba(242,113,15,0.65)]",
+  ghost: "bg-transparent text-ink-900 border border-ink-200 hover:bg-ink-50 hover:border-ink-300",
   "ghost-dark": "bg-transparent text-white border border-white/25 hover:bg-white/10 hover:border-white/40",
 };
 

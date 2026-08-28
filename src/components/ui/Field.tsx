@@ -1,7 +1,7 @@
 import { type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes } from "react";
 
 const controlClasses =
-  "w-full rounded-control border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-navy-900 placeholder:text-slate-400 transition-all duration-200 hover:border-slate-400 focus:border-navy-500 focus:outline-none focus:ring-4 focus:ring-navy-500/10";
+  "w-full rounded-control border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-slate-400 transition-all duration-200 hover:border-slate-400 focus:border-ink-500 focus:outline-none focus:ring-4 focus:ring-ink-500/10";
 
 export function Label({
   htmlFor,
@@ -13,9 +13,9 @@ export function Label({
   required?: boolean;
 }) {
   return (
-    <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-navy-900">
+    <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-ink-900">
       {children}
-      {required ? <span className="ml-0.5 text-orange-600">*</span> : null}
+      {required ? <span className="ml-0.5 text-gold-600">*</span> : null}
     </label>
   );
 }

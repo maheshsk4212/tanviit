@@ -1,11 +1,11 @@
 import { type ReactNode } from "react";
 
-type Tone = "navy" | "orange" | "navy-deep";
+type Tone = "ink" | "gold" | "ink-deep";
 
 const tones: Record<Tone, string> = {
-  navy: "bg-navy-800",
-  "navy-deep": "bg-navy-950",
-  orange: "bg-orange-500",
+  ink: "bg-ink-800",
+  "ink-deep": "bg-ink-950",
+  gold: "bg-gold-500",
 };
 
 /**
@@ -15,7 +15,7 @@ const tones: Record<Tone, string> = {
  */
 export function NotchPanel({
   children,
-  tone = "navy",
+  tone = "ink",
   notchBg = "var(--color-background)",
   className = "",
 }: {

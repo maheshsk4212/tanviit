@@ -1,5 +1,6 @@
+import { Audiences } from "@/components/sections/Audiences";
 import { CTASection } from "@/components/sections/CTASection";
-import { Differentiator } from "@/components/sections/Differentiator";
+import { ContractVehicles } from "@/components/sections/ContractVehicles";
 import { Hero } from "@/components/sections/Hero";
 import { IndustriesGrid } from "@/components/sections/IndustriesGrid";
 import { Process } from "@/components/sections/Process";
@@ -9,6 +10,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import { clients } from "@/lib/site-content";
 
 export default function Home() {
   return (
@@ -16,31 +18,38 @@ export default function Home() {
       <Hero />
       <StatsBar />
 
+      {/* Services */}
       <Section tone="dark">
         <SectionHeading
           tone="dark"
-          eyebrow="What we do"
-          title="Full-lifecycle IT consulting"
-          description="From modernizing legacy applications to standing up analytics platforms, our teams cover the full delivery lifecycle in-house."
+          eyebrow="Our services"
+          title="Flexible solutions. Built around your goals."
+          description="From talent to technology, we deliver flexible, scalable IT solutions that help you innovate faster and achieve measurable business outcomes."
         />
         <div className="mt-12">
-          <ServicesGrid limit={4} />
+          <ServicesGrid />
         </div>
         <div className="mt-10 text-center">
           <Button href="/services" variant="ghost-dark">
-            View all services
+            Explore our services
           </Button>
         </div>
       </Section>
 
+      {/* For employers / For talent */}
+      <Section tone="dark" className="pt-0">
+        <Audiences />
+      </Section>
+
+      {/* Industries */}
       <Section>
         <SectionHeading
-          eyebrow="Who we serve"
-          title="Industries we know well"
-          description="Nearly two decades of delivery across regulated, mission-critical environments."
+          eyebrow="Industries we serve"
+          title="Domain expertise. Proven impact."
+          description="We deliver tailored IT solutions across a wide range of public and private sector industries."
         />
         <div className="mt-12">
-          <IndustriesGrid limit={3} />
+          <IndustriesGrid limit={5} />
         </div>
         <div className="mt-10 text-center">
           <Button href="/industries" variant="ghost">
@@ -49,51 +58,74 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section tone="dark">
+      {/* Contract vehicles & achievements */}
+      <Section tone="muted">
         <SectionHeading
-          tone="dark"
-          eyebrow="Tanvi IT vs. staffing firms"
-          title="Consulting, not headcount"
-          description="We're built and run differently than a typical staffing vendor — and it shows up in how engagements get delivered."
-          align="center"
+          eyebrow="Contract vehicles & achievements"
+          title="Trusted partner to government and enterprise clients"
+          description="Buy through the vehicles you already hold — including NASA SEWP VI, GSA MAS and 8(a) STARS III."
         />
         <div className="mt-12">
-          <Differentiator />
+          <ContractVehicles />
         </div>
       </Section>
 
+      {/* Why choose */}
       <Section>
-        <SectionHeading eyebrow="Why Tanvi IT" title="Consulting that delivers outcomes" />
+        <SectionHeading
+          eyebrow="Why choose Tanvi IT"
+          title="Experience. Commitment. Results."
+        />
         <div className="mt-12">
           <WhyUs />
         </div>
       </Section>
 
+      {/* Process */}
       <Section tone="dark">
-        <SectionHeading tone="dark" eyebrow="How we work" title="A proven delivery process" />
+        <SectionHeading
+          tone="dark"
+          eyebrow="Our process"
+          title="A proven process. Exceptional results."
+          description="We follow a streamlined, collaborative approach to turn your goals into measurable outcomes — every time."
+        />
         <div className="mt-12">
           <Process tone="dark" />
         </div>
       </Section>
 
+      {/* Clients & testimonials */}
       <Section tone="muted">
         <SectionHeading
-          eyebrow="Client voices"
-          title="Trusted by teams who need it done right"
+          eyebrow="Clients & testimonials"
+          title="Trusted by agencies. Proven by results."
+          description="We build lasting partnerships by delivering high-quality solutions, exceptional service, and measurable impact."
           align="center"
         />
+
+        <ul className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+          {clients.map((client) => (
+            <li
+              key={client}
+              className="font-display text-lg font-bold tracking-tight text-slate-400"
+            >
+              {client}
+            </li>
+          ))}
+        </ul>
+
         <div className="mt-12">
           <Testimonials />
         </div>
       </Section>
 
       <CTASection
-        title="Ready to modernize with confidence?"
-        description="Tell us about your project and we'll set up time to talk through it."
-        primaryLabel="Contact us"
+        title="Let's build what's next, together."
+        description="Whether you need one specialist or an entire technology team, we're ready to help."
+        primaryLabel="Talk to our team"
         primaryHref="/contact"
-        secondaryLabel="See open roles"
-        secondaryHref="/careers"
+        secondaryLabel="Explore solutions"
+        secondaryHref="/services"
       />
     </>
   );

@@ -11,7 +11,7 @@ const SLIDE_DURATION = 4200;
 
 interface HeadlineLine {
   text: string;
-  /** A trailing substring of `text` to render as the orange accent. */
+  /** A trailing substring of `text` to render as the gold accent. */
   accent?: string;
 }
 
@@ -27,53 +27,53 @@ const slides: {
   secondary: { label: string; href: string };
 }[] = [
   {
-    eyebrow: "IT services & consulting since 2008",
+    eyebrow: "U.S. based & operated · Top 1% IT talent",
     headline: [
-      { text: "Technology consulting" },
-      { text: "that moves your" },
-      { text: "business forward", accent: "forward" },
+      { text: "Connecting U.S. companies" },
+      { text: "with the right" },
+      { text: "IT talent", accent: "IT talent" },
     ],
     description:
-      "Tanvi IT partners with public and private sector clients to modernize applications, harness data, and build resilient technology foundations — delivered by senior consultants, end to end.",
+      "We connect organizations with skilled IT professionals to accelerate innovation, reduce time-to-hire, and deliver results.",
     image:
       "https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?w=1920&q=80&auto=format&fit=crop",
     imageAlt: "Consulting team collaborating around laptops in a modern office",
     video:
       "https://videos.pexels.com/video-files/3195441/3195441-hd_1920_1080_25fps.mp4",
-    primary: { label: "Talk to us", href: "/contact" },
-    secondary: { label: "Explore services", href: "/services" },
+    primary: { label: "Talk to our team", href: "/contact" },
+    secondary: { label: "Explore solutions", href: "/services" },
   },
   {
-    eyebrow: "Delivery, not just decks",
+    eyebrow: "NASA SEWP VI · GSA MAS · 8(a) STARS III",
     headline: [
-      { text: "We don't just plan" },
-      { text: "modernization —" },
-      { text: "we ship it", accent: "ship it" },
+      { text: "Trusted partner to" },
+      { text: "government and" },
+      { text: "enterprise clients", accent: "enterprise clients" },
     ],
     description:
-      "From architecture through DevOps to QA, our teams stay accountable for production outcomes — not just recommendations that sit in a slide deck.",
+      "Buy through the vehicles you already hold. 100+ projects delivered for federal, state and local agencies and Fortune 500 companies.",
     image:
       "https://images.unsplash.com/photo-1515603403036-f3d35f75ca52?w=1920&q=80&auto=format&fit=crop",
     imageAlt: "Engineer presenting a technical solution in a focused work session",
-    primary: { label: "See our services", href: "/services" },
-    secondary: { label: "Talk to us", href: "/contact" },
+    primary: { label: "View SEWP VI contract", href: "/sewp-vi" },
+    secondary: { label: "Contract vehicles", href: "/about" },
   },
   {
-    eyebrow: "Full-lifecycle capability",
+    eyebrow: "For talent",
     headline: [
-      { text: "Strategy that survives" },
-      { text: "contact with" },
-      { text: "delivery", accent: "delivery" },
+      { text: "Opportunities that" },
+      { text: "move your career" },
+      { text: "forward", accent: "forward" },
     ],
     description:
-      "Enterprise architecture, DevOps, and quality engineering under one accountable team — so plans actually become production systems.",
+      "Work with top U.S. clients on mission-critical programs — competitive pay, real growth, and long-term assignments.",
     image:
       "https://images.unsplash.com/photo-1529119368496-2dfda6ec2804?w=1920&q=80&auto=format&fit=crop",
     imageAlt: "Consultants mapping out a delivery roadmap in a planning session",
     video:
       "https://videos.pexels.com/video-files/7659850/7659850-hd_1920_1080_25fps.mp4",
-    primary: { label: "How we work", href: "/about" },
-    secondary: { label: "Talk to us", href: "/contact" },
+    primary: { label: "Explore opportunities", href: "/careers" },
+    secondary: { label: "How we work", href: "/about" },
   },
 ];
 
@@ -108,7 +108,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative flex min-h-[600px] items-center overflow-hidden bg-navy-950 sm:min-h-[680px] lg:min-h-[760px]"
+      className="relative flex min-h-[600px] items-center overflow-hidden bg-ink-950 sm:min-h-[680px] lg:min-h-[760px]"
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
@@ -154,8 +154,8 @@ export function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/70 to-navy-950/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-transparent to-navy-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/70 to-ink-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-transparent to-ink-950/20" />
         <div className="absolute inset-0 noise-overlay opacity-40" aria-hidden />
       </div>
 
@@ -169,7 +169,7 @@ export function Hero() {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-orange-400/30 bg-orange-500/10 px-4 py-1.5 text-sm font-medium text-orange-300">
+              <div className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-500/10 px-4 py-1.5 text-sm font-medium text-gold-300">
                 <Sparkles className="h-3.5 w-3.5" aria-hidden />
                 {slide.eyebrow}
               </div>
@@ -187,7 +187,7 @@ export function Hero() {
                   return (
                     <span key={line.text} className="block">
                       {line.text.slice(0, splitAt)}
-                      <span className="text-gradient-orange italic">{line.accent}</span>
+                      <span className="text-gradient-gold italic">{line.accent}</span>
                     </span>
                   );
                 })}
@@ -217,7 +217,7 @@ export function Hero() {
               type="button"
               onClick={() => goTo(index - 1)}
               aria-label="Previous slide"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-white/10 hover:text-orange-300 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-300 hover:bg-white/10 hover:text-gold-300 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden />
             </button>
@@ -225,7 +225,7 @@ export function Hero() {
               type="button"
               onClick={() => goTo(index + 1)}
               aria-label="Next slide"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-orange-300 hover:bg-white/10 hover:text-orange-300 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-white/80 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-300 hover:bg-white/10 hover:text-gold-300 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
             >
               <ArrowRight className="h-4 w-4" aria-hidden />
             </button>
@@ -233,7 +233,7 @@ export function Hero() {
               type="button"
               onClick={() => setUserPaused((p) => !p)}
               aria-label={userPaused ? "Play slideshow" : "Pause slideshow"}
-              className="ml-1 flex h-9 w-9 items-center justify-center rounded-full border border-white/25 text-white/80 transition-colors hover:border-orange-300 hover:text-orange-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+              className="ml-1 flex h-9 w-9 items-center justify-center rounded-full border border-white/25 text-white/80 transition-colors hover:border-gold-300 hover:text-gold-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
             >
               {userPaused ? (
                 <Play className="h-3.5 w-3.5" aria-hidden />
@@ -257,7 +257,7 @@ export function Hero() {
                   {i === index ? (
                     <motion.span
                       key={index}
-                      className="absolute inset-y-0 left-0 block rounded-full bg-orange-500"
+                      className="absolute inset-y-0 left-0 block rounded-full bg-gold-500"
                       initial={{ width: "0%" }}
                       animate={{ width: playing ? "100%" : "40%" }}
                       transition={{

@@ -1,16 +1,16 @@
 import { type ReactNode } from "react";
 
-type Tone = "navy" | "orange" | "slate";
+type Tone = "ink" | "gold" | "slate";
 
 const tones: Record<Tone, string> = {
-  navy: "bg-navy-50 text-navy-700",
-  orange: "bg-orange-50 text-orange-700",
+  ink: "bg-ink-50 text-ink-700",
+  gold: "bg-gold-50 text-gold-700",
   slate: "bg-slate-100 text-slate-700",
 };
 
 export function Badge({
   children,
-  tone = "navy",
+  tone = "ink",
   className = "",
 }: {
   children: ReactNode;

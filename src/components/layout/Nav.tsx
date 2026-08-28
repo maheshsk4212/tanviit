@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { mainNav } from "@/lib/site-content";
-import { Button } from "@/components/ui/Button";
 import { Logo } from "./Logo";
 
 export function Nav() {
@@ -47,12 +46,12 @@ export function Nav() {
                 key={item.href}
                 href={item.href}
                 className={`group relative px-3 py-2 text-sm font-medium transition-colors ${
-                  active ? "text-navy-900" : "text-slate-600 hover:text-navy-900"
+                  active ? "text-ink-900" : "text-slate-600 hover:text-ink-900"
                 }`}
               >
                 {item.label}
                 <span
-                  className={`absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-orange-500 transition-transform duration-300 ease-out group-hover:scale-x-100 ${
+                  className={`absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-gold-500 transition-transform duration-300 ease-out group-hover:scale-x-100 ${
                     active ? "scale-x-100" : ""
                   }`}
                   aria-hidden
@@ -62,15 +61,9 @@ export function Nav() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
-          <Button href="/careers" size="md">
-            View openings
-          </Button>
-        </div>
-
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-control p-2 text-navy-900 lg:hidden"
+          className="inline-flex items-center justify-center rounded-control p-2 text-ink-900 lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -98,15 +91,12 @@ export function Nav() {
                 >
                   <Link
                     href={item.href}
-                    className="block rounded-control px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-navy-900"
+                    className="block rounded-control px-3 py-2.5 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-ink-900"
                   >
                     {item.label}
                   </Link>
                 </motion.div>
               ))}
-              <Button href="/careers" className="mt-2 w-full">
-                View openings
-              </Button>
             </nav>
           </motion.div>
         ) : null}

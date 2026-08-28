@@ -24,7 +24,7 @@ export default function ServicesPage() {
             <a
               key={service.slug}
               href={`#${service.slug}`}
-              className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-orange-400/40 hover:bg-orange-500/10 hover:text-orange-300"
+              className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-gold-400/40 hover:bg-gold-500/10 hover:text-gold-300"
             >
               {service.name}
             </a>

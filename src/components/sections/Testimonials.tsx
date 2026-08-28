@@ -7,11 +7,11 @@ export function Testimonials() {
   return (
     <RevealGroup className="grid grid-cols-1 gap-6 lg:grid-cols-3" stagger={0.08}>
       {testimonials.map((testimonial) => (
-        <RevealItem key={testimonial.author} className="h-full">
+        <RevealItem key={testimonial.company} className="h-full">
           <Card className="flex h-full flex-col">
             <div className="flex items-center justify-between">
-              <Quote className="h-7 w-7 text-orange-300" aria-hidden />
-              <div className="flex gap-0.5 text-orange-400" aria-hidden>
+              <Quote className="h-7 w-7 text-gold-300" aria-hidden />
+              <div className="flex gap-0.5 text-gold-400" aria-hidden>
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-3.5 w-3.5 fill-current" />
                 ))}
@@ -21,10 +21,13 @@ export function Testimonials() {
               &ldquo;{testimonial.quote}&rdquo;
             </p>
             <div className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-4">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-navy-700 to-navy-900 text-xs font-bold text-orange-300">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-ink-700 to-ink-900 text-xs font-bold text-gold-300">
                 {testimonial.initials}
               </span>
-              <p className="text-sm font-semibold text-navy-900">{testimonial.author}</p>
+              <div>
+                <p className="text-sm font-semibold text-ink-900">{testimonial.author}</p>
+                <p className="text-xs text-slate-500">{testimonial.company}</p>
+              </div>
             </div>
           </Card>
         </RevealItem>

@@ -18,10 +18,10 @@ export function StatsBar() {
             const Icon = icons[i] ?? Award;
             return (
               <RevealItem key={stat.label} className="flex flex-col items-center text-center">
-                <span className="mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-orange-50 text-orange-600">
+                <span className="mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-gold-50 text-gold-600">
                   <Icon className="h-4 w-4" aria-hidden />
                 </span>
-                <p className="font-display text-3xl font-bold text-navy-900 sm:text-4xl">
+                <p className="font-display text-3xl font-bold text-ink-900 sm:text-4xl">
                   <AnimatedCounter value={stat.value} />
                 </p>
                 <p className="mt-1 text-sm text-slate-500">{stat.label}</p>
