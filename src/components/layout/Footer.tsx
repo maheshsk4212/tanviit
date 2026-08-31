@@ -8,7 +8,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-slate-200 bg-ink-950 text-slate-300">
+    <footer className="border-t border-line bg-ink-950 text-slate-300">
       <Container className="py-12 sm:py-16">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -78,7 +78,7 @@ export function Footer() {
             {certifications.map((cert) => (
               <li
                 key={cert.name}
-                className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200"
+                className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-fg-subtle"
               >
                 {cert.name}
               </li>
@@ -87,10 +87,10 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-fg-subtle">
             &copy; {year} {siteConfig.name}. All rights reserved.
           </p>
-          <p className="text-xs text-slate-500">IT Services & Consulting since 2008</p>
+          <p className="text-xs text-fg-subtle">IT Services & Consulting since 2008</p>
         </div>
       </Container>
     </footer>

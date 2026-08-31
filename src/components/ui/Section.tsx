@@ -5,8 +5,8 @@ import { Reveal } from "@/components/motion/Reveal";
 export type SectionTone = "light" | "muted" | "dark";
 
 const toneClasses: Record<SectionTone, string> = {
-  light: "bg-white",
-  muted: "bg-slate-50",
+  light: "bg-surface",
+  muted: "bg-surface-muted",
   dark: "mesh-dark",
 };
 
@@ -74,13 +74,13 @@ export function SectionHeading({
       ) : null}
       <h2
         className={`font-display text-3xl font-bold tracking-tight sm:text-4xl ${
-          dark ? "text-white" : "text-ink-900"
+          dark ? "text-white" : "text-fg"
         }`}
       >
         {title}
       </h2>
       {description ? (
-        <p className={`mt-4 text-lg ${dark ? "text-slate-300" : "text-slate-600"}`}>
+        <p className={`mt-4 text-lg ${dark ? "text-slate-300" : "text-fg-muted"}`}>
           {description}
         </p>
       ) : null}

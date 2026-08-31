@@ -49,11 +49,11 @@ export function IndustriesGrid({
           <RevealItem key={industry.slug}>
             <div
               id={industry.slug}
-              className="group/card relative flex h-full scroll-mt-24 flex-col overflow-hidden rounded-card border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:shadow-elevated"
+              className="group/card relative flex h-full scroll-mt-24 flex-col overflow-hidden rounded-card border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:shadow-elevated"
             >
               {/* warm wash that fills in on hover */}
               <div
-                className="absolute inset-0 bg-gradient-to-br from-gold-50 via-white to-white opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
+                className="absolute inset-0 bg-gradient-to-br from-gold-50 via-surface to-surface opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"
                 aria-hidden
               />
               {/* gold rule that draws across the top on hover */}
@@ -66,15 +66,15 @@ export function IndustriesGrid({
                 <span className="flex h-12 w-12 items-center justify-center rounded-control bg-gradient-to-br from-ink-900 to-ink-700 text-gold-300 shadow-sm transition-transform duration-300 group-hover/card:scale-110 group-hover/card:-rotate-3">
                   <Icon className="h-5 w-5" aria-hidden />
                 </span>
-                <span className="font-display text-sm font-bold text-slate-200 transition-colors duration-300 group-hover/card:text-gold-400">
+                <span className="font-display text-sm font-bold text-fg-subtle transition-colors duration-300 group-hover/card:text-gold-400">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
 
-              <h3 className="relative mt-5 font-display text-base font-bold text-ink-900">
+              <h3 className="relative mt-5 font-display text-base font-bold text-fg">
                 {industry.name}
               </h3>
-              <p className="relative mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+              <p className="relative mt-2 flex-1 text-sm leading-relaxed text-fg-muted">
                 {industry.summary}
               </p>
             </div>

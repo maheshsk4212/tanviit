@@ -17,16 +17,16 @@ export function Testimonials() {
                 ))}
               </div>
             </div>
-            <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-700">
+            <p className="mt-4 flex-1 text-sm leading-relaxed text-fg-muted">
               &ldquo;{testimonial.quote}&rdquo;
             </p>
-            <div className="mt-5 flex items-center gap-3 border-t border-slate-100 pt-4">
+            <div className="mt-5 flex items-center gap-3 border-t border-line pt-4">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-ink-700 to-ink-900 text-xs font-bold text-gold-300">
                 {testimonial.initials}
               </span>
               <div>
-                <p className="text-sm font-semibold text-ink-900">{testimonial.author}</p>
-                <p className="text-xs text-slate-500">{testimonial.company}</p>
+                <p className="text-sm font-semibold text-fg">{testimonial.author}</p>
+                <p className="text-xs text-fg-subtle">{testimonial.company}</p>
               </div>
             </div>
           </Card>

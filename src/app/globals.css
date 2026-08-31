@@ -47,6 +47,17 @@
   --color-slate-800: #27272c;
   --color-slate-900: #18181b;
 
+  /* Semantic surface/text tokens — these are what components use, and what
+     each theme swaps. The ink/gold/slate scales below stay absolute. */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f7f7f8;
+  --color-surface-sunken: #f7f7f7;
+  --color-fg: #131313;
+  --color-fg-muted: #52525a;
+  --color-fg-subtle: #94949a;
+  --color-line: #dededf;
+  --color-line-strong: #bfbfc2;
+
   --radius-card: 0.875rem;
   --radius-control: 0.5rem;
 }
@@ -88,6 +99,15 @@
   --color-slate-700: var(--color-slate-700);
   --color-slate-800: var(--color-slate-800);
   --color-slate-900: var(--color-slate-900);
+
+  --color-surface: var(--color-surface);
+  --color-surface-muted: var(--color-surface-muted);
+  --color-surface-sunken: var(--color-surface-sunken);
+  --color-fg: var(--color-fg);
+  --color-fg-muted: var(--color-fg-muted);
+  --color-fg-subtle: var(--color-fg-subtle);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-manrope);
@@ -192,4 +212,99 @@ html {
   background: linear-gradient(160deg, color-mix(in oklab, var(--color-ink-900) 78%, transparent), color-mix(in oklab, var(--color-gold-600) 45%, transparent));
   mix-blend-mode: color;
   pointer-events: none;
+}
+
+/* ==================================================================
+   THEME: "neo" — trendy / futuristic / bold dark alternative.
+   Only tokens are redefined, so every component inherits the new look
+   without changing a single line of TSX. Accent `gold-*` is remapped
+   to electric cyan; `ink-*` stays an absolute neutral scale.
+   ================================================================== */
+[data-theme="neo"] {
+  --background: #06070b;
+  --foreground: #e8ecf5;
+
+  /* Surfaces become near-black, lifted in steps instead of white */
+  --color-surface: #0c0e15;
+  --color-surface-muted: #090b11;
+  --color-surface-sunken: rgb(255 255 255 / 0.05);
+  --color-fg: #eef2fa;
+  --color-fg-muted: #98a2b8;
+  --color-fg-subtle: #6b7488;
+  --color-line: rgb(255 255 255 / 0.10);
+  --color-line-strong: rgb(255 255 255 / 0.20);
+
+  /* Accent remapped from mustard to electric cyan */
+  --color-gold-50: #062b31;
+  --color-gold-100: #083a44;
+  --color-gold-200: #0b5566;
+  --color-gold-300: #4ff0ff;
+  --color-gold-400: #22e2f7;
+  --color-gold-500: #00d4ee;
+  --color-gold-600: #16c8e0;
+  --color-gold-700: #5ae6f7;
+  --color-gold-800: #8ef0ff;
+  --color-gold-900: #b9f6ff;
+
+  /* Deeper, cooler neutrals for the always-dark sections */
+  --color-ink-950: #04050a;
+  --color-ink-900: #0a0c13;
+  --color-ink-800: #11141d;
+  --color-ink-700: #1a1f2b;
+
+  /* Sharper geometry reads more technical */
+  --radius-card: 0.25rem;
+  --radius-control: 0.125rem;
+}
+
+/* Cyan mesh instead of the warm gold one */
+[data-theme="neo"] .mesh-dark {
+  background-color: var(--color-ink-950);
+  background-image:
+    radial-gradient(circle at 12% 18%, color-mix(in oklab, #00d4ee 28%, transparent) 0%, transparent 45%),
+    radial-gradient(circle at 88% 8%, color-mix(in oklab, #7c3aed 26%, transparent) 0%, transparent 48%),
+    radial-gradient(circle at 50% 100%, color-mix(in oklab, #0b5566 45%, transparent) 0%, transparent 55%);
+}
+
+/* Grid is brighter and covers the whole surface, not just the top */
+[data-theme="neo"] .grid-overlay {
+  background-image:
+    linear-gradient(color-mix(in oklab, #00d4ee 12%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, #00d4ee 12%, transparent) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 0%, black 30%, transparent 100%);
+}
+
+[data-theme="neo"] .text-gradient-gold {
+  background: linear-gradient(90deg, #4ff0ff, #7c3aed);
+}
+
+/* Elevation becomes glow rather than a soft drop shadow */
+[data-theme="neo"] .shadow-elevated {
+  box-shadow: 0 0 0 1px rgb(0 212 238 / 0.14), 0 18px 40px -24px rgb(0 212 238 / 0.45);
+}
+
+[data-theme="neo"] .shadow-elevated-lg {
+  box-shadow: 0 0 0 1px rgb(0 212 238 / 0.20), 0 28px 60px -24px rgb(0 212 238 / 0.55);
+}
+
+/* Duotone portrait treatment goes cyan */
+[data-theme="neo"] .duotone-ink::after {
+  background: linear-gradient(160deg, color-mix(in oklab, #04050a 72%, transparent), color-mix(in oklab, #00d4ee 55%, transparent));
+}
+
+/* Eyebrows read as technical labels */
+[data-theme="neo"] .font-display {
+  letter-spacing: -0.02em;
+}
+
+/* Invert the black wordmark so it reads on near-black */
+[data-theme="neo"] img[alt="Tanvi IT Solutions"] {
+  filter: brightness(0) invert(1);
+}
+
+/* Nav shell needs to sit on the dark base, not translucent white */
+[data-theme="neo"] header {
+  background-color: color-mix(in oklab, var(--background) 82%, transparent) !important;
+  border-color: var(--color-line) !important;
 }

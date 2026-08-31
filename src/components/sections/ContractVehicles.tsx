@@ -68,11 +68,11 @@ export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }
   const federal = contractVehicles.slice(1).filter((v) => !COOPERATIVES.has(v.name));
   const coops = contractVehicles.slice(1).filter((v) => COOPERATIVES.has(v.name));
 
-  const title = dark ? "text-white" : "text-ink-900";
-  const detail = dark ? "text-slate-400" : "text-slate-500";
+  const title = dark ? "text-white" : "text-fg";
+  const detail = dark ? "text-slate-400" : "text-fg-subtle";
   const chip = dark
     ? "border-white/10 bg-white/5 hover:border-gold-400/50 hover:bg-white/10"
-    : "border-slate-200 bg-white hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-elevated";
+    : "border-line bg-surface hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-elevated";
 
   return (
     <div>
@@ -127,19 +127,19 @@ export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }
 
       {/* Achievements */}
       <RevealGroup
-        className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-card border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-4"
+        className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-4"
         stagger={0.06}
       >
         {achievements.map((a, i) => {
           const Icon = achievementIcons[i] ?? Trophy;
           return (
             <RevealItem key={a.value + a.label.slice(0, 12)} className="h-full">
-              <div className="flex h-full flex-col bg-white p-6">
+              <div className="flex h-full flex-col bg-surface p-6">
                 <span className="flex h-10 w-10 items-center justify-center rounded-control bg-gold-50 text-gold-600">
                   <Icon className="h-5 w-5" aria-hidden />
                 </span>
-                <p className="mt-4 font-display text-3xl font-bold text-ink-900">{a.value}</p>
-                <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{a.label}</p>
+                <p className="mt-4 font-display text-3xl font-bold text-fg">{a.value}</p>
+                <p className="mt-1.5 text-xs leading-relaxed text-fg-subtle">{a.label}</p>
               </div>
             </RevealItem>
           );
@@ -147,7 +147,7 @@ export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }
       </RevealGroup>
 
       {/* Certifications */}
-      <div className="mt-8 rounded-card border border-slate-200 bg-white p-6 sm:p-8">
+      <div className="mt-8 rounded-card border border-line bg-surface p-6 sm:p-8">
         <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-600">
           <Award className="h-3.5 w-3.5" aria-hidden />
           Certifications &amp; trusted standards
@@ -157,8 +157,8 @@ export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }
             <li key={c.name} className="flex items-start gap-3">
               <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" aria-hidden />
               <span>
-                <span className="block text-sm font-bold text-ink-900">{c.name}</span>
-                <span className="block text-xs text-slate-500">{c.detail}</span>
+                <span className="block text-sm font-bold text-fg">{c.name}</span>
+                <span className="block text-xs text-fg-subtle">{c.detail}</span>
               </span>
             </li>
           ))}

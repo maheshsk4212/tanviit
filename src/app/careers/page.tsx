@@ -35,10 +35,10 @@ export default function CareersPage() {
           {benefits.map((benefit) => (
             <RevealItem key={benefit.title}>
               <Card className="h-full">
-                <h3 className="font-display text-lg font-semibold text-ink-900">
+                <h3 className="font-display text-lg font-semibold text-fg">
                   {benefit.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                <p className="mt-2 text-sm leading-relaxed text-fg-muted">
                   {benefit.description}
                 </p>
               </Card>

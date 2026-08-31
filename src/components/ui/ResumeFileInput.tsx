@@ -72,14 +72,14 @@ export function ResumeFileInput({
             className={`flex cursor-pointer flex-col items-center justify-center gap-2 rounded-control border-2 border-dashed px-6 py-8 text-center transition-colors ${
               dragging
                 ? "border-gold-400 bg-gold-50/60"
-                : "border-slate-300 hover:border-ink-400 hover:bg-ink-50/50"
+                : "border-line-strong hover:border-fg-subtle hover:bg-surface-sunken"
             }`}
           >
             <Upload className={`h-6 w-6 ${dragging ? "text-gold-500" : "text-slate-400"}`} aria-hidden />
-            <span className="text-sm font-medium text-ink-900">
+            <span className="text-sm font-medium text-fg">
               {dragging ? "Drop your resume" : "Click or drag your resume here"}
             </span>
-            <span className="text-xs text-slate-500">PDF or DOCX, up to 10MB</span>
+            <span className="text-xs text-fg-subtle">PDF or DOCX, up to 10MB</span>
           </motion.label>
         ) : (
           <motion.div
@@ -89,7 +89,7 @@ export function ResumeFileInput({
             exit={{ opacity: 0 }}
             className="flex items-center justify-between rounded-control border border-emerald-200 bg-emerald-50/60 px-4 py-3"
           >
-            <span className="flex min-w-0 items-center gap-2 text-sm text-ink-900">
+            <span className="flex min-w-0 items-center gap-2 text-sm text-fg">
               <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" aria-hidden />
               <FileText className="h-4 w-4 shrink-0 text-ink-500" aria-hidden />
               <span className="truncate">{fileName}</span>
@@ -97,7 +97,7 @@ export function ResumeFileInput({
             <button
               type="button"
               onClick={clearFile}
-              className="ml-3 shrink-0 rounded-full p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-600"
+              className="ml-3 shrink-0 rounded-full p-1 text-slate-400 hover:bg-line hover:text-fg-muted"
               aria-label="Remove file"
             >
               <X className="h-4 w-4" />

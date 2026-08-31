@@ -25,7 +25,7 @@ export function WhyUs({
               className={`mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-control ${
                 dark
                   ? "border border-white/10 bg-white/5 text-gold-300"
-                  : "bg-ink-50 text-ink-700"
+                  : "bg-surface-sunken text-fg"
               }`}
             >
               <Icon className="h-5 w-5" aria-hidden />
@@ -33,14 +33,14 @@ export function WhyUs({
             <div>
               <h3
                 className={`font-display text-lg font-semibold ${
-                  dark ? "text-white" : "text-ink-900"
+                  dark ? "text-white" : "text-fg"
                 }`}
               >
                 {item.title}
               </h3>
               <p
                 className={`mt-1.5 text-sm leading-relaxed ${
-                  dark ? "text-slate-300" : "text-slate-600"
+                  dark ? "text-slate-300" : "text-fg-muted"
                 }`}
               >
                 {item.description}

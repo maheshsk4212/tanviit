@@ -42,7 +42,7 @@ export default function IndustriesPage() {
                 {group.stack.map((tech) => (
                   <li
                     key={tech}
-                    className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200"
+                    className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-fg-subtle"
                   >
                     {tech}
                   </li>

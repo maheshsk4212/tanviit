@@ -27,8 +27,8 @@ export function SuccessState({
         <Check className="h-6 w-6" aria-hidden />
       </motion.span>
       <div>
-        <h2 className="font-display text-xl font-semibold text-ink-900">{title}</h2>
-        <p className="mt-1.5 text-sm leading-relaxed text-slate-600">{children}</p>
+        <h2 className="font-display text-xl font-semibold text-fg">{title}</h2>
+        <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{children}</p>
       </div>
     </motion.div>
   );

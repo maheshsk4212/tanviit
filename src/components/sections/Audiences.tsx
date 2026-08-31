@@ -24,7 +24,7 @@ export function Audiences() {
 
             <ul className="mt-6 flex-1 space-y-2.5">
               {a.points.map((p) => (
-                <li key={p} className="flex items-center gap-2.5 text-sm text-slate-200">
+                <li key={p} className="flex items-center gap-2.5 text-sm text-fg-subtle">
                   <Check className="h-4 w-4 shrink-0 text-gold-400" aria-hidden />
                   {p}
                 </li>

@@ -22,7 +22,7 @@ export function Process({ tone = "light" }: { tone?: "light" | "dark" }) {
 
         const connector = [
           "pointer-events-none absolute top-6 left-14 -right-10 h-px",
-          dark ? "bg-white/15" : "bg-slate-200",
+          dark ? "bg-white/15" : "bg-line",
           "hidden",
           isLast ? "" : endsSmRow ? "sm:hidden" : "sm:block",
           isLast ? "" : endsLgRow ? "lg:hidden" : "lg:block",
@@ -36,21 +36,21 @@ export function Process({ tone = "light" }: { tone?: "light" | "dark" }) {
 
             <span
               className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold-500 font-display text-lg font-bold shadow-sm ${
-                dark ? "bg-ink-950 text-gold-400" : "bg-white text-gold-600"
+                dark ? "bg-ink-950 text-gold-400" : "bg-surface text-gold-600"
               }`}
             >
               {String(index + 1).padStart(2, "0")}
             </span>
             <h3
               className={`mt-4 font-display text-lg font-semibold ${
-                dark ? "text-white" : "text-ink-900"
+                dark ? "text-white" : "text-fg"
               }`}
             >
               {step.title}
             </h3>
             <p
               className={`mt-1.5 text-sm leading-relaxed ${
-                dark ? "text-slate-300" : "text-slate-600"
+                dark ? "text-slate-300" : "text-fg-muted"
               }`}
             >
               {step.description}

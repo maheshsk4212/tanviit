@@ -14,7 +14,7 @@ export function PageHeader({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-slate-200 mesh-dark">
+    <section className="relative overflow-hidden border-b border-line mesh-dark">
       <div className="absolute inset-0 grid-overlay" aria-hidden />
       <div
         className="absolute -right-20 top-0 h-72 w-72 rounded-full bg-gold-500/20 blur-[100px]"

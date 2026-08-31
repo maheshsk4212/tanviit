@@ -68,19 +68,19 @@ export default function SewpPage() {
           title="Tanvi IT Solutions SEWP VI contract information"
         />
         <RevealGroup
-          className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-card border border-slate-200 bg-slate-200 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-3"
           stagger={0.05}
         >
           {contractFacts.map((f) => (
             <RevealItem key={f.label} className="h-full">
-              <div className="flex h-full flex-col bg-white p-6">
+              <div className="flex h-full flex-col bg-surface p-6">
                 <span className="flex h-10 w-10 items-center justify-center rounded-control bg-gold-50 text-gold-600">
                   <f.icon className="h-5 w-5" aria-hidden />
                 </span>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-fg-subtle">
                   {f.label}
                 </p>
-                <p className="mt-1 font-display text-lg font-bold leading-snug text-ink-900">
+                <p className="mt-1 font-display text-lg font-bold leading-snug text-fg">
                   {f.value}
                 </p>
               </div>
@@ -90,16 +90,16 @@ export default function SewpPage() {
 
         <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_320px] lg:gap-16">
           <div>
-            <h3 className="font-display text-xl font-bold text-ink-900">
+            <h3 className="font-display text-xl font-bold text-fg">
               About the NASA SEWP program
             </h3>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">{sewp.overview}</p>
+            <p className="mt-4 text-base leading-relaxed text-fg-muted">{sewp.overview}</p>
           </div>
-          <div className="h-fit rounded-card border border-slate-200 bg-slate-50 p-6">
+          <div className="h-fit rounded-card border border-line bg-surface-muted p-6">
             <p className="text-xs font-semibold uppercase tracking-wider text-gold-600">
               Multi-award GWAC
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            <p className="mt-2 text-sm leading-relaxed text-fg-muted">
               SEWP VI is a multi-award Government-Wide Acquisition Contract. Orders are
               placed under the Fair Opportunity provisions of FAR 16.505(b) — see the clause
               posted in full below.
@@ -188,19 +188,19 @@ export default function SewpPage() {
           title={sewp.fairOpportunity.heading}
           description="Posted in full as required for multi-award Government-Wide Acquisition Contracts."
         />
-        <div className="mt-10 max-w-3xl space-y-4 rounded-card border border-slate-200 bg-white p-7 sm:p-9">
+        <div className="mt-10 max-w-3xl space-y-4 rounded-card border border-line bg-surface p-7 sm:p-9">
           {sewp.fairOpportunity.intro.map((p) => (
-            <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-slate-600">
+            <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-fg-muted">
               {p}
             </p>
           ))}
-          <ol className="ml-5 list-decimal space-y-2 text-sm leading-relaxed text-slate-600 marker:font-semibold marker:text-gold-600">
+          <ol className="ml-5 list-decimal space-y-2 text-sm leading-relaxed text-fg-muted marker:font-semibold marker:text-gold-600">
             {sewp.fairOpportunity.conditions.map((c) => (
               <li key={c.slice(0, 30)}>{c}</li>
             ))}
           </ol>
           {sewp.fairOpportunity.trailing.map((p) => (
-            <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-slate-600">
+            <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-fg-muted">
               {p}
             </p>
           ))}
@@ -225,24 +225,24 @@ export default function SewpPage() {
               ].map((row) => (
                 <div
                   key={row.label}
-                  className="flex items-center gap-4 rounded-card border border-slate-200 bg-white p-4"
+                  className="flex items-center gap-4 rounded-card border border-line bg-surface p-4"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-gold-50 text-gold-600">
                     <row.icon className="h-4 w-4" aria-hidden />
                   </span>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
                       {row.label}
                     </p>
                     {row.href ? (
                       <a
                         href={row.href}
-                        className="text-sm font-semibold text-ink-900 hover:text-gold-700"
+                        className="text-sm font-semibold text-fg hover:text-gold-700"
                       >
                         {row.value}
                       </a>
                     ) : (
-                      <p className="text-sm font-semibold text-ink-900">{row.value}</p>
+                      <p className="text-sm font-semibold text-fg">{row.value}</p>
                     )}
                   </div>
                 </div>
@@ -252,12 +252,12 @@ export default function SewpPage() {
 
           <div>
             <SectionHeading eyebrow="Official links" title="SEWP and accessibility resources" />
-            <ul className="mt-8 divide-y divide-slate-200 rounded-card border border-slate-200 bg-white">
+            <ul className="mt-8 divide-y divide-line rounded-card border border-line bg-surface">
               {sewp.links.map((link) => {
                 const external = link.href.startsWith("http");
                 const inner = (
                   <>
-                    <span className="text-sm font-medium text-ink-900 group-hover:text-gold-700">
+                    <span className="text-sm font-medium text-fg group-hover:text-gold-700">
                       {link.label}
                     </span>
                     <ExternalLink
@@ -275,14 +275,14 @@ export default function SewpPage() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center justify-between gap-4 p-4 transition-colors hover:bg-slate-50"
+                        className="group flex items-center justify-between gap-4 p-4 transition-colors hover:bg-surface-muted"
                       >
                         {inner}
                       </a>
                     ) : (
                       <Link
                         href={link.href}
-                        className="group flex items-center justify-between gap-4 p-4 transition-colors hover:bg-slate-50"
+                        className="group flex items-center justify-between gap-4 p-4 transition-colors hover:bg-surface-muted"
                       >
                         {inner}
                       </Link>
@@ -291,7 +291,7 @@ export default function SewpPage() {
                 );
               })}
             </ul>
-            <p className="mt-6 rounded-card border border-slate-200 bg-slate-50 p-5 text-xs leading-relaxed text-slate-500">
+            <p className="mt-6 rounded-card border border-line bg-surface-muted p-5 text-xs leading-relaxed text-fg-subtle">
               These SEWP pages are maintained in accordance with Section 508 of the
               Rehabilitation Act Amendments and applicable Government Access Standards for
               Electronic and Information Technology.

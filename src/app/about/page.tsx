@@ -32,13 +32,13 @@ export default function AboutPage() {
               eyebrow="Our story"
               title="The right partner. The right talent. The right results."
             />
-            <p className="mt-6 text-base leading-relaxed text-slate-600">
+            <p className="mt-6 text-base leading-relaxed text-fg-muted">
               Tanvi IT Solutions Inc. connects U.S. organizations with skilled IT
               professionals and delivers the technology solutions that turn strategy into
               working systems. We serve federal, state and local agencies alongside
               Fortune 500 enterprises.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">
+            <p className="mt-4 text-base leading-relaxed text-fg-muted">
               As an 8(a) certified small business holding ISO 9001, ISO/IEC 20000-1 and
               ISO/IEC 27001 certifications plus CMMI-DEV and CMMI-SVC Level 3 appraisals,
               we bring the process maturity that mission-critical programs require.
@@ -50,7 +50,7 @@ export default function AboutPage() {
               className="absolute -bottom-5 -right-5 hidden h-full w-full rounded-card bg-gold-500/10 sm:block"
               aria-hidden
             />
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-slate-100">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-surface-muted">
               <Image
                 src="https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?w=1200&q=80&auto=format&fit=crop"
                 alt="Tanvi IT Solutions consultants collaborating"

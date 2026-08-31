@@ -5,7 +5,7 @@ type Tone = "light" | "dark" | "gold";
 
 const tones: Record<Tone, string> = {
   light:
-    "border-ink-200 text-ink-900 hover:border-gold-400 hover:bg-gold-50 hover:text-gold-600",
+    "border-ink-200 text-fg hover:border-gold-400 hover:bg-gold-50 hover:text-gold-600",
   dark: "border-white/25 text-white hover:border-gold-300 hover:bg-white/10",
   gold: "border-gold-300/50 text-gold-300 hover:border-gold-300 hover:bg-gold-500/10",
 };

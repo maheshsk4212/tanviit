@@ -8,7 +8,7 @@ const icons = [CalendarCheck, Users, Building2, Award];
 
 export function StatsBar() {
   return (
-    <section className="border-b border-slate-200 bg-white">
+    <section className="border-b border-line bg-surface">
       <Container className="py-10">
         <RevealGroup
           className="grid grid-cols-2 gap-8 sm:grid-cols-4"
@@ -21,10 +21,10 @@ export function StatsBar() {
                 <span className="mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-gold-50 text-gold-600">
                   <Icon className="h-4 w-4" aria-hidden />
                 </span>
-                <p className="font-display text-3xl font-bold text-ink-900 sm:text-4xl">
+                <p className="font-display text-3xl font-bold text-fg sm:text-4xl">
                   <AnimatedCounter value={stat.value} />
                 </p>
-                <p className="mt-1 text-sm text-slate-500">{stat.label}</p>
+                <p className="mt-1 text-sm text-fg-subtle">{stat.label}</p>
               </RevealItem>
             );
           })}

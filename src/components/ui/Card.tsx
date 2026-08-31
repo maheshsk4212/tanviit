@@ -12,7 +12,7 @@ export function Card({
   return (
     <div
       id={id}
-      className={`group/card relative rounded-card border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-ink-200 hover:shadow-elevated ${className}`}
+      className={`group/card relative rounded-card border border-line bg-surface p-6 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-ink-200 hover:shadow-elevated ${className}`}
     >
       {children}
     </div>
