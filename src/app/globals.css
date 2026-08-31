@@ -159,7 +159,9 @@ html {
 }
 
 .text-gradient-gold {
-  background: linear-gradient(90deg, var(--color-gold-300), var(--color-gold-500));
+  /* background-image, not the `background` shorthand: the shorthand resets
+     background-clip, which would un-clip the text and leave a gradient box. */
+  background-image: linear-gradient(90deg, var(--color-gold-300), var(--color-gold-500));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -276,7 +278,7 @@ html {
 }
 
 [data-theme="neo"] .text-gradient-gold {
-  background: linear-gradient(90deg, #4ff0ff, #7c3aed);
+  background-image: linear-gradient(90deg, #4ff0ff, #a78bfa);
 }
 
 /* Elevation becomes glow rather than a soft drop shadow */
