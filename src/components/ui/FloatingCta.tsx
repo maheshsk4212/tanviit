@@ -40,7 +40,9 @@ export function FloatingCta({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 16, scale: 0.9 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="fixed bottom-6 right-6 z-40 sm:bottom-8 sm:right-8"
+          // Raised clear of the "Powered by Netlify" badge, which is pinned
+          // bottom-right on Netlify's free tier and would otherwise overlap.
+          className="fixed bottom-20 right-6 z-40 sm:bottom-24 sm:right-8"
         >
           <Button href={href} size="lg" className="shadow-elevated-lg">
             <MessageCircle className="h-4 w-4" aria-hidden />
