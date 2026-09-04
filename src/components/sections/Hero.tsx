@@ -35,11 +35,14 @@ const slides: {
     ],
     description:
       "We connect organizations with skilled IT professionals to accelerate innovation, reduce time-to-hire, and deliver results.",
+    // Reviewed side by side under the real scrim: the previous clip was a flat,
+    // top-down beige desk that went muddy behind the overlay. This one is
+    // darker, has depth and holds the headline. Poster matches its tone.
     image:
-      "https://images.unsplash.com/photo-1690378820474-b468b8ee64d3?w=1920&q=80&auto=format&fit=crop",
-    imageAlt: "Consulting team collaborating around laptops in a modern office",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=80&auto=format&fit=crop",
+    imageAlt: "Consulting team working in a modern office",
     video:
-      "https://videos.pexels.com/video-files/3195441/3195441-hd_1920_1080_25fps.mp4",
+      "https://videos.pexels.com/video-files/7659850/7659850-hd_1920_1080_25fps.mp4",
     primary: { label: "Talk to our team", href: "/contact" },
     secondary: { label: "Explore solutions", href: "/services" },
   },
@@ -53,8 +56,8 @@ const slides: {
     description:
       "Buy through the vehicles you already hold. 100+ projects delivered for federal, state and local agencies and Fortune 500 companies.",
     image:
-      "https://images.unsplash.com/photo-1515603403036-f3d35f75ca52?w=1920&q=80&auto=format&fit=crop",
-    imageAlt: "Engineer presenting a technical solution in a focused work session",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&auto=format&fit=crop",
+    imageAlt: "Institutional office towers viewed from below",
     primary: { label: "View SEWP VI contract", href: "/sewp-vi" },
     secondary: { label: "Contract vehicles", href: "/about" },
   },
@@ -68,10 +71,8 @@ const slides: {
     description:
       "Work with top U.S. clients on mission-critical programs — competitive pay, real growth, and long-term assignments.",
     image:
-      "https://images.unsplash.com/photo-1529119368496-2dfda6ec2804?w=1920&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80&auto=format&fit=crop",
     imageAlt: "Consultants mapping out a delivery roadmap in a planning session",
-    video:
-      "https://videos.pexels.com/video-files/7659850/7659850-hd_1920_1080_25fps.mp4",
     primary: { label: "Explore opportunities", href: "/careers" },
     secondary: { label: "How we work", href: "/about" },
   },
@@ -132,7 +133,9 @@ export function Hero() {
                 playsInline
                 preload="auto"
                 aria-hidden
-                className="h-full w-full object-cover"
+                // Footage straight off the wire reads flat under a scrim;
+                // a contrast/saturation lift keeps it looking lit.
+                className="h-full w-full object-cover [filter:contrast(1.18)_saturate(1.15)_brightness(0.92)]"
               />
             ) : (
               <motion.div
@@ -147,20 +150,42 @@ export function Hero() {
                   fill
                   priority={index === 0}
                   sizes="100vw"
-                  className="object-cover"
+                  className="object-cover [filter:contrast(1.18)_saturate(1.15)_brightness(0.92)]"
                 />
               </motion.div>
             )}
           </motion.div>
         </AnimatePresence>
 
-        {/* Stronger on the left, where the headline and copy sit. */}
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/96 via-ink-950/78 to-ink-950/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-transparent to-ink-950/20" />
-        <div className="absolute inset-0 noise-overlay opacity-40" aria-hidden />
+        {/*
+          Scrims are NEUTRAL black, not the warm ink-950 (#100e09). Layering a
+          brown-black over warm footage was what made the hero look muddy —
+          neutral black darkens without tinting, so the image keeps its colour.
+        */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/65 to-black/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/35" />
+        {/* Vignette for depth, plus one cool + one gold light source so the
+            frame reads as lit rather than washed. */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(120% 90% at 50% 45%, transparent 35%, rgb(0 0 0 / 0.55) 100%)",
+          }}
+          aria-hidden
+        />
+        <div
+          className="absolute -right-24 top-1/4 h-[28rem] w-[28rem] rounded-full bg-gold-500/20 blur-[120px]"
+          aria-hidden
+        />
+        <div
+          className="absolute -left-32 bottom-0 h-[24rem] w-[24rem] rounded-full bg-sky-400/10 blur-[120px]"
+          aria-hidden
+        />
+        <div className="absolute inset-0 noise-overlay opacity-25" aria-hidden />
       </div>
 
-      <Container className="relative py-24 sm:py-28 lg:py-32">
+      <Container className="relative pb-24 pt-32 sm:pb-28 sm:pt-36 lg:pb-32 lg:pt-40">
         <div className="max-w-3xl">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div

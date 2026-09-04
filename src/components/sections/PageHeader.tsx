@@ -32,7 +32,7 @@ export function PageHeader({
         className="absolute -right-24 -top-16 h-96 w-96 rounded-full bg-gold-500/20 blur-[120px] animate-pulse-glow"
         aria-hidden
       />
-      <Container className="relative py-20 sm:py-28 lg:py-32">
+      <Container className="relative pb-20 pt-32 sm:pb-28 sm:pt-36 lg:pb-32 lg:pt-40">
         <Reveal>
           {eyebrow ? (
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">

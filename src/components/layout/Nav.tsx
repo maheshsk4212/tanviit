@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -14,7 +14,15 @@ import { ThemeSwitch } from "@/components/theme/ThemeSwitch";
  * Desktop nav entry with a mega-menu panel (hover + keyboard focus). Owns its
  * own open state so it stays a stable, module-scope component.
  */
-function MegaItem({ item, active }: { item: NavItem; active: boolean }) {
+function MegaItem({
+  item,
+  active,
+  scrolled,
+}: {
+  item: NavItem;
+  active: boolean;
+  scrolled: boolean;
+}) {
   const [open, setOpen] = useState(false);
   return (
     <div
@@ -33,7 +41,13 @@ function MegaItem({ item, active }: { item: NavItem; active: boolean }) {
         href={item.href}
         aria-expanded={open}
         className={`group relative flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors ${
-          active ? "text-fg" : "text-fg-muted hover:text-fg"
+          scrolled
+            ? active
+              ? "text-fg"
+              : "text-fg-muted hover:text-fg"
+            : active
+              ? "text-white"
+              : "text-white/75 hover:text-white"
         }`}
       >
         {item.label}
@@ -100,28 +114,42 @@ export function Nav() {
   }, []);
 
   return (
+    // Every page opens on a dark hero, so at the top the bar rides transparent
+    // over it (white marks) and only becomes a solid surface once scrolled —
+    // a white strip pinned above a dark hero is what made it look bolted on.
+    // `fixed`, not `sticky`: a sticky bar occupies flow space, so a transparent
+    // one would reveal the white page behind it rather than the hero. Hero and
+    // PageHeader carry matching top padding so nothing hides beneath it.
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-line bg-surface/85 backdrop-blur-lg"
-          : "border-b border-transparent bg-surface/50 backdrop-blur-sm"
+          ? "border-b border-line bg-surface/90 backdrop-blur-lg"
+          : "border-b border-white/10 bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo />
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Logo tone={scrolled ? "light" : "dark"} />
 
         <nav className="hidden items-center gap-1 lg:flex">
           {mainNav.map((item) => {
             const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
             if (item.menu) {
-              return <MegaItem key={item.href} item={item} active={active} />;
+              return (
+                <MegaItem key={item.href} item={item} active={active} scrolled={scrolled} />
+              );
             }
             return (
               <Link
                 key={item.href}
                 href={item.href}
                 className={`group relative px-3 py-2 text-sm font-medium transition-colors ${
-                  active ? "text-fg" : "text-fg-muted hover:text-fg"
+                  scrolled
+                    ? active
+                      ? "text-fg"
+                      : "text-fg-muted hover:text-fg"
+                    : active
+                      ? "text-white"
+                      : "text-white/75 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -136,13 +164,22 @@ export function Nav() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
           <ThemeSwitch />
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-5 py-2.5 text-sm font-semibold text-ink-950 shadow-elevated transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-400"
+          >
+            Talk to us
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </Link>
         </div>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-control p-2 text-fg lg:hidden"
+          className={`inline-flex items-center justify-center rounded-control p-2 transition-colors lg:hidden ${
+            scrolled ? "text-fg" : "text-white"
+          }`}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
