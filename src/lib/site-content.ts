@@ -181,9 +181,11 @@ export const provenResults = [
     href: "/services",
   },
   {
-    context: "Client trust",
-    metric: "95%",
-    label: "Client retention across multi-year partnerships — proof that our teams deliver, and stay.",
+    // Deliberately not the 95% retention figure — that already leads the stat
+    // bar, and repeating a number on the same page reads as padding.
+    context: "Speed to mission",
+    metric: "48–72 hrs",
+    label: "Average time to fill — pre-vetted talent in place while other pipelines are still screening.",
     cta: "Why choose Tanvi IT",
     href: "/about",
   },

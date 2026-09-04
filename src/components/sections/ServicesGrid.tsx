@@ -8,10 +8,17 @@ import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 export function ServicesGrid({ limit }: { limit?: number }) {
   const items = limit ? services.slice(0, limit) : services;
 
+  // Three columns with the first tile running wide, so an odd count (5
+  // services) fills two complete rows instead of stranding one card alone.
+  const widenFirst = items.length % 3 === 2;
+
   return (
-    <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4" stagger={0.07}>
-      {items.map((service) => (
-        <RevealItem key={service.slug}>
+    <RevealGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
+      {items.map((service, i) => (
+        <RevealItem
+          key={service.slug}
+          className={widenFirst && i === 0 ? "sm:col-span-2 lg:col-span-2" : ""}
+        >
           <ServiceCard service={service} />
         </RevealItem>
       ))}

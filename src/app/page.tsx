@@ -79,7 +79,7 @@ export default function Home() {
           description="Buy through the vehicles you already hold — including NASA SEWP VI, GSA MAS and 8(a) STARS III."
         />
         <div className="mt-12">
-          <ContractVehicles />
+          <ContractVehicles showAchievements={false} />
         </div>
       </Section>
 

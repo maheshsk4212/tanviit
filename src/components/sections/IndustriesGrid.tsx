@@ -81,8 +81,10 @@ export function IndustriesGrid({ limit }: { limit?: number; columns?: 3 | 5 }) {
               />
 
               {/* Legibility scrim, then a warm brand wash that blooms on hover. */}
+              {/* Weighted to the bottom, where the text sits, so the upper two
+                  thirds of the photograph stay legible instead of going muddy. */}
               <div
-                className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/75 to-ink-950/25"
+                className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/55 to-ink-950/5"
                 aria-hidden
               />
               <div

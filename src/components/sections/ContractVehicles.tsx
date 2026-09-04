@@ -98,7 +98,15 @@ function VehicleList({
   );
 }
 
-export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }) {
+export function ContractVehicles({
+  tone = "light",
+  showAchievements = true,
+}: {
+  tone?: "light" | "dark";
+  /** Off on the homepage, where "Proven results" already carries the numbers
+      — repeating the same figures twice on one page reads as padding. */
+  showAchievements?: boolean;
+}) {
   const dark = tone === "dark";
 
   const featured = contractVehicles[0];
@@ -154,6 +162,7 @@ export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }
 
       {/* Achievements — a rich dark panel so the numbers carry real weight
           instead of sitting in flat white boxes. */}
+      {showAchievements ? (
       <div className="relative mt-14 overflow-hidden rounded-card mesh-dark p-8 sm:p-10">
         <div className="absolute inset-0 grid-overlay opacity-40" aria-hidden />
         <div
@@ -182,6 +191,7 @@ export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }
           })}
         </RevealGroup>
       </div>
+      ) : null}
 
       {/* Certifications — seal-style badges rather than a plain bullet list. */}
       <div className="mt-8">
