@@ -219,7 +219,7 @@ export const services: ServiceItem[] = [
       "Cleared talent for federal programs",
     ],
     image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1800&q=85&auto=format&fit=crop",
     visualNote: "48–72 hour average time to fill",
   },
   {
@@ -235,7 +235,7 @@ export const services: ServiceItem[] = [
       "Onboarding and placement support",
     ],
     image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1800&q=85&auto=format&fit=crop",
     visualNote: "Screened for skills, experience and long-term fit",
   },
   {
@@ -251,7 +251,7 @@ export const services: ServiceItem[] = [
       "Seamless transition to full-time employment",
     ],
     image:
-      "https://images.unsplash.com/photo-1573496130141-209d200cebd8?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1573496130141-209d200cebd8?w=1800&q=85&auto=format&fit=crop",
     visualNote: "Evaluate first, commit second",
   },
   {
@@ -267,7 +267,7 @@ export const services: ServiceItem[] = [
       "Hiring analytics and SLA reporting",
     ],
     image:
-      "https://images.unsplash.com/photo-1758691736975-9f7f643d178e?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1758691736975-9f7f643d178e?w=1800&q=85&auto=format&fit=crop",
     visualNote: "End-to-end recruitment, outcome-focused",
   },
   {
@@ -284,7 +284,7 @@ export const services: ServiceItem[] = [
       "Cybersecurity, IAM and compliance",
     ],
     image:
-      "https://images.unsplash.com/photo-1605379399642-870262d3d051?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1605379399642-870262d3d051?w=1800&q=85&auto=format&fit=crop",
     visualNote: "Strategy through delivery, in one team",
   },
 ];

@@ -173,6 +173,10 @@ html {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* Italic glyphs lean past their advance width, but the gradient is only
+     painted inside the box — without this the last letter loses its fill and
+     looks sliced off. Applied here (not per-usage) so every accent is safe. */
+  padding-right: 0.12em;
 }
 
 @keyframes pulse-glow {

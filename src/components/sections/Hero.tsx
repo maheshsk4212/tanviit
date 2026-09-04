@@ -39,10 +39,10 @@ const slides: {
     // top-down beige desk that went muddy behind the overlay. This one is
     // darker, has depth and holds the headline. Poster matches its tone.
     image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=2560&q=85&auto=format&fit=crop",
     imageAlt: "Consulting team working in a modern office",
     video:
-      "https://videos.pexels.com/video-files/7659850/7659850-hd_1920_1080_25fps.mp4",
+      "https://videos.pexels.com/video-files/7659850/7659850-uhd_2560_1440_25fps.mp4",
     primary: { label: "Talk to our team", href: "/contact" },
     secondary: { label: "Explore solutions", href: "/services" },
   },
@@ -56,7 +56,7 @@ const slides: {
     description:
       "Buy through the vehicles you already hold. 100+ projects delivered for federal, state and local agencies and Fortune 500 companies.",
     image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=2560&q=85&auto=format&fit=crop",
     imageAlt: "Institutional office towers viewed from below",
     primary: { label: "View SEWP VI contract", href: "/sewp-vi" },
     secondary: { label: "Contract vehicles", href: "/about" },
@@ -71,7 +71,7 @@ const slides: {
     description:
       "Work with top U.S. clients on mission-critical programs — competitive pay, real growth, and long-term assignments.",
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=2560&q=85&auto=format&fit=crop",
     imageAlt: "Consultants mapping out a delivery roadmap in a planning session",
     primary: { label: "Explore opportunities", href: "/careers" },
     secondary: { label: "How we work", href: "/about" },

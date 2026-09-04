@@ -34,7 +34,9 @@ const images: Record<string, string> = {
   "federal-government": "photo-1523292562811-8fa7962a78c8", // columned government building
   "state-government": "photo-1531218150217-54595bc2b934", // capital skyline at dusk
   "local-government": "photo-1477959858617-67f85cf4f1df", // municipal skyline
-  "defense-intelligence": "photo-1579912437766-7896df6d3cd3", // service member, tactical
+  // Was a service member carrying a rifle — wrong register for an IT firm.
+  // Night lights from orbit reads as situational awareness, not combat.
+  "defense-intelligence": "photo-1446776653964-20c1d3a81b06", // continent at night from orbit
   healthcare: "photo-1576091160399-112ba8d25d1d", // clinician
   "banking-financial-services": "photo-1611974789855-9c2a0a7236a3", // market chart
   education: "photo-1541339907198-e08756dedf3f", // graduation
@@ -44,7 +46,7 @@ const images: Record<string, string> = {
 };
 
 const src = (slug: string) =>
-  `https://images.unsplash.com/${images[slug] ?? images["federal-government"]}?w=1200&q=80&auto=format&fit=crop`;
+  `https://images.unsplash.com/${images[slug] ?? images["federal-government"]}?w=1800&q=85&auto=format&fit=crop`;
 
 export function IndustriesGrid({ limit }: { limit?: number; columns?: 3 | 5 }) {
   const items = limit ? industries.slice(0, limit) : industries;
