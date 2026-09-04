@@ -30,7 +30,7 @@ export function Section({
     // children keep working.
     <section
       id={id}
-      className={`relative scroll-mt-20 overflow-x-clip py-16 sm:py-20 lg:py-24 ${toneClasses[tone]} ${className}`}
+      className={`relative scroll-mt-20 overflow-x-clip py-20 sm:py-24 lg:py-28 ${toneClasses[tone]} ${className}`}
     >
       {dark ? (
         <>
@@ -61,11 +61,11 @@ export function SectionHeading({
   const dark = tone === "dark";
   return (
     <Reveal
-      className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""} ${className}`}
+      className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""} ${className}`}
     >
       {eyebrow ? (
         <p
-          className={`mb-3 text-sm font-semibold uppercase tracking-wide ${
+          className={`mb-4 text-xs font-semibold uppercase tracking-[0.2em] ${
             dark ? "text-gold-400" : "text-gold-600"
           }`}
         >
@@ -73,7 +73,7 @@ export function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`font-display text-3xl font-bold tracking-tight sm:text-4xl ${
+        className={`font-display text-4xl font-semibold tracking-tight sm:text-5xl ${
           dark ? "text-white" : "text-fg"
         }`}
       >

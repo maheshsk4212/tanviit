@@ -20,8 +20,10 @@
   --color-ink-600: #4d4d4d;
   --color-ink-700: #363636;
   --color-ink-800: #222222;
-  --color-ink-900: #131313;
-  --color-ink-950: #0a0a0a;
+  --color-ink-900: #14120e;
+  /* Warm near-black — the base for every dark section, hero and CTA. Warming
+     it toward the mustard keeps dark bands from reading as a cold slam. */
+  --color-ink-950: #100e09;
 
   /* Gold scale — brand mustard #d59b29 at 500 */
   --color-gold-50: #fdf9ef;
@@ -50,8 +52,10 @@
   /* Semantic surface/text tokens — these are what components use, and what
      each theme swaps. The ink/gold/slate scales below stay absolute. */
   --color-surface: #ffffff;
-  --color-surface-muted: #f7f7f8;
-  --color-surface-sunken: #f7f7f7;
+  /* Warm off-whites (not cold grey) so light and dark sections relate to the
+     mustard brand instead of flipping between pure white and pure black. */
+  --color-surface-muted: #f8f6f1;
+  --color-surface-sunken: #f5f2ea;
   --color-fg: #131313;
   --color-fg-muted: #52525a;
   --color-fg-subtle: #94949a;
@@ -109,7 +113,8 @@
   --color-line: var(--color-line);
   --color-line-strong: var(--color-line-strong);
 
-  --font-sans: var(--font-inter);
+  /* Single family everywhere — Manrope carries both UI/body and display. */
+  --font-sans: var(--font-manrope);
   --font-display: var(--font-manrope);
 
   --radius-card: var(--radius-card);

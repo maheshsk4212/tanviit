@@ -20,11 +20,78 @@ export const siteConfig = {
   address: "1900 Reston Metro Plaza, Reston, VA 20190",
 };
 
-export const mainNav = [
+export interface NavItem {
+  label: string;
+  href: string;
+  /** Optional mega-menu children shown on hover/focus for this item. */
+  menu?: { label: string; href: string; description: string }[];
+}
+
+export const mainNav: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Industries", href: "/industries" },
+  {
+    label: "Services",
+    href: "/services",
+    menu: [
+      {
+        label: "Contract Staffing",
+        href: "/services#contract-staffing",
+        description: "Pre-vetted IT talent, fast — short and long-term.",
+      },
+      {
+        label: "Direct Hire",
+        href: "/services#direct-hire",
+        description: "Permanent hires who strengthen your core team.",
+      },
+      {
+        label: "Contract-to-Hire",
+        href: "/services#contract-to-hire",
+        description: "Try talent on contract, convert when it fits.",
+      },
+      {
+        label: "RPO Solutions",
+        href: "/services#rpo-solutions",
+        description: "Recruitment process outsourcing at scale.",
+      },
+      {
+        label: "IT Consulting",
+        href: "/services#it-consulting",
+        description: "Advisory and delivery across the tech lifecycle.",
+      },
+    ],
+  },
+  {
+    label: "Industries",
+    href: "/industries",
+    menu: [
+      {
+        label: "Federal Government",
+        href: "/industries#federal-government",
+        description: "Modernize systems and mission-critical programs.",
+      },
+      {
+        label: "State & Local",
+        href: "/industries#state-government",
+        description: "Citizen services and digital government.",
+      },
+      {
+        label: "Healthcare",
+        href: "/industries#healthcare",
+        description: "Secure, compliant health IT solutions.",
+      },
+      {
+        label: "Financial Services",
+        href: "/industries#banking-financial-services",
+        description: "Resilient, regulated financial systems.",
+      },
+      {
+        label: "All industries",
+        href: "/industries",
+        description: "See every sector we serve.",
+      },
+    ],
+  },
   { label: "SEWP VI", href: "/sewp-vi" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
@@ -91,6 +158,35 @@ export const achievements = [
   { value: "250+", label: "Contracts delivered on time, within scope and budget" },
   { value: "1M+", label: "Hours delivered powering mission-critical programs" },
   { value: "20+", label: "Government & enterprise clients" },
+];
+
+/*
+ * Proven-results cards (context tag + big metric + one-line outcome).
+ * NEEDS-CONFIRMATION: replace these aggregate figures with specific,
+ * named-program outcomes cleared for public use for maximum credibility.
+ */
+export const provenResults = [
+  {
+    context: "Federal & defense",
+    metric: "250+",
+    label: "Contracts delivered on time, on budget, and within scope for federal, state and local agencies.",
+    cta: "See contract vehicles",
+    href: "/sewp-vi",
+  },
+  {
+    context: "Mission programs",
+    metric: "1M+",
+    label: "Engineering and delivery hours powering mission-critical government and enterprise systems.",
+    cta: "Explore our services",
+    href: "/services",
+  },
+  {
+    context: "Client trust",
+    metric: "95%",
+    label: "Client retention across multi-year partnerships — proof that our teams deliver, and stay.",
+    cta: "Why choose Tanvi IT",
+    href: "/about",
+  },
 ];
 
 /* ------------------------------------------------------------------ */

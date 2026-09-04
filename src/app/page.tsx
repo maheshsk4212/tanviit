@@ -4,6 +4,7 @@ import { ContractVehicles } from "@/components/sections/ContractVehicles";
 import { Hero } from "@/components/sections/Hero";
 import { IndustriesGrid } from "@/components/sections/IndustriesGrid";
 import { Process } from "@/components/sections/Process";
+import { ProvenResults } from "@/components/sections/ProvenResults";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -58,8 +59,20 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Contract vehicles & achievements */}
+      {/* Proven results — concrete, quantified outcomes */}
       <Section tone="muted">
+        <SectionHeading
+          eyebrow="Proven results"
+          title="Outcomes that hold up under scrutiny."
+          description="We turn mission requirements into measurable results — delivered on time, on budget, and built to last."
+        />
+        <div className="mt-12">
+          <ProvenResults />
+        </div>
+      </Section>
+
+      {/* Contract vehicles & achievements */}
+      <Section>
         <SectionHeading
           eyebrow="Contract vehicles & achievements"
           title="Trusted partner to government and enterprise clients"
@@ -71,7 +84,7 @@ export default function Home() {
       </Section>
 
       {/* Why choose */}
-      <Section>
+      <Section tone="muted">
         <SectionHeading
           eyebrow="Why choose Tanvi IT"
           title="Experience. Commitment. Results."
@@ -95,7 +108,7 @@ export default function Home() {
       </Section>
 
       {/* Clients & testimonials */}
-      <Section tone="muted">
+      <Section>
         <SectionHeading
           eyebrow="Clients & testimonials"
           title="Trusted by agencies. Proven by results."
@@ -120,6 +133,7 @@ export default function Home() {
       </Section>
 
       <CTASection
+        overline="Tanvi IT + your mission = delivered"
         title="Let's build what's next, together."
         description="Whether you need one specialist or an entire technology team, we're ready to help."
         primaryLabel="Talk to our team"

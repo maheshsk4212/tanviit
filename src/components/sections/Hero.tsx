@@ -160,7 +160,7 @@ export function Hero() {
       </div>
 
       <Container className="relative py-24 sm:py-28 lg:py-32">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={index}
@@ -174,7 +174,7 @@ export function Hero() {
                 {slide.eyebrow}
               </div>
 
-              <h1 className="mt-6 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-[3.4rem] lg:leading-[1.08]">
+              <h1 className="mt-6 font-display text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-[4.5rem] lg:leading-[1.02]">
                 {slide.headline.map((line) => {
                   if (!line.accent) {
                     return (
