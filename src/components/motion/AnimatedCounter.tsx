@@ -9,9 +9,14 @@ export function AnimatedCounter({ value }: { value: string }) {
   const [display, setDisplay] = useState(value.replace(/[0-9]/g, "0"));
 
   const numeric = parseFloat(value.replace(/[^0-9.]/g, ""));
-  const suffix = value.replace(/[0-9.]/g, "");
+  // Strip commas too, otherwise the thousands separator lands in the suffix
+  // and "10,000+" renders as "10000,+". We re-add separators on the way out.
+  const suffix = value.replace(/[0-9.,]/g, "");
   const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => `${Math.round(latest)}${suffix}`);
+  const rounded = useTransform(
+    count,
+    (latest) => `${Math.round(latest).toLocaleString("en-US")}${suffix}`,
+  );
 
   useEffect(() => {
     if (!inView || Number.isNaN(numeric)) return;

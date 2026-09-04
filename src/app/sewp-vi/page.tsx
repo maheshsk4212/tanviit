@@ -40,6 +40,7 @@ export default function SewpPage() {
       <PageHeader
         eyebrow="NASA SEWP VI · Contract Holder"
         title="NASA SEWP VI — Category C"
+        accent="Category C"
         description={`${siteConfig.legalName} is a NASA SEWP VI Contract Holder under Contract ${sewp.contractNumber}, providing ITC/AV mission-based services to all federal agencies and their approved contractors.`}
       >
         <div className="mt-8 flex flex-wrap gap-3">

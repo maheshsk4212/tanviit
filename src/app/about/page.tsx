@@ -21,11 +21,12 @@ export default function AboutPage() {
       <PageHeader
         eyebrow="Why choose Tanvi IT"
         title="Experience. Commitment. Results."
+        accent="Results."
         description="We combine deep industry expertise, a people-first approach, and proven delivery to help government and commercial organizations achieve their mission."
       />
       <StatsBar />
 
-      <Section>
+      <Section tone="muted">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeading

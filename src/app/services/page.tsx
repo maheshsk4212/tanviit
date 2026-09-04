@@ -17,6 +17,7 @@ export default function ServicesPage() {
       <PageHeader
         eyebrow="Services"
         title="Full-lifecycle IT consulting services"
+        accent="consulting services"
         description="Eight practices, one accountable delivery team — covering everything from application modernization to independent quality assurance."
       >
         <div className="mt-8 flex flex-wrap gap-2">
@@ -32,7 +33,7 @@ export default function ServicesPage() {
         </div>
       </PageHeader>
 
-      <Section>
+      <Section tone="muted">
         <ServicesShowcase />
       </Section>
 

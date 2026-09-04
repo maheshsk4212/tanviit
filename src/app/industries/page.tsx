@@ -17,6 +17,7 @@ export default function IndustriesPage() {
       <PageHeader
         eyebrow="Industries we serve"
         title="Domain expertise. Proven impact."
+        accent="Proven impact."
         description="We deliver tailored IT solutions that drive efficiency, innovation, and mission success across a wide range of public and private sector industries."
       />
 

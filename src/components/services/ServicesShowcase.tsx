@@ -52,10 +52,10 @@ export function ServicesShowcase() {
                   reversed ? "lg:order-1" : ""
                 }`}
               >
-                <p className="text-xs font-semibold uppercase tracking-wide text-gold-600">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">
                   Practice {String(index + 1).padStart(2, "0")}
                 </p>
-                <h2 className="mt-2 font-display text-2xl font-bold text-fg sm:text-3xl">
+                <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
                   {service.name}
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-fg-muted">

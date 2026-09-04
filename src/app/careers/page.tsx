@@ -19,6 +19,7 @@ export default function CareersPage() {
       <PageHeader
         eyebrow="Careers"
         title="Build your career at Tanvi IT"
+        accent="at Tanvi IT"
         description="We're always looking for senior-minded consultants who want to own outcomes, not just fill seats. We don't have a public job board right now — reach out and tell us what you do best."
       />
 
