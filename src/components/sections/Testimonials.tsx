@@ -17,7 +17,7 @@ export function Testimonials() {
                 ))}
               </div>
             </div>
-            <p className="mt-4 flex-1 text-sm leading-relaxed text-fg-muted">
+            <p className="mt-4 flex-1 text-base leading-relaxed text-fg-muted">
               &ldquo;{testimonial.quote}&rdquo;
             </p>
             <div className="mt-5 flex items-center gap-3 border-t border-line pt-4">

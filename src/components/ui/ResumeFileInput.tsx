@@ -75,7 +75,7 @@ export function ResumeFileInput({
                 : "border-line-strong hover:border-fg-subtle hover:bg-surface-sunken"
             }`}
           >
-            <Upload className={`h-6 w-6 ${dragging ? "text-gold-500" : "text-slate-400"}`} aria-hidden />
+            <Upload className={`h-6 w-6 ${dragging ? "text-gold-500" : "text-fg-subtle"}`} aria-hidden />
             <span className="text-sm font-medium text-fg">
               {dragging ? "Drop your resume" : "Click or drag your resume here"}
             </span>
@@ -97,7 +97,7 @@ export function ResumeFileInput({
             <button
               type="button"
               onClick={clearFile}
-              className="ml-3 shrink-0 rounded-full p-1 text-slate-400 hover:bg-line hover:text-fg-muted"
+              className="ml-3 shrink-0 rounded-full p-1 text-fg-subtle hover:bg-line hover:text-fg-muted"
               aria-label="Remove file"
             >
               <X className="h-4 w-4" />

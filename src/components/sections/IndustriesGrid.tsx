@@ -113,7 +113,7 @@ export function IndustriesGrid({ limit }: { limit?: number; columns?: 3 | 5 }) {
 
                 {/* Summary stays out of the way until the tile is hovered. */}
                 <div className="grid grid-rows-[0fr] transition-all duration-500 ease-out group-hover/card:grid-rows-[1fr] motion-reduce:grid-rows-[1fr]">
-                  <p className="overflow-hidden text-sm leading-relaxed text-slate-300 opacity-0 transition-opacity duration-300 group-hover/card:pt-2 group-hover/card:opacity-100 motion-reduce:pt-2 motion-reduce:opacity-100">
+                  <p className="overflow-hidden text-sm leading-relaxed text-slate-200 opacity-0 transition-opacity duration-300 group-hover/card:pt-2 group-hover/card:opacity-100 motion-reduce:pt-2 motion-reduce:opacity-100">
                     {industry.summary}
                   </p>
                 </div>

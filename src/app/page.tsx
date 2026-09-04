@@ -116,13 +116,13 @@ export default function Home() {
           align="center"
         />
 
-        <ul className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+        {/* Trust strip — reads as a logo wall until real client marks exist. */}
+        <ul className="mt-12 flex flex-wrap items-center justify-center gap-3">
           {clients.map((client) => (
-            <li
-              key={client}
-              className="font-display text-lg font-bold tracking-tight text-slate-400"
-            >
-              {client}
+            <li key={client}>
+              <span className="block rounded-full border border-line bg-gradient-to-b from-surface to-surface-muted px-6 py-3 font-display text-base font-semibold tracking-tight text-fg shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-elevated">
+                {client}
+              </span>
             </li>
           ))}
         </ul>

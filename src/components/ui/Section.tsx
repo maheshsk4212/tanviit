@@ -80,7 +80,7 @@ export function SectionHeading({
         {title}
       </h2>
       {description ? (
-        <p className={`mt-4 text-lg ${dark ? "text-slate-300" : "text-fg-muted"}`}>
+        <p className={`mt-4 text-lg ${dark ? "text-slate-200" : "text-fg-muted"}`}>
           {description}
         </p>
       ) : null}

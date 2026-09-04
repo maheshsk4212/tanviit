@@ -38,7 +38,7 @@ export function CTASection({
             {title}
           </h2>
           {description ? (
-            <p className="max-w-xl text-lg text-slate-300">{description}</p>
+            <p className="max-w-xl text-lg text-slate-200">{description}</p>
           ) : null}
           <div className="flex flex-wrap justify-center gap-4">
             <Button href={primaryHref} size="lg">

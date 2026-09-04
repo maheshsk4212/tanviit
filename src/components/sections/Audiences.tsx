@@ -20,11 +20,11 @@ export function Audiences() {
               {a.eyebrow}
             </p>
             <h3 className="mt-3 font-display text-2xl font-bold text-white">{a.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-slate-300">{a.description}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-200">{a.description}</p>
 
             <ul className="mt-6 flex-1 space-y-2.5">
               {a.points.map((p) => (
-                <li key={p} className="flex items-center gap-2.5 text-sm text-fg-subtle">
+                <li key={p} className="flex items-center gap-2.5 text-sm text-slate-200">
                   <Check className="h-4 w-4 shrink-0 text-gold-400" aria-hidden />
                   {p}
                 </li>

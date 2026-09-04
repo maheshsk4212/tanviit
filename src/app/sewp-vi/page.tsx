@@ -142,7 +142,7 @@ export default function SewpPage() {
                 <div className="mt-6 space-y-3 border-t border-white/10 pt-5">
                   <a
                     href={`tel:${c.phone.replace(/[^0-9+]/g, "")}`}
-                    className="flex items-center gap-3 text-sm text-slate-300 transition-colors hover:text-gold-300"
+                    className="flex items-center gap-3 text-sm text-slate-200 transition-colors hover:text-gold-300"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-white/5 text-gold-400">
                       <Phone className="h-4 w-4" aria-hidden />
@@ -151,7 +151,7 @@ export default function SewpPage() {
                   </a>
                   <a
                     href={`mailto:${c.email}`}
-                    className="flex items-center gap-3 text-sm text-slate-300 transition-colors hover:text-gold-300"
+                    className="flex items-center gap-3 text-sm text-slate-200 transition-colors hover:text-gold-300"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-control bg-white/5 text-gold-400">
                       <Mail className="h-4 w-4" aria-hidden />
@@ -174,13 +174,13 @@ export default function SewpPage() {
               <p className="font-display text-lg font-semibold text-white">
                 Tanvi IT Solutions SEWP Ordering Guide
               </p>
-              <p className="mt-1 text-sm text-slate-300">
+              <p className="mt-1 text-sm text-slate-200">
                 Downloadable and printable — SEWP overview, fair opportunity, contact
                 information, what&apos;s in scope for SEWP VI, and the ordering process.
               </p>
             </div>
           </div>
-          <span className="shrink-0 rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-slate-400">
+          <span className="shrink-0 rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-slate-300">
             Category C guide — coming soon
           </span>
         </div>
@@ -266,7 +266,7 @@ export default function SewpPage() {
                       {link.label}
                     </span>
                     <ExternalLink
-                      className={`h-4 w-4 shrink-0 text-slate-300 group-hover:text-gold-600 ${
+                      className={`h-4 w-4 shrink-0 text-fg-subtle group-hover:text-gold-600 ${
                         external ? "" : "rotate-45"
                       }`}
                       aria-hidden

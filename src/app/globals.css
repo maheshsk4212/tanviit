@@ -8,7 +8,7 @@
 */
 :root {
   --background: #ffffff;
-  --foreground: #131313;
+  --foreground: #000000;
 
   /* Ink scale — black-based neutral */
   --color-ink-50: #f7f7f7;
@@ -56,9 +56,12 @@
      mustard brand instead of flipping between pure white and pure black. */
   --color-surface-muted: #f8f6f1;
   --color-surface-sunken: #f5f2ea;
-  --color-fg: #131313;
-  --color-fg-muted: #52525a;
-  --color-fg-subtle: #94949a;
+  /* Content reads in true black. Body copy is near-black rather than grey —
+     grey body text was the main readability complaint. `subtle` stays dark
+     enough to read comfortably and only carries small meta labels. */
+  --color-fg: #000000;
+  --color-fg-muted: #1a1a1a;
+  --color-fg-subtle: #3f3f46;
   --color-line: #dededf;
   --color-line-strong: #bfbfc2;
 
@@ -235,9 +238,11 @@ html {
   --color-surface: #0c0e15;
   --color-surface-muted: #090b11;
   --color-surface-sunken: rgb(255 255 255 / 0.05);
-  --color-fg: #eef2fa;
-  --color-fg-muted: #98a2b8;
-  --color-fg-subtle: #6b7488;
+  /* Same readability pass as the light theme: body copy sits much closer to
+     the foreground colour instead of fading into the background. */
+  --color-fg: #f3f6fc;
+  --color-fg-muted: #ccd4e4;
+  --color-fg-subtle: #9aa5bb;
   --color-line: rgb(255 255 255 / 0.10);
   --color-line-strong: rgb(255 255 255 / 0.20);
 

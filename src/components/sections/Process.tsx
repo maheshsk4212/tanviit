@@ -64,7 +64,7 @@ export function Process({ tone = "light" }: { tone?: "light" | "dark" }) {
             </h3>
             <p
               className={`relative mt-2 text-sm leading-relaxed ${
-                dark ? "text-slate-300" : "text-fg-muted"
+                dark ? "text-slate-200" : "text-fg-muted"
               }`}
             >
               {step.description}

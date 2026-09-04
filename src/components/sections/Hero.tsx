@@ -154,7 +154,8 @@ export function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/70 to-ink-950/30" />
+        {/* Stronger on the left, where the headline and copy sit. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/96 via-ink-950/78 to-ink-950/35" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-transparent to-ink-950/20" />
         <div className="absolute inset-0 noise-overlay opacity-40" aria-hidden />
       </div>
@@ -193,7 +194,7 @@ export function Hero() {
                 })}
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-6 max-w-xl text-xl leading-relaxed text-white/90">
                 {slide.description}
               </p>
 

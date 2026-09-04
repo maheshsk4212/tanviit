@@ -50,7 +50,7 @@ export function PageHeader({
             )}
           </h1>
           {description ? (
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
               {description}
             </p>
           ) : null}

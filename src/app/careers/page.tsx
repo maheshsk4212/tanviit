@@ -92,12 +92,12 @@ export default function CareersPage() {
           </div>
 
           <ul className="space-y-5 lg:pt-4">
-            <li className="flex items-start gap-3.5 text-slate-300">
+            <li className="flex items-start gap-3.5 text-slate-200">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control border border-white/10 bg-white/5 text-gold-300">
                 <Mail className="h-4 w-4" aria-hidden />
               </span>
               <span>
-                <span className="block text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <span className="block text-xs font-semibold uppercase tracking-wide text-slate-300">
                   Email
                 </span>
                 <a href={`mailto:${siteConfig.email}`} className="text-white hover:text-gold-300">
@@ -105,12 +105,12 @@ export default function CareersPage() {
                 </a>
               </span>
             </li>
-            <li className="flex items-start gap-3.5 text-slate-300">
+            <li className="flex items-start gap-3.5 text-slate-200">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control border border-white/10 bg-white/5 text-gold-300">
                 <Phone className="h-4 w-4" aria-hidden />
               </span>
               <span>
-                <span className="block text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <span className="block text-xs font-semibold uppercase tracking-wide text-slate-300">
                   Phone
                 </span>
                 <a href={`tel:${siteConfig.phone}`} className="text-white hover:text-gold-300">
@@ -118,12 +118,12 @@ export default function CareersPage() {
                 </a>
               </span>
             </li>
-            <li className="flex items-start gap-3.5 text-slate-300">
+            <li className="flex items-start gap-3.5 text-slate-200">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control border border-white/10 bg-white/5 text-gold-300">
                 <MapPin className="h-4 w-4" aria-hidden />
               </span>
               <span>
-                <span className="block text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <span className="block text-xs font-semibold uppercase tracking-wide text-slate-300">
                   Office
                 </span>
                 <span className="text-white">{siteConfig.address}</span>

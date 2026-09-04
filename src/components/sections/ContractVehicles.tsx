@@ -85,7 +85,7 @@ function VehicleList({
               </p>
               <p
                 className={`mt-1 text-xs leading-relaxed ${
-                  dark ? "text-slate-400" : "text-fg-subtle"
+                  dark ? "text-slate-300" : "text-fg-subtle"
                 }`}
               >
                 {v.detail}
@@ -127,7 +127,7 @@ export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }
               <h3 className="mt-4 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                 {featured.name}
               </h3>
-              <p className="mt-2 text-sm text-slate-300">{featured.detail}</p>
+              <p className="mt-2 text-sm text-slate-200">{featured.detail}</p>
             </div>
             <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-gold-500 px-6 py-3.5 text-sm font-semibold text-ink-950 transition-transform duration-300 group-hover:-translate-y-0.5">
               View contract details
@@ -175,7 +175,7 @@ export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }
                   <p className="text-gradient-gold mt-5 font-display text-5xl font-semibold leading-none tracking-tight sm:text-6xl">
                     {a.value}
                   </p>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-400">{a.label}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-300">{a.label}</p>
                 </div>
               </RevealItem>
             );
@@ -224,7 +224,7 @@ export function ContractVehicles({ tone = "light" }: { tone?: "light" | "dark" }
                     {c.name}
                   </span>
                   <span
-                    className={`block text-xs ${dark ? "text-slate-400" : "text-fg-subtle"}`}
+                    className={`block text-xs ${dark ? "text-slate-300" : "text-fg-subtle"}`}
                   >
                     {c.detail}
                   </span>

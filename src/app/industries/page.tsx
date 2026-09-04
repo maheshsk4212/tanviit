@@ -75,7 +75,7 @@ export default function IndustriesPage() {
                     {group.stack.map((tech) => (
                       <li
                         key={tech}
-                        className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 transition-colors duration-300 hover:border-gold-400/50 hover:bg-gold-500/10 hover:text-gold-200"
+                        className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-slate-200 transition-colors duration-300 hover:border-gold-400/50 hover:bg-gold-500/10 hover:text-gold-200"
                       >
                         {tech}
                       </li>
