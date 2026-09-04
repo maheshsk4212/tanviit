@@ -39,7 +39,7 @@ export function PageHeader({
               {eyebrow}
             </p>
           ) : null}
-          <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[1.03] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="max-w-4xl text-balance font-display text-5xl font-semibold leading-[1.03] tracking-tight text-white sm:text-6xl lg:text-7xl">
             {splitAt > 0 ? (
               <>
                 {title.slice(0, splitAt)}

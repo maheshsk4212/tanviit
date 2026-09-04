@@ -42,7 +42,9 @@ export default function SewpPage() {
     <>
       <PageHeader
         eyebrow="NASA SEWP VI · Contract Holder"
-        title="NASA SEWP VI — Category C"
+        // Non-breaking space keeps the em dash with "VI", so the line breaks
+        // as "NASA SEWP VI —" / "Category C" rather than leading with a dash.
+        title={"NASA SEWP VI — Category C"}
         accent="Category C"
         description={`${siteConfig.legalName} is a NASA SEWP VI Contract Holder under Contract ${sewp.contractNumber}, providing ITC/AV mission-based services to all federal agencies and their approved contractors.`}
       >

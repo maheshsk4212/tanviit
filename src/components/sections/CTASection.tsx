@@ -34,7 +34,7 @@ export function CTASection({
               {overline}
             </p>
           ) : null}
-          <h2 className="max-w-3xl font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h2 className="max-w-3xl text-balance font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
             {title}
           </h2>
           {description ? (

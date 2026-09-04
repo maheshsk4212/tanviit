@@ -73,7 +73,7 @@ export function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`font-display text-4xl font-semibold tracking-tight sm:text-5xl ${
+        className={`text-balance font-display text-4xl font-semibold tracking-tight sm:text-5xl ${
           dark ? "text-white" : "text-fg"
         }`}
       >
