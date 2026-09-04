@@ -78,6 +78,58 @@ const slides: {
   },
 ];
 
+type Slide = (typeof slides)[number];
+
+/**
+ * The animated part of a slide. Rendered twice — once per slide as an
+ * invisible sizer, and once as the visible animated slide — so it has to be a
+ * stable module-scope component.
+ */
+function SlideContent({ slide }: { slide: Slide }) {
+  return (
+    <>
+      <div className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-500/10 px-4 py-1.5 text-sm font-medium text-gold-300">
+        <Sparkles className="h-3.5 w-3.5" aria-hidden />
+        {slide.eyebrow}
+      </div>
+
+      <h1 className="mt-6 font-display text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-[4.5rem] lg:leading-[1.02]">
+        {slide.headline.map((line) => {
+          if (!line.accent) {
+            return (
+              <span key={line.text} className="block">
+                {line.text}
+              </span>
+            );
+          }
+          const splitAt = line.text.length - line.accent.length;
+          return (
+            <span key={line.text} className="block">
+              {line.text.slice(0, splitAt)}
+              <span className="text-gradient-gold italic">{line.accent}</span>
+            </span>
+          );
+        })}
+      </h1>
+
+      <p className="mt-6 max-w-xl text-xl leading-relaxed text-white/90">
+        {slide.description}
+      </p>
+
+      <div className="mt-10 flex flex-wrap gap-4">
+        <Button href={slide.primary.href} size="lg">
+          {slide.primary.label}
+          <ArrowRight className="h-4 w-4" aria-hidden />
+        </Button>
+        <Button href={slide.secondary.href} size="lg" variant="ghost-dark">
+          {slide.secondary.label}
+          <ArrowUpRight className="h-4 w-4" aria-hidden />
+        </Button>
+      </div>
+    </>
+  );
+}
+
 export function Hero() {
   const [index, setIndex] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
@@ -186,55 +238,37 @@ export function Hero() {
       </div>
 
       <Container className="relative pb-24 pt-32 sm:pb-28 sm:pt-36 lg:pb-32 lg:pt-40">
-        <div className="max-w-3xl">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
+        {/*
+          All three slides are rendered into a single grid cell: the inactive
+          ones as invisible sizers, the active one animated on top. The cell is
+          therefore always as tall as the TALLEST slide, so the hero no longer
+          changes height (and shifts the page) when the slide changes.
+          `invisible` also drops the sizers out of the tab order.
+        */}
+        <div className="grid max-w-4xl">
+          {slides.map((s) => (
+            <div
+              key={`sizer-${s.eyebrow}`}
+              aria-hidden
+              className="pointer-events-none invisible col-start-1 row-start-1"
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-500/10 px-4 py-1.5 text-sm font-medium text-gold-300">
-                <Sparkles className="h-3.5 w-3.5" aria-hidden />
-                {slide.eyebrow}
-              </div>
+              <SlideContent slide={s} />
+            </div>
+          ))}
 
-              <h1 className="mt-6 font-display text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-[4.5rem] lg:leading-[1.02]">
-                {slide.headline.map((line) => {
-                  if (!line.accent) {
-                    return (
-                      <span key={line.text} className="block">
-                        {line.text}
-                      </span>
-                    );
-                  }
-                  const splitAt = line.text.length - line.accent.length;
-                  return (
-                    <span key={line.text} className="block">
-                      {line.text.slice(0, splitAt)}
-                      <span className="text-gradient-gold italic">{line.accent}</span>
-                    </span>
-                  );
-                })}
-              </h1>
-
-              <p className="mt-6 max-w-xl text-xl leading-relaxed text-white/90">
-                {slide.description}
-              </p>
-
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Button href={slide.primary.href} size="lg">
-                  {slide.primary.label}
-                  <ArrowRight className="h-4 w-4" aria-hidden />
-                </Button>
-                <Button href={slide.secondary.href} size="lg" variant="ghost-dark">
-                  {slide.secondary.label}
-                  <ArrowUpRight className="h-4 w-4" aria-hidden />
-                </Button>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+          <div className="col-start-1 row-start-1">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
+              >
+                <SlideContent slide={slide} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
         <div className="mt-16 flex items-center gap-4 sm:mt-20 sm:gap-6">
