@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Check } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check } from "lucide-react";
 import { services } from "@/lib/site-content";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -73,6 +74,19 @@ export function ServicesShowcase() {
                     </li>
                   ))}
                 </ul>
+
+                {/* Each practice ends with a way to act on it, so the page is
+                    a path to a conversation rather than a brochure. */}
+                <Link
+                  href={`/contact?practice=${service.slug}`}
+                  className="group/cta mt-7 inline-flex w-fit items-center gap-2 rounded-full border border-line bg-gradient-to-b from-surface to-surface-muted px-5 py-2.5 text-sm font-semibold text-fg shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-elevated"
+                >
+                  Discuss {service.name}
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-0.5"
+                    aria-hidden
+                  />
+                </Link>
               </div>
             </div>
           </Reveal>
