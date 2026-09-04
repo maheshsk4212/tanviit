@@ -11,6 +11,7 @@ import {
   Mail,
   Percent,
   Phone,
+  ScrollText,
   ShoppingCart,
   Tag,
 } from "lucide-react";
@@ -33,6 +34,8 @@ const contractFacts = [
   { icon: Percent, label: "SEWP surcharge", value: sewp.surcharge },
   { icon: FileText, label: "UEI", value: sewp.uei },
 ];
+
+const fairOpportunityLink = sewp.links.find((l) => /fair opportunity/i.test(l.label));
 
 export default function SewpPage() {
   return (
@@ -193,22 +196,100 @@ export default function SewpPage() {
           title={sewp.fairOpportunity.heading}
           description="Posted in full as required for multi-award Government-Wide Acquisition Contracts."
         />
-        <div className="mt-10 max-w-3xl space-y-4 rounded-card border border-line bg-surface p-7 sm:p-9">
-          {sewp.fairOpportunity.intro.map((p) => (
-            <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-fg-muted">
-              {p}
-            </p>
-          ))}
-          <ol className="ml-5 list-decimal space-y-2 text-sm leading-relaxed text-fg-muted marker:font-semibold marker:text-gold-600">
-            {sewp.fairOpportunity.conditions.map((c) => (
-              <li key={c.slice(0, 30)}>{c}</li>
-            ))}
-          </ol>
-          {sewp.fairOpportunity.trailing.map((p) => (
-            <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-fg-muted">
-              {p}
-            </p>
-          ))}
+        {/*
+          The clause text is a required verbatim posting — never edit, reword
+          or summarise it. Only the presentation around it changes: a context
+          rail on the left (which also fills the dead space a single narrow
+          column left behind) and document-grade typography on the right.
+        */}
+        <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[300px_1fr] lg:gap-12">
+          <aside className="lg:sticky lg:top-28 lg:self-start">
+            <div className="rounded-card border border-line bg-gradient-to-b from-surface to-surface-muted p-6 shadow-sm">
+              <p className="inline-flex items-center gap-2 rounded-full border border-gold-300 bg-gold-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-gold-700">
+                <ScrollText className="h-3.5 w-3.5" aria-hidden />
+                Required posting
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-fg-muted">
+                Multi-award Government-Wide Acquisition Contract holders must
+                post this clause publicly and in full. It is reproduced here
+                exactly as issued.
+              </p>
+
+              <dl className="mt-6 space-y-4 border-t border-line pt-5">
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.15em] text-fg-subtle">
+                    Authority
+                  </dt>
+                  <dd className="mt-1 font-display text-sm font-semibold text-fg">
+                    FAR Part 16.505(b)
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.15em] text-fg-subtle">
+                    Contract
+                  </dt>
+                  <dd className="mt-1 font-display text-sm font-semibold text-fg">
+                    {sewp.contractNumber}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.15em] text-fg-subtle">
+                    Source
+                  </dt>
+                  <dd className="mt-1 font-display text-sm font-semibold text-fg">
+                    NASA SEWP VI SOW
+                  </dd>
+                </div>
+              </dl>
+
+              {fairOpportunityLink ? (
+                <a
+                  href={fairOpportunityLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-700 underline underline-offset-2 hover:text-gold-800"
+                >
+                  Verify on sewp.nasa.gov
+                  <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+                </a>
+              ) : null}
+            </div>
+          </aside>
+
+          <article className="overflow-hidden rounded-card border border-line bg-surface shadow-sm">
+            <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-muted px-7 py-4 sm:px-9">
+              <p className="font-display text-sm font-semibold tracking-tight text-fg">
+                Clause A.1.13
+              </p>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-fg-subtle">
+                Verbatim · unedited
+              </p>
+            </header>
+
+            {/* Generous measure and leading — legal prose is unscannable at
+                tight body settings. */}
+            <div className="space-y-5 px-7 py-8 sm:px-9 sm:py-10">
+              {sewp.fairOpportunity.intro.map((p) => (
+                <p key={p.slice(0, 40)} className="text-[0.95rem] leading-7 text-fg-muted">
+                  {p}
+                </p>
+              ))}
+
+              {/* Sub-conditions inset so they read as part of the sentence
+                  above rather than as loose body copy. */}
+              <ol className="ml-1 list-decimal space-y-3 rounded-card border-l-2 border-gold-400 bg-surface-muted py-5 pl-9 pr-6 text-[0.95rem] leading-7 text-fg-muted marker:font-semibold marker:text-gold-600">
+                {sewp.fairOpportunity.conditions.map((c) => (
+                  <li key={c.slice(0, 30)}>{c}</li>
+                ))}
+              </ol>
+
+              {sewp.fairOpportunity.trailing.map((p) => (
+                <p key={p.slice(0, 40)} className="text-[0.95rem] leading-7 text-fg-muted">
+                  {p}
+                </p>
+              ))}
+            </div>
+          </article>
         </div>
       </Section>
 
