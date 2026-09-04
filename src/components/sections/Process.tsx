@@ -21,8 +21,9 @@ export function Process({ tone = "light" }: { tone?: "light" | "dark" }) {
         const isLast = index === lastIndex;
 
         const connector = [
-          "pointer-events-none absolute top-6 left-14 -right-10 h-px",
-          dark ? "bg-white/15" : "bg-line",
+          // Gradient rail rather than a flat hairline, fading toward the next step.
+          "pointer-events-none absolute top-7 left-[4.5rem] -right-10 h-px bg-gradient-to-r to-transparent",
+          dark ? "from-gold-400/50" : "from-gold-400/70",
           "hidden",
           isLast ? "" : endsSmRow ? "sm:hidden" : "sm:block",
           isLast ? "" : endsLgRow ? "lg:hidden" : "lg:block",
@@ -31,25 +32,38 @@ export function Process({ tone = "light" }: { tone?: "light" | "dark" }) {
           .join(" ");
 
         return (
-          <RevealItem key={step.title} className="relative">
+          <RevealItem key={step.title} className="group/step relative">
             {!isLast && <span className={connector} aria-hidden />}
 
+            {/* Oversized ghost numeral for depth behind the step. */}
             <span
-              className={`relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-gold-500 font-display text-lg font-bold shadow-sm ${
-                dark ? "bg-ink-950 text-gold-400" : "bg-surface text-gold-600"
+              className={`pointer-events-none absolute -top-4 right-2 font-display text-7xl font-semibold leading-none transition-colors duration-300 ${
+                dark
+                  ? "text-white/[0.06] group-hover/step:text-gold-300/20"
+                  : "text-ink-950/[0.05] group-hover/step:text-gold-500/20"
+              }`}
+              aria-hidden
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+
+            <span
+              className={`relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-gold-300 to-gold-600 font-display text-lg font-semibold text-ink-950 shadow-elevated transition-transform duration-300 group-hover/step:scale-110 ${
+                dark ? "ring-4 ring-ink-950" : "ring-4 ring-surface"
               }`}
             >
               {String(index + 1).padStart(2, "0")}
             </span>
+
             <h3
-              className={`mt-4 font-display text-lg font-semibold ${
+              className={`relative mt-5 font-display text-lg font-semibold tracking-tight ${
                 dark ? "text-white" : "text-fg"
               }`}
             >
               {step.title}
             </h3>
             <p
-              className={`mt-1.5 text-sm leading-relaxed ${
+              className={`relative mt-2 text-sm leading-relaxed ${
                 dark ? "text-slate-300" : "text-fg-muted"
               }`}
             >

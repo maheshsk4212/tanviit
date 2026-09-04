@@ -69,19 +69,23 @@ export default function SewpPage() {
           title="Tanvi IT Solutions SEWP VI contract information"
         />
         <RevealGroup
-          className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
           stagger={0.05}
         >
           {contractFacts.map((f) => (
             <RevealItem key={f.label} className="h-full">
-              <div className="flex h-full flex-col bg-surface p-6">
-                <span className="flex h-10 w-10 items-center justify-center rounded-control bg-gold-50 text-gold-600">
+              <div className="group/f relative flex h-full flex-col overflow-hidden rounded-card border border-line bg-gradient-to-b from-surface to-surface-muted p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:shadow-elevated-lg">
+                <span
+                  className="pointer-events-none absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-gold-500 to-gold-300 transition-transform duration-300 ease-out group-hover/f:scale-x-100"
+                  aria-hidden
+                />
+                <span className="relative flex h-12 w-12 items-center justify-center rounded-control bg-gradient-to-br from-ink-900 to-ink-700 text-gold-300 shadow-sm transition-transform duration-300 group-hover/f:scale-110 group-hover/f:-rotate-3">
                   <f.icon className="h-5 w-5" aria-hidden />
                 </span>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+                <p className="relative mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-fg-subtle">
                   {f.label}
                 </p>
-                <p className="mt-1 font-display text-lg font-semibold leading-snug text-fg">
+                <p className="relative mt-1.5 font-display text-xl font-semibold leading-snug tracking-tight text-fg">
                   {f.value}
                 </p>
               </div>
@@ -226,9 +230,9 @@ export default function SewpPage() {
               ].map((row) => (
                 <div
                   key={row.label}
-                  className="flex items-center gap-4 rounded-card border border-line bg-surface p-4"
+                  className="group/r flex items-center gap-4 rounded-card border border-line bg-gradient-to-r from-surface to-surface-muted p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-elevated"
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-control bg-gold-50 text-gold-600">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-gradient-to-br from-ink-900 to-ink-700 text-gold-300 shadow-sm transition-transform duration-300 group-hover/r:scale-110">
                     <row.icon className="h-4 w-4" aria-hidden />
                   </span>
                   <div>
