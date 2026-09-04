@@ -1,11 +1,33 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone } from "lucide-react";
+import {
+  Building2,
+  CalendarClock,
+  HeartPulse,
+  Mail,
+  MapPin,
+  Phone,
+  PiggyBank,
+  Sparkles,
+  TrendingUp,
+  Wallet,
+  type LucideIcon,
+} from "lucide-react";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { benefits, siteConfig } from "@/lib/site-content";
+
+/** Icon per benefit, matched by title (falls back to a spark). */
+const benefitIcons: Record<string, LucideIcon> = {
+  "Competitive pay": Wallet,
+  "Top U.S. clients": Building2,
+  "Health, dental & vision": HeartPulse,
+  "401(k) with company match": PiggyBank,
+  "Growth opportunities": TrendingUp,
+  "Long-term assignments": CalendarClock,
+};
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -23,7 +45,7 @@ export default function CareersPage() {
         description="We're always looking for senior-minded consultants who want to own outcomes, not just fill seats. We don't have a public job board right now — reach out and tell us what you do best."
       />
 
-      <Section>
+      <Section tone="muted">
         <SectionHeading
           eyebrow="What we offer"
           title="Benefits that support the long haul"
@@ -33,18 +55,24 @@ export default function CareersPage() {
           className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
           stagger={0.07}
         >
-          {benefits.map((benefit) => (
-            <RevealItem key={benefit.title}>
-              <Card className="h-full">
-                <h3 className="font-display text-lg font-semibold text-fg">
-                  {benefit.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-fg-muted">
-                  {benefit.description}
-                </p>
-              </Card>
-            </RevealItem>
-          ))}
+          {benefits.map((benefit) => {
+            const Icon = benefitIcons[benefit.title] ?? Sparkles;
+            return (
+              <RevealItem key={benefit.title}>
+                <Card className="h-full">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-control bg-gradient-to-br from-ink-800 to-ink-600 text-gold-300 shadow-sm transition-transform duration-300 group-hover/card:scale-110 group-hover/card:rotate-3">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <h3 className="mt-4 font-display text-lg font-semibold text-fg">
+                    {benefit.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    {benefit.description}
+                  </p>
+                </Card>
+              </RevealItem>
+            );
+          })}
         </RevealGroup>
       </Section>
 

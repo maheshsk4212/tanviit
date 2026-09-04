@@ -81,7 +81,7 @@ export default function SewpPage() {
                 <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-fg-subtle">
                   {f.label}
                 </p>
-                <p className="mt-1 font-display text-lg font-bold leading-snug text-fg">
+                <p className="mt-1 font-display text-lg font-semibold leading-snug text-fg">
                   {f.value}
                 </p>
               </div>
@@ -91,7 +91,7 @@ export default function SewpPage() {
 
         <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_320px] lg:gap-16">
           <div>
-            <h3 className="font-display text-xl font-bold text-fg">
+            <h3 className="font-display text-2xl font-semibold tracking-tight text-fg">
               About the NASA SEWP program
             </h3>
             <p className="mt-4 text-base leading-relaxed text-fg-muted">{sewp.overview}</p>
@@ -134,7 +134,7 @@ export default function SewpPage() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-gold-400">
                   {c.role}
                 </p>
-                <p className="mt-2 font-display text-2xl font-bold text-white">{c.name}</p>
+                <p className="mt-2 font-display text-2xl font-semibold text-white">{c.name}</p>
                 <div className="mt-6 space-y-3 border-t border-white/10 pt-5">
                   <a
                     href={`tel:${c.phone.replace(/[^0-9+]/g, "")}`}
@@ -167,7 +167,7 @@ export default function SewpPage() {
               <Download className="h-5 w-5" aria-hidden />
             </span>
             <div>
-              <p className="font-display text-lg font-bold text-white">
+              <p className="font-display text-lg font-semibold text-white">
                 Tanvi IT Solutions SEWP Ordering Guide
               </p>
               <p className="mt-1 text-sm text-slate-300">
