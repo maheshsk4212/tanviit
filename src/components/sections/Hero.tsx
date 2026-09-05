@@ -21,8 +21,6 @@ const slides: {
   description: string;
   image: string;
   imageAlt: string;
-  /** Optional background clip; `image` is used as its poster frame. */
-  video?: string;
   primary: { label: string; href: string };
   secondary: { label: string; href: string };
 }[] = [
@@ -35,14 +33,8 @@ const slides: {
     ],
     description:
       "We connect organizations with skilled IT professionals to accelerate innovation, reduce time-to-hire, and deliver results.",
-    // Reviewed side by side under the real scrim: the previous clip was a flat,
-    // top-down beige desk that went muddy behind the overlay. This one is
-    // darker, has depth and holds the headline. Poster matches its tone.
-    image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=2560&q=85&auto=format&fit=crop",
-    imageAlt: "Consulting team working in a modern office",
-    video:
-      "https://videos.pexels.com/video-files/7659850/7659850-uhd_2560_1440_25fps.mp4",
+    image: "/hero-enterprise.png",
+    imageAlt: "Modern glass office towers at dusk",
     primary: { label: "Talk to our team", href: "/contact" },
     secondary: { label: "Explore solutions", href: "/services" },
   },
@@ -55,9 +47,9 @@ const slides: {
     ],
     description:
       "Buy through the vehicles you already hold. 100+ projects delivered for federal, state and local agencies and Fortune 500 companies.",
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=2560&q=85&auto=format&fit=crop",
-    imageAlt: "Institutional office towers viewed from below",
+    // The 2x source keeps this full-width hero sharp on desktop and retina screens.
+    image: "/hero-government-hires.png",
+    imageAlt: "The U.S. Capitol surrounded by a connected data network",
     primary: { label: "View SEWP VI contract", href: "/sewp-vi" },
     secondary: { label: "Contract vehicles", href: "/about" },
   },
@@ -70,9 +62,8 @@ const slides: {
     ],
     description:
       "Work with top U.S. clients on mission-critical programs — competitive pay, real growth, and long-term assignments.",
-    image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=2560&q=85&auto=format&fit=crop",
-    imageAlt: "Consultants mapping out a delivery roadmap in a planning session",
+    image: "/hero-talent.png",
+    imageAlt: "A team collaborating around a project planning wall",
     primary: { label: "Explore opportunities", href: "/careers" },
     secondary: { label: "How we work", href: "/about" },
   },
@@ -175,37 +166,21 @@ export function Hero() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
           >
-            {slide.video ? (
-              <video
-                src={slide.video}
-                poster={slide.image}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                aria-hidden
-                // Footage straight off the wire reads flat under a scrim;
-                // a contrast/saturation lift keeps it looking lit.
-                className="h-full w-full object-cover [filter:contrast(1.18)_saturate(1.15)_brightness(0.92)]"
+            <motion.div
+              className="absolute inset-0"
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.08 }}
+              transition={{ duration: (SLIDE_DURATION * 2.2) / 1000, ease: "linear" }}
+            >
+              <Image
+                src={slide.image}
+                alt={slide.imageAlt}
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className="object-cover [filter:contrast(1.18)_saturate(1.15)_brightness(0.92)]"
               />
-            ) : (
-              <motion.div
-                className="absolute inset-0"
-                initial={{ scale: 1 }}
-                animate={{ scale: 1.08 }}
-                transition={{ duration: (SLIDE_DURATION * 2.2) / 1000, ease: "linear" }}
-              >
-                <Image
-                  src={slide.image}
-                  alt={slide.imageAlt}
-                  fill
-                  priority={index === 0}
-                  sizes="100vw"
-                  className="object-cover [filter:contrast(1.18)_saturate(1.15)_brightness(0.92)]"
-                />
-              </motion.div>
-            )}
+            </motion.div>
           </motion.div>
         </AnimatePresence>
 
