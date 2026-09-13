@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { mainNav } from "@/lib/site-content";
 
@@ -21,13 +21,9 @@ export default function NotFound() {
 
       <Section tone="muted">
         <div className="flex flex-col gap-8">
-          <Link
-            href="/"
-            className="inline-flex w-fit items-center gap-2 rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-ink-950 transition-transform duration-300 hover:-translate-y-0.5"
-          >
+          <Button href="/" size="lg" className="w-fit">
             Back to home
-            <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+          </Button>
 
           <ul className="flex flex-wrap gap-3">
             {mainNav

@@ -37,6 +37,18 @@
   --color-gold-800: #7a4f1e;
   --color-gold-900: #67421c;
 
+  /* Deep scale — warm near-blacks for the dark bands, cards and footer
+     (the brand's black, lifted just enough to layer surfaces on it). */
+  --color-deep-950: #0b0906;
+  --color-deep-900: #15120c;
+  --color-deep-800: #211c13;
+  --color-deep-700: #2e271a;
+
+  /* Cream scale — the pale, mustard-tinted ground for light feature bands. */
+  --color-cream-50: #fcf8ef;
+  --color-cream-100: #f7efdd;
+  --color-cream-200: #efdfb8;
+
   /* Neutrals */
   --color-slate-50: #f7f7f8;
   --color-slate-100: #eeeef0;
@@ -96,6 +108,15 @@
   --color-gold-800: var(--color-gold-800);
   --color-gold-900: var(--color-gold-900);
 
+  --color-deep-950: var(--color-deep-950);
+  --color-deep-900: var(--color-deep-900);
+  --color-deep-800: var(--color-deep-800);
+  --color-deep-700: var(--color-deep-700);
+
+  --color-cream-50: var(--color-cream-50);
+  --color-cream-100: var(--color-cream-100);
+  --color-cream-200: var(--color-cream-200);
+
   --color-slate-50: var(--color-slate-50);
   --color-slate-100: var(--color-slate-100);
   --color-slate-200: var(--color-slate-200);
@@ -116,9 +137,9 @@
   --color-line: var(--color-line);
   --color-line-strong: var(--color-line-strong);
 
-  /* Single family everywhere — Manrope carries both UI/body and display. */
-  --font-sans: var(--font-manrope);
-  --font-display: var(--font-manrope);
+  /* Single family everywhere — Work Sans carries both UI/body and display. */
+  --font-sans: var(--font-work-sans);
+  --font-display: var(--font-work-sans);
 
   --radius-card: var(--radius-card);
   --radius-control: var(--radius-control);
@@ -323,4 +344,135 @@ html {
 [data-theme="neo"] header {
   background-color: color-mix(in oklab, var(--background) 82%, transparent) !important;
   border-color: var(--color-line) !important;
+}
+
+/* ==================================================================
+   Redesign surfaces — cinematic dark hero, gold light sources, marquee.
+   ================================================================== */
+
+/* The hero artwork is shot blue; pulling saturation lets the gold light
+   below read as the brand colour instead of fighting a cold sky. */
+.hero-image {
+  filter: saturate(0.45) brightness(0.82) contrast(1.08);
+}
+
+.hero-scrim {
+  background:
+    radial-gradient(45% 55% at 82% 92%, color-mix(in oklab, var(--color-gold-500) 30%, transparent), transparent 70%),
+    linear-gradient(169deg, transparent 42%, rgb(0 0 0 / 0.85) 100%),
+    linear-gradient(90deg, rgb(0 0 0 / 0.88) 0%, rgb(0 0 0 / 0.55) 45%, rgb(0 0 0 / 0.08) 100%),
+    linear-gradient(180deg, rgb(0 0 0 / 0.6) 0%, transparent 22%);
+}
+
+.glow-gold-br {
+  background: radial-gradient(55% 90% at 90% 100%, color-mix(in oklab, var(--color-gold-500) 22%, transparent), transparent 70%);
+}
+
+.cta-glow {
+  background:
+    radial-gradient(70% 60% at 85% 115%, color-mix(in oklab, var(--color-gold-500) 50%, transparent), transparent 70%),
+    radial-gradient(45% 45% at 8% -5%, color-mix(in oklab, var(--color-gold-700) 35%, transparent), transparent 70%),
+    linear-gradient(180deg, rgb(0 0 0 / 0.45), rgb(0 0 0 / 0.65));
+}
+
+/* Premium dark card — a metallic gold hairline border (gradient painted in
+   the border box under a padding-box fill) around a deep, faintly lit
+   surface. The border brightens on hover. */
+.card-premium {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, var(--color-deep-800), var(--color-deep-950)) padding-box,
+    linear-gradient(
+        145deg,
+        color-mix(in oklab, var(--color-gold-300) 65%, transparent),
+        color-mix(in oklab, var(--color-gold-500) 8%, transparent) 42%,
+        color-mix(in oklab, var(--color-gold-600) 40%, transparent)
+      )
+      border-box;
+}
+
+.card-premium:hover {
+  background:
+    linear-gradient(180deg, var(--color-deep-800), var(--color-deep-950)) padding-box,
+    linear-gradient(
+        145deg,
+        var(--color-gold-300),
+        color-mix(in oklab, var(--color-gold-500) 30%, transparent) 45%,
+        var(--color-gold-500)
+      )
+      border-box;
+}
+
+/* Metallic gold text with a highlight band that glides across on hover. */
+.text-metallic {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-gold-300) 0%,
+    var(--color-gold-500) 30%,
+    #fff1c9 50%,
+    var(--color-gold-400) 70%,
+    var(--color-gold-300) 100%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: background-position 1.2s ease;
+}
+
+.group\/t:hover .text-metallic {
+  background-position: 100% 0;
+}
+
+/* Outlined numerals — engraved rather than printed. */
+.numeral-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--color-gold-400) 45%, transparent);
+}
+
+/* Cursor spotlight: SpotlightGrid writes --x/--y onto every card, so while
+   the pointer is over the grid a soft gold light spills across neighbours. */
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    380px circle at var(--x, 50%) var(--y, -20%),
+    color-mix(in oklab, var(--color-gold-500) 15%, transparent),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.spotlight-grid:hover .spotlight::before {
+  opacity: 1;
+}
+
+.result-dark {
+  background:
+    radial-gradient(90% 70% at 100% 100%, color-mix(in oklab, var(--color-gold-600) 45%, transparent), transparent 70%),
+    linear-gradient(160deg, var(--color-deep-800), var(--color-deep-950));
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* The track holds the list twice, so -50% lands exactly on the seam. */
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

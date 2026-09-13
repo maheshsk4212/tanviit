@@ -1,134 +1,88 @@
-import { Audiences } from "@/components/sections/Audiences";
+import { CapabilitiesBento } from "@/components/sections/CapabilitiesBento";
 import { CTASection } from "@/components/sections/CTASection";
-import { ContractVehicles } from "@/components/sections/ContractVehicles";
+import { ExpertiseStack } from "@/components/sections/ExpertiseStack";
 import { Hero } from "@/components/sections/Hero";
-import { IndustriesGrid } from "@/components/sections/IndustriesGrid";
-import { Process } from "@/components/sections/Process";
-import { ProvenResults } from "@/components/sections/ProvenResults";
-import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { StatsBar } from "@/components/sections/StatsBar";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { WhyUs } from "@/components/sections/WhyUs";
-import { Section, SectionHeading } from "@/components/ui/Section";
+import { IndustriesSplit } from "@/components/sections/IndustriesSplit";
+import { ResultsShowcase } from "@/components/sections/ResultsShowcase";
+import { TestimonialCards } from "@/components/sections/TestimonialCards";
+import { VehicleCards } from "@/components/sections/VehicleCards";
 import { Button } from "@/components/ui/Button";
-import { clients } from "@/lib/site-content";
+import { Section, SectionHeading } from "@/components/ui/Section";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <StatsBar />
 
-      {/* Services */}
-      <Section tone="dark">
+      {/* What we do — services bento */}
+      <Section tone="muted">
         <SectionHeading
-          tone="dark"
-          eyebrow="Our services"
+          align="split"
+          eyebrow="What we do"
           title="Flexible solutions. Built around your goals."
           description="From talent to technology, we deliver flexible, scalable IT solutions that help you innovate faster and achieve measurable business outcomes."
         />
-        <div className="mt-12">
-          <ServicesGrid />
-        </div>
-        <div className="mt-10 text-center">
-          <Button href="/services" variant="ghost-dark">
-            Explore our services
-          </Button>
+        <div className="mt-14">
+          <CapabilitiesBento />
         </div>
       </Section>
 
-      {/* For employers / For talent */}
-      <Section tone="dark" className="pt-0">
-        <Audiences />
-      </Section>
-
-      {/* Industries */}
+      {/* Technology expertise — stacking cards */}
       <Section>
         <SectionHeading
-          eyebrow="Industries we serve"
-          title="Domain expertise. Proven impact."
-          description="We deliver tailored IT solutions across a wide range of public and private sector industries."
+          align="split"
+          eyebrow="Technology expertise"
+          title="Expertise across the modern stack"
+          description="Beyond talent, our consultants deliver strategic technology advisory and hands-on solutions across software, cloud, data, enterprise platforms and cybersecurity."
         />
-        <div className="mt-12">
-          <IndustriesGrid limit={5} />
-        </div>
-        <div className="mt-10 text-center">
-          <Button href="/industries" variant="ghost">
-            View all industries
-          </Button>
+        <div className="mt-14">
+          <ExpertiseStack />
         </div>
       </Section>
 
-      {/* Proven results — concrete, quantified outcomes */}
+      {/* Industries — inset rounded panel, echoing the closing banner */}
+      <div className="bg-surface px-3 pb-3 sm:px-4 sm:pb-4">
+        <Section tone="dark" className="rounded-2xl">
+          <IndustriesSplit />
+        </Section>
+      </div>
+
+      {/* Proven results + client seals */}
       <Section tone="muted">
         <SectionHeading
           eyebrow="Proven results"
           title="Outcomes that hold up under scrutiny."
           description="We turn mission requirements into measurable results — delivered on time, on budget, and built to last."
+          action={<Button href="/contact">Talk to our team</Button>}
         />
         <div className="mt-12">
-          <ProvenResults />
+          <ResultsShowcase />
         </div>
       </Section>
 
-      {/* Contract vehicles & achievements */}
+      {/* Contract vehicles */}
       <Section>
         <SectionHeading
-          eyebrow="Contract vehicles & achievements"
+          eyebrow="Contract vehicles"
           title="Trusted partner to government and enterprise clients"
           description="Buy through the vehicles you already hold — including NASA SEWP VI, GSA MAS and 8(a) STARS III."
+          action={<Button href="/sewp-vi">View SEWP VI</Button>}
         />
         <div className="mt-12">
-          <ContractVehicles showAchievements={false} />
+          <VehicleCards />
         </div>
       </Section>
 
-      {/* Why choose */}
-      <Section tone="muted">
+      {/* Testimonials */}
+      <Section className="pt-0 sm:pt-0 lg:pt-0">
         <SectionHeading
-          eyebrow="Why choose Tanvi IT"
-          title="Experience. Commitment. Results."
-        />
-        <div className="mt-12">
-          <WhyUs />
-        </div>
-      </Section>
-
-      {/* Process */}
-      <Section tone="dark">
-        <SectionHeading
-          tone="dark"
-          eyebrow="Our process"
-          title="A proven process. Exceptional results."
-          description="We follow a streamlined, collaborative approach to turn your goals into measurable outcomes — every time."
-        />
-        <div className="mt-12">
-          <Process tone="dark" />
-        </div>
-      </Section>
-
-      {/* Clients & testimonials */}
-      <Section>
-        <SectionHeading
-          eyebrow="Clients & testimonials"
+          eyebrow="Client testimonials"
           title="Trusted by agencies. Proven by results."
           description="We build lasting partnerships by delivering high-quality solutions, exceptional service, and measurable impact."
-          align="center"
+          action={<Button href="/contact">Work with us</Button>}
         />
-
-        {/* Trust strip — reads as a logo wall until real client marks exist. */}
-        <ul className="mt-12 flex flex-wrap items-center justify-center gap-3">
-          {clients.map((client) => (
-            <li key={client}>
-              <span className="block rounded-full border border-line bg-gradient-to-b from-surface to-surface-muted px-6 py-3 font-display text-base font-semibold tracking-tight text-fg shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-elevated">
-                {client}
-              </span>
-            </li>
-          ))}
-        </ul>
-
         <div className="mt-12">
-          <Testimonials />
+          <TestimonialCards />
         </div>
       </Section>
 
@@ -138,8 +92,6 @@ export default function Home() {
         description="Whether you need one specialist or an entire technology team, we're ready to help."
         primaryLabel="Talk to our team"
         primaryHref="/contact"
-        secondaryLabel="Explore solutions"
-        secondaryHref="/services"
       />
     </>
   );

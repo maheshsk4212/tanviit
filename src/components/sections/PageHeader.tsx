@@ -1,58 +1,73 @@
+import Image from "next/image";
 import { type ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
+import { Chip } from "@/components/ui/Chip";
 import { Reveal } from "@/components/motion/Reveal";
 
 /**
- * Shared hero for interior pages. Big, tightly-tracked, medium-weight display
- * type on a warm dark ground — the same "impact from scale, not stroke weight"
- * language as the homepage hero, so every page opens clean and bold.
+ * Shared hero for interior pages — the same large, tightly tracked,
+ * medium-weight display type as the homepage hero, on the deep ground with a
+ * low gold light source.
  *
- * Pass `accent` as a trailing substring of `title` to render that part as the
- * gold gradient (e.g. title="Domain expertise. Proven impact." accent="Proven impact.").
+ * Pass `accent` as a trailing substring of `title` to render that part in
+ * gold (e.g. title="Domain expertise. Proven impact." accent="Proven impact.").
  */
 export function PageHeader({
   eyebrow,
   title,
   accent,
   description,
+  image,
+  imageAlt,
   children,
 }: {
   eyebrow?: string;
   title: string;
   accent?: string;
   description?: string;
+  /** Optional full-bleed backdrop photo, treated like the homepage hero. */
+  image?: string;
+  /** Alt text for `image`; omit when the photo is purely decorative. */
+  imageAlt?: string;
   children?: ReactNode;
 }) {
   const splitAt = accent ? title.length - accent.length : -1;
   return (
-    <section className="relative overflow-hidden border-b border-line mesh-dark">
-      <div className="absolute inset-0 grid-overlay" aria-hidden />
-      <div className="absolute inset-0 noise-overlay opacity-30" aria-hidden />
+    <section className="relative isolate overflow-hidden bg-deep-950">
+      {image ? (
+        <>
+          <Image
+            src={image}
+            alt={imageAlt ?? ""}
+            fill
+            preload
+            sizes="100vw"
+            className="hero-image -z-20 object-cover"
+          />
+          <div className="hero-scrim absolute inset-0 -z-10" aria-hidden />
+        </>
+      ) : (
+        <div className="glow-gold-br absolute inset-0 -z-10" aria-hidden />
+      )}
       <div
-        className="absolute -right-24 -top-16 h-96 w-96 rounded-full bg-gold-500/20 blur-[120px] animate-pulse-glow"
+        className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold-500/40 to-transparent"
         aria-hidden
       />
-      <Container className="relative pb-20 pt-32 sm:pb-28 sm:pt-36 lg:pb-32 lg:pt-40">
+      <Container className="pb-20 pt-36 sm:pb-24 sm:pt-40 lg:pb-28 lg:pt-44">
         <Reveal>
-          {eyebrow ? (
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold-400">
-              {eyebrow}
-            </p>
-          ) : null}
-          <h1 className="max-w-4xl text-balance font-display text-5xl font-semibold leading-[1.03] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          {eyebrow ? <Chip tone="dark">{eyebrow}</Chip> : null}
+          <h1 className="mt-6 max-w-5xl text-balance font-display text-5xl font-medium leading-[0.98] tracking-[-0.035em] text-white sm:text-6xl lg:text-[5.25rem]">
             {splitAt > 0 ? (
               <>
                 {title.slice(0, splitAt)}
-                <span className="text-gradient-gold">{accent}</span>
+                <span className="text-gold-400">{accent}</span>
               </>
             ) : (
               title
             )}
           </h1>
           {description ? (
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200">
-              {description}
-            </p>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-white/75">{description}</p>
           ) : null}
           {children}
         </Reveal>

@@ -1,21 +1,111 @@
 import Link from "next/link";
 import {
   ArrowUpRight,
-  Award,
   BadgeCheck,
   Building2,
   Clock,
+  CodeXml,
   FileCheck,
+  Headset,
   Landmark,
+  LockKeyhole,
+  ServerCog,
   ShieldCheck,
   Trophy,
   Users,
   type LucideIcon,
 } from "lucide-react";
 import { achievements, certifications, contractVehicles } from "@/lib/site-content";
+import { Chip } from "@/components/ui/Chip";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
 const achievementIcons = [Trophy, FileCheck, Clock, Users];
+
+/* One mark per standard, so the grid doesn't read as six copies of a badge. */
+const certificationIcons: Record<string, LucideIcon> = {
+  "ISO 9001:2015": BadgeCheck,
+  "ISO/IEC 20000-1:2018": ServerCog,
+  "ISO/IEC 27001:2013": LockKeyhole,
+  "CMMI-DEV L3": CodeXml,
+  "CMMI-SVC L3": Headset,
+  "8(a)": Landmark,
+};
+
+/* Four copies: the marquee slides by half its track (two copies, ~2,600px),
+   which must be wider than the container for the loop to stay seamless. */
+const badgeTrack = [...certifications, ...certifications, ...certifications, ...certifications];
+
+/** Circular seal: scope set around the ring, mark and standard in the centre. */
+function CertificationBadge({
+  name,
+  detail,
+  icon: Icon,
+  ringId,
+  dark,
+}: {
+  name: string;
+  detail: string;
+  icon: LucideIcon;
+  /** Unique per rendered badge — the ring text follows this path by id. */
+  ringId: string;
+  dark: boolean;
+}) {
+  // Keep every ring similarly dense (42–52 characters): repeat the scope while
+  // another copy still fits, and top up a lone long scope with "Certified".
+  const unit = `${detail} • `;
+  let ring = unit;
+  while (ring.length + unit.length <= 52) ring += unit;
+  if (ring.length < 40) ring += "Certified • ";
+  ring = ring.toUpperCase();
+
+  return (
+    <div className="group/b relative h-44 w-44 shrink-0">
+      <svg viewBox="0 0 200 200" className="absolute inset-0 h-full w-full" aria-hidden>
+        <circle cx="100" cy="100" r="97" fill="none" strokeWidth="2" className="stroke-gold-500" />
+        <circle
+          cx="100"
+          cy="100"
+          r="72"
+          strokeWidth="1"
+          strokeDasharray="3 4"
+          className={dark ? "fill-white/5 stroke-gold-400/60" : "fill-cream-50 stroke-gold-500/60"}
+        />
+        <g className="origin-center transition-transform duration-700 ease-out group-hover/b:rotate-[40deg]">
+          <path
+            id={ringId}
+            d="M 100,100 m -85,0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0"
+            fill="none"
+          />
+          <text
+            className={`font-display text-[11px] font-semibold ${
+              dark ? "fill-white/70" : "fill-deep-900/70"
+            }`}
+          >
+            {/* Stretch to the full circumference (2π·85 ≈ 534) so the ring closes. */}
+            <textPath href={`#${ringId}`} textLength={530} lengthAdjust="spacing">
+              {ring}
+            </textPath>
+          </text>
+        </g>
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-9 text-center">
+        <Icon
+          className={`h-6 w-6 ${dark ? "text-gold-400" : "text-gold-600"}`}
+          strokeWidth={1.75}
+          aria-hidden
+        />
+        <p
+          className={`mt-2 text-balance font-display text-[15px] font-semibold leading-tight tracking-[-0.01em] ${
+            dark ? "text-white" : "text-deep-900"
+          }`}
+        >
+          {name}
+          <span className="sr-only">, {detail}</span>
+        </p>
+      </div>
+    </div>
+  );
+}
 
 /** Federal-wide vehicles read differently from co-ops; group them so the list scans. */
 const COOPERATIVES = new Set([
@@ -193,56 +283,37 @@ export function ContractVehicles({
       </div>
       ) : null}
 
-      {/* Certifications — seal-style badges rather than a plain bullet list. */}
-      <div className="mt-8">
-        <p
-          className={`flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] ${
-            dark ? "text-gold-400" : "text-gold-600"
+      {/* Certifications — seal badges on an auto-scrolling strip that pauses
+          on hover. Only the first copy is exposed to assistive tech; with
+          reduced motion the strip stops and scrolls by hand instead. */}
+      <div className="mt-16">
+        <Chip tone={dark ? "dark" : "light"}>Certifications &amp; trusted standards</Chip>
+        <h3
+          className={`mt-4 max-w-2xl text-balance font-display text-2xl font-medium leading-tight tracking-[-0.02em] sm:text-3xl ${
+            dark ? "text-white" : "text-fg"
           }`}
         >
-          <span
-            className={`flex h-7 w-7 items-center justify-center rounded-full ${
-              dark ? "bg-gold-500/15" : "bg-gold-50"
-            }`}
-          >
-            <Award className="h-3.5 w-3.5" aria-hidden />
-          </span>
-          Certifications &amp; trusted standards
-        </p>
-        <RevealGroup
-          className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
-          stagger={0.04}
-        >
-          {certifications.map((c) => (
-            <RevealItem key={c.name}>
-              <div
-                className={`group/c flex h-full items-center gap-4 rounded-card border p-4 transition-all duration-300 ${
-                  dark
-                    ? "border-white/10 bg-white/[0.04] hover:border-gold-400/50"
-                    : "border-line bg-gradient-to-br from-surface to-surface-muted hover:-translate-y-0.5 hover:border-gold-300 hover:shadow-elevated"
-                }`}
+          The process maturity mission-critical programs require.
+        </h3>
+        <div className="relative mt-10 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)] motion-reduce:overflow-x-auto">
+          <ul className="animate-marquee flex w-max py-2">
+            {badgeTrack.map((c, i) => (
+              <li
+                key={`${c.name}-${i}`}
+                aria-hidden={i >= certifications.length}
+                className="mr-10"
               >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 text-ink-950 shadow-sm transition-transform duration-300 group-hover/c:scale-110">
-                  <ShieldCheck className="h-5 w-5" aria-hidden />
-                </span>
-                <span>
-                  <span
-                    className={`block font-display text-sm font-semibold ${
-                      dark ? "text-white" : "text-fg"
-                    }`}
-                  >
-                    {c.name}
-                  </span>
-                  <span
-                    className={`block text-xs ${dark ? "text-slate-300" : "text-fg-subtle"}`}
-                  >
-                    {c.detail}
-                  </span>
-                </span>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+                <CertificationBadge
+                  name={c.name}
+                  detail={c.detail}
+                  icon={certificationIcons[c.name] ?? ShieldCheck}
+                  ringId={`cert-ring-${i}`}
+                  dark={dark}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

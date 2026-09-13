@@ -1,7 +1,15 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 
+const CTA_IMAGE =
+  "https://images.unsplash.com/photo-1611323340350-bdcc0e6cfae5?w=2000&q=80&auto=format&fit=crop";
+
+/**
+ * Inset, rounded closing banner — city at night under a low gold glow.
+ * Message on the left, actions on the right where the glow is brightest.
+ */
 export function CTASection({
   title,
   description,
@@ -13,7 +21,7 @@ export function CTASection({
 }: {
   title: string;
   description?: string;
-  /** Signature "equation" motif, e.g. TANVI IT + YOUR MISSION = DELIVERED. */
+  /** Signature "equation" line, e.g. TANVI IT + YOUR MISSION = DELIVERED. */
   overline?: string;
   primaryLabel?: string;
   primaryHref?: string;
@@ -21,37 +29,44 @@ export function CTASection({
   secondaryHref?: string;
 }) {
   return (
-    <section className="relative overflow-hidden mesh-dark">
-      <div className="absolute inset-0 grid-overlay" aria-hidden />
-      <div
-        className="absolute left-1/2 top-1/2 h-64 w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold-500/20 blur-[100px] animate-pulse-glow"
-        aria-hidden
-      />
-      <Container className="relative flex flex-col items-center gap-6 py-20 text-center sm:py-28">
-        <Reveal className="flex flex-col items-center gap-6">
-          {overline ? (
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-400">
-              {overline}
-            </p>
-          ) : null}
-          <h2 className="max-w-3xl text-balance font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            {title}
-          </h2>
-          {description ? (
-            <p className="max-w-xl text-lg text-slate-200">{description}</p>
-          ) : null}
-          <div className="flex flex-wrap justify-center gap-4">
+    <section className="bg-surface p-3 sm:p-4">
+      <div className="relative isolate overflow-hidden rounded-2xl bg-deep-950">
+        <Image
+          src={CTA_IMAGE}
+          alt=""
+          fill
+          sizes="100vw"
+          className="-z-20 object-cover opacity-40 [filter:saturate(0.35)]"
+        />
+        <div className="cta-glow absolute inset-0 -z-10" aria-hidden />
+        <Container className="grid gap-10 py-20 sm:py-24 lg:grid-cols-12 lg:items-end lg:py-28">
+          <Reveal className="lg:col-span-8">
+            {overline ? (
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold-300">
+                {overline}
+              </p>
+            ) : null}
+            <h2
+              className={`${overline ? "mt-5" : ""} max-w-3xl text-balance font-display text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl`}
+            >
+              {title}
+            </h2>
+            {description ? (
+              <p className="mt-5 max-w-xl text-lg text-white/80">{description}</p>
+            ) : null}
+          </Reveal>
+          <Reveal delay={0.1} className="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
             <Button href={primaryHref} size="lg">
               {primaryLabel}
             </Button>
             {secondaryLabel && secondaryHref ? (
-              <Button href={secondaryHref} size="lg" variant="ghost-dark">
+              <Button href={secondaryHref} size="lg" variant="ghost-dark" arrow={false}>
                 {secondaryLabel}
               </Button>
             ) : null}
-          </div>
-        </Reveal>
-      </Container>
+          </Reveal>
+        </Container>
+      </div>
     </section>
   );
 }

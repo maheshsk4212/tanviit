@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { type ButtonHTMLAttributes, type ReactNode } from "react";
 
@@ -5,26 +6,34 @@ type Variant = "primary" | "ghost" | "ghost-dark";
 type Size = "md" | "lg";
 
 const base =
-  "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-semibold transition-all duration-300 ease-out hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+  "group inline-flex items-center justify-center gap-3 rounded-full font-medium transition-colors duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
 
-const variants: Record<Variant, string> = {
-  primary:
-    "bg-gold-500 text-white shadow-[0_1px_2px_rgba(0,0,0,0.06),0_8px_20px_-8px_rgba(242,113,15,0.55)] hover:bg-gold-600 hover:shadow-[0_1px_2px_rgba(0,0,0,0.06),0_14px_28px_-10px_rgba(242,113,15,0.65)]",
-  ghost: "bg-transparent text-fg border border-ink-200 hover:bg-surface-sunken hover:border-ink-300",
-  "ghost-dark": "bg-transparent text-white border border-white/25 hover:bg-white/10 hover:border-white/40",
+const variants: Record<Variant, { button: string; bubble: string }> = {
+  primary: {
+    button: "bg-gold-500 text-deep-950 hover:bg-gold-400",
+    bubble: "bg-deep-950 text-white",
+  },
+  ghost: {
+    button: "border border-deep-900/20 text-deep-900 hover:border-deep-900/50 hover:bg-deep-900/5",
+    bubble: "bg-deep-900 text-white",
+  },
+  "ghost-dark": {
+    button: "border border-white/25 text-white hover:border-gold-400/70 hover:bg-white/5",
+    bubble: "bg-gold-500 text-deep-950",
+  },
 };
 
-const sizes: Record<Size, string> = {
-  md: "px-5 py-2.5 text-sm",
-  lg: "px-6 py-3.5 text-base",
+/* Buttons with an arrow trade right padding for the round "bubble". */
+const sizes: Record<Size, { plain: string; withArrow: string; bubble: string }> = {
+  md: { plain: "px-5 py-2.5 text-sm", withArrow: "py-1.5 pl-5 pr-1.5 text-sm", bubble: "h-7 w-7" },
+  lg: { plain: "px-7 py-3.5 text-base", withArrow: "py-2 pl-7 pr-2 text-base", bubble: "h-9 w-9" },
 };
-
-const shine =
-  "pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full";
 
 interface CommonProps {
   variant?: Variant;
   size?: Size;
+  /** Trailing arrow bubble. Defaults on for primary buttons. */
+  arrow?: boolean;
   className?: string;
   children: ReactNode;
 }
@@ -47,27 +56,42 @@ type ButtonProps = ButtonAsButton | ButtonAsLink;
 export function Button({
   variant = "primary",
   size = "md",
+  arrow = variant === "primary",
   className = "",
   children,
   ...props
 }: ButtonProps) {
-  const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
-  const showShine = variant === "primary";
+  const style = variants[variant];
+  const sizing = sizes[size];
+  const classes = `${base} ${style.button} ${arrow ? sizing.withArrow : sizing.plain} ${className}`;
+
+  const content = (
+    <>
+      <span className="inline-flex items-center gap-2">{children}</span>
+      {arrow ? (
+        <span
+          className={`flex shrink-0 items-center justify-center rounded-full ${style.bubble} ${sizing.bubble}`}
+          aria-hidden
+        >
+          {/* ↗ at rest, swings to → on hover */}
+          <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
+        </span>
+      ) : null}
+    </>
+  );
 
   if ("href" in props && props.href) {
     const { href, target, rel, onClick } = props;
     return (
       <Link href={href} target={target} rel={rel} onClick={onClick} className={classes}>
-        {showShine ? <span className={shine} aria-hidden /> : null}
-        <span className="relative inline-flex items-center gap-2">{children}</span>
+        {content}
       </Link>
     );
   }
 
   return (
     <button className={classes} {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}>
-      {showShine ? <span className={shine} aria-hidden /> : null}
-      <span className="relative inline-flex items-center gap-2">{children}</span>
+      {content}
     </button>
   );
 }

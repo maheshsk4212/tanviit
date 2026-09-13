@@ -7,6 +7,10 @@
  * values between source slides — see the note on each.
  */
 
+/** Free-to-use Unsplash photo (Unsplash License), served from its CDN. */
+const unsplash = (id: string, width = 1600) =>
+  `https://images.unsplash.com/${id}?w=${width}&q=80&auto=format&fit=crop`;
+
 export const siteConfig = {
   name: "Tanvi IT Solutions",
   legalName: "Tanvi IT Solutions Inc.",
@@ -115,10 +119,27 @@ export const certifications = [
  * slides. This is the union — please confirm which are current and active.
  */
 export const contractVehicles = [
-  { name: "NASA SEWP VI", detail: "Category C — Contract 80TECH26D0642", href: "/sewp-vi" },
-  { name: "GSA MAS", detail: "Multiple Award Schedule — Professional Services" },
-  { name: "8(a) STARS III", detail: "GWAC Contract Holder" },
-  { name: "Alliant 2", detail: "SB, SDVOSB, WOSB" },
+  {
+    name: "NASA SEWP VI",
+    detail: "Category C — Contract 80TECH26D0642",
+    href: "/sewp-vi",
+    image: unsplash("photo-1457364887197-9150188c107b", 1200),
+  },
+  {
+    name: "GSA MAS",
+    detail: "Multiple Award Schedule — Professional Services",
+    image: unsplash("photo-1483600516620-7254872369ae", 1200),
+  },
+  {
+    name: "8(a) STARS III",
+    detail: "GWAC Contract Holder",
+    image: unsplash("photo-1543372654-b45dd90eeee5", 1200),
+  },
+  {
+    name: "Alliant 2",
+    detail: "SB, SDVOSB, WOSB",
+    image: unsplash("photo-1711895834959-ce9ae8c700dc", 1200),
+  },
   { name: "FAA eFAST", detail: "IT Staffing Services" },
   { name: "SeaPort NxG", detail: "Professional Services" },
   { name: "ITES-3S", detail: "U.S. Army" },
@@ -296,23 +317,48 @@ export const services: ServiceItem[] = [
 export const techExpertise = [
   {
     area: "Software Development",
+    headline: "Build and modernize the applications you run on",
+    description:
+      "Full-stack engineers across .NET, Java, Python and modern JavaScript frameworks — from new builds to legacy modernization.",
     stack: [".NET", "Java", "Python", "JavaScript", "React", "Angular", "Node.js", "PHP"],
+    image: unsplash("photo-1687603917313-ccae1a289a9d"),
+    imageAlt: "Source code on a monitor",
   },
   {
     area: "Cloud & DevOps",
+    headline: "Move faster in the cloud",
+    description:
+      "Cloud migration, infrastructure-as-code and DevOps pipelines on AWS, Azure and GCP.",
     stack: ["AWS", "Azure", "GCP", "DevOps", "Docker", "Kubernetes", "Terraform"],
+    image: unsplash("photo-1558494949-ef010cbdcc31"),
+    imageAlt: "Network cables patched into a data-center switch",
   },
   {
     area: "Data & Analytics",
+    headline: "Turn data into decisions",
+    description:
+      "Data engineering, BI and AI/ML that give leaders a trusted, timely view of the mission.",
     stack: ["Data Engineering", "BI", "AI/ML", "Big Data", "Power BI", "Tableau"],
+    image: unsplash("photo-1551288049-bebda4e38f71"),
+    imageAlt: "Performance analytics dashboards on a laptop",
   },
   {
     area: "Enterprise Solutions",
+    headline: "Platforms that run the enterprise",
+    description:
+      "Salesforce, SAP, Oracle, ServiceNow and Microsoft 365 specialists who configure, integrate and support.",
     stack: ["Salesforce", "SAP", "Oracle", "ServiceNow", "SharePoint", "Microsoft 365"],
+    image: unsplash("photo-1522071820081-009f0129c71c"),
+    imageAlt: "A team working together on laptops",
   },
   {
     area: "Cybersecurity",
+    headline: "Secure by design, compliant by default",
+    description:
+      "Network security, IAM, risk & compliance and SOC talent that keep systems protected and audit-ready.",
     stack: ["Network Security", "IAM", "Risk & Compliance", "Cloud Security", "SOC"],
+    image: unsplash("photo-1633265486064-086b219458ec"),
+    imageAlt: "A gold padlock resting on a keyboard",
   },
 ];
 
@@ -473,6 +519,7 @@ export const testimonials = [
     author: "Engagement Partner",
     company: "Deloitte Consulting LLP",
     initials: "EP",
+    image: unsplash("photo-1758518731706-be5d5230e5a5", 1200),
   },
   {
     quote:
@@ -480,6 +527,7 @@ export const testimonials = [
     author: "Vice President — Technology",
     company: "SWIFT",
     initials: "VP",
+    image: unsplash("photo-1572021335469-31706a17aaef", 1200),
   },
   {
     quote:
@@ -487,6 +535,7 @@ export const testimonials = [
     author: "Program Manager",
     company: "Leidos",
     initials: "PM",
+    image: unsplash("photo-1573497701240-345a300b8d36", 1200),
   },
 ];
 
