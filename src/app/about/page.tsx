@@ -20,6 +20,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="Why choose Tanvi IT"
+        image="https://images.unsplash.com/photo-1669633760258-186e9dee81e7?w=2400&q=80&auto=format&fit=crop"
         title="Experience. Commitment. Results."
         accent="Results."
         description="We combine deep industry expertise, a people-first approach, and proven delivery to help government and commercial organizations achieve their mission."

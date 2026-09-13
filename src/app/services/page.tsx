@@ -24,6 +24,8 @@ export default function ServicesPage() {
     <>
       <PageHeader
         eyebrow="Services"
+        image="https://images.unsplash.com/photo-1758520145069-782ad713a7ac?w=2400&q=80&auto=format&fit=crop"
+        imagePosition="object-[70%_12%]"
         title="Full-lifecycle IT consulting services"
         accent="consulting services"
         description="Five practices, one accountable delivery team — from sourcing specialist talent to running the technology programs that talent supports."

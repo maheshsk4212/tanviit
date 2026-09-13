@@ -15,6 +15,7 @@ export default function ContactPage() {
     <>
       <PageHeader
         eyebrow="Contact"
+        image="https://images.unsplash.com/photo-1725272544569-e63e7636b171?w=2400&q=80&auto=format&fit=crop"
         title="Let's talk about your project"
         accent="your project"
         description="Tell us a bit about what you're working on and a member of our team will follow up."

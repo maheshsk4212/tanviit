@@ -19,6 +19,7 @@ export function PageHeader({
   description,
   image,
   imageAlt,
+  imagePosition = "object-[70%_center]",
   children,
 }: {
   eyebrow?: string;
@@ -29,6 +30,9 @@ export function PageHeader({
   image?: string;
   /** Alt text for `image`; omit when the photo is purely decorative. */
   imageAlt?: string;
+  /** object-position class for `image`. Defaults right of centre, so the
+      photo's subject sits clear of the text on the darkened left. */
+  imagePosition?: string;
   children?: ReactNode;
 }) {
   const splitAt = accent ? title.length - accent.length : -1;
@@ -42,7 +46,7 @@ export function PageHeader({
             fill
             preload
             sizes="100vw"
-            className="hero-image -z-20 object-cover"
+            className={`hero-image -z-20 object-cover ${imagePosition}`}
           />
           <div className="hero-scrim absolute inset-0 -z-10" aria-hidden />
         </>
