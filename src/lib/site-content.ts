@@ -24,11 +24,22 @@ export const siteConfig = {
   address: "1900 Reston Metro Plaza, Reston, VA 20190",
 };
 
+export interface NavFeature {
+  title: string;
+  /** One short supporting line — the equivalent of a date on an event card. */
+  meta: string;
+  href: string;
+  image: string;
+  cta: string;
+}
+
 export interface NavItem {
   label: string;
   href: string;
   /** Optional mega-menu children shown on hover/focus for this item. */
   menu?: { label: string; href: string; description: string }[];
+  /** Right-hand column of the mega menu. Real destinations only. */
+  featured?: { heading: string; items: NavFeature[] };
 }
 
 export const mainNav: NavItem[] = [
@@ -64,6 +75,32 @@ export const mainNav: NavItem[] = [
         description: "Advisory and delivery across the tech lifecycle.",
       },
     ],
+    featured: {
+      heading: "Engage with confidence",
+      items: [
+        {
+          title: "NASA SEWP VI — Category C",
+          meta: "Contract 80TECH26D0642",
+          href: "/sewp-vi",
+          image: "/hero-government-hires.png",
+          cta: "View contract",
+        },
+        {
+          title: "Technology expertise",
+          meta: "Cloud, data, cybersecurity & enterprise platforms",
+          href: "/services#technology",
+          image: "/hero-enterprise.png",
+          cta: "See the stack",
+        },
+        {
+          title: "How we deliver",
+          meta: "Seven steps from your needs to measured results",
+          href: "/services#process",
+          image: "/hero-talent.png",
+          cta: "See the process",
+        },
+      ],
+    },
   },
   {
     label: "Industries",
@@ -95,6 +132,37 @@ export const mainNav: NavItem[] = [
         description: "See every sector we serve.",
       },
     ],
+    // Sectors not already in the list on the left, so the two columns don't
+    // repeat each other. Photos match the verified tiles on /industries.
+    featured: {
+      heading: "Also serving",
+      items: [
+        {
+          title: "Defense & Intelligence",
+          meta: "Mission-critical systems for national security",
+          href: "/industries#defense-intelligence",
+          image:
+            "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=600&q=80&auto=format&fit=crop",
+          cta: "Explore",
+        },
+        {
+          title: "Energy & Utilities",
+          meta: "Reliable operations through modern IT",
+          href: "/industries#energy-utilities",
+          image:
+            "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80&auto=format&fit=crop",
+          cta: "Explore",
+        },
+        {
+          title: "Education",
+          meta: "Technology for learning, research & administration",
+          href: "/industries#education",
+          image:
+            "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=80&auto=format&fit=crop",
+          cta: "Explore",
+        },
+      ],
+    },
   },
   { label: "SEWP VI", href: "/sewp-vi" },
   { label: "Careers", href: "/careers" },

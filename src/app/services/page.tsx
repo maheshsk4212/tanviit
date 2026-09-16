@@ -45,7 +45,7 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      <Section tone="dark">
+      <Section tone="dark" id="technology">
         <SectionHeading
           tone="dark"
           eyebrow="Technology expertise"
@@ -57,7 +57,7 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      <Section>
+      <Section id="process">
         <SectionHeading
           eyebrow="How we deliver"
           title="A proven process. Exceptional results."
