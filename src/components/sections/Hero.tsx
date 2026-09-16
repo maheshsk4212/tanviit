@@ -45,20 +45,23 @@ export function Hero() {
         </Reveal>
       </Container>
 
-      <div className="border-t border-white/10 bg-black/35 backdrop-blur-sm">
+      {/* Mustard-to-cream band: brand gold on the left, fading to near-white on
+          the right. Text is solid dark rather than translucent so the labels
+          stay readable where they sit over the saturated gold end. */}
+      <div className="bg-gradient-to-r from-gold-500 to-cream-50">
         <Container>
           <dl className="grid grid-cols-2 lg:grid-cols-4">
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
                 className={`flex flex-col-reverse py-5 sm:py-6 ${
-                  i % 2 === 1 ? "border-l border-white/10 pl-6" : ""
-                } ${i >= 2 ? "border-t border-white/10 lg:border-t-0" : ""} ${
-                  i > 0 ? "lg:border-l lg:border-white/10 lg:pl-8" : ""
+                  i % 2 === 1 ? "border-l border-deep-950/10 pl-6" : ""
+                } ${i >= 2 ? "border-t border-deep-950/10 lg:border-t-0" : ""} ${
+                  i > 0 ? "lg:border-l lg:border-deep-950/10 lg:pl-8" : ""
                 }`}
               >
-                <dt className="mt-1 text-sm text-white/60">{stat.label}</dt>
-                <dd className="font-display text-2xl font-medium tracking-[-0.02em] text-white sm:text-3xl">
+                <dt className="mt-1 text-sm text-deep-900">{stat.label}</dt>
+                <dd className="font-display text-2xl font-medium tracking-[-0.02em] text-deep-950 sm:text-3xl">
                   {stat.value}
                 </dd>
               </div>
