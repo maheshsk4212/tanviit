@@ -20,11 +20,7 @@ export function Hero() {
 
       <Container className="pb-14 pt-36 sm:pb-16">
         <Reveal>
-          <p className="flex items-center gap-3 text-sm font-medium text-gold-300">
-            <span className="h-px w-10 bg-gold-400" aria-hidden />
-            U.S. based &amp; operated &middot; Top 1% IT talent
-          </p>
-          <h1 className="mt-6 font-display text-[3.25rem] font-medium leading-[0.95] tracking-[-0.03em] text-white sm:text-7xl lg:text-[5.75rem]">
+          <h1 className="font-display text-[3.25rem] font-medium leading-[0.95] tracking-[-0.03em] text-white sm:text-7xl lg:text-[5.75rem]">
             <span className="block">Connecting U.S. companies</span>
             <span className="block">
               with the right <span className="text-gold-400">IT talent</span>
