@@ -40,11 +40,10 @@ function iconFor(href: string): LucideIcon {
   return serviceIcons[slug] ?? industryIcons[slug] ?? ArrowRight;
 }
 
-function barLinkClass(highlighted: boolean) {
-  return `group relative flex items-center gap-1 px-3 py-2 text-[15px] transition-colors ${
-    highlighted ? "text-white" : "text-white/75 hover:text-white"
-  }`;
-}
+/* Solid white, medium weight in every state; the underline alone marks the
+   current page, the open menu and hover. */
+const BAR_LINK_CLASS =
+  "group relative flex items-center gap-1 px-3 py-2 text-[15px] font-medium text-white";
 
 /** Underline that draws in beneath the current/open item, as on alphaomega.com. */
 function Underline({ on }: { on: boolean }) {
@@ -250,7 +249,7 @@ export function Nav() {
                   href={item.href}
                   onMouseEnter={close}
                   onFocus={close}
-                  className={barLinkClass(current)}
+                  className={BAR_LINK_CLASS}
                 >
                   {item.label}
                   <Underline on={current} />
@@ -283,7 +282,7 @@ export function Nav() {
                     }
                   }
                 }}
-                className={barLinkClass(current || isOpen)}
+                className={BAR_LINK_CLASS}
               >
                 {item.label}
                 <ChevronDown
@@ -360,7 +359,7 @@ export function Nav() {
                 >
                   <Link
                     href={item.href}
-                    className="block rounded-lg px-3 py-2.5 text-base font-medium text-white/85 hover:bg-white/5 hover:text-white"
+                    className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/5"
                   >
                     {item.label}
                   </Link>
