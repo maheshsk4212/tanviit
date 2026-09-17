@@ -30,7 +30,7 @@ export function Hero() {
               with the right <span className="text-gold-400">IT talent</span>
             </span>
           </h1>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/85">
+          <p className="mt-8 max-w-xl text-lg font-medium leading-relaxed text-white">
             We connect organizations with skilled IT professionals to accelerate innovation, reduce
             time-to-hire, and deliver results.
           </p>

@@ -71,7 +71,7 @@ export function PageHeader({
             )}
           </h1>
           {description ? (
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-white/75">{description}</p>
+            <p className="mt-7 max-w-2xl text-lg font-medium leading-relaxed text-white">{description}</p>
           ) : null}
           {children}
         </Reveal>
