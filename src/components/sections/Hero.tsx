@@ -6,7 +6,7 @@ import { Reveal } from "@/components/motion/Reveal";
 /** Full-bleed cinematic hero with a key-figures strip along its base. */
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[40rem] flex-col justify-end overflow-hidden bg-deep-950 sm:min-h-[44rem] lg:min-h-[50.625rem]">
+    <section className="relative isolate flex min-h-[40rem] flex-col justify-center overflow-hidden bg-deep-950 sm:min-h-[44rem] lg:min-h-[50.625rem]">
       <Image
         src="/hero-government-hires.png"
         alt="The U.S. Capitol at dusk, wrapped in a connected data network"
@@ -17,7 +17,10 @@ export function Hero() {
       />
       <div className="hero-scrim absolute inset-0 -z-10" aria-hidden />
 
-      <Container className="pb-20 pt-36 sm:pb-24">
+      {/* Centred in the space below the fixed 72px nav: top padding is the
+          bottom padding plus the nav height, so the gaps above the headline
+          and below the buttons come out even. */}
+      <Container className="pb-20 pt-38 sm:pb-24 sm:pt-42">
         <Reveal>
           <h1 className="font-display text-[3.25rem] font-medium leading-[0.95] tracking-[-0.03em] text-white sm:text-7xl lg:text-[5.75rem]">
             <span className="block">Connecting U.S. companies</span>
