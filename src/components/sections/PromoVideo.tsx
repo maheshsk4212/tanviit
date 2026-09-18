@@ -7,23 +7,27 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
 /**
- * Full-frame brand film: the ten-second film fills the band edge to edge
- * (`object-cover`), silent, with the message set over it.
+ * Full-frame brand film: footage fills the band edge to edge (`object-cover`),
+ * silent, with the message set over it.
  *
- * Only one stretch of the film can carry type over it. The rest is spoken for:
- * burned-in wording on the opening globe (0–1s), "Let's build what's next,
- * together." over the team shot (3.2–4.9s — the very line the closing CTA below
- * already says), a mock Tanvi IT site on a monitor whose invented interface
- * copy does not match this one (5.6–6.5s), and the logo end card (8.8–10s).
- * What is left is 6.6–8.8: solar field, office floor, lobby, handshake. Slowed
- * a little, those four shots run as a clean 3.6-second loop under the message.
+ * Only one stretch of the ten-second film can carry type over it. The rest is
+ * spoken for: burned-in wording on the opening globe (0–1s), "Let's build
+ * what's next, together." over the team shot (3.2–4.9s — the very line the
+ * closing CTA already says), a mock Tanvi IT site on a monitor whose invented
+ * interface copy does not match this one (5.6–6.5s), and the logo end card
+ * (8.8–10s). What is left is 6.62–8.78: solar field, office floor, lobby,
+ * handshake.
  *
- * It only starts once the band is on screen, so visitors who never scroll this
- * far never fetch the 5 MB; the poster frame — the first frame of the loop —
- * holds the band until the video has decoded.
+ * That window ships as its own file rather than being seeked to inside the
+ * full film. Playing the film from 6.62s meant pulling two thirds of 5.4 MB
+ * before a single frame could appear — 15–20 seconds on the live site. The
+ * clip is video only (this band is always muted), re-encoded at 2.3 Mbps with
+ * the moov atom first: 635 KB, and it loops natively.
+ *
+ * Loading still waits until the band is near the viewport, so visitors who
+ * never scroll this far never fetch it; the poster frame — the first frame of
+ * the clip — holds the band until the video has decoded.
  */
-const SEGMENT_IN = 6.62;
-const SEGMENT_OUT = 8.78;
 const PLAYBACK_RATE = 0.6;
 
 const lines = ["Technology moves the mission.", "People move the technology."];
@@ -59,9 +63,6 @@ export function PromoVideo() {
   const play = useCallback(() => {
     const video = videoRef.current;
     if (!video) return;
-    if (video.currentTime < SEGMENT_IN || video.currentTime > SEGMENT_OUT) {
-      video.currentTime = SEGMENT_IN;
-    }
     video.playbackRate = PLAYBACK_RATE;
     // Rejected play() is fine: the poster frame stays, and the band still reads.
     void video.play().catch(() => {});
@@ -77,13 +78,15 @@ export function PromoVideo() {
 
     // `preload="none"` means nothing is fetched until play() is called, so the
     // observer is what pulls the file down — and only for visitors who arrive.
+    // It fires a screen ahead of the band so the clip has landed by the time
+    // the band is actually in view.
     const observer = new IntersectionObserver(
       ([entry]) => {
         onScreen.current = entry.isIntersecting;
         if (entry.isIntersecting) play();
         else video.pause();
       },
-      { threshold: 0.2 },
+      { rootMargin: "400px 0px" },
     );
     observer.observe(section);
 
@@ -118,17 +121,13 @@ export function PromoVideo() {
 
       <video
         ref={videoRef}
-        src="/tanvi-promo.mp4"
+        src="/tanvi-promo-loop.mp4"
         muted
+        loop
         playsInline
         preload="none"
         aria-hidden
         tabIndex={-1}
-        onTimeUpdate={(event) => {
-          // Loop the clean stretch rather than the whole film.
-          const video = event.currentTarget;
-          if (video.currentTime >= SEGMENT_OUT) video.currentTime = SEGMENT_IN;
-        }}
         // Until the first frame decodes the element paints nothing, so the
         // poster behind it carries the band — and it is this same frame.
         className="absolute inset-0 -z-20 h-full w-full object-cover"
@@ -153,16 +152,9 @@ export function PromoVideo() {
             visible: { transition: { staggerChildren: reduced ? 0 : 0.12 } },
           }}
         >
-          <motion.p
-            variants={fadeVariants(reduced)}
-            className="text-xs font-medium uppercase tracking-[0.22em] text-gold-400"
-          >
-            Tanvi IT in ten seconds
-          </motion.p>
-
           <h2
             id="promo-heading"
-            className="mt-6 font-display text-[2.15rem] font-medium leading-[1.06] tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.5rem]"
+            className="font-display text-[2.15rem] font-medium leading-[1.06] tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.25rem] xl:text-[3.5rem]"
           >
             {lines.map((line) => (
               // The mask each line rises out of.
