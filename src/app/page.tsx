@@ -91,7 +91,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Brand film, immediately before the closing CTA it shares a line with. */}
+      {/* Full-frame brand film, immediately before the closing CTA. */}
       <PromoVideo />
 
       <CTASection
