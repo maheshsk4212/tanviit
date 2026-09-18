@@ -40,10 +40,17 @@ function iconFor(href: string): LucideIcon {
   return serviceIcons[slug] ?? industryIcons[slug] ?? ArrowRight;
 }
 
-/* Solid white, medium weight in every state; the underline alone marks the
-   current page, the open menu and hover. */
+/* Pages that open on a light hero (only the homepage today) need the whole
+   bar in ink rather than white while it rides transparent over that hero. */
+const LIGHT_HERO_ROUTES = new Set(["/"]);
+
+/* Solid, medium weight in every state; the underline alone marks the current
+   page, the open menu and hover. */
 const BAR_LINK_CLASS =
-  "group relative flex items-center gap-1 px-3 py-2 text-[15px] font-medium text-white";
+  "group relative flex items-center gap-1 px-3 py-2 text-[15px] font-medium";
+
+const barLinkClass = (light: boolean) =>
+  `${BAR_LINK_CLASS} ${light ? "text-fg" : "text-white"}`;
 
 /** Underline that draws in beneath the current/open item, as on alphaomega.com. */
 function Underline({ on }: { on: boolean }) {
@@ -194,7 +201,11 @@ export function Nav() {
   }, []);
 
   const openItem = desktopItems.find((item) => item.href === activeMenu && item.menu);
-  const solid = scrolled || mobileOpen || Boolean(openItem);
+  const light = LIGHT_HERO_ROUTES.has(pathname);
+  // A light hero shares the bar's own ground, so there is nothing to ride
+  // transparently over — the bar stays solid there, as on azure.microsoft.com,
+  // which also keeps the right-hand CTA off the photograph's dark half.
+  const solid = scrolled || mobileOpen || Boolean(openItem) || light;
   const close = () => setActiveMenu(null);
 
   // Runs after React has committed the panel, so the link is guaranteed to
@@ -211,9 +222,11 @@ export function Nav() {
   }
 
   return (
-    // Every page opens on a dark hero, so the bar rides transparent over it and
-    // turns solid once scrolled, or while a menu is open. `fixed`, not
-    // `sticky`, so the hero runs up underneath it.
+    // Over a dark hero the bar rides transparent and turns solid once scrolled,
+    // or while a menu is open; over a light hero it is solid throughout. Solid
+    // means the page surface with ink contents on light routes, and the dark
+    // shell everywhere else. `fixed`, not `sticky`, so the hero runs up
+    // underneath it.
     <header
       ref={headerRef}
       onMouseLeave={close}
@@ -231,12 +244,16 @@ export function Nav() {
         }
       }}
       className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
-        solid ? "border-white/10 bg-deep-950/95 backdrop-blur-lg" : "border-transparent bg-transparent"
+        solid
+          ? light
+            ? "border-line bg-surface/95 backdrop-blur-lg"
+            : "border-white/10 bg-deep-950/95 backdrop-blur-lg"
+          : "border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div onMouseEnter={close}>
-          <Logo tone="dark" />
+          <Logo tone={light ? "light" : "dark"} />
         </div>
 
         <nav className="hidden h-full items-center gap-0.5 lg:flex" aria-label="Main">
@@ -249,7 +266,7 @@ export function Nav() {
                   href={item.href}
                   onMouseEnter={close}
                   onFocus={close}
-                  className={BAR_LINK_CLASS}
+                  className={barLinkClass(light)}
                 >
                   {item.label}
                   <Underline on={current} />
@@ -282,7 +299,7 @@ export function Nav() {
                     }
                   }
                 }}
-                className={BAR_LINK_CLASS}
+                className={barLinkClass(light)}
               >
                 {item.label}
                 <ChevronDown
@@ -296,14 +313,16 @@ export function Nav() {
         </nav>
 
         <div className="hidden lg:block" onMouseEnter={close}>
-          <Button href="/contact" variant="ghost-dark" arrow>
+          <Button href="/contact" variant={light ? "ghost" : "ghost-dark"} arrow>
             Talk to our team
           </Button>
         </div>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md p-2 text-white lg:hidden"
+          className={`inline-flex items-center justify-center rounded-md p-2 lg:hidden ${
+            light ? "text-fg" : "text-white"
+          }`}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
@@ -347,7 +366,9 @@ export function Nav() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="overflow-hidden border-t border-white/10 bg-deep-950 lg:hidden"
+            className={`overflow-hidden border-t lg:hidden ${
+              light ? "border-line bg-surface" : "border-white/10 bg-deep-950"
+            }`}
           >
             <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Mobile">
               {mainNav.map((item, i) => (
@@ -359,17 +380,27 @@ export function Nav() {
                 >
                   <Link
                     href={item.href}
-                    className="block rounded-lg px-3 py-2.5 text-base font-medium text-white hover:bg-white/5"
+                    className={`block rounded-lg px-3 py-2.5 text-base font-medium ${
+                      light ? "text-fg hover:bg-cream-50" : "text-white hover:bg-white/5"
+                    }`}
                   >
                     {item.label}
                   </Link>
                   {item.menu ? (
-                    <div className="ml-3 mt-0.5 flex flex-col gap-0.5 border-l border-white/10 pl-3">
+                    <div
+                      className={`ml-3 mt-0.5 flex flex-col gap-0.5 border-l pl-3 ${
+                        light ? "border-line" : "border-white/10"
+                      }`}
+                    >
                       {item.menu.map((child) => (
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block rounded-lg px-3 py-2 text-sm text-white/60 hover:bg-white/5 hover:text-white"
+                          className={`block rounded-lg px-3 py-2 text-sm ${
+                            light
+                              ? "text-fg-subtle hover:bg-cream-50 hover:text-fg"
+                              : "text-white/60 hover:bg-white/5 hover:text-white"
+                          }`}
                         >
                           {child.label}
                         </Link>
@@ -378,7 +409,7 @@ export function Nav() {
                   ) : null}
                 </motion.div>
               ))}
-              <div className="mt-3 border-t border-white/10 px-3 pt-4">
+              <div className={`mt-3 border-t px-3 pt-4 ${light ? "border-line" : "border-white/10"}`}>
                 <Button href="/contact">Talk to our team</Button>
               </div>
             </nav>

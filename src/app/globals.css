@@ -364,6 +364,30 @@ html {
     linear-gradient(180deg, rgb(0 0 0 / 0.6) 0%, transparent 22%);
 }
 
+/* Feathered edges for the light homepage hero: the photograph dissolves into
+   the page's own surface instead of meeting it at a hard line. `-x` fades it
+   leftwards into the copy column on the split desktop layout; `-y` fades it
+   upwards into the copy when the two stack on small screens. Both are built
+   from the surface token, so they follow the active theme. */
+.hero-feather-x {
+  background: linear-gradient(
+    to right,
+    var(--color-surface) 0%,
+    color-mix(in oklab, var(--color-surface) 78%, transparent) 16%,
+    color-mix(in oklab, var(--color-surface) 22%, transparent) 38%,
+    transparent 58%
+  );
+}
+
+.hero-feather-y {
+  background: linear-gradient(
+    to bottom,
+    var(--color-surface) 0%,
+    color-mix(in oklab, var(--color-surface) 30%, transparent) 22%,
+    transparent 45%
+  );
+}
+
 .glow-gold-br {
   background: radial-gradient(55% 90% at 90% 100%, color-mix(in oklab, var(--color-gold-500) 22%, transparent), transparent 70%);
 }
