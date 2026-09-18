@@ -4,6 +4,7 @@ import { ExpertiseStack } from "@/components/sections/ExpertiseStack";
 import { Hero } from "@/components/sections/Hero";
 import { IndustriesSplit } from "@/components/sections/IndustriesSplit";
 import { KeyFigures } from "@/components/sections/KeyFigures";
+import { PromoVideo } from "@/components/sections/PromoVideo";
 import { ResultsShowcase } from "@/components/sections/ResultsShowcase";
 import { TestimonialCards } from "@/components/sections/TestimonialCards";
 import { VehicleCards } from "@/components/sections/VehicleCards";
@@ -89,6 +90,9 @@ export default function Home() {
           <TestimonialCards />
         </div>
       </Section>
+
+      {/* Brand film, immediately before the closing CTA it shares a line with. */}
+      <PromoVideo />
 
       <CTASection
         overline="Tanvi IT + your mission = delivered"
