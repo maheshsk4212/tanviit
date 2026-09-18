@@ -3,45 +3,38 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 
-/** Full-bleed cinematic hero with a key-figures strip along its base. */
+/**
+ * Two-column hero: the message on the left, the connection emblem on the
+ * right. The artwork is a glowing emblem on pure black — a globe ringed by
+ * gold and blue orbits linking a "companies" badge to a "talent" badge — so
+ * it is cropped to the emblem and set on a black section rather than used as
+ * a background photo. Its edges then blend into the page with no seam, and
+ * nothing is cropped or hidden behind the copy at any width.
+ *
+ * Below lg the columns stack: copy first, emblem beneath it.
+ */
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[40rem] flex-col justify-center overflow-hidden bg-deep-950 sm:min-h-[44rem] lg:min-h-[50.625rem]">
-      {/* The image layer is 125% of the hero's height, anchored to the top
-          and clipped at the bottom. That lowers the team in the frame so the
-          headline sits in the sky above their faces rather than across them;
-          only the table and floor are trimmed. The 80% horizontal anchor
-          keeps the team in view as narrower screens crop the sides. No
-          darkening filter: the scrim alone keeps the copy legible, and the
-          golden connection lines are the point of the image. */}
-      <div className="absolute inset-x-0 top-0 -z-20 h-[125%]">
-        <Image
-          src="/hero-connecting-talent.jpg"
-          alt="An IT team working at a laptop, with golden lines connecting them to the city skyline and the U.S. Capitol at dusk"
-          fill
-          preload
-          sizes="100vw"
-          className="object-cover object-[80%_top]"
-        />
-      </div>
-      <div className="hero-scrim absolute inset-0 -z-10" aria-hidden />
+    <section className="relative isolate overflow-hidden bg-black">
+      {/* Ambient warmth behind the emblem so the right side isn't flat black. */}
+      <div
+        className="pointer-events-none absolute right-0 top-1/2 h-[34rem] w-[34rem] -translate-y-1/2 translate-x-1/3 rounded-full bg-gold-500/10 blur-[130px]"
+        aria-hidden
+      />
 
-      {/* Centred in the space below the fixed 72px nav: top padding is the
-          bottom padding plus the nav height, so the gaps above the headline
-          and below the buttons come out even. */}
-      <Container className="pb-20 pt-38 sm:pb-24 sm:pt-42">
+      <Container className="grid items-center gap-8 pb-12 pt-24 sm:gap-10 sm:pb-20 sm:pt-32 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pb-24 lg:pt-36">
         <Reveal>
-          <h1 className="font-display text-[3.25rem] font-medium leading-[0.95] tracking-[-0.03em] text-white sm:text-7xl xl:text-[5.75rem]">
+          <h1 className="text-balance font-display text-[2.5rem] font-medium leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.25rem] xl:text-6xl">
             <span className="block">Connecting U.S. companies</span>
             <span className="block">
-              with the right <span className="text-gold-400">IT talent</span>
+              with the right <span className="text-gold-400">IT&nbsp;talent</span>
             </span>
           </h1>
-          <p className="mt-8 max-w-xl text-lg font-medium leading-relaxed text-white">
+          <p className="mt-6 max-w-lg text-base font-medium leading-relaxed text-white sm:mt-7 sm:text-lg">
             We connect organizations with skilled IT professionals to accelerate innovation, reduce
             time-to-hire, and deliver results.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
             <Button href="/services" size="lg">
               Explore our solutions
             </Button>
@@ -49,6 +42,20 @@ export function Hero() {
               View SEWP VI contract
             </Button>
           </div>
+        </Reveal>
+
+        {/* Capped on phones so the hero still fits a phone screen. */}
+        <Reveal delay={0.1} className="relative mx-auto aspect-[898/616] w-full max-w-[300px] sm:max-w-[430px] lg:max-w-none">
+          <Image
+            src="/hero-emblem.png"
+            alt="A globe ringed by gold and blue orbits, linking a badge of office towers to a badge of people — U.S. companies connected to IT talent"
+            fill
+            priority
+            sizes="(min-width: 1024px) 45vw, 100vw"
+            // `screen` against the black section: the artwork's black falls
+            // away so its rectangular frame is invisible, leaving only the glow.
+            className="object-contain mix-blend-screen"
+          />
         </Reveal>
       </Container>
     </section>
