@@ -78,8 +78,11 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* Full-frame brand film, breaking the run of light sections. */}
+      <PromoVideo />
+
       {/* Testimonials */}
-      <Section className="pt-0 sm:pt-0 lg:pt-0">
+      <Section>
         <SectionHeading
           eyebrow="Client testimonials"
           title="Trusted by agencies. Proven by results."
@@ -90,9 +93,6 @@ export default function Home() {
           <TestimonialCards />
         </div>
       </Section>
-
-      {/* Full-frame brand film, immediately before the closing CTA. */}
-      <PromoVideo />
 
       <CTASection
         overline="Tanvi IT + your mission = delivered"
