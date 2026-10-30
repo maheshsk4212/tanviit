@@ -22,11 +22,19 @@ export function Band({
   tone = "white",
   id,
   motif = false,
+  clip = true,
   children,
   className = "",
 }: {
   tone?: Tone;
   id?: string;
+  /**
+   * Horizontal clipping contains the sideways reveal offsets, but it also
+   * stops `position: sticky` working for anything inside — Chrome resolves the
+   * sticky element against the clip box, which never scrolls. Turn it off for
+   * bands with a sticky column, and keep their reveals vertical.
+   */
+  clip?: boolean;
   /**
    * Brand motif in the top-right. A left-ranged heading leaves that corner
    * empty; this gives the eye something structural to land on without
@@ -40,7 +48,9 @@ export function Band({
   return (
     <section
       id={id}
-      className={`relative scroll-mt-24 overflow-x-clip py-20 sm:py-24 lg:py-28 ${tones[tone]} ${className}`}
+      className={`relative scroll-mt-24 py-20 sm:py-24 lg:py-28 ${
+        clip ? "overflow-x-clip" : ""
+      } ${tones[tone]} ${className}`}
     >
       {motif ? <BandMotif onDark={tone === "dark"} /> : null}
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>

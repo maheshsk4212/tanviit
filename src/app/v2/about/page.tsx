@@ -292,16 +292,16 @@ export default function V2About() {
       </Band>
 
       {/* ------------------------------------------------------------- JV */}
-      <Band id="joint-ventures">
+      <Band clip={false} id="joint-ventures">
         <V2FeatureRow
           eyebrow="Joint ventures"
           title={jointVenture.name}
           image={v2Images.people.src}
           imageAlt={v2Images.people.alt}
-          align="start"
+          sticky
         >
           {/* The two partners, named as a pair. */}
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             {jointVenture.partners.split("+").map((partner) => (
               <span
                 key={partner}
@@ -312,7 +312,7 @@ export default function V2About() {
             ))}
           </div>
 
-          <div className="mt-6 space-y-5 text-base leading-relaxed text-fg-muted sm:text-lg">
+          <div className="mt-7 space-y-5 text-base leading-relaxed text-fg-muted sm:text-lg">
             {jointVenture.body.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}

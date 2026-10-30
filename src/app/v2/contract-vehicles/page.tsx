@@ -70,32 +70,43 @@ export default function V2Vehicles() {
       </PageHero>
 
       {/* ------------------------------------------------ Buyer snapshot */}
-      <Band>
-        <BandHeading
-          eyebrow="At a glance"
-          title="The details you need before you buy"
-          lead="Everything a contracting officer usually asks for first, in one place."
-        />
-        <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.05}>
-          {buyerSnapshot.map((row, i) => {
-            const Icon = snapshotIcons[i % snapshotIcons.length];
-            return (
-              <RevealItem key={row.term}>
-                <div className="group h-full rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </span>
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-navy-700">
-                    {row.term}
-                  </p>
-                  <p className="mt-2 font-display text-lg font-semibold leading-snug text-navy-900">
-                    {row.detail}
-                  </p>
-                </div>
-              </RevealItem>
-            );
-          })}
-        </RevealGroup>
+      <Band clip={false}>
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          {/* The heading holds while the details scroll past it. */}
+          <div>
+            <Reveal className="lg:sticky lg:top-28">
+              <BandHeading
+                eyebrow="At a glance"
+                title="The details you need before you buy"
+                lead="Everything a contracting officer usually asks for first, in one place."
+              />
+              <div className="mt-8">
+                <MoreLink href="/v2/contact">Ask for anything else</MoreLink>
+              </div>
+            </Reveal>
+          </div>
+
+          <RevealGroup className="grid gap-5 sm:grid-cols-2" stagger={0.05}>
+            {buyerSnapshot.map((row, i) => {
+              const Icon = snapshotIcons[i % snapshotIcons.length];
+              return (
+                <RevealItem key={row.term}>
+                  <div className="group h-full rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-navy-700">
+                      {row.term}
+                    </p>
+                    <p className="mt-2 font-display text-lg font-semibold leading-snug text-navy-900">
+                      {row.detail}
+                    </p>
+                  </div>
+                </RevealItem>
+              );
+            })}
+          </RevealGroup>
+        </div>
       </Band>
 
       {/* ------------------------------------------------- Featured: SEWP */}
