@@ -660,14 +660,64 @@ export const vehicleProfiles = [
   },
 ];
 
-/** Cooperative and state-level routes, listed compactly. */
+/**
+ * Cooperative and state-level routes. Each line describes who the programme
+ * serves — the thing a state, city or school district buyer is checking —
+ * rather than repeating the word "cooperative" six times.
+ */
 export const cooperativeVehicles = [
-  { name: "NASPO ValuePoint", detail: "State & local cooperative purchasing" },
-  { name: "OMNIA Partners", detail: "Public sector cooperative" },
-  { name: "NCPA", detail: "National Cooperative Purchasing Alliance" },
-  { name: "Sourcewell", detail: "Cooperative purchasing" },
-  { name: "HGACBuy", detail: "Houston-Galveston Area Council" },
-  { name: "State & local", detail: "Multiple state, county and municipal contracts" },
+  {
+    name: "NASPO ValuePoint",
+    serves: "All 50 states",
+    detail:
+      "The cooperative run by state procurement officials, used by state agencies and their political subdivisions nationwide.",
+  },
+  {
+    name: "OMNIA Partners",
+    serves: "Public sector & education",
+    detail:
+      "A national purchasing cooperative whose agreements are competitively solicited by a lead public agency and shared across its members.",
+  },
+  {
+    name: "Sourcewell",
+    serves: "Government, education & non-profit",
+    detail:
+      "A government agency and national cooperative whose members award from contracts it has already competed on their behalf.",
+  },
+  {
+    name: "NCPA",
+    serves: "Public agencies & schools",
+    detail:
+      "The National Cooperative Purchasing Alliance, serving public agencies, school districts and higher education across the country.",
+  },
+  {
+    name: "HGACBuy",
+    serves: "Local government",
+    detail:
+      "The Houston-Galveston Area Council's purchasing programme, open to local governments and qualifying public agencies.",
+  },
+  {
+    name: "State & local contracts",
+    serves: "Direct award",
+    detail:
+      "Multiple state, county and municipal contracts held directly, for buyers who award outside a cooperative.",
+  },
+];
+
+/** Why a buyer would take a cooperative route at all. */
+export const cooperativeBenefits = [
+  {
+    title: "Already competed",
+    detail: "The solicitation has been run by a lead agency, so you are not starting a new one.",
+  },
+  {
+    title: "Faster to award",
+    detail: "Members award directly from the agreement, which removes months from the timeline.",
+  },
+  {
+    title: "Open to more buyers",
+    detail: "States, counties, cities, school districts and public agencies can all use them.",
+  },
 ];
 
 /** The identifiers a contracting officer asks for first. */

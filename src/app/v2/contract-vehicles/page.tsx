@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Building2,
+  Check,
   FileCheck2,
   FileText,
   Hash,
   Landmark,
+  GraduationCap,
+  Handshake,
+  Map,
   MapPin,
+  Network,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
@@ -23,6 +27,7 @@ import {
 } from "@/components/v2/V2Section";
 import {
   buyerSnapshot,
+  cooperativeBenefits,
   cooperativeVehicles,
   howToBuy,
   naicsCodes,
@@ -39,6 +44,9 @@ export const metadata: Metadata = {
 
 /* The snapshot rows, in the order a contracting officer reads them. */
 const snapshotIcons = [Hash, FileText, ShieldCheck, FileCheck2, Sparkles, MapPin];
+
+/* NASPO, OMNIA, Sourcewell, NCPA, HGACBuy, direct state & local. */
+const cooperativeIcons = [Map, Network, Handshake, GraduationCap, MapPin, Landmark];
 
 export default function V2Vehicles() {
   const [featured, ...others] = vehicleProfiles;
@@ -181,29 +189,52 @@ export default function V2Vehicles() {
         <BandHeading
           eyebrow="State, local & cooperative"
           title="Routes outside the federal vehicles"
-          lead="Cooperative purchasing agreements that state, local and education buyers can award through."
+          lead="Cooperative agreements let a state, county, city or school district award from a contract that has already been competed — no new solicitation required."
         />
-        <RevealGroup
-          className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3"
-          stagger={0.04}
-        >
-          {cooperativeVehicles.map((vehicle) => (
-            <RevealItem key={vehicle.name}>
-              <div className="group flex h-full items-start gap-4 bg-white p-6 transition-colors duration-300 hover:bg-navy-50">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
-                  <Building2 className="h-5 w-5" aria-hidden />
-                </span>
+
+        {/* Why the route exists, before the list of routes. */}
+        <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-2xl bg-navy-200 sm:grid-cols-3">
+          {cooperativeBenefits.map((benefit) => (
+            <RevealItem key={benefit.title}>
+              <div className="flex h-full items-start gap-3.5 bg-navy-950 p-6">
+                <Check className="mt-0.5 h-5 w-5 shrink-0 text-flame-400" aria-hidden />
                 <span>
-                  <span className="block font-display text-base font-semibold text-navy-900">
-                    {vehicle.name}
+                  <span className="block font-display text-base font-semibold text-white">
+                    {benefit.title}
                   </span>
-                  <span className="mt-1 block text-[14px] leading-snug text-fg-muted">
-                    {vehicle.detail}
+                  <span className="mt-1.5 block text-[14px] leading-relaxed text-white/75">
+                    {benefit.detail}
                   </span>
                 </span>
               </div>
             </RevealItem>
           ))}
+        </RevealGroup>
+
+        <RevealGroup className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.05}>
+          {cooperativeVehicles.map((vehicle, i) => {
+            const Icon = cooperativeIcons[i % cooperativeIcons.length];
+            return (
+              <RevealItem key={vehicle.name}>
+                <article className="group flex h-full flex-col rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <span className="rounded-full border border-navy-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-navy-700">
+                      {vehicle.serves}
+                    </span>
+                  </div>
+                  <h3 className="mt-5 font-display text-xl font-semibold tracking-[-0.02em] text-navy-900">
+                    {vehicle.name}
+                  </h3>
+                  <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-fg-muted">
+                    {vehicle.detail}
+                  </p>
+                </article>
+              </RevealItem>
+            );
+          })}
         </RevealGroup>
       </Band>
 
