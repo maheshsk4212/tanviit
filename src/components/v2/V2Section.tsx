@@ -107,10 +107,12 @@ export function BandHeading({
   if (split) {
     return (
       <div
-        className={`grid gap-x-16 gap-y-6 lg:grid-cols-[1.05fr_1fr] lg:items-end ${className}`}
+        className={`grid gap-x-16 gap-y-6 lg:grid-cols-[1.05fr_1fr] lg:items-start ${className}`}
       >
         <div>{heading}</div>
-        {body}
+        {/* Dropped by the height of the eyebrow so the supporting text starts
+            on the same line as the headline rather than above it. */}
+        <div className={eyebrow ? "lg:mt-[3.25rem]" : ""}>{body}</div>
       </div>
     );
   }
