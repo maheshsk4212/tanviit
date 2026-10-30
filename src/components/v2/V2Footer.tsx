@@ -1,63 +1,66 @@
 import Link from "next/link";
-import { certifications, siteConfig } from "@/lib/site-content";
+import Image from "next/image";
+import { capabilities, v2Certifications, v2Site } from "@/lib/v2-content";
 
 const columns = [
   {
-    heading: "Services",
-    items: [
-      { label: "Contract staffing", href: "/services#contract-staffing" },
-      { label: "Direct hire", href: "/services#direct-hire" },
-      { label: "Contract-to-hire", href: "/services#contract-to-hire" },
-      { label: "RPO solutions", href: "/services#rpo-solutions" },
-      { label: "IT consulting", href: "/services#it-consulting" },
-    ],
+    heading: "Capabilities",
+    items: capabilities.slice(0, 5).map((c) => ({ label: c.name, href: "/v2/capabilities" })),
   },
   {
     heading: "Contract vehicles",
     items: [
-      { label: "NASA SEWP VI", href: "/sewp-vi" },
-      { label: "GSA MAS", href: "/v2#vehicles" },
-      { label: "8(a) STARS III", href: "/v2#vehicles" },
-      { label: "All vehicles", href: "/v2#vehicles" },
+      { label: "NASA SEWP VI", href: "/v2/contract-vehicles/sewp-vi" },
+      { label: "GSA MAS", href: "/v2/contract-vehicles#gsa-mas" },
+      { label: "8(a) STARS III", href: "/v2/contract-vehicles#stars-iii" },
+      { label: "All vehicles & NAICS", href: "/v2/contract-vehicles" },
     ],
   },
   {
     heading: "Company",
     items: [
-      { label: "Who we are", href: "/v2#who-we-are" },
-      { label: "Industries", href: "/v2#industries" },
-      { label: "Customers", href: "/v2#customers" },
-      { label: "Careers", href: "/careers" },
-      { label: "Contact", href: "/contact" },
+      { label: "About", href: "/v2/about" },
+      { label: "Leadership", href: "/v2/about#leadership" },
+      { label: "Customers", href: "/v2/customers" },
+      { label: "News", href: "/v2/news" },
+      { label: "Careers", href: "/v2/careers" },
+      { label: "Contact", href: "/v2/contact" },
     ],
   },
 ];
 
 export function V2Footer() {
   return (
-    <footer className="bg-federal-950 text-white">
+    <footer className="bg-ink-950 text-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_repeat(3,1fr)]">
           <div>
-            <p className="font-display text-xl font-semibold">{siteConfig.legalName}</p>
-            <address className="mt-4 space-y-1 text-[15px] not-italic text-federal-100">
-              <p>{siteConfig.address}</p>
+            <Image
+              src="/tanvi-it-logo@3x.png"
+              alt={v2Site.legalName}
+              width={167}
+              height={43}
+              className="h-9 w-auto"
+            />
+            <address className="mt-5 space-y-1 text-[15px] not-italic text-ink-100">
+              <p>{v2Site.hq}</p>
               <p>
-                <a href={`tel:${siteConfig.phone.replace(/[^+\d]/g, "")}`} className="hover:underline">
-                  {siteConfig.phone}
+                <a href={`tel:${v2Site.phone.replace(/[^+\d]/g, "")}`} className="hover:underline">
+                  {v2Site.phone}
                 </a>
               </p>
               <p>
-                <a href={`mailto:${siteConfig.email}`} className="hover:underline">
-                  {siteConfig.email}
+                <a href={`mailto:${v2Site.email}`} className="hover:underline">
+                  {v2Site.email}
                 </a>
               </p>
             </address>
+            <p className="mt-5 text-[15px] leading-relaxed text-ink-100">{v2Site.tagline}</p>
           </div>
 
           {columns.map((column) => (
             <div key={column.heading}>
-              <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-federal-300">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-400">
                 {column.heading}
               </h2>
               <ul className="mt-4 space-y-2.5">
@@ -74,11 +77,11 @@ export function V2Footer() {
         </div>
 
         <div className="mt-14 border-t border-white/15 pt-8">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-federal-300">
-            Certifications &amp; appraisals
+          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-400">
+            Certifications &amp; credentials
           </h2>
           <ul className="mt-4 flex flex-wrap gap-2.5">
-            {certifications.map((cert) => (
+            {v2Certifications.map((cert) => (
               <li
                 key={cert.name}
                 className="rounded-md border border-white/20 px-3 py-1.5 text-sm text-white"
@@ -89,9 +92,9 @@ export function V2Footer() {
           </ul>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-white/15 pt-6 text-sm text-federal-100 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-2 border-t border-white/15 pt-6 text-sm text-ink-100 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {siteConfig.legalName} All rights reserved.
+            © {new Date().getFullYear()} {v2Site.legalName} All rights reserved.
           </p>
           <p>
             Second design.{" "}
