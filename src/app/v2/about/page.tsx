@@ -56,7 +56,7 @@ export default function V2About() {
           {about.approach.map((item) => (
             <li
               key={item.name}
-              className="rounded-xl border border-brass-100 bg-white p-8"
+              className="rounded-xl border border-mist-200 bg-white p-8"
             >
               <h3 className="font-display text-sm font-semibold uppercase tracking-[0.14em] text-brass-700">
                 {item.name}
@@ -72,7 +72,7 @@ export default function V2About() {
         <BandHeading eyebrow="Why Tanvi IT" title="What clients rely on us for" />
         <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2">
           {about.whyTanvi.map((item) => (
-            <li key={item.name} className="border-t border-brass-200 pt-6">
+            <li key={item.name} className="border-t border-mist-200 pt-6">
               <h3 className="font-display text-lg font-semibold text-fg">{item.name}</h3>
               <p className="mt-2.5 text-[17px] leading-[1.7] text-fg">{item.description}</p>
             </li>
@@ -104,7 +104,7 @@ export default function V2About() {
         />
         <ul className="mt-12 grid gap-6 lg:grid-cols-2">
           {leadership.map((person) => (
-            <li key={person.name} className="rounded-xl border border-brass-100 bg-brass-50 p-8">
+            <li key={person.name} className="rounded-xl border border-mist-200 bg-mist-50 p-8">
               <h3 className="font-display text-xl font-semibold text-fg">{person.name}</h3>
               <p className="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-brass-700">
                 {person.role}
@@ -117,7 +117,7 @@ export default function V2About() {
                 {person.areas.map((area) => (
                   <li
                     key={area}
-                    className="rounded border border-brass-200 bg-white px-2.5 py-1 text-[13px] font-medium text-fg"
+                    className="rounded border border-mist-200 bg-white px-2.5 py-1 text-[13px] font-medium text-fg"
                   >
                     {area}
                   </li>
@@ -147,7 +147,7 @@ export default function V2About() {
                   .map((cert) => (
                     <li
                       key={cert.name}
-                      className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-lg border border-brass-100 bg-white px-6 py-4"
+                      className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-lg border border-mist-200 bg-white px-6 py-4"
                     >
                       <span className="font-display text-base font-semibold text-fg">
                         {cert.name}

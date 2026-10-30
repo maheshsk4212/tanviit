@@ -40,7 +40,7 @@ export default function V2Customers() {
               {group.customers.map((customer) => (
                 <li
                   key={customer.name}
-                  className="flex h-24 flex-col items-center justify-center rounded-lg border border-brass-100 bg-brass-50 px-4 text-center"
+                  className="flex h-24 flex-col items-center justify-center rounded-lg border border-mist-200 bg-mist-50 px-4 text-center"
                 >
                   <span className="font-display text-base font-semibold text-ink-950">
                     {customer.name}
@@ -67,7 +67,7 @@ export default function V2Customers() {
           {industries.map((industry) => (
             <li
               key={industry.slug}
-              className="rounded-xl border border-brass-100 bg-white p-7"
+              className="rounded-xl border border-mist-200 bg-white p-7"
             >
               <h3 className="font-display text-lg font-semibold text-fg">{industry.name}</h3>
               <p className="mt-2.5 text-[15px] leading-relaxed text-fg">{industry.summary}</p>
@@ -82,7 +82,7 @@ export default function V2Customers() {
           {testimonials.map((testimonial) => (
             <li
               key={testimonial.company}
-              className="flex h-full flex-col rounded-xl border border-brass-100 bg-white p-7"
+              className="flex h-full flex-col rounded-xl border border-mist-200 bg-white p-7"
             >
               <blockquote className="flex-1 text-[17px] leading-[1.65] text-fg">
                 “{testimonial.quote}”

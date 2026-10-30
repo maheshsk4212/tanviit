@@ -64,6 +64,14 @@
   --color-brass-900: #4f3712;
   --color-brass-950: #2a1d09;
 
+  /* Mist scale — the second design's section tints. Pale gold washed the
+     light bands out against a gold accent, so the tints are a cool neutral and
+     the mustard is left to do accent work alone. */
+  --color-mist-50: #f6f7f9;
+  --color-mist-100: #eef1f5;
+  --color-mist-200: #dfe4ea;
+  --color-mist-300: #c6ced8;
+
   /* Neutrals */
   --color-slate-50: #f7f7f8;
   --color-slate-100: #eeeef0;
@@ -143,6 +151,11 @@
   --color-brass-800: var(--color-brass-800);
   --color-brass-900: var(--color-brass-900);
   --color-brass-950: var(--color-brass-950);
+
+  --color-mist-50: var(--color-mist-50);
+  --color-mist-100: var(--color-mist-100);
+  --color-mist-200: var(--color-mist-200);
+  --color-mist-300: var(--color-mist-300);
 
   --color-slate-50: var(--color-slate-50);
   --color-slate-100: var(--color-slate-100);

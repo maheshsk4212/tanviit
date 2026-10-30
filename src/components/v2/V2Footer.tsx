@@ -29,9 +29,10 @@ const columns = [
   },
 ];
 
+/** Light footer: the page ends on paper, not on a dark slab. */
 export function V2Footer() {
   return (
-    <footer className="bg-ink-950 text-white">
+    <footer className="border-t border-mist-200 bg-mist-50 text-fg">
       <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_repeat(3,1fr)]">
           <div>
@@ -42,31 +43,40 @@ export function V2Footer() {
               height={43}
               className="h-9 w-auto"
             />
-            <address className="mt-5 space-y-1 text-[15px] not-italic text-ink-100">
+            <address className="mt-5 space-y-1 text-[15px] not-italic text-fg">
               <p>{v2Site.hq}</p>
               <p>
-                <a href={`tel:${v2Site.phone.replace(/[^+\d]/g, "")}`} className="hover:underline">
+                <a
+                  href={`tel:${v2Site.phone.replace(/[^+\d]/g, "")}`}
+                  className="hover:text-brass-700 hover:underline"
+                >
                   {v2Site.phone}
                 </a>
               </p>
               <p>
-                <a href={`mailto:${v2Site.email}`} className="hover:underline">
+                <a
+                  href={`mailto:${v2Site.email}`}
+                  className="hover:text-brass-700 hover:underline"
+                >
                   {v2Site.email}
                 </a>
               </p>
             </address>
-            <p className="mt-5 text-[15px] leading-relaxed text-ink-100">{v2Site.tagline}</p>
+            <p className="mt-5 text-[15px] font-semibold text-brass-700">{v2Site.tagline}</p>
           </div>
 
           {columns.map((column) => (
             <div key={column.heading}>
-              <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-400">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-700">
                 {column.heading}
               </h2>
               <ul className="mt-4 space-y-2.5">
                 {column.items.map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="text-[15px] text-white hover:underline">
+                    <Link
+                      href={item.href}
+                      className="text-[15px] text-fg hover:text-brass-700 hover:underline"
+                    >
                       {item.label}
                     </Link>
                   </li>
@@ -76,15 +86,15 @@ export function V2Footer() {
           ))}
         </div>
 
-        <div className="mt-14 border-t border-white/15 pt-8">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-400">
+        <div className="mt-14 border-t border-mist-200 pt-8">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-700">
             Certifications &amp; credentials
           </h2>
           <ul className="mt-4 flex flex-wrap gap-2.5">
             {v2Certifications.map((cert) => (
               <li
                 key={cert.name}
-                className="rounded-md border border-white/20 px-3 py-1.5 text-sm text-white"
+                className="rounded-md border border-mist-200 bg-white px-3 py-1.5 text-sm font-medium text-fg"
               >
                 {cert.name}
               </li>
@@ -92,13 +102,13 @@ export function V2Footer() {
           </ul>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-white/15 pt-6 text-sm text-ink-100 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-2 border-t border-mist-200 pt-6 text-sm text-fg-subtle sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {v2Site.legalName} All rights reserved.
           </p>
           <p>
             Second design.{" "}
-            <Link href="/" className="underline hover:text-white">
+            <Link href="/" className="underline hover:text-brass-700">
               View the original
             </Link>
           </p>

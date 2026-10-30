@@ -32,7 +32,7 @@ export default function V2Vehicles() {
 
       {/* ------------------------------------------------------- SEWP VI */}
       <Band>
-        <div className="grid gap-10 rounded-xl border border-brass-200 bg-brass-50 p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+        <div className="grid gap-10 rounded-xl border border-mist-200 bg-mist-50 p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brass-700">
               Featured vehicle
@@ -75,7 +75,7 @@ export default function V2Vehicles() {
           title="Where Tanvi IT can be awarded work"
           lead="NEEDS-CONFIRMATION: this list is carried over from the current site and should be checked against the vehicles that are active today."
         />
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-xl border border-brass-200 bg-brass-200 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-px overflow-hidden rounded-xl border border-mist-200 bg-mist-200 sm:grid-cols-2 lg:grid-cols-3">
           {contractVehicles.map((vehicle) => (
             <li
               key={vehicle.name}
@@ -101,7 +101,7 @@ export default function V2Vehicles() {
           title="How to find us"
           lead="Buyers search by code. This is the NAICS code on Tanvi IT's SEWP VI Category C contract."
         />
-        <ul className="mt-10 max-w-3xl divide-y divide-brass-200 border-y border-brass-200">
+        <ul className="mt-10 max-w-3xl divide-y divide-mist-200 border-y border-mist-200">
           {naicsCodes.map((code) => (
             <li key={code.code} className="flex flex-wrap items-baseline gap-x-8 gap-y-1 py-5">
               <span className="font-display text-xl font-semibold text-brass-700">{code.code}</span>

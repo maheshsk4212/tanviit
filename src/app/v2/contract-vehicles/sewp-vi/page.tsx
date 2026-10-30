@@ -31,7 +31,7 @@ export default function V2Sewp() {
             <BandHeading eyebrow="Contract overview" title="A multi-award GWAC" />
             <p className="mt-5 text-[17px] leading-[1.75] text-fg sm:text-lg">{sewpVi.overview}</p>
           </div>
-          <dl className="divide-y divide-brass-200 rounded-xl border border-brass-200 bg-brass-50">
+          <dl className="divide-y divide-mist-200 rounded-xl border border-mist-200 bg-mist-50">
             {sewpVi.contract.map((row) => (
               <div key={row.term} className="px-6 py-4">
                 <dt className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-700">
@@ -52,7 +52,7 @@ export default function V2Sewp() {
           lead="Contract language, reproduced in full."
         />
         {/* Verbatim from the NASA SEWP VI terms — do not edit or summarise. */}
-        <div className="mt-10 max-w-4xl space-y-5 rounded-xl border border-brass-200 bg-white p-8 text-[16px] leading-[1.75] text-fg sm:p-10">
+        <div className="mt-10 max-w-4xl space-y-5 rounded-xl border border-mist-200 bg-white p-8 text-[16px] leading-[1.75] text-fg sm:p-10">
           {sewpVi.fairOpportunity.map((paragraph) => (
             <p key={paragraph.slice(0, 48)}>{paragraph}</p>
           ))}
@@ -70,7 +70,7 @@ export default function V2Sewp() {
           {sewpVi.scope.map((item) => (
             <li
               key={item.slice(0, 40)}
-              className="border-l-4 border-brass-300 pl-6 text-[17px] leading-[1.7] text-fg"
+              className="border-l-4 border-brass-500 pl-6 text-[17px] leading-[1.7] text-fg"
             >
               {item}
             </li>
@@ -115,7 +115,7 @@ export default function V2Sewp() {
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <BandHeading eyebrow="Tanvi IT" title="Program management contacts" />
-            <ul className="mt-8 divide-y divide-brass-200 border-y border-brass-200">
+            <ul className="mt-8 divide-y divide-mist-200 border-y border-mist-200">
               {sewpVi.managers.map((manager) => (
                 <li key={manager.role} className="py-5">
                   <p className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-700">
@@ -140,7 +140,7 @@ export default function V2Sewp() {
 
           <div>
             <BandHeading eyebrow="NASA SEWP" title="Customer assistance" />
-            <dl className="mt-8 divide-y divide-brass-200 border-y border-brass-200">
+            <dl className="mt-8 divide-y divide-mist-200 border-y border-mist-200">
               {sewpVi.sewpContacts.map((contact) => (
                 <div key={contact.label} className="flex flex-wrap justify-between gap-x-8 gap-y-1 py-5">
                   <dt className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-700">
