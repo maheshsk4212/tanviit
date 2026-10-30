@@ -21,7 +21,7 @@ export default function V2Contact() {
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           <div>
             <BandHeading eyebrow="Inquiry routes" title="How can we help?" />
-            <ul className="mt-10 divide-y divide-slate-200 border-y border-slate-200">
+            <ul className="mt-10 divide-y divide-slate-200 border-y border-navy-200">
               {contactPaths.map((path) => (
                 <li key={path.name} className="py-6">
                   <h3 className="font-display text-lg font-medium text-navy-900">{path.name}</h3>
@@ -31,7 +31,7 @@ export default function V2Contact() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-slate-100 p-8">
+          <div className="rounded-2xl border border-navy-200 bg-navy-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
             <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
               Head office
             </h2>

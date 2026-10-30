@@ -8,8 +8,9 @@ type Tone = "white" | "tint" | "dark";
 
 const tones: Record<Tone, string> = {
   white: "bg-white text-fg",
-  // the cool pale grey the reference uses between white and its dark bands
-  tint: "bg-slate-100 text-fg",
+  // tinted pale blue, the way the reference tints its light bands rather
+  // than dropping to neutral grey
+  tint: "bg-navy-100 text-fg",
   dark: "bg-navy-950 text-white",
 };
 
@@ -47,16 +48,22 @@ export function BandHeading({
   title,
   lead,
   onDark = false,
+  align = "left",
   className = "",
 }: {
   eyebrow?: string;
   title: ReactNode;
   lead?: string;
   onDark?: boolean;
+  /** `center` is the reference's section-opening treatment. */
+  align?: "left" | "center";
   className?: string;
 }) {
+  const centred = align === "center";
   return (
-    <div className={`max-w-3xl ${className}`}>
+    <div
+      className={`${centred ? "mx-auto max-w-3xl text-center" : "max-w-3xl"} ${className}`}
+    >
       {eyebrow ? (
         <span
           className={`inline-flex items-center rounded-full border px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] ${
@@ -77,7 +84,7 @@ export function BandHeading({
       </h2>
       {lead ? (
         <p
-          className={`mt-6 max-w-2xl text-base leading-relaxed sm:text-lg ${
+          className={`mt-6 text-base leading-relaxed sm:text-lg ${centred ? "mx-auto max-w-2xl" : "max-w-2xl"} ${
             onDark ? "text-white/80" : "text-fg-muted"
           }`}
         >

@@ -49,7 +49,7 @@ export default function V2News() {
             ))}
           </div>
 
-          <dl className="mt-10 grid gap-6 rounded-2xl border border-slate-200 bg-slate-100 p-8 sm:grid-cols-2">
+          <dl className="mt-10 grid gap-6 rounded-2xl border border-navy-200 bg-navy-50 p-8 sm:grid-cols-2 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
             <div>
               <dt className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
                 Contract number

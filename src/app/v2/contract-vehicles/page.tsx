@@ -34,7 +34,7 @@ export default function V2Vehicles() {
 
       {/* ------------------------------------------------------- SEWP VI */}
       <Band>
-        <div className="grid gap-10 rounded-2xl border border-slate-200 bg-slate-100 p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+        <div className="grid gap-10 rounded-2xl border border-navy-200 bg-navy-50 p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
               Featured vehicle
@@ -77,7 +77,7 @@ export default function V2Vehicles() {
           title="Where Tanvi IT can be awarded work"
           lead="Vehicles Tanvi IT holds or can be awarded work through, across federal, state, local and cooperative purchasing."
         />
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-slate-200 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
           {contractVehicles.map((vehicle) => (
             <li
               key={vehicle.name}
@@ -103,7 +103,7 @@ export default function V2Vehicles() {
           title="How to find us"
           lead="Buyers search by code. This is the NAICS code on Tanvi IT's SEWP VI Category C contract."
         />
-        <ul className="mt-10 max-w-3xl divide-y divide-slate-200 border-y border-slate-200">
+        <ul className="mt-10 max-w-3xl divide-y divide-slate-200 border-y border-navy-200">
           {naicsCodes.map((code) => (
             <li key={code.code} className="flex flex-wrap items-baseline gap-x-8 gap-y-1 py-5">
               <span className="font-display text-xl font-medium text-navy-700">{code.code}</span>

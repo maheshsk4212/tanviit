@@ -1,5 +1,13 @@
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import {
+  Boxes,
+  Brain,
+  Cloud,
+  Code2,
+  Database,
+  Layers,
+  ShieldCheck,
+  TestTube2,
+} from "lucide-react";
 import {
   Band,
   BandHeading,
@@ -10,6 +18,8 @@ import {
   RevealItem,
   V2Button,
 } from "@/components/v2/V2Section";
+import { V2Marquee, V2Mosaic } from "@/components/v2/V2Mosaic";
+import { AnimatedCounter } from "@/components/motion/AnimatedCounter";
 import {
   about,
   capabilities,
@@ -17,25 +27,29 @@ import {
   customerGroups,
   featuredNews,
   homeHero,
+  howWeDeliver,
   v2Certifications,
   v2Site,
   valueProposition,
 } from "@/lib/v2-content";
-import { testimonials } from "@/lib/site-content";
+import { services, techExpertise, testimonials } from "@/lib/site-content";
 
 /**
- * Homepage of the second design, built on the patterns that make
- * alphaomega.com work: one deep hue for the dark bands, a vivid accent used
- * sparingly on them, a pale grey between, cards of deliberately uneven height,
- * split panels where a headline faces a panel of detail, and everything
- * arriving on scroll. Type is the original design's scale — Work Sans at
- * weight 500, tight tracking, body copy in true black.
+ * Homepage of the second design, built on what actually makes alphaomega.com
+ * work: tinted light bands rather than neutral grey, section tops centred
+ * under a pill eyebrow, capability tiles that are photographs with type over
+ * them at staggered heights, and motion on nearly everything — reveals on
+ * scroll, counters that count, a logo rail that drifts, images that lift under
+ * the cursor.
+ *
+ * Type and motion come from the original design: Work Sans at weight 500 with
+ * tight tracking, and the same Reveal easing and stagger.
  */
 const heroFacts = [
-  { value: "2008", label: "Serving clients since" },
-  { value: "SEWP VI", label: "Category C contract holder" },
-  { value: "6", label: "Certifications & appraisals" },
-  { value: "8(a)", label: "SBA certified small business" },
+  { value: "2008", label: "Serving clients since", count: false },
+  { value: "6", label: "Certifications & appraisals", count: true },
+  { value: "14", label: "Contract vehicles held", count: true },
+  { value: "8(a)", label: "SBA certified", count: false },
 ];
 
 const credentialStrip = [
@@ -48,13 +62,28 @@ const credentialStrip = [
   "NASA SEWP VI",
 ];
 
-/* Uneven card heights, the way the reference staggers its capability tiles. */
-const cardHeights = [
-  "lg:min-h-[23rem]",
-  "lg:mt-10 lg:min-h-[19rem]",
-  "lg:mt-4 lg:min-h-[21rem]",
-  "lg:mt-14 lg:min-h-[18rem]",
+/* Photographs already vetted for the original design, reused here so the
+   tiles are imagery rather than flat colour. */
+const tileImages = [
+  techExpertise[0]?.image,
+  techExpertise[2]?.image,
+  techExpertise[1]?.image,
+  techExpertise[4]?.image,
+  techExpertise[3]?.image,
+  services[0]?.image,
+  services[4]?.image,
+  services[1]?.image,
 ];
+
+const tileIcons = [Layers, Database, Cloud, ShieldCheck, Boxes, Code2, TestTube2, Brain];
+
+const mosaic = capabilities.map((capability, i) => ({
+  name: capability.name,
+  description: capability.description,
+  href: "/v2/capabilities",
+  image: tileImages[i % tileImages.length] ?? "",
+  Icon: tileIcons[i % tileIcons.length],
+}));
 
 export default function V2Home() {
   return (
@@ -77,8 +106,8 @@ export default function V2Home() {
         <dl className="mt-16 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 border-t border-white/20 pt-8 sm:grid-cols-4">
           {heroFacts.map((fact) => (
             <div key={fact.label}>
-              <dd className="font-display text-2xl font-medium tracking-[-0.02em] text-sky-300">
-                {fact.value}
+              <dd className="font-display text-3xl font-medium tracking-[-0.03em] text-sky-300">
+                {fact.count ? <AnimatedCounter value={fact.value} /> : fact.value}
               </dd>
               <dt className="mt-1 text-[13px] leading-snug text-white">{fact.label}</dt>
             </div>
@@ -87,18 +116,20 @@ export default function V2Home() {
       </PageHero>
 
       {/* ------------------------------------------------- Credential rule */}
-      <div className="border-b border-slate-200 bg-white">
+      <div className="border-b border-navy-100 bg-white">
         <div className="mx-auto w-full max-w-7xl px-4 py-7 sm:px-6 lg:px-8">
-          <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 sm:gap-x-12">
+          <RevealGroup
+            className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 sm:gap-x-12"
+            stagger={0.05}
+          >
             {credentialStrip.map((item) => (
-              <li
-                key={item}
-                className="text-[13px] font-semibold uppercase tracking-[0.16em] text-fg-subtle"
-              >
-                {item}
-              </li>
+              <RevealItem key={item}>
+                <span className="text-[13px] font-semibold uppercase tracking-[0.16em] text-fg-subtle">
+                  {item}
+                </span>
+              </RevealItem>
             ))}
-          </ul>
+          </RevealGroup>
         </div>
       </div>
 
@@ -116,6 +147,7 @@ export default function V2Home() {
           </Reveal>
           <Reveal
             delay={0.1}
+            direction="right"
             className="space-y-6 text-base leading-relaxed text-fg-muted sm:text-lg"
           >
             {valueProposition.map((paragraph) => (
@@ -129,53 +161,34 @@ export default function V2Home() {
 
         <RevealGroup className="mt-20 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {about.whyTanvi.map((item) => (
-            <RevealItem key={item.name} className="border-t-2 border-navy-700 pt-5">
-              <h3 className="font-display text-lg font-medium tracking-[-0.02em] text-fg">
-                {item.name}
-              </h3>
-              <p className="mt-2.5 text-[15px] leading-relaxed text-fg-muted">{item.description}</p>
+            <RevealItem key={item.name}>
+              <div className="group border-t-2 border-navy-200 pt-5 transition-colors duration-300 hover:border-sky-400">
+                <h3 className="font-display text-lg font-medium tracking-[-0.02em] text-fg">
+                  {item.name}
+                </h3>
+                <p className="mt-2.5 text-[15px] leading-relaxed text-fg-muted">
+                  {item.description}
+                </p>
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>
       </Band>
 
-      {/* ------------------------------- Capabilities — staggered dark cards */}
+      {/* ------------------------------ Capabilities — photographic mosaic */}
       <Band tone="tint" id="capabilities">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <BandHeading
-            eyebrow="Capabilities"
-            title="Technology that supports the mission"
-            lead={homeHero.statement}
-          />
-          <MoreLink href="/v2/capabilities">All capabilities</MoreLink>
+        <BandHeading
+          align="center"
+          eyebrow="What we do"
+          title="Technology that supports the mission"
+          lead={homeHero.statement}
+        />
+        <div className="mt-16">
+          <V2Mosaic tiles={mosaic} />
         </div>
-
-        <RevealGroup className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
-          {capabilities.map((capability, i) => (
-            <RevealItem key={capability.name} className={cardHeights[i % cardHeights.length]}>
-              <Link
-                href="/v2/capabilities"
-                className="group flex h-full flex-col justify-between rounded-2xl bg-navy-950 p-7 transition-colors duration-300 hover:bg-navy-900"
-              >
-                <span className="font-display text-sm font-medium tracking-[0.1em] text-sky-400">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="mt-10">
-                  <h3 className="font-display text-xl font-medium leading-snug tracking-[-0.02em] text-white">
-                    {capability.name}
-                  </h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-white/75">
-                    {capability.description}
-                  </p>
-                  <ArrowUpRight
-                    className="mt-5 h-5 w-5 text-sky-400 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    aria-hidden
-                  />
-                </div>
-              </Link>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        <div className="mt-14 flex justify-center">
+          <V2Button href="/v2/capabilities">All capabilities</V2Button>
+        </div>
       </Band>
 
       {/* ------------------------------ Contract feature — split dark panel */}
@@ -205,7 +218,7 @@ export default function V2Home() {
               </div>
             </div>
 
-            <div className="rounded-2xl bg-white/[0.06] p-8 sm:p-10">
+            <Reveal delay={0.15} direction="right" className="rounded-2xl bg-white/[0.06] p-8 sm:p-10">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
                 Contract number
               </p>
@@ -226,14 +239,40 @@ export default function V2Home() {
                   </div>
                 ))}
               </dl>
-            </div>
+            </Reveal>
           </div>
         </Reveal>
+      </Band>
+
+      {/* ------------------------------------- How we deliver — numbered rail */}
+      <Band tone="dark">
+        <BandHeading
+          align="center"
+          onDark
+          eyebrow="How we deliver"
+          title="Five steps, every engagement"
+        />
+        <RevealGroup className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5" stagger={0.08}>
+          {howWeDeliver.map((item, i) => (
+            <RevealItem key={item.step}>
+              <div className="group h-full border-t border-white/20 pt-6 transition-colors duration-300 hover:border-sky-400">
+                <span className="font-display text-sm font-medium tracking-[0.1em] text-sky-400">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 font-display text-xl font-medium tracking-[-0.02em] text-white">
+                  {item.step}
+                </h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-white/75">{item.description}</p>
+              </div>
+            </RevealItem>
+          ))}
+        </RevealGroup>
       </Band>
 
       {/* --------------------------------------------- Certifications */}
       <Band tone="tint" id="certifications">
         <BandHeading
+          align="center"
           eyebrow="Certifications & credentials"
           title="Independently appraised, federally certified"
           lead="Third-party assessments of how we run quality, security and service management — the evidence behind every proposal we submit."
@@ -244,7 +283,7 @@ export default function V2Home() {
         >
           {v2Certifications.map((cert) => (
             <RevealItem key={cert.name}>
-              <div className="flex h-full flex-col justify-center rounded-2xl border border-slate-200 bg-white px-5 py-8 text-center">
+              <div className="flex h-full flex-col justify-center rounded-2xl border border-navy-200 bg-white px-5 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.45)]">
                 <p className="font-display text-base font-medium leading-tight tracking-[-0.01em] text-fg">
                   {cert.name}
                 </p>
@@ -253,50 +292,30 @@ export default function V2Home() {
             </RevealItem>
           ))}
         </RevealGroup>
-        <div className="mt-12">
-          <MoreLink href="/v2/about#certifications">About our credentials</MoreLink>
-        </div>
       </Band>
 
-      {/* -------------------------------------------------- Customers */}
+      {/* ------------------------------------ Customers — drifting logo rail */}
       <Band id="customers">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <BandHeading
-            eyebrow="Customers & past performance"
-            title="Organizations we support"
-            lead="Government programs and commercial organizations that have trusted Tanvi IT with delivery."
-          />
-          <MoreLink href="/v2/customers">Past performance</MoreLink>
+        <BandHeading
+          align="center"
+          eyebrow="Customers & past performance"
+          title="Organizations we support"
+          lead="Government programs and commercial organizations that have trusted Tanvi IT with delivery."
+        />
+        <Reveal className="mt-14">
+          <V2Marquee items={customerGroups.flatMap((g) => g.customers.map((c) => c.name))} />
+        </Reveal>
+        <div className="mt-12 flex justify-center">
+          <MoreLink href="/v2/customers">Customers & past performance</MoreLink>
         </div>
-        {customerGroups.map((group) => (
-          <div key={group.heading} className="mt-14">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-navy-700">
-              {group.heading}
-            </h3>
-            <RevealGroup
-              className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5"
-              stagger={0.04}
-            >
-              {group.customers.map((customer) => (
-                <RevealItem key={customer.name}>
-                  <div className="flex h-24 items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 text-center transition-colors duration-300 hover:border-navy-300">
-                    <span className="font-display text-base font-medium tracking-[-0.01em] text-fg">
-                      {customer.name}
-                    </span>
-                  </div>
-                </RevealItem>
-              ))}
-            </RevealGroup>
-          </div>
-        ))}
       </Band>
 
       {/* ----------------------------------------------- Testimonials */}
       <Band tone="dark">
-        <BandHeading onDark eyebrow="Client testimonials" title="What our clients say" />
+        <BandHeading onDark align="center" eyebrow="Client testimonials" title="What our clients say" />
         <Reveal delay={0.1}>
-          <figure className="mt-14 border-l-2 border-sky-400 pl-8">
-            <blockquote className="max-w-4xl text-balance font-display text-2xl font-medium leading-[1.3] tracking-[-0.02em] text-white sm:text-3xl lg:text-[2.25rem]">
+          <figure className="mx-auto mt-14 max-w-4xl text-center">
+            <blockquote className="text-balance font-display text-2xl font-medium leading-[1.3] tracking-[-0.02em] text-white sm:text-3xl lg:text-[2.25rem]">
               “{testimonials[0].quote}”
             </blockquote>
             <figcaption className="mt-7 text-[15px] text-white/80">
@@ -305,16 +324,18 @@ export default function V2Home() {
             </figcaption>
           </figure>
         </Reveal>
-        <RevealGroup className="mt-14 grid gap-10 border-t border-white/15 pt-12 sm:grid-cols-2">
+        <RevealGroup className="mt-16 grid gap-6 border-t border-white/15 pt-12 sm:grid-cols-2">
           {testimonials.slice(1).map((testimonial) => (
             <RevealItem key={testimonial.company}>
-              <blockquote className="text-base leading-relaxed text-white/80 sm:text-lg">
-                “{testimonial.quote}”
-              </blockquote>
-              <p className="mt-4 text-[15px] text-white/80">
-                <span className="font-semibold text-white">{testimonial.author}</span>,{" "}
-                {testimonial.company}
-              </p>
+              <div className="h-full rounded-2xl bg-white/[0.06] p-8 transition-colors duration-300 hover:bg-white/[0.1]">
+                <blockquote className="text-base leading-relaxed text-white/85 sm:text-lg">
+                  “{testimonial.quote}”
+                </blockquote>
+                <p className="mt-5 text-[15px] text-white/80">
+                  <span className="font-semibold text-white">{testimonial.author}</span>,{" "}
+                  {testimonial.company}
+                </p>
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>
@@ -338,8 +359,8 @@ export default function V2Home() {
           <RevealGroup className="grid gap-4" stagger={0.08}>
             {about.approach.map((item) => (
               <RevealItem key={item.name}>
-                <div className="rounded-2xl border border-slate-200 bg-white p-7">
-                  <h3 className="font-display text-sm font-medium uppercase tracking-[0.18em] text-navy-700">
+                <div className="group rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400">
+                  <h3 className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-navy-700">
                     {item.name}
                   </h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-fg-muted">

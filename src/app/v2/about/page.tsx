@@ -56,7 +56,7 @@ export default function V2About() {
           {about.approach.map((item) => (
             <li
               key={item.name}
-              className="rounded-2xl border border-slate-200 bg-white p-8"
+              className="rounded-2xl border border-navy-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
             >
               <h3 className="font-display text-sm font-medium uppercase tracking-[0.14em] text-navy-700">
                 {item.name}
@@ -72,7 +72,7 @@ export default function V2About() {
         <BandHeading eyebrow="Why Tanvi IT" title="What clients rely on us for" />
         <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2">
           {about.whyTanvi.map((item) => (
-            <li key={item.name} className="border-t border-slate-200 pt-6">
+            <li key={item.name} className="border-t border-navy-200 pt-6">
               <h3 className="font-display text-lg font-medium text-navy-900">{item.name}</h3>
               <p className="mt-2.5 text-[17px] leading-[1.7] text-fg">{item.description}</p>
             </li>
@@ -104,7 +104,7 @@ export default function V2About() {
         />
         <ul className="mt-12 grid gap-6 lg:grid-cols-2">
           {leadership.map((person) => (
-            <li key={person.name} className="rounded-2xl border border-slate-200 bg-slate-100 p-8">
+            <li key={person.name} className="rounded-2xl border border-navy-200 bg-navy-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
               <h3 className="font-display text-xl font-medium text-navy-900">{person.name}</h3>
               <p className="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
                 {person.role}
@@ -117,7 +117,7 @@ export default function V2About() {
                 {person.areas.map((area) => (
                   <li
                     key={area}
-                    className="rounded border border-slate-200 bg-white px-2.5 py-1 text-[13px] font-medium text-fg"
+                    className="rounded border border-navy-200 bg-white px-2.5 py-1 text-[13px] font-medium text-fg"
                   >
                     {area}
                   </li>
@@ -147,7 +147,7 @@ export default function V2About() {
                   .map((cert) => (
                     <li
                       key={cert.name}
-                      className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-xl border border-slate-200 bg-white px-6 py-4"
+                      className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-xl border border-navy-200 bg-white px-6 py-4"
                     >
                       <span className="font-display text-base font-medium text-navy-900">
                         {cert.name}

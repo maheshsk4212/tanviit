@@ -38,12 +38,12 @@ export default function V2Capabilities() {
         />
         {/* Numbered rows rather than a card grid: each area gets the width to
             list its services, and the page reads as an index. */}
-        <ul className="mt-14 border-t border-slate-200">
+        <ul className="mt-14 border-t border-navy-200">
           {solutionAreas.map((area, i) => (
             <li
               key={area.slug}
               id={area.slug}
-              className="scroll-mt-28 border-b border-slate-200 py-10"
+              className="scroll-mt-28 border-b border-navy-200 py-10"
             >
               <div className="grid gap-x-10 gap-y-5 lg:grid-cols-[3.5rem_1fr_1.1fr]">
                 <span className="font-display text-sm font-medium tracking-[0.1em] text-navy-600">
@@ -82,7 +82,7 @@ export default function V2Capabilities() {
         <BandHeading eyebrow="Outcomes" title="What we help clients achieve" />
         <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
           {outcomes.map((outcome) => (
-            <li key={outcome.name} className="border-t border-slate-200 pt-6">
+            <li key={outcome.name} className="border-t border-navy-200 pt-6">
               <h3 className="font-display text-lg font-medium text-navy-900">{outcome.name}</h3>
               <p className="mt-2.5 text-[17px] leading-[1.7] text-fg">{outcome.description}</p>
             </li>
