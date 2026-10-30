@@ -12,9 +12,8 @@
  * Headline and body copy are reproduced as written. The SEWP fair-opportunity
  * clause is contract language and is kept verbatim — do not edit it.
  *
- * NEEDS-CONFIRMATION: these documents put the headquarters in Chantilly, VA,
- * while the existing site (src/lib/site-content.ts) says Reston, VA. The newer
- * documents win here; the original design still says Reston.
+ * The headquarters is Chantilly, VA per these documents; the earlier Reston
+ * address has been retired from both designs.
  */
 
 export const v2Site = {
@@ -498,4 +497,39 @@ export const contactPaths = [
     name: "Commercial",
     description: "Technology consulting, modernization and delivery for commercial organizations.",
   },
+];
+
+/**
+ * Customers. The homepage guide asks to retain the approved customer content
+ * from the current website and to add relevant Federal customers and projects,
+ * "including MHBE" — so MHBE leads the government group.
+ *
+ * NEEDS-CONFIRMATION: MHBE is read here as the Maryland Health Benefit
+ * Exchange. Say otherwise and the label changes.
+ */
+export const customerGroups = [
+  {
+    heading: "Government & public sector",
+    customers: [{ name: "MHBE", detail: "Maryland Health Benefit Exchange" }],
+  },
+  {
+    heading: "Commercial & systems integrators",
+    customers: [
+      { name: "Deloitte", detail: "Deloitte Consulting LLP" },
+      { name: "SWIFT", detail: "" },
+      { name: "Leidos", detail: "" },
+      { name: "Booz Allen Hamilton", detail: "" },
+      { name: "PwC", detail: "" },
+      { name: "TENEO", detail: "" },
+      { name: "SAIC", detail: "" },
+      { name: "Citi", detail: "" },
+      { name: "KPMG", detail: "" },
+      { name: "ManTech", detail: "" },
+    ],
+  },
+];
+
+/** NAICS as listed on the SEWP VI Category C ordering guide. */
+export const naicsCodes = [
+  { code: "541511", title: "Custom Computer Programming Services" },
 ];

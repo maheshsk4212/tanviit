@@ -17,11 +17,11 @@ export const siteConfig = {
   tagline: "The Right Partner. The Right Talent. The Right Results.",
   description:
     "Tanvi IT Solutions Inc. connects U.S. organizations with skilled IT professionals and delivers end-to-end technology solutions for federal, state, local and commercial clients.",
-  // NEEDS-CONFIRMATION: the design deck shows a 555- placeholder number and an
-  // Austin, TX address; the SEWP document uses tanviit.com and 703 numbers.
   phone: "+1 (703) 864-7551",
   email: "info@tanviit.com",
-  address: "1900 Reston Metro Plaza, Reston, VA 20190",
+  // Headquarters per the September 2026 content guides, which supersede the
+  // earlier Reston address. NEEDS-CONTENT: street address for Chantilly.
+  address: "Chantilly, Virginia",
 };
 
 export interface NavFeature {

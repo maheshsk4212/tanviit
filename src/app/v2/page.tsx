@@ -16,10 +16,11 @@ import {
   featuredNews,
   homeHero,
   v2Certifications,
+  customerGroups,
   v2Site,
   valueProposition,
 } from "@/lib/v2-content";
-import { clients, testimonials } from "@/lib/site-content";
+import { testimonials } from "@/lib/site-content";
 
 /**
  * Homepage of the second design, following the client's homepage
@@ -177,17 +178,17 @@ export default function V2Home() {
           lead="Agencies and enterprises that have trusted Tanvi IT with programme delivery and technical hiring."
         />
         <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {clients.map((client) => (
+          {customerGroups.flatMap((group) => group.customers).map((customer) => (
             <li
-              key={client}
+              key={customer.name}
               className="flex h-24 items-center justify-center rounded-lg border border-brass-100 bg-white px-4 text-center"
             >
-              <span className="font-display text-base font-semibold text-ink-950">{client}</span>
+              <span className="font-display text-base font-semibold text-ink-950">
+                {customer.name}
+              </span>
             </li>
           ))}
         </ul>
-        {/* NEEDS-CONTENT: the homepage guide asks whether federal customers and
-            projects — MHBE among them — should be added here. */}
         <div className="mt-10">
           <MoreLink href="/v2/customers">Customers & past performance</MoreLink>
         </div>

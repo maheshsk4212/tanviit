@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Band, BandHeading, PageHero, V2Button } from "@/components/v2/V2Section";
-import { clients, industries, testimonials } from "@/lib/site-content";
+import { industries, testimonials } from "@/lib/site-content";
+import { customerGroups } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "Customers & past performance",
@@ -28,18 +29,32 @@ export default function V2Customers() {
         <BandHeading
           eyebrow="Customers"
           title="Organizations we support"
-          lead="NEEDS-CONTENT: these are the client names carried over from the current site. Federal customers and projects — MHBE among them — should be added, and each logo needs permission to display before it replaces a wordmark."
+          lead="Government programmes and commercial organizations that have trusted Tanvi IT with delivery."
         />
-        <ul className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {clients.map((client) => (
-            <li
-              key={client}
-              className="flex h-24 items-center justify-center rounded-lg border border-brass-100 bg-brass-50 px-4 text-center"
-            >
-              <span className="font-display text-base font-semibold text-ink-950">{client}</span>
-            </li>
-          ))}
-        </ul>
+        {customerGroups.map((group) => (
+          <div key={group.heading} className="mt-12">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-brass-700">
+              {group.heading}
+            </h3>
+            <ul className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+              {group.customers.map((customer) => (
+                <li
+                  key={customer.name}
+                  className="flex h-24 flex-col items-center justify-center rounded-lg border border-brass-100 bg-brass-50 px-4 text-center"
+                >
+                  <span className="font-display text-base font-semibold text-ink-950">
+                    {customer.name}
+                  </span>
+                  {customer.detail ? (
+                    <span className="mt-1 text-[13px] leading-snug text-fg-subtle">
+                      {customer.detail}
+                    </span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </Band>
 
       <Band tone="tint" id="mission-areas">

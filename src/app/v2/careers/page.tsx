@@ -53,15 +53,17 @@ export default function V2Careers() {
         </ul>
       </Band>
 
-      {/* NEEDS-CONTENT: the live openings feed. Until it is supplied, this
-          sends candidates to the team rather than to an empty list. */}
+      {/* NEEDS-CONTENT: no job listings exist in the supplied content guides or
+          on the current website, so there is nothing to publish here yet. The
+          section routes candidates to the team rather than showing an empty
+          list; swap in the feed as soon as one exists. */}
       <Band tone="dark" id="openings">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <BandHeading
             onDark
             eyebrow="Open positions"
             title="Tell us where you fit"
-            lead="Current openings are being added here. In the meantime, send us your résumé and the kind of work you are looking for, and we will route it to the right team."
+            lead="Send us your résumé and the kind of work you are looking for, and we will route it to the team hiring for it."
           />
           <div className="flex flex-wrap gap-3">
             <V2Button href="/v2/contact">Send your résumé</V2Button>

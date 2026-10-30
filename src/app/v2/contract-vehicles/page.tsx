@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
 import { Band, BandHeading, MoreLink, PageHero, V2Button } from "@/components/v2/V2Section";
 import { contractVehicles } from "@/lib/site-content";
-import { sewpVi } from "@/lib/v2-content";
+import { naicsCodes, sewpVi } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "Contract vehicles",
   description:
     "Award work to Tanvi IT through NASA SEWP VI, GSA MAS, 8(a) STARS III and the other vehicles we hold.",
 };
-
-/* NEEDS-CONTENT: 541511 is the NAICS code on the SEWP VI ordering guide. The
-   remaining codes Tanvi IT holds still need to be supplied. */
-const naics = [{ code: "541511", title: "Custom Computer Programming Services" }];
 
 const anchors: Record<string, string> = {
   "GSA MAS": "gsa-mas",
@@ -103,19 +99,16 @@ export default function V2Vehicles() {
         <BandHeading
           eyebrow="NAICS codes"
           title="How to find us"
-          lead="Buyers search by code. These are the codes confirmed in Tanvi IT's contract documentation."
+          lead="Buyers search by code. This is the NAICS code on Tanvi IT's SEWP VI Category C contract."
         />
         <ul className="mt-10 max-w-3xl divide-y divide-brass-200 border-y border-brass-200">
-          {naics.map((code) => (
+          {naicsCodes.map((code) => (
             <li key={code.code} className="flex flex-wrap items-baseline gap-x-8 gap-y-1 py-5">
               <span className="font-display text-xl font-semibold text-brass-700">{code.code}</span>
               <span className="text-[17px] text-fg">{code.title}</span>
             </li>
           ))}
         </ul>
-        <p className="mt-6 max-w-3xl text-[15px] leading-relaxed text-fg-subtle">
-          Additional NAICS codes will be listed here once confirmed.
-        </p>
       </Band>
     </>
   );
