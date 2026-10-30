@@ -18,7 +18,7 @@ export function V2Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-mist-200 bg-white">
+    <header className="sticky top-0 z-50 border-b border-navy-100 bg-white">
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
         <Link href="/v2" className="shrink-0">
           <Image
@@ -36,7 +36,7 @@ export function V2Header() {
             <div key={item.href} className="group relative">
               <Link
                 href={item.href}
-                className="flex items-center gap-1 whitespace-nowrap px-3 py-7 text-[15px] font-medium text-fg group-hover:text-brass-700"
+                className="flex items-center gap-1 whitespace-nowrap px-3 py-7 text-[15px] font-medium text-fg group-hover:text-copper-700"
               >
                 {item.label}
                 {item.children ? (
@@ -45,13 +45,13 @@ export function V2Header() {
               </Link>
 
               {item.children ? (
-                <div className="invisible absolute left-0 top-full z-10 w-72 border border-mist-200 bg-white py-2 opacity-0 shadow-lg transition-[opacity,visibility] group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div className="invisible absolute left-0 top-full z-10 w-72 border border-navy-100 bg-white py-2 opacity-0 shadow-lg transition-[opacity,visibility] group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                   <ul>
                     {item.children.map((child) => (
                       <li key={child.href}>
                         <Link
                           href={child.href}
-                          className="block px-5 py-2.5 text-[15px] text-fg hover:bg-mist-50 hover:text-brass-700"
+                          className="block px-5 py-2.5 text-[15px] text-fg hover:bg-navy-50 hover:text-copper-700"
                         >
                           {child.label}
                         </Link>
@@ -67,7 +67,7 @@ export function V2Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/v2/contact"
-            className="hidden whitespace-nowrap rounded-md bg-brass-700 px-5 py-2.5 text-[15px] font-semibold text-white hover:bg-brass-800 sm:inline-block"
+            className="hidden whitespace-nowrap rounded-md bg-copper-600 px-5 py-2.5 text-[15px] font-semibold text-white hover:bg-copper-700 sm:inline-block"
           >
             Contact us
           </Link>
@@ -76,7 +76,7 @@ export function V2Header() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="v2-mobile-nav"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-mist-200 text-brass-800 xl:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-navy-100 text-copper-800 xl:hidden"
           >
             <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -88,11 +88,11 @@ export function V2Header() {
         <nav
           id="v2-mobile-nav"
           aria-label="Main"
-          className="max-h-[calc(100svh-5rem)] overflow-y-auto border-t border-mist-200 bg-white xl:hidden"
+          className="max-h-[calc(100svh-5rem)] overflow-y-auto border-t border-navy-100 bg-white xl:hidden"
         >
           <ul className="mx-auto w-full max-w-7xl px-4 py-2 sm:px-6">
             {v2Nav.map((item) => (
-              <li key={item.href} className="border-b border-brass-50 py-1">
+              <li key={item.href} className="border-b border-copper-50 py-1">
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
@@ -121,7 +121,7 @@ export function V2Header() {
               <Link
                 href="/v2/contact"
                 onClick={() => setOpen(false)}
-                className="mt-3 mb-4 block rounded-md bg-brass-700 px-5 py-3 text-center text-base font-semibold text-white"
+                className="mt-3 mb-4 block rounded-md bg-copper-600 px-5 py-3 text-center text-base font-semibold text-white"
               >
                 Contact us
               </Link>

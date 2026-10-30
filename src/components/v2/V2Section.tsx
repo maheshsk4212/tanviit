@@ -7,8 +7,8 @@ type Tone = "white" | "tint" | "dark";
 
 const tones: Record<Tone, string> = {
   white: "bg-white text-fg",
-  tint: "bg-mist-50 text-fg",
-  dark: "bg-ink-950 text-white",
+  tint: "bg-navy-50 text-fg",
+  dark: "bg-navy-950 text-white",
 };
 
 /** One band of the page: full-width colour, centred container, equal padding. */
@@ -48,16 +48,16 @@ export function BandHeading({
       {eyebrow ? (
         <p
           className={`flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.14em] ${
-            onDark ? "text-brass-400" : "text-brass-700"
+            onDark ? "text-copper-400" : "text-copper-700"
           }`}
         >
-          <span className={`h-px w-8 ${onDark ? "bg-brass-400" : "bg-mist-500"}`} aria-hidden />
+          <span className={`h-px w-8 ${onDark ? "bg-copper-400" : "bg-navy-500"}`} aria-hidden />
           {eyebrow}
         </p>
       ) : null}
       <h2
         className={`mt-4 font-display text-3xl font-semibold leading-[1.15] tracking-[-0.02em] sm:text-4xl ${
-          onDark ? "text-white" : "text-fg"
+          onDark ? "text-white" : "text-navy-900"
         }`}
       >
         {title}
@@ -65,7 +65,7 @@ export function BandHeading({
       {lead ? (
         <p
           className={`mt-5 text-[17px] leading-[1.7] sm:text-lg ${
-            onDark ? "text-ink-100" : "text-fg"
+            onDark ? "text-navy-100" : "text-fg"
           }`}
         >
           {lead}
@@ -96,7 +96,7 @@ export function PageHero({
   video?: boolean;
 }) {
   return (
-    <section className="relative isolate overflow-hidden bg-ink-950">
+    <section className="relative isolate overflow-hidden bg-navy-950">
       {video ? (
         <>
           {/* Shown until the first frame decodes, and wherever autoplay is
@@ -134,7 +134,7 @@ export function PageHero({
 
       {/* Readable from the left, where both backgrounds are near-empty. */}
       <div
-        className="absolute inset-0 -z-10 [background-image:linear-gradient(to_right,rgb(16_14_9/0.94)_0%,rgb(16_14_9/0.84)_42%,rgb(16_14_9/0.6)_70%,rgb(16_14_9/0.42)_100%)]"
+        className="absolute inset-0 -z-10 [background-image:linear-gradient(to_right,rgb(10_24_48/0.94)_0%,rgb(10_24_48/0.84)_42%,rgb(10_24_48/0.6)_70%,rgb(10_24_48/0.42)_100%)]"
         aria-hidden
       />
 
@@ -145,7 +145,7 @@ export function PageHero({
       >
         <div className="max-w-3xl">
           {eyebrow ? (
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-brass-400">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-copper-400">
               {eyebrow}
             </p>
           ) : null}
@@ -181,7 +181,7 @@ export function MoreLink({
     <Link
       href={href}
       className={`inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.1em] underline-offset-4 hover:underline ${
-        onDark ? "text-brass-400 hover:text-brass-300" : "text-brass-700 hover:text-brass-800"
+        onDark ? "text-copper-400 hover:text-copper-300" : "text-copper-700 hover:text-copper-800"
       }`}
     >
       {children}
@@ -200,8 +200,8 @@ export function V2Button({
   variant?: "solid" | "outline" | "outline-dark";
 }) {
   const styles = {
-    solid: "bg-brass-700 text-white hover:bg-brass-800",
-    outline: "border border-mist-300 text-fg hover:bg-mist-50",
+    solid: "bg-copper-600 text-white hover:bg-copper-700",
+    outline: "border border-navy-200 text-fg hover:bg-navy-50",
     "outline-dark": "border border-white/35 text-white hover:bg-white/10",
   } as const;
   return (

@@ -49,28 +49,43 @@
   --color-cream-100: #f7efdd;
   --color-cream-200: #efdfb8;
 
-  /* Brass scale — the second design (/v2). The logo's mustard #d59b29 sits at
-     500; 700 and darker are the text and button tones, because mustard only
-     carries copy on white once it is taken this deep (700 is 5.2:1). */
-  --color-brass-50: #fdf9f0;
-  --color-brass-100: #f9f0da;
-  --color-brass-200: #f1dfae;
-  --color-brass-300: #e6c87a;
-  --color-brass-400: #dcb14d;
-  --color-brass-500: #d59b29;
-  --color-brass-600: #b47d1f;
-  --color-brass-700: #8c611a;
-  --color-brass-800: #6f4d18;
-  --color-brass-900: #4f3712;
-  --color-brass-950: #2a1d09;
+  /* ------------------------------------------------------------------ *
+     Second design (/v2) palette. Two hues, each with one job.
 
-  /* Mist scale — the second design's section tints. Pale gold washed the
-     light bands out against a gold accent, so the tints are a cool neutral and
-     the mustard is left to do accent work alone. */
-  --color-mist-50: #f6f7f9;
-  --color-mist-100: #eef1f5;
-  --color-mist-200: #dfe4ea;
-  --color-mist-300: #c6ced8;
+     NAVY carries every surface: the page tints, the card borders, the dark
+     bands and the hero scrim. Cool, institutional, and the hue a federal
+     buyer expects.
+
+     COPPER carries every action: eyebrows, rules, numerals, links, the
+     primary button. Warm, so it separates cleanly from the navy it sits on
+     instead of blending the way a gold accent did against gold tints.
+
+     Contrast, measured against the surface each is used on: copper-700 on
+     white 7.25:1, copper-600 behind white text 5.46:1, copper-400 on
+     navy-950 5.98:1, white on navy-950 17.6:1.
+   * ------------------------------------------------------------------ */
+  --color-navy-50: #f3f6fb;
+  --color-navy-100: #e4ebf5;
+  --color-navy-200: #cbd8ea;
+  --color-navy-300: #9db3d2;
+  --color-navy-400: #6484b4;
+  --color-navy-500: #3d6098;
+  --color-navy-600: #2b4a7d;
+  --color-navy-700: #1f3a63;
+  --color-navy-800: #16294a;
+  --color-navy-900: #0f1d38;
+  --color-navy-950: #0a1830;
+
+  --color-copper-50: #fdf5f1;
+  --color-copper-100: #fae7dd;
+  --color-copper-200: #f3cab5;
+  --color-copper-300: #e8a680;
+  --color-copper-400: #d4834f;
+  --color-copper-500: #c2612f;
+  --color-copper-600: #a8502a;
+  --color-copper-700: #8a4122;
+  --color-copper-800: #6d341c;
+  --color-copper-900: #4a2314;
 
   /* Neutrals */
   --color-slate-50: #f7f7f8;
@@ -140,22 +155,28 @@
   --color-cream-100: var(--color-cream-100);
   --color-cream-200: var(--color-cream-200);
 
-  --color-brass-50: var(--color-brass-50);
-  --color-brass-100: var(--color-brass-100);
-  --color-brass-200: var(--color-brass-200);
-  --color-brass-300: var(--color-brass-300);
-  --color-brass-400: var(--color-brass-400);
-  --color-brass-500: var(--color-brass-500);
-  --color-brass-600: var(--color-brass-600);
-  --color-brass-700: var(--color-brass-700);
-  --color-brass-800: var(--color-brass-800);
-  --color-brass-900: var(--color-brass-900);
-  --color-brass-950: var(--color-brass-950);
+  --color-navy-50: var(--color-navy-50);
+  --color-navy-100: var(--color-navy-100);
+  --color-navy-200: var(--color-navy-200);
+  --color-navy-300: var(--color-navy-300);
+  --color-navy-400: var(--color-navy-400);
+  --color-navy-500: var(--color-navy-500);
+  --color-navy-600: var(--color-navy-600);
+  --color-navy-700: var(--color-navy-700);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-950: var(--color-navy-950);
 
-  --color-mist-50: var(--color-mist-50);
-  --color-mist-100: var(--color-mist-100);
-  --color-mist-200: var(--color-mist-200);
-  --color-mist-300: var(--color-mist-300);
+  --color-copper-50: var(--color-copper-50);
+  --color-copper-100: var(--color-copper-100);
+  --color-copper-200: var(--color-copper-200);
+  --color-copper-300: var(--color-copper-300);
+  --color-copper-400: var(--color-copper-400);
+  --color-copper-500: var(--color-copper-500);
+  --color-copper-600: var(--color-copper-600);
+  --color-copper-700: var(--color-copper-700);
+  --color-copper-800: var(--color-copper-800);
+  --color-copper-900: var(--color-copper-900);
 
   --color-slate-50: var(--color-slate-50);
   --color-slate-100: var(--color-slate-100);

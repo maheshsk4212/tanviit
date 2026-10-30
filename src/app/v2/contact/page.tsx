@@ -21,18 +21,18 @@ export default function V2Contact() {
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           <div>
             <BandHeading eyebrow="Enquiry routes" title="How can we help?" />
-            <ul className="mt-10 divide-y divide-mist-200 border-y border-mist-200">
+            <ul className="mt-10 divide-y divide-navy-100 border-y border-navy-100">
               {contactPaths.map((path) => (
                 <li key={path.name} className="py-6">
-                  <h3 className="font-display text-lg font-semibold text-fg">{path.name}</h3>
+                  <h3 className="font-display text-lg font-semibold text-navy-900">{path.name}</h3>
                   <p className="mt-2 text-[17px] leading-[1.7] text-fg">{path.description}</p>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="rounded-xl border border-mist-200 bg-mist-50 p-8">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-brass-700">
+          <div className="rounded-xl border border-navy-100 bg-navy-50 p-8">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-copper-700">
               Head office
             </h2>
             <address className="mt-4 space-y-1.5 text-[17px] not-italic leading-relaxed text-fg">
@@ -50,7 +50,7 @@ export default function V2Contact() {
               </p>
             </address>
 
-            <h2 className="mt-10 text-sm font-semibold uppercase tracking-[0.14em] text-brass-700">
+            <h2 className="mt-10 text-sm font-semibold uppercase tracking-[0.14em] text-copper-700">
               SEWP VI program contacts
             </h2>
             <ul className="mt-4 space-y-5">

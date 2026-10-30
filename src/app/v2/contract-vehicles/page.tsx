@@ -32,12 +32,12 @@ export default function V2Vehicles() {
 
       {/* ------------------------------------------------------- SEWP VI */}
       <Band>
-        <div className="grid gap-10 rounded-xl border border-mist-200 bg-mist-50 p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
+        <div className="grid gap-10 rounded-xl border border-navy-100 bg-navy-50 p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brass-700">
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-copper-700">
               Featured vehicle
             </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.02em] text-fg">
+            <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.02em] text-navy-900">
               NASA SEWP VI — Category C
             </h2>
             <p className="mt-5 text-[17px] leading-[1.7] text-fg sm:text-lg">
@@ -49,7 +49,7 @@ export default function V2Vehicles() {
               <MoreLink href="/v2/contract-vehicles/sewp-vi">Ordering information</MoreLink>
               <a
                 href={sewpVi.orderingGuide.href}
-                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.1em] text-brass-700 underline-offset-4 hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.1em] text-copper-700 underline-offset-4 hover:underline"
               >
                 Download the ordering guide (PDF)
               </a>
@@ -58,7 +58,7 @@ export default function V2Vehicles() {
           <dl className="space-y-5">
             {sewpVi.contract.slice(0, 5).map((row) => (
               <div key={row.term}>
-                <dt className="text-sm font-semibold uppercase tracking-[0.12em] text-brass-700">
+                <dt className="text-sm font-semibold uppercase tracking-[0.12em] text-copper-700">
                   {row.term}
                 </dt>
                 <dd className="mt-1 text-[17px] leading-relaxed text-fg">{row.detail}</dd>
@@ -75,14 +75,14 @@ export default function V2Vehicles() {
           title="Where Tanvi IT can be awarded work"
           lead="NEEDS-CONFIRMATION: this list is carried over from the current site and should be checked against the vehicles that are active today."
         />
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-xl border border-mist-200 bg-mist-200 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-px overflow-hidden rounded-xl border border-navy-100 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3">
           {contractVehicles.map((vehicle) => (
             <li
               key={vehicle.name}
               id={anchors[vehicle.name]}
               className="scroll-mt-28 bg-white p-6"
             >
-              <h3 className="font-display text-lg font-semibold text-fg">{vehicle.name}</h3>
+              <h3 className="font-display text-lg font-semibold text-navy-900">{vehicle.name}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-fg">{vehicle.detail}</p>
               {vehicle.name === "NASA SEWP VI" ? (
                 <div className="mt-4">
@@ -101,10 +101,10 @@ export default function V2Vehicles() {
           title="How to find us"
           lead="Buyers search by code. This is the NAICS code on Tanvi IT's SEWP VI Category C contract."
         />
-        <ul className="mt-10 max-w-3xl divide-y divide-mist-200 border-y border-mist-200">
+        <ul className="mt-10 max-w-3xl divide-y divide-navy-100 border-y border-navy-100">
           {naicsCodes.map((code) => (
             <li key={code.code} className="flex flex-wrap items-baseline gap-x-8 gap-y-1 py-5">
-              <span className="font-display text-xl font-semibold text-brass-700">{code.code}</span>
+              <span className="font-display text-xl font-semibold text-copper-700">{code.code}</span>
               <span className="text-[17px] text-fg">{code.title}</span>
             </li>
           ))}
