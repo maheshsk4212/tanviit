@@ -12,7 +12,7 @@ export default function V2Careers() {
   return (
     <>
       <PageHero eyebrow="Careers" title={careers.headline} lead={careers.body}>
-        <p className="mt-6 font-display text-lg font-medium text-sky-300">
+        <p className="mt-6 font-display text-lg font-semibold text-flame-400">
           {careers.strapline}
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
@@ -31,8 +31,8 @@ export default function V2Careers() {
         />
         <ul className="mt-12 grid gap-5 lg:grid-cols-3">
           {about.approach.map((item) => (
-            <li key={item.name} className="rounded-2xl border border-navy-200 bg-navy-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
-              <h3 className="font-display text-sm font-medium uppercase tracking-[0.14em] text-navy-700">
+            <li key={item.name} className="rounded-2xl border border-navy-200 bg-navy-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+              <h3 className="font-display text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
                 {item.name}
               </h3>
               <p className="mt-4 text-[17px] leading-[1.7] text-fg">{item.description}</p>
@@ -45,8 +45,8 @@ export default function V2Careers() {
         <BandHeading eyebrow="Benefits" title="What we offer" />
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit) => (
-            <li key={benefit.title} className="rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
-              <h3 className="font-display text-lg font-medium text-navy-900">{benefit.title}</h3>
+            <li key={benefit.title} className="rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+              <h3 className="font-display text-lg font-semibold text-navy-900">{benefit.title}</h3>
               <p className="mt-2.5 text-[15px] leading-relaxed text-fg">{benefit.description}</p>
             </li>
           ))}

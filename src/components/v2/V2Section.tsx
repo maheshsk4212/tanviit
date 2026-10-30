@@ -68,7 +68,7 @@ export function BandHeading({
         <span
           className={`inline-flex items-center rounded-full border px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] ${
             onDark
-              ? "border-white/20 bg-white/5 text-sky-300"
+              ? "border-white/20 bg-white/5 text-flame-400"
               : "border-navy-200 bg-navy-50 text-navy-700"
           }`}
         >
@@ -76,7 +76,7 @@ export function BandHeading({
         </span>
       ) : null}
       <h2
-        className={`${eyebrow ? "mt-5" : ""} text-balance font-display text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-[3.5rem] ${
+        className={`${eyebrow ? "mt-5" : ""} text-balance font-display text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-[3.5rem] ${
           onDark ? "text-white" : "text-fg"
         }`}
       >
@@ -167,12 +167,12 @@ export function PageHero({
       >
         <Reveal className="max-w-4xl [text-shadow:0_1px_14px_rgb(6_26_46/0.45)]">
           {eyebrow ? (
-            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-sky-300">
+            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-flame-400">
               {eyebrow}
             </span>
           ) : null}
           <h1
-            className={`mt-6 text-balance font-display font-medium leading-[1.0] tracking-[-0.035em] text-white ${
+            className={`mt-6 text-balance font-display font-bold leading-[1.02] tracking-[-0.03em] text-white ${
               tall
                 ? "text-5xl sm:text-6xl lg:text-[4.5rem]"
                 : "text-4xl sm:text-5xl lg:text-[3.5rem]"
@@ -182,7 +182,7 @@ export function PageHero({
             {accent ? (
               <>
                 {" "}
-                <span className="text-sky-400">{accent}</span>
+                <span className="text-flame-400">{accent}</span>
               </>
             ) : null}
           </h1>
@@ -209,7 +209,7 @@ export function MoreLink({
     <Link
       href={href}
       className={`group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] ${
-        onDark ? "text-sky-300 hover:text-sky-200" : "text-navy-700 hover:text-navy-800"
+        onDark ? "text-flame-400 hover:text-flame-300" : "text-navy-700 hover:text-navy-800"
       }`}
     >
       {children}
@@ -231,14 +231,14 @@ export function V2Button({
   variant?: "solid" | "outline" | "outline-dark";
 }) {
   const styles = {
-    solid: "bg-navy-700 text-white hover:bg-navy-800",
+    solid: "bg-flame-600 text-white hover:bg-flame-700",
     outline: "border border-navy-300 text-navy-800 hover:bg-navy-50",
     "outline-dark": "border border-white/35 text-white hover:bg-white/10",
   } as const;
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-base font-medium ${styles[variant]}`}
+      className={`group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-12px_rgb(250_70_18/0.5)] ${styles[variant]}`}
     >
       {children}
       <ArrowRight

@@ -50,34 +50,36 @@
   --color-cream-200: #efdfb8;
 
   /* ------------------------------------------------------------------ *
-     Second design (/v2). Blue is the primary: deep navy carries the dark
-     bands and cards, a bright sky accent carries emphasis on them, and the
-     light bands are a cool neutral grey. Modelled on how alphaomega.com uses
-     one deep hue, one vivid accent and one pale grey — with blue in place of
-     their teal and green, which reads as business rather than lab.
+     Second design (/v2). The combination from the Avante reference: a deep
+     indigo navy carrying the brand, and a vivid orange carrying action.
+     Navy alone reads corporate but cold; the orange is what makes a section
+     look deliberate rather than default, and it is the one colour on the page
+     that means "do this".
 
-     Contrast on the surface each is used on: navy-700 on white 8.59:1,
-     white on navy-700 8.59:1, sky-300 on navy-950 8.14:1, white on
-     navy-950 16.8:1.
+     Contrast on the surfaces each is used on: navy-800 behind white 15.4:1,
+     flame-600 on white 4.76:1, flame-400 on navy-900 6.5:1, white on
+     navy-950 18.1:1.
    * ------------------------------------------------------------------ */
-  --color-navy-50: #f1f6fd;
-  --color-navy-100: #e1ecfa;
-  --color-navy-200: #c4d9f3;
-  --color-navy-300: #93bbe8;
-  --color-navy-400: #5b93d8;
-  --color-navy-500: #2f6fc0;
-  --color-navy-600: #1f569f;
-  --color-navy-700: #184480;
-  --color-navy-800: #123462;
-  --color-navy-900: #0b2444;
-  --color-navy-950: #061a2e;
+  --color-navy-50: #f2f5fe;
+  --color-navy-100: #e3e8fc;
+  --color-navy-200: #c9d2f7;
+  --color-navy-300: #9fafee;
+  --color-navy-400: #6b80e0;
+  --color-navy-500: #3a52c8;
+  --color-navy-600: #2338a3;
+  --color-navy-700: #16287f;
+  --color-navy-800: #0c1d61;
+  --color-navy-900: #071038;
+  --color-navy-950: #050c28;
 
-  /* Vivid accent, used only on the dark bands — the equivalent of the
-     reference's green on its deep teal. */
-  --color-sky-200: #bcdcff;
-  --color-sky-300: #8ec5ff;
-  --color-sky-400: #5aa9ff;
-  --color-sky-500: #2e8dff;
+  /* Flame — the action colour. 600 and darker carry text on white; 400 and
+     500 are for fills and for accents on the navy. */
+  --color-flame-200: #ffd4c2;
+  --color-flame-300: #ffac8a;
+  --color-flame-400: #ff7a4d;
+  --color-flame-500: #fa4612;
+  --color-flame-600: #d8380a;
+  --color-flame-700: #b32d08;
 
   /* Neutrals */
   --color-slate-50: #f7f7f8;
@@ -159,10 +161,12 @@
   --color-navy-900: var(--color-navy-900);
   --color-navy-950: var(--color-navy-950);
 
-  --color-sky-200: var(--color-sky-200);
-  --color-sky-300: var(--color-sky-300);
-  --color-sky-400: var(--color-sky-400);
-  --color-sky-500: var(--color-sky-500);
+  --color-flame-200: var(--color-flame-200);
+  --color-flame-300: var(--color-flame-300);
+  --color-flame-400: var(--color-flame-400);
+  --color-flame-500: var(--color-flame-500);
+  --color-flame-600: var(--color-flame-600);
+  --color-flame-700: var(--color-flame-700);
 
   --color-slate-50: var(--color-slate-50);
   --color-slate-100: var(--color-slate-100);

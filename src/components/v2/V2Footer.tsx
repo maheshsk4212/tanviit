@@ -48,7 +48,7 @@ export function V2Footer() {
               <p>
                 <a
                   href={`tel:${v2Site.phone.replace(/[^+\d]/g, "")}`}
-                  className="hover:text-navy-700 hover:underline"
+                  className="hover:text-flame-600 hover:underline"
                 >
                   {v2Site.phone}
                 </a>
@@ -56,7 +56,7 @@ export function V2Footer() {
               <p>
                 <a
                   href={`mailto:${v2Site.email}`}
-                  className="hover:text-navy-700 hover:underline"
+                  className="hover:text-flame-600 hover:underline"
                 >
                   {v2Site.email}
                 </a>
@@ -75,7 +75,7 @@ export function V2Footer() {
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="-my-1 inline-block py-1.5 text-[15px] text-fg hover:text-navy-700 hover:underline"
+                      className="-my-1 inline-block py-1.5 text-[15px] text-fg hover:text-flame-600 hover:underline"
                     >
                       {item.label}
                     </Link>
@@ -108,7 +108,7 @@ export function V2Footer() {
           </p>
           <p>
             Second design.{" "}
-            <Link href="/" className="underline hover:text-navy-700">
+            <Link href="/" className="underline hover:text-flame-600">
               View the original
             </Link>
           </p>

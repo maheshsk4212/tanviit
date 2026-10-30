@@ -36,7 +36,7 @@ export function V2Header() {
             <div key={item.href} className="group relative">
               <Link
                 href={item.href}
-                className="flex items-center gap-1 whitespace-nowrap px-3 py-7 text-[15px] font-medium text-fg group-hover:text-navy-700"
+                className="flex items-center gap-1 whitespace-nowrap px-3 py-7 text-[15px] font-medium text-fg group-hover:text-flame-600"
               >
                 {item.label}
                 {item.children ? (
@@ -67,7 +67,7 @@ export function V2Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/v2/contact"
-            className="hidden whitespace-nowrap rounded-md bg-navy-700 px-5 py-2.5 text-[15px] font-semibold text-white hover:bg-navy-800 sm:inline-block"
+            className="hidden whitespace-nowrap rounded-full bg-flame-600 px-5 py-2.5 text-[15px] font-semibold text-white transition-colors duration-300 hover:bg-flame-700 sm:inline-block"
           >
             Contact us
           </Link>
@@ -121,7 +121,7 @@ export function V2Header() {
               <Link
                 href="/v2/contact"
                 onClick={() => setOpen(false)}
-                className="mt-3 mb-4 block rounded-md bg-navy-700 px-5 py-3 text-center text-base font-semibold text-white"
+                className="mt-3 mb-4 block rounded-full bg-flame-600 px-5 py-3 text-center text-base font-semibold text-white"
               >
                 Contact us
               </Link>

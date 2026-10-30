@@ -34,12 +34,12 @@ export default function V2Vehicles() {
 
       {/* ------------------------------------------------------- SEWP VI */}
       <Band>
-        <div className="grid gap-10 rounded-2xl border border-navy-200 bg-navy-50 p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+        <div className="grid gap-10 rounded-2xl border border-navy-200 bg-navy-50 p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
               Featured vehicle
             </p>
-            <h2 className="mt-3 font-display text-3xl font-medium tracking-[-0.02em] text-navy-900">
+            <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.02em] text-navy-900">
               NASA SEWP VI — Category C
             </h2>
             <p className="mt-5 text-[17px] leading-[1.7] text-fg sm:text-lg">
@@ -77,14 +77,14 @@ export default function V2Vehicles() {
           title="Where Tanvi IT can be awarded work"
           lead="Vehicles Tanvi IT holds or can be awarded work through, across federal, state, local and cooperative purchasing."
         />
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
           {contractVehicles.map((vehicle) => (
             <li
               key={vehicle.name}
               id={anchors[vehicle.name]}
               className="scroll-mt-28 bg-white p-6"
             >
-              <h3 className="font-display text-lg font-medium text-navy-900">{vehicle.name}</h3>
+              <h3 className="font-display text-lg font-semibold text-navy-900">{vehicle.name}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-fg">{vehicle.detail}</p>
               {vehicle.name === "NASA SEWP VI" ? (
                 <div className="mt-4">
@@ -106,7 +106,7 @@ export default function V2Vehicles() {
         <ul className="mt-10 max-w-3xl divide-y divide-slate-200 border-y border-navy-200">
           {naicsCodes.map((code) => (
             <li key={code.code} className="flex flex-wrap items-baseline gap-x-8 gap-y-1 py-5">
-              <span className="font-display text-xl font-medium text-navy-700">{code.code}</span>
+              <span className="font-display text-xl font-semibold text-navy-700">{code.code}</span>
               <span className="text-[17px] text-fg">{code.title}</span>
             </li>
           ))}

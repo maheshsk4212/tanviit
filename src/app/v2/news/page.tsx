@@ -21,7 +21,7 @@ export default function V2News() {
           <p className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
             Featured — contract award
           </p>
-          <h2 className="mt-4 font-display text-3xl font-medium leading-[1.15] tracking-[-0.02em] text-navy-900 sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.15] tracking-[-0.02em] text-navy-900 sm:text-4xl">
             {featuredNews.title}
           </h2>
           <p className="mt-5 text-sm font-semibold uppercase tracking-[0.1em] text-fg-subtle">
@@ -34,7 +34,7 @@ export default function V2News() {
             ))}
           </div>
 
-          <blockquote className="my-10 border-l-4 border-sky-400 py-1 pl-6">
+          <blockquote className="my-10 border-l-4 border-flame-500 py-1 pl-6">
             <p className="font-display text-xl leading-snug text-navy-900 sm:text-2xl">
               “{featuredNews.quote.text}”
             </p>
@@ -49,7 +49,7 @@ export default function V2News() {
             ))}
           </div>
 
-          <dl className="mt-10 grid gap-6 rounded-2xl border border-navy-200 bg-navy-50 p-8 sm:grid-cols-2 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+          <dl className="mt-10 grid gap-6 rounded-2xl border border-navy-200 bg-navy-50 p-8 sm:grid-cols-2 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
             <div>
               <dt className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
                 Contract number

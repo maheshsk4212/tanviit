@@ -40,7 +40,7 @@ export default function V2About() {
             ))}
           </div>
         </div>
-        <p className="mt-14 border-l-4 border-sky-400 pl-6 font-display text-2xl font-medium leading-snug tracking-[-0.015em] text-navy-900 sm:text-3xl">
+        <p className="mt-14 border-l-4 border-flame-500 pl-6 font-display text-2xl font-semibold leading-snug tracking-[-0.015em] text-navy-900 sm:text-3xl">
           {about.pullQuote}
         </p>
       </Band>
@@ -56,9 +56,9 @@ export default function V2About() {
           {about.approach.map((item) => (
             <li
               key={item.name}
-              className="rounded-2xl border border-navy-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
+              className="rounded-2xl border border-navy-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
             >
-              <h3 className="font-display text-sm font-medium uppercase tracking-[0.14em] text-navy-700">
+              <h3 className="font-display text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
                 {item.name}
               </h3>
               <p className="mt-4 text-[17px] leading-[1.7] text-fg">{item.description}</p>
@@ -73,7 +73,7 @@ export default function V2About() {
         <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2">
           {about.whyTanvi.map((item) => (
             <li key={item.name} className="border-t border-navy-200 pt-6">
-              <h3 className="font-display text-lg font-medium text-navy-900">{item.name}</h3>
+              <h3 className="font-display text-lg font-semibold text-navy-900">{item.name}</h3>
               <p className="mt-2.5 text-[17px] leading-[1.7] text-fg">{item.description}</p>
             </li>
           ))}
@@ -90,7 +90,7 @@ export default function V2About() {
             ))}
           </div>
         </div>
-        <p className="mt-12 border-t border-white/15 pt-8 font-display text-xl font-medium tracking-[-0.01em] text-sky-300 sm:text-2xl">
+        <p className="mt-12 border-t border-white/15 pt-8 font-display text-xl font-semibold tracking-[-0.01em] text-flame-400 sm:text-2xl">
           The Tanvi IT promise — {about.promise}
         </p>
       </Band>
@@ -104,8 +104,8 @@ export default function V2About() {
         />
         <ul className="mt-12 grid gap-6 lg:grid-cols-2">
           {leadership.map((person) => (
-            <li key={person.name} className="rounded-2xl border border-navy-200 bg-navy-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
-              <h3 className="font-display text-xl font-medium text-navy-900">{person.name}</h3>
+            <li key={person.name} className="rounded-2xl border border-navy-200 bg-navy-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+              <h3 className="font-display text-xl font-semibold text-navy-900">{person.name}</h3>
               <p className="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
                 {person.role}
               </p>
@@ -149,7 +149,7 @@ export default function V2About() {
                       key={cert.name}
                       className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-xl border border-navy-200 bg-white px-6 py-4"
                     >
-                      <span className="font-display text-base font-medium text-navy-900">
+                      <span className="font-display text-base font-semibold text-navy-900">
                         {cert.name}
                       </span>
                       <span className="text-[15px] text-fg">{cert.detail}</span>
@@ -166,7 +166,7 @@ export default function V2About() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <BandHeading eyebrow="Joint ventures" title={jointVenture.name} />
           <div>
-            <p className="font-display text-lg font-medium text-navy-700">
+            <p className="font-display text-lg font-semibold text-navy-700">
               {jointVenture.partners}
             </p>
             <div className="mt-5 space-y-5 text-[17px] leading-[1.7] text-fg sm:text-lg">

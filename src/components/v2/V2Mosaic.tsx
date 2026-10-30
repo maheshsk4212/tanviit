@@ -41,19 +41,20 @@ export function V2Mosaic({ tiles }: { tiles: MosaicTile[] }) {
               alt=""
               fill
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-              className="-z-20 object-cover opacity-55 transition-transform duration-[900ms] ease-out group-hover:scale-110"
+              quality={90}
+              className="-z-20 object-cover opacity-[0.6] transition-transform duration-[900ms] ease-out group-hover:scale-110"
             />
             <div
               className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/25 transition-opacity duration-500 group-hover:opacity-85"
               aria-hidden
             />
 
-            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-sky-300 backdrop-blur transition-all duration-500 group-hover:border-sky-400/60 group-hover:bg-sky-400/20">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-flame-400 backdrop-blur transition-all duration-500 group-hover:border-flame-500/60 group-hover:bg-flame-500/20">
               <tile.Icon className="h-5 w-5" aria-hidden />
             </span>
 
             <div>
-              <h3 className="font-display text-xl font-medium leading-snug tracking-[-0.02em] text-white">
+              <h3 className="font-display text-xl font-semibold leading-snug tracking-[-0.02em] text-white">
                 {tile.name}
               </h3>
               {/* Collapsed until hover; always open for touch and reduced motion. */}
@@ -63,7 +64,7 @@ export function V2Mosaic({ tiles }: { tiles: MosaicTile[] }) {
                 </p>
               </div>
               <ArrowUpRight
-                className="mt-4 h-5 w-5 text-sky-300 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
+                className="mt-4 h-5 w-5 text-flame-400 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1"
                 aria-hidden
               />
             </div>
@@ -91,7 +92,7 @@ export function V2Marquee({ items }: { items: string[] }) {
             aria-hidden={i >= items.length}
             className="flex h-24 w-52 shrink-0 items-center justify-center rounded-xl border border-navy-100 bg-white px-5 text-center transition-colors duration-300 hover:border-navy-300"
           >
-            <span className="font-display text-base font-medium tracking-[-0.01em] text-navy-900">
+            <span className="font-display text-base font-semibold tracking-[-0.01em] text-navy-900">
               {item}
             </span>
           </li>

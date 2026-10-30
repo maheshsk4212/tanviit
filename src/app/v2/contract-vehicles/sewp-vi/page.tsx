@@ -31,7 +31,7 @@ export default function V2Sewp() {
             <BandHeading eyebrow="Contract overview" title="A multi-award GWAC" />
             <p className="mt-5 text-[17px] leading-[1.75] text-fg sm:text-lg">{sewpVi.overview}</p>
           </div>
-          <dl className="divide-y divide-slate-200 rounded-2xl border border-navy-200 bg-slate-100 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+          <dl className="divide-y divide-slate-200 rounded-2xl border border-navy-200 bg-slate-100 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
             {sewpVi.contract.map((row) => (
               <div key={row.term} className="px-6 py-4">
                 <dt className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
@@ -52,7 +52,7 @@ export default function V2Sewp() {
           lead="Contract language, reproduced in full."
         />
         {/* Verbatim from the NASA SEWP VI terms — do not edit or summarize. */}
-        <div className="mt-10 max-w-4xl space-y-5 rounded-2xl border border-navy-200 bg-white p-8 text-[16px] leading-[1.75] text-fg sm:p-10 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+        <div className="mt-10 max-w-4xl space-y-5 rounded-2xl border border-navy-200 bg-white p-8 text-[16px] leading-[1.75] text-fg sm:p-10 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
           {sewpVi.fairOpportunity.map((paragraph) => (
             <p key={paragraph.slice(0, 48)}>{paragraph}</p>
           ))}
@@ -70,7 +70,7 @@ export default function V2Sewp() {
           {sewpVi.scope.map((item) => (
             <li
               key={item.slice(0, 40)}
-              className="border-l-4 border-sky-400 pl-6 text-[17px] leading-[1.7] text-fg"
+              className="border-l-4 border-flame-500 pl-6 text-[17px] leading-[1.7] text-fg"
             >
               {item}
             </li>
@@ -96,11 +96,11 @@ export default function V2Sewp() {
               key={item.step}
               className="grid gap-3 border-t border-white/20 pt-6 sm:grid-cols-[auto_1fr] sm:gap-8"
             >
-              <span className="font-display text-2xl font-medium text-sky-300">
+              <span className="font-display text-2xl font-semibold text-flame-400">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <div>
-                <h3 className="font-display text-lg font-medium text-white">{item.step}</h3>
+                <h3 className="font-display text-lg font-semibold text-white">{item.step}</h3>
                 <p className="mt-2 max-w-3xl text-[17px] leading-[1.7] text-navy-100">
                   {item.description}
                 </p>
@@ -121,7 +121,7 @@ export default function V2Sewp() {
                   <p className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
                     {manager.role}
                   </p>
-                  <p className="mt-1.5 font-display text-lg font-medium text-navy-900">
+                  <p className="mt-1.5 font-display text-lg font-semibold text-navy-900">
                     {manager.name}
                   </p>
                   <p className="mt-1 text-[15px] text-fg">
