@@ -47,7 +47,7 @@ export default function V2About() {
 
       {/* ----------------------------------------------------- Our approach */}
       <Band tone="tint" id="approach">
-        <BandHeading
+        <BandHeading split
           eyebrow="Our approach"
           title="Focused on outcomes. Built on trust."
           lead={about.approachIntro}
@@ -97,7 +97,7 @@ export default function V2About() {
 
       {/* ------------------------------------------------------- Leadership */}
       <Band id="leadership">
-        <BandHeading
+        <BandHeading split
           eyebrow="Leadership"
           title="Experienced leadership. Mission-driven direction."
           lead={leadershipIntro}
@@ -130,7 +130,7 @@ export default function V2About() {
 
       {/* --------------------------------------------------- Certifications */}
       <Band tone="tint" id="certifications">
-        <BandHeading
+        <BandHeading split
           eyebrow="Certifications & credentials"
           title="Our commitment to quality, security & continuous improvement"
           lead={certificationsIntro}
@@ -189,7 +189,7 @@ export default function V2About() {
       {/* ---------------------------------------------------------- Closing */}
       <Band tone="dark">
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
-          <BandHeading onDark title={about.closing.headline} lead={about.closing.body} />
+          <BandHeading split onDark title={about.closing.headline} lead={about.closing.body} />
           <div className="flex flex-wrap gap-3 lg:justify-end">
             <V2Button href="/v2/capabilities" variant="outline-dark">
               Explore our capabilities

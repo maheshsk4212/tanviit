@@ -178,15 +178,14 @@ export default function V2Home() {
       {/* ------------------------------ Capabilities — photographic mosaic */}
       <Band tone="tint" id="capabilities">
         <BandHeading
+          split
           eyebrow="What we do"
           title="Technology that supports the mission"
           lead={homeHero.statement}
+          action={<V2Button href="/v2/capabilities">All capabilities</V2Button>}
         />
         <div className="mt-16">
           <V2Mosaic tiles={mosaic} />
-        </div>
-        <div className="mt-14">
-          <V2Button href="/v2/capabilities">All capabilities</V2Button>
         </div>
       </Band>
 
@@ -269,10 +268,11 @@ export default function V2Home() {
 
       {/* --------------------------------------------- Certifications */}
       <Band tone="tint" id="certifications">
-        <BandHeading
+        <BandHeading split
           eyebrow="Certifications & credentials"
           title="Independently appraised, federally certified"
           lead="Third-party assessments of how we run quality, security and service management — the evidence behind every proposal we submit."
+          action={<MoreLink href="/v2/about#certifications">About our credentials</MoreLink>}
         />
         <RevealGroup
           className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6"
@@ -293,17 +293,15 @@ export default function V2Home() {
 
       {/* ------------------------------------ Customers — drifting logo rail */}
       <Band id="customers">
-        <BandHeading
+        <BandHeading split
           eyebrow="Customers & past performance"
           title="Organizations we support"
           lead="Government programs and commercial organizations that have trusted Tanvi IT with delivery."
+          action={<MoreLink href="/v2/customers">Customers & past performance</MoreLink>}
         />
-        <Reveal className="mt-14">
+        <Reveal className="mt-16">
           <V2Marquee items={customerGroups.flatMap((g) => g.customers.map((c) => c.name))} />
         </Reveal>
-        <div className="mt-12">
-          <MoreLink href="/v2/customers">Customers & past performance</MoreLink>
-        </div>
       </Band>
 
       {/* ----------------------------------------------- Testimonials */}

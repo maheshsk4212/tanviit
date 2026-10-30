@@ -24,7 +24,7 @@ export default function V2Careers() {
       </PageHero>
 
       <Band id="culture">
-        <BandHeading
+        <BandHeading split
           eyebrow="Culture"
           title="Talent, technology and trust — applied to how we work"
           lead={about.approachIntro}
@@ -59,7 +59,7 @@ export default function V2Careers() {
           list; swap in the feed as soon as one exists. */}
       <Band tone="dark" id="openings">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <BandHeading
+          <BandHeading split
             onDark
             eyebrow="Open positions"
             title="Tell us where you fit"

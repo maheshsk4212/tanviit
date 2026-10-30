@@ -47,23 +47,26 @@ export function BandHeading({
   eyebrow,
   title,
   lead,
+  action,
   onDark = false,
-  align = "left",
+  split = false,
   className = "",
 }: {
   eyebrow?: string;
   title: ReactNode;
   lead?: string;
+  /** Optional control, placed under the supporting text. */
+  action?: ReactNode;
   onDark?: boolean;
-  /** `center` is the reference's section-opening treatment. */
-  align?: "left" | "center";
+  /**
+   * Heading on the left, supporting text on the right, filling the full
+   * measure. Without it a section top leaves half the band empty.
+   */
+  split?: boolean;
   className?: string;
 }) {
-  const centred = align === "center";
-  return (
-    <div
-      className={`${centred ? "mx-auto max-w-3xl text-center" : "max-w-3xl"} ${className}`}
-    >
+  const heading = (
+    <>
       {eyebrow ? (
         <span
           className={`inline-flex items-center rounded-full border px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] ${
@@ -82,15 +85,40 @@ export function BandHeading({
       >
         {title}
       </h2>
-      {lead ? (
-        <p
-          className={`mt-6 text-base leading-relaxed sm:text-lg ${centred ? "mx-auto max-w-2xl" : "max-w-2xl"} ${
-            onDark ? "text-white/80" : "text-fg-muted"
-          }`}
-        >
-          {lead}
-        </p>
-      ) : null}
+    </>
+  );
+
+  const body =
+    lead || action ? (
+      <div className={split ? "" : "mt-6"}>
+        {lead ? (
+          <p
+            className={`text-base leading-relaxed sm:text-lg ${split ? "" : "max-w-2xl"} ${
+              onDark ? "text-white/80" : "text-fg-muted"
+            }`}
+          >
+            {lead}
+          </p>
+        ) : null}
+        {action ? <div className="mt-7">{action}</div> : null}
+      </div>
+    ) : null;
+
+  if (split) {
+    return (
+      <div
+        className={`grid gap-x-16 gap-y-6 lg:grid-cols-[1.05fr_1fr] lg:items-end ${className}`}
+      >
+        <div>{heading}</div>
+        {body}
+      </div>
+    );
+  }
+
+  return (
+    <div className={`max-w-3xl ${className}`}>
+      {heading}
+      {body}
     </div>
   );
 }

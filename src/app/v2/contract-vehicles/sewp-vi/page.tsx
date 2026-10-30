@@ -46,7 +46,7 @@ export default function V2Sewp() {
 
       {/* -------------------------------------------------- Fair opportunity */}
       <Band tone="tint" id="fair-opportunity">
-        <BandHeading
+        <BandHeading split
           eyebrow="A.1.13"
           title="Fair opportunity and requests for quotes"
           lead="Contract language, reproduced in full."
@@ -61,7 +61,7 @@ export default function V2Sewp() {
 
       {/* --------------------------------------------------------- In scope */}
       <Band id="scope">
-        <BandHeading
+        <BandHeading split
           eyebrow="What's in scope"
           title="Category C — IT Mission-Based Services"
           lead="Summarized from Tanvi IT's SEWP VI Category C Ordering Guide. The executed contract, the NASA SEWP Contract Holder User Manual, applicable FAR provisions and current NASA SEWP procedures remain authoritative."
