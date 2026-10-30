@@ -40,7 +40,7 @@ export default function V2About() {
             ))}
           </div>
         </div>
-        <p className="mt-14 border-l-4 border-copper-500 pl-6 font-display text-2xl font-semibold leading-snug tracking-[-0.015em] text-navy-900 sm:text-3xl">
+        <p className="mt-14 border-l-4 border-sky-400 pl-6 font-display text-2xl font-medium leading-snug tracking-[-0.015em] text-navy-900 sm:text-3xl">
           {about.pullQuote}
         </p>
       </Band>
@@ -56,9 +56,9 @@ export default function V2About() {
           {about.approach.map((item) => (
             <li
               key={item.name}
-              className="rounded-xl border border-navy-100 bg-white p-8"
+              className="rounded-2xl border border-slate-200 bg-white p-8"
             >
-              <h3 className="font-display text-sm font-semibold uppercase tracking-[0.14em] text-copper-700">
+              <h3 className="font-display text-sm font-medium uppercase tracking-[0.14em] text-navy-700">
                 {item.name}
               </h3>
               <p className="mt-4 text-[17px] leading-[1.7] text-fg">{item.description}</p>
@@ -72,8 +72,8 @@ export default function V2About() {
         <BandHeading eyebrow="Why Tanvi IT" title="What clients rely on us for" />
         <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2">
           {about.whyTanvi.map((item) => (
-            <li key={item.name} className="border-t border-navy-100 pt-6">
-              <h3 className="font-display text-lg font-semibold text-navy-900">{item.name}</h3>
+            <li key={item.name} className="border-t border-slate-200 pt-6">
+              <h3 className="font-display text-lg font-medium text-navy-900">{item.name}</h3>
               <p className="mt-2.5 text-[17px] leading-[1.7] text-fg">{item.description}</p>
             </li>
           ))}
@@ -90,7 +90,7 @@ export default function V2About() {
             ))}
           </div>
         </div>
-        <p className="mt-12 border-t border-white/15 pt-8 font-display text-xl font-semibold tracking-[-0.01em] text-copper-400 sm:text-2xl">
+        <p className="mt-12 border-t border-white/15 pt-8 font-display text-xl font-medium tracking-[-0.01em] text-sky-300 sm:text-2xl">
           The Tanvi IT promise — {about.promise}
         </p>
       </Band>
@@ -104,9 +104,9 @@ export default function V2About() {
         />
         <ul className="mt-12 grid gap-6 lg:grid-cols-2">
           {leadership.map((person) => (
-            <li key={person.name} className="rounded-xl border border-navy-100 bg-navy-50 p-8">
-              <h3 className="font-display text-xl font-semibold text-navy-900">{person.name}</h3>
-              <p className="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-copper-700">
+            <li key={person.name} className="rounded-2xl border border-slate-200 bg-slate-100 p-8">
+              <h3 className="font-display text-xl font-medium text-navy-900">{person.name}</h3>
+              <p className="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
                 {person.role}
               </p>
               <p className="mt-5 text-[17px] leading-[1.7] text-fg">{person.bio}</p>
@@ -117,7 +117,7 @@ export default function V2About() {
                 {person.areas.map((area) => (
                   <li
                     key={area}
-                    className="rounded border border-navy-100 bg-white px-2.5 py-1 text-[13px] font-medium text-fg"
+                    className="rounded border border-slate-200 bg-white px-2.5 py-1 text-[13px] font-medium text-fg"
                   >
                     {area}
                   </li>
@@ -138,7 +138,7 @@ export default function V2About() {
         <div className="mt-12 grid gap-10 lg:grid-cols-2">
           {["Quality & process", "Federal / socioeconomic"].map((group) => (
             <div key={group}>
-              <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-copper-700">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
                 {group}
               </h3>
               <ul className="mt-5 space-y-3">
@@ -147,9 +147,9 @@ export default function V2About() {
                   .map((cert) => (
                     <li
                       key={cert.name}
-                      className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-lg border border-navy-100 bg-white px-6 py-4"
+                      className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 rounded-xl border border-slate-200 bg-white px-6 py-4"
                     >
-                      <span className="font-display text-base font-semibold text-navy-900">
+                      <span className="font-display text-base font-medium text-navy-900">
                         {cert.name}
                       </span>
                       <span className="text-[15px] text-fg">{cert.detail}</span>
@@ -166,7 +166,7 @@ export default function V2About() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <BandHeading eyebrow="Joint ventures" title={jointVenture.name} />
           <div>
-            <p className="font-display text-lg font-semibold text-copper-700">
+            <p className="font-display text-lg font-medium text-navy-700">
               {jointVenture.partners}
             </p>
             <div className="mt-5 space-y-5 text-[17px] leading-[1.7] text-fg sm:text-lg">
@@ -178,7 +178,7 @@ export default function V2About() {
               href={jointVenture.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.1em] text-copper-700 underline-offset-4 hover:underline"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.1em] text-navy-700 underline-offset-4 hover:underline"
             >
               Learn more about TA Federal
             </a>

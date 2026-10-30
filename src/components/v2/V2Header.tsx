@@ -36,7 +36,7 @@ export function V2Header() {
             <div key={item.href} className="group relative">
               <Link
                 href={item.href}
-                className="flex items-center gap-1 whitespace-nowrap px-3 py-7 text-[15px] font-medium text-fg group-hover:text-copper-700"
+                className="flex items-center gap-1 whitespace-nowrap px-3 py-7 text-[15px] font-medium text-fg group-hover:text-navy-700"
               >
                 {item.label}
                 {item.children ? (
@@ -51,7 +51,7 @@ export function V2Header() {
                       <li key={child.href}>
                         <Link
                           href={child.href}
-                          className="block px-5 py-2.5 text-[15px] text-fg hover:bg-navy-50 hover:text-copper-700"
+                          className="block px-5 py-2.5 text-[15px] text-fg hover:bg-slate-100 hover:text-navy-700"
                         >
                           {child.label}
                         </Link>
@@ -67,7 +67,7 @@ export function V2Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/v2/contact"
-            className="hidden whitespace-nowrap rounded-md bg-copper-600 px-5 py-2.5 text-[15px] font-semibold text-white hover:bg-copper-700 sm:inline-block"
+            className="hidden whitespace-nowrap rounded-md bg-navy-700 px-5 py-2.5 text-[15px] font-semibold text-white hover:bg-navy-800 sm:inline-block"
           >
             Contact us
           </Link>
@@ -76,7 +76,7 @@ export function V2Header() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="v2-mobile-nav"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-navy-100 text-copper-800 xl:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-navy-100 text-navy-800 xl:hidden"
           >
             <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -92,7 +92,7 @@ export function V2Header() {
         >
           <ul className="mx-auto w-full max-w-7xl px-4 py-2 sm:px-6">
             {v2Nav.map((item) => (
-              <li key={item.href} className="border-b border-copper-50 py-1">
+              <li key={item.href} className="border-b border-navy-50 py-1">
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
@@ -121,7 +121,7 @@ export function V2Header() {
               <Link
                 href="/v2/contact"
                 onClick={() => setOpen(false)}
-                className="mt-3 mb-4 block rounded-md bg-copper-600 px-5 py-3 text-center text-base font-semibold text-white"
+                className="mt-3 mb-4 block rounded-md bg-navy-700 px-5 py-3 text-center text-base font-semibold text-white"
               >
                 Contact us
               </Link>

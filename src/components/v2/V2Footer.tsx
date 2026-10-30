@@ -32,7 +32,7 @@ const columns = [
 /** Light footer: the page ends on paper, not on a dark slab. */
 export function V2Footer() {
   return (
-    <footer className="border-t border-navy-100 bg-navy-50 text-fg">
+    <footer className="border-t border-navy-100 bg-slate-100 text-fg">
       <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_repeat(3,1fr)]">
           <div>
@@ -48,7 +48,7 @@ export function V2Footer() {
               <p>
                 <a
                   href={`tel:${v2Site.phone.replace(/[^+\d]/g, "")}`}
-                  className="hover:text-copper-700 hover:underline"
+                  className="hover:text-navy-700 hover:underline"
                 >
                   {v2Site.phone}
                 </a>
@@ -56,18 +56,18 @@ export function V2Footer() {
               <p>
                 <a
                   href={`mailto:${v2Site.email}`}
-                  className="hover:text-copper-700 hover:underline"
+                  className="hover:text-navy-700 hover:underline"
                 >
                   {v2Site.email}
                 </a>
               </p>
             </address>
-            <p className="mt-5 text-[15px] font-semibold text-copper-700">{v2Site.tagline}</p>
+            <p className="mt-5 text-[15px] font-semibold text-navy-700">{v2Site.tagline}</p>
           </div>
 
           {columns.map((column) => (
             <div key={column.heading}>
-              <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-copper-700">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
                 {column.heading}
               </h2>
               <ul className="mt-3 space-y-1">
@@ -75,7 +75,7 @@ export function V2Footer() {
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="-my-1 inline-block py-1.5 text-[15px] text-fg hover:text-copper-700 hover:underline"
+                      className="-my-1 inline-block py-1.5 text-[15px] text-fg hover:text-navy-700 hover:underline"
                     >
                       {item.label}
                     </Link>
@@ -87,7 +87,7 @@ export function V2Footer() {
         </div>
 
         <div className="mt-14 border-t border-navy-100 pt-8">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-copper-700">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
             Certifications &amp; credentials
           </h2>
           <ul className="mt-4 flex flex-wrap gap-2.5">
@@ -108,7 +108,7 @@ export function V2Footer() {
           </p>
           <p>
             Second design.{" "}
-            <Link href="/" className="underline hover:text-copper-700">
+            <Link href="/" className="underline hover:text-navy-700">
               View the original
             </Link>
           </p>

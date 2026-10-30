@@ -50,42 +50,34 @@
   --color-cream-200: #efdfb8;
 
   /* ------------------------------------------------------------------ *
-     Second design (/v2) palette. Two hues, each with one job.
+     Second design (/v2). Blue is the primary: deep navy carries the dark
+     bands and cards, a bright sky accent carries emphasis on them, and the
+     light bands are a cool neutral grey. Modelled on how alphaomega.com uses
+     one deep hue, one vivid accent and one pale grey — with blue in place of
+     their teal and green, which reads as business rather than lab.
 
-     NAVY carries every surface: the page tints, the card borders, the dark
-     bands and the hero scrim. Cool, institutional, and the hue a federal
-     buyer expects.
-
-     COPPER carries every action: eyebrows, rules, numerals, links, the
-     primary button. Warm, so it separates cleanly from the navy it sits on
-     instead of blending the way a gold accent did against gold tints.
-
-     Contrast, measured against the surface each is used on: copper-700 on
-     white 7.25:1, copper-600 behind white text 5.46:1, copper-400 on
-     navy-950 5.98:1, white on navy-950 17.6:1.
+     Contrast on the surface each is used on: navy-700 on white 8.59:1,
+     white on navy-700 8.59:1, sky-300 on navy-950 8.14:1, white on
+     navy-950 16.8:1.
    * ------------------------------------------------------------------ */
-  --color-navy-50: #f3f6fb;
-  --color-navy-100: #e4ebf5;
-  --color-navy-200: #cbd8ea;
-  --color-navy-300: #9db3d2;
-  --color-navy-400: #6484b4;
-  --color-navy-500: #3d6098;
-  --color-navy-600: #2b4a7d;
-  --color-navy-700: #1f3a63;
-  --color-navy-800: #16294a;
-  --color-navy-900: #0f1d38;
-  --color-navy-950: #0a1830;
+  --color-navy-50: #f1f6fd;
+  --color-navy-100: #e1ecfa;
+  --color-navy-200: #c4d9f3;
+  --color-navy-300: #93bbe8;
+  --color-navy-400: #5b93d8;
+  --color-navy-500: #2f6fc0;
+  --color-navy-600: #1f569f;
+  --color-navy-700: #184480;
+  --color-navy-800: #123462;
+  --color-navy-900: #0b2444;
+  --color-navy-950: #061a2e;
 
-  --color-copper-50: #fdf5f1;
-  --color-copper-100: #fae7dd;
-  --color-copper-200: #f3cab5;
-  --color-copper-300: #e8a680;
-  --color-copper-400: #d4834f;
-  --color-copper-500: #c2612f;
-  --color-copper-600: #a8502a;
-  --color-copper-700: #8a4122;
-  --color-copper-800: #6d341c;
-  --color-copper-900: #4a2314;
+  /* Vivid accent, used only on the dark bands — the equivalent of the
+     reference's green on its deep teal. */
+  --color-sky-200: #bcdcff;
+  --color-sky-300: #8ec5ff;
+  --color-sky-400: #5aa9ff;
+  --color-sky-500: #2e8dff;
 
   /* Neutrals */
   --color-slate-50: #f7f7f8;
@@ -167,16 +159,10 @@
   --color-navy-900: var(--color-navy-900);
   --color-navy-950: var(--color-navy-950);
 
-  --color-copper-50: var(--color-copper-50);
-  --color-copper-100: var(--color-copper-100);
-  --color-copper-200: var(--color-copper-200);
-  --color-copper-300: var(--color-copper-300);
-  --color-copper-400: var(--color-copper-400);
-  --color-copper-500: var(--color-copper-500);
-  --color-copper-600: var(--color-copper-600);
-  --color-copper-700: var(--color-copper-700);
-  --color-copper-800: var(--color-copper-800);
-  --color-copper-900: var(--color-copper-900);
+  --color-sky-200: var(--color-sky-200);
+  --color-sky-300: var(--color-sky-300);
+  --color-sky-400: var(--color-sky-400);
+  --color-sky-500: var(--color-sky-500);
 
   --color-slate-50: var(--color-slate-50);
   --color-slate-100: var(--color-slate-100);

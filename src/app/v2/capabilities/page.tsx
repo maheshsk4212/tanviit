@@ -38,25 +38,25 @@ export default function V2Capabilities() {
         />
         {/* Numbered rows rather than a card grid: each area gets the width to
             list its services, and the page reads as an index. */}
-        <ul className="mt-14 border-t border-navy-200">
+        <ul className="mt-14 border-t border-slate-200">
           {solutionAreas.map((area, i) => (
             <li
               key={area.slug}
               id={area.slug}
-              className="scroll-mt-28 border-b border-navy-200 py-10"
+              className="scroll-mt-28 border-b border-slate-200 py-10"
             >
               <div className="grid gap-x-10 gap-y-5 lg:grid-cols-[3.5rem_1fr_1.1fr]">
-                <span className="font-display text-sm font-semibold tracking-[0.1em] text-copper-600">
+                <span className="font-display text-sm font-medium tracking-[0.1em] text-navy-600">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <h3 className="font-display text-2xl font-semibold leading-snug tracking-[-0.015em] text-navy-900">
+                  <h3 className="font-display text-2xl font-medium leading-snug tracking-[-0.015em] text-navy-900">
                     {area.name}
                   </h3>
                   <p className="mt-3 text-[17px] leading-[1.7] text-fg">{area.description}</p>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-copper-700">
+                  <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
                     Key service areas
                   </h4>
                   <ul className="mt-4 grid gap-x-6 gap-y-2 sm:grid-cols-2">
@@ -65,7 +65,7 @@ export default function V2Capabilities() {
                         key={service}
                         className="flex gap-2.5 text-[15px] leading-snug text-fg"
                       >
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-copper-500" aria-hidden />
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400" aria-hidden />
                         {service}
                       </li>
                     ))}
@@ -82,8 +82,8 @@ export default function V2Capabilities() {
         <BandHeading eyebrow="Outcomes" title="What we help clients achieve" />
         <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
           {outcomes.map((outcome) => (
-            <li key={outcome.name} className="border-t border-navy-100 pt-6">
-              <h3 className="font-display text-lg font-semibold text-navy-900">{outcome.name}</h3>
+            <li key={outcome.name} className="border-t border-slate-200 pt-6">
+              <h3 className="font-display text-lg font-medium text-navy-900">{outcome.name}</h3>
               <p className="mt-2.5 text-[17px] leading-[1.7] text-fg">{outcome.description}</p>
             </li>
           ))}
@@ -96,10 +96,10 @@ export default function V2Capabilities() {
         <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {howWeDeliver.map((item, i) => (
             <li key={item.step} className="border-t border-white/20 pt-6">
-              <span className="font-display text-sm font-semibold text-copper-400">
+              <span className="font-display text-sm font-medium text-sky-300">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className="mt-2 font-display text-lg font-semibold text-white">{item.step}</h3>
+              <h3 className="mt-2 font-display text-lg font-medium text-white">{item.step}</h3>
               <p className="mt-2.5 text-[15px] leading-relaxed text-navy-100">{item.description}</p>
             </li>
           ))}
