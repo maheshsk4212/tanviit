@@ -31,8 +31,8 @@ export default function V2Capabilities() {
       </Band>
 
       {/* --------------------------------------------------- Solution areas */}
-      <Band tone="tint" id="solution-areas">
-        <BandHeading split
+      <Band motif tone="tint" id="solution-areas">
+        <BandHeading
           eyebrow="Key solution areas"
           title="Six areas we deliver in"
           lead="Each area lists the services it covers, so a requirement can be matched against it directly."
@@ -99,7 +99,7 @@ export default function V2Capabilities() {
 
       <Band tone="tint">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <BandHeading split
+          <BandHeading
             title="Tell us what the requirement is."
             lead="We will come back with the contract vehicle, the delivery approach and a timeline."
           />

@@ -176,9 +176,8 @@ export default function V2Home() {
       </Band>
 
       {/* ------------------------------ Capabilities — photographic mosaic */}
-      <Band tone="tint" id="capabilities">
+      <Band motif tone="tint" id="capabilities">
         <BandHeading
-          split
           eyebrow="What we do"
           title="Technology that supports the mission"
           lead={homeHero.statement}
@@ -267,8 +266,8 @@ export default function V2Home() {
       </Band>
 
       {/* --------------------------------------------- Certifications */}
-      <Band tone="tint" id="certifications">
-        <BandHeading split
+      <Band motif tone="tint" id="certifications">
+        <BandHeading
           eyebrow="Certifications & credentials"
           title="Independently appraised, federally certified"
           lead="Third-party assessments of how we run quality, security and service management — the evidence behind every proposal we submit."
@@ -292,8 +291,8 @@ export default function V2Home() {
       </Band>
 
       {/* ------------------------------------ Customers — drifting logo rail */}
-      <Band id="customers">
-        <BandHeading split
+      <Band motif id="customers">
+        <BandHeading
           eyebrow="Customers & past performance"
           title="Organizations we support"
           lead="Government programs and commercial organizations that have trusted Tanvi IT with delivery."

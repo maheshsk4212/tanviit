@@ -88,7 +88,7 @@ export default function V2News() {
           awards, certifications, partnerships and events. Only the SEWP VI
           announcement has been supplied so far. */}
       <Band tone="tint">
-        <BandHeading split
+        <BandHeading
           eyebrow="More announcements"
           title="Further news will be published here"
           lead="Contract awards, certifications, partnerships, events and technology insights from 2026 onward."

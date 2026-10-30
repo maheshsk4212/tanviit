@@ -84,8 +84,8 @@ export default function V2Vehicles() {
       </Band>
 
       {/* ------------------------------------------------------ All vehicles */}
-      <Band tone="tint" id="all-vehicles">
-        <BandHeading split
+      <Band motif tone="tint" id="all-vehicles">
+        <BandHeading
           eyebrow="All vehicles"
           title="Where Tanvi IT can be awarded work"
           lead="Vehicles Tanvi IT holds or can be awarded work through, across federal, state, local and cooperative purchasing."
@@ -111,7 +111,7 @@ export default function V2Vehicles() {
 
       {/* ------------------------------------------------------------ NAICS */}
       <Band id="naics">
-        <BandHeading split
+        <BandHeading
           eyebrow="NAICS codes"
           title="How to find us"
           lead="Buyers search by code. This is the NAICS code on Tanvi IT's SEWP VI Category C contract."

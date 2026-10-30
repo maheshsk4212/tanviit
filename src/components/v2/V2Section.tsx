@@ -21,11 +21,19 @@ const tones: Record<Tone, string> = {
 export function Band({
   tone = "white",
   id,
+  motif = false,
   children,
   className = "",
 }: {
   tone?: Tone;
   id?: string;
+  /**
+   * Brand motif in the top-right. A left-ranged heading leaves that corner
+   * empty; this gives the eye something structural to land on without
+   * inventing content to fill it. Decorative only, and only from xl up,
+   * below which the heading already spans most of the band.
+   */
+  motif?: boolean;
   children: ReactNode;
   className?: string;
 }) {
@@ -34,8 +42,36 @@ export function Band({
       id={id}
       className={`relative scroll-mt-24 overflow-x-clip py-20 sm:py-24 lg:py-28 ${tones[tone]} ${className}`}
     >
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>
+      {motif ? <BandMotif onDark={tone === "dark"} /> : null}
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>
     </section>
+  );
+}
+
+/** Concentric arcs and a dot field, drawn in the brand colours. */
+function BandMotif({ onDark }: { onDark: boolean }) {
+  const line = onDark ? "rgb(255 255 255 / 0.14)" : "rgb(18 52 98 / 0.14)";
+  const dot = onDark ? "rgb(255 122 77 / 0.5)" : "rgb(216 56 10 / 0.35)";
+  return (
+    <div
+      className="pointer-events-none absolute right-0 top-10 hidden xl:block"
+      aria-hidden
+    >
+      {/* Kept inside the heading row's height so it never runs behind the
+          content below it. */}
+      <svg width="360" height="260" viewBox="0 0 360 260" fill="none">
+        <circle cx="288" cy="104" r="86" stroke={line} strokeWidth="1.5" />
+        <circle cx="288" cy="104" r="132" stroke={line} strokeWidth="1.5" />
+        <circle cx="288" cy="104" r="178" stroke={line} strokeWidth="1.5" />
+        <g fill={dot}>
+          {Array.from({ length: 4 }).flatMap((_, row) =>
+            Array.from({ length: 4 }).map((__, col) => (
+              <circle key={`${row}-${col}`} cx={150 + col * 20} cy={186 + row * 20} r="2" />
+            )),
+          )}
+        </g>
+      </svg>
+    </div>
   );
 }
 
@@ -49,7 +85,6 @@ export function BandHeading({
   lead,
   action,
   onDark = false,
-  split = false,
   className = "",
 }: {
   eyebrow?: string;
@@ -58,11 +93,6 @@ export function BandHeading({
   /** Optional control, placed under the supporting text. */
   action?: ReactNode;
   onDark?: boolean;
-  /**
-   * Heading on the left, supporting text on the right, filling the full
-   * measure. Without it a section top leaves half the band empty.
-   */
-  split?: boolean;
   className?: string;
 }) {
   const heading = (
@@ -90,35 +120,26 @@ export function BandHeading({
 
   const body =
     lead || action ? (
-      <div className={split ? "" : "mt-6"}>
+      <div className="mt-6">
         {lead ? (
           <p
-            className={`text-base leading-relaxed sm:text-lg ${split ? "" : "max-w-2xl"} ${
+            className={`max-w-3xl text-base leading-relaxed sm:text-lg ${
               onDark ? "text-white/80" : "text-fg-muted"
             }`}
           >
             {lead}
           </p>
         ) : null}
-        {action ? <div className="mt-7">{action}</div> : null}
+        {action ? <div className="mt-8">{action}</div> : null}
       </div>
     ) : null;
 
-  if (split) {
-    return (
-      <div
-        className={`grid gap-x-16 gap-y-6 lg:grid-cols-[1.05fr_1fr] lg:items-start ${className}`}
-      >
-        <div>{heading}</div>
-        {/* Dropped by the height of the eyebrow so the supporting text starts
-            on the same line as the headline rather than above it. */}
-        <div className={eyebrow ? "lg:mt-[3.25rem]" : ""}>{body}</div>
-      </div>
-    );
-  }
-
+  // Stacked and ranged left: eyebrow, headline, supporting line, action.
+  // The measure is wide enough that the headline carries across most of the
+  // band rather than stopping at half width, which is what left the right
+  // side looking empty — but still inside a readable line length.
   return (
-    <div className={`max-w-3xl ${className}`}>
+    <div className={`max-w-4xl ${className}`}>
       {heading}
       {body}
     </div>

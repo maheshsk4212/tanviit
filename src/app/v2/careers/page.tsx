@@ -63,7 +63,7 @@ export default function V2Careers() {
           list; swap in the feed as soon as one exists. */}
       <Band tone="dark" id="openings">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <BandHeading split
+          <BandHeading
             onDark
             eyebrow="Open positions"
             title="Tell us where you fit"

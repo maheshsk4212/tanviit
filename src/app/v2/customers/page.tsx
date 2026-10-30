@@ -27,7 +27,7 @@ export default function V2Customers() {
       </PageHero>
 
       <Band id="customers">
-        <BandHeading split
+        <BandHeading
           eyebrow="Customers"
           title="Organizations we support"
           lead="Government programs and commercial organizations that have trusted Tanvi IT with delivery."
@@ -58,8 +58,8 @@ export default function V2Customers() {
         ))}
       </Band>
 
-      <Band tone="tint" id="mission-areas">
-        <BandHeading split
+      <Band motif tone="tint" id="mission-areas">
+        <BandHeading
           eyebrow="Mission areas"
           title="Where we work"
           lead="The sectors our teams know, so an engagement starts with the constraints already understood."
@@ -111,7 +111,7 @@ export default function V2Customers() {
 
       <Band tone="dark">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <BandHeading split
+          <BandHeading
             onDark
             title="Looking for past performance detail?"
             lead="We can provide program references, scope summaries and a capability statement on request."
