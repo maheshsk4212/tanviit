@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { V2Accordion } from "@/components/v2/V2Accordion";
 import {
   Band,
   BandHeading,
@@ -33,6 +34,7 @@ import {
   naicsCodes,
   sewpVi,
   v2Images,
+  v2Site,
   vehicleProfiles,
 } from "@/lib/v2-content";
 
@@ -155,33 +157,52 @@ export default function V2Vehicles() {
         <BandHeading
           eyebrow="Federal vehicles"
           title="Where Tanvi IT can be awarded work"
-          lead="What each programme is for, so you can tell at a glance whether it is the right route for your requirement."
+          lead="Open a vehicle to see what the programme covers and where Tanvi IT sits on it."
         />
-        <RevealGroup className="mt-14 grid gap-5 lg:grid-cols-2" stagger={0.06}>
-          {others.map((vehicle) => (
-            <RevealItem key={vehicle.name}>
-              <article className="group flex h-full flex-col rounded-2xl border border-navy-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
-                <div className="flex items-start justify-between gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
-                    <Landmark className="h-5 w-5" aria-hidden />
-                  </span>
-                  <span className="rounded-full border border-navy-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-navy-700">
-                    {vehicle.kind}
-                  </span>
+        <div className="mt-14">
+          <V2Accordion
+            defaultOpen={-1}
+            rows={others.map((vehicle) => ({
+              title: vehicle.name,
+              meta: vehicle.kind,
+              children: (
+                <div className="max-w-3xl">
+                  {vehicle.position ? (
+                    <p className="font-display text-lg font-semibold text-navy-900">
+                      {vehicle.position}
+                    </p>
+                  ) : null}
+                  <p className="mt-3 text-[15px] leading-relaxed text-fg-muted sm:text-base">
+                    {vehicle.summary}
+                  </p>
+                  <dl className="mt-6 grid gap-5 border-t border-navy-100 pt-5 sm:grid-cols-2">
+                    <div>
+                      <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-navy-700">
+                        Contract details
+                      </dt>
+                      <dd className="mt-1 text-[15px] text-fg-muted">
+                        Contract number and award dates on request.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-navy-700">
+                        Point of contact
+                      </dt>
+                      <dd className="mt-1 text-[15px]">
+                        <a
+                          href={`mailto:${v2Site.email}`}
+                          className="text-navy-700 underline-offset-4 hover:text-flame-600 hover:underline"
+                        >
+                          {v2Site.email}
+                        </a>
+                      </dd>
+                    </div>
+                  </dl>
                 </div>
-                <h3 className="mt-6 font-display text-2xl font-semibold tracking-[-0.02em] text-navy-900">
-                  {vehicle.name}
-                </h3>
-                <p className="mt-3 flex-1 text-[15px] leading-relaxed text-fg-muted">
-                  {vehicle.summary}
-                </p>
-                <p className="mt-6 border-t border-navy-100 pt-5 text-[13px] text-fg-subtle">
-                  Contract number and award details on request.
-                </p>
-              </article>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+              ),
+            }))}
+          />
+        </div>
       </Band>
 
       {/* ------------------------------------------------- Cooperatives */}

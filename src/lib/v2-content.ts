@@ -612,6 +612,7 @@ export const vehicleProfiles = [
   {
     name: "GSA MAS",
     kind: "Multiple Award Schedule",
+    position: "Tanvi IT is a schedule holder.",
     summary:
       "GSA's Multiple Award Schedule gives federal, state and local buyers a single, pre-competed route to professional services at negotiated rates, without running a new procurement.",
     facts: [],
@@ -619,6 +620,7 @@ export const vehicleProfiles = [
   {
     name: "8(a) STARS III",
     kind: "Government-wide acquisition contract",
+    position: "Tanvi IT is an 8(a) certified contract holder.",
     summary:
       "A small-business set-aside GWAC for IT services-based solutions, used by agencies to meet socio-economic contracting goals while buying from vetted 8(a) firms.",
     facts: [],
@@ -626,6 +628,7 @@ export const vehicleProfiles = [
   {
     name: "OASIS+",
     kind: "Government-wide multi-agency contract",
+    position: "Tanvi IT is a contract holder.",
     summary:
       "GSA's multiple-award IDIQ for professional services, covering both non-IT and IT-enabled requirements across a wide range of service domains.",
     facts: [],
@@ -633,6 +636,7 @@ export const vehicleProfiles = [
   {
     name: "Alliant 2",
     kind: "Government-wide acquisition contract",
+    position: "Tanvi IT is a contract holder (SB, SDVOSB, WOSB tracks).",
     summary:
       "A GWAC for integrated IT solutions, spanning systems design, software engineering, infrastructure and the services that wrap around them.",
     facts: [],
@@ -640,6 +644,7 @@ export const vehicleProfiles = [
   {
     name: "ITES-3S",
     kind: "U.S. Army",
+    position: "Tanvi IT is a contract holder.",
     summary:
       "The Army's IT Enterprise Solutions contract for IT services supporting Army and Department of Defense programmes worldwide.",
     facts: [],
@@ -647,6 +652,7 @@ export const vehicleProfiles = [
   {
     name: "SeaPort NxG",
     kind: "U.S. Navy",
+    position: "Tanvi IT is a contract holder.",
     summary:
       "The Navy's multiple-award contract for engineering, technical and programme management services across its systems commands.",
     facts: [],
@@ -654,6 +660,7 @@ export const vehicleProfiles = [
   {
     name: "FAA eFAST",
     kind: "Federal Aviation Administration",
+    position: "Tanvi IT is a contract holder for IT staffing services.",
     summary:
       "The FAA's streamlined vehicle for IT staffing and professional support services across its programmes.",
     facts: [],

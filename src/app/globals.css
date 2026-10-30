@@ -538,3 +538,15 @@ html {
     transform: scale(1.12);
   }
 }
+
+/* Disclosure rows on /v2: the body eases in rather than snapping open. */
+@keyframes accordion-open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
