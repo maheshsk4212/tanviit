@@ -119,7 +119,7 @@ export default function V2Home() {
       <div className="border-b border-navy-100 bg-white">
         <div className="mx-auto w-full max-w-7xl px-4 py-7 sm:px-6 lg:px-8">
           <RevealGroup
-            className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 sm:gap-x-12"
+            className="flex flex-wrap items-center gap-x-8 gap-y-3 sm:gap-x-12"
             stagger={0.05}
           >
             {credentialStrip.map((item) => (
@@ -178,7 +178,6 @@ export default function V2Home() {
       {/* ------------------------------ Capabilities — photographic mosaic */}
       <Band tone="tint" id="capabilities">
         <BandHeading
-          align="center"
           eyebrow="What we do"
           title="Technology that supports the mission"
           lead={homeHero.statement}
@@ -186,7 +185,7 @@ export default function V2Home() {
         <div className="mt-16">
           <V2Mosaic tiles={mosaic} />
         </div>
-        <div className="mt-14 flex justify-center">
+        <div className="mt-14">
           <V2Button href="/v2/capabilities">All capabilities</V2Button>
         </div>
       </Band>
@@ -247,7 +246,6 @@ export default function V2Home() {
       {/* ------------------------------------- How we deliver — numbered rail */}
       <Band tone="dark">
         <BandHeading
-          align="center"
           onDark
           eyebrow="How we deliver"
           title="Five steps, every engagement"
@@ -272,7 +270,6 @@ export default function V2Home() {
       {/* --------------------------------------------- Certifications */}
       <Band tone="tint" id="certifications">
         <BandHeading
-          align="center"
           eyebrow="Certifications & credentials"
           title="Independently appraised, federally certified"
           lead="Third-party assessments of how we run quality, security and service management — the evidence behind every proposal we submit."
@@ -297,7 +294,6 @@ export default function V2Home() {
       {/* ------------------------------------ Customers — drifting logo rail */}
       <Band id="customers">
         <BandHeading
-          align="center"
           eyebrow="Customers & past performance"
           title="Organizations we support"
           lead="Government programs and commercial organizations that have trusted Tanvi IT with delivery."
@@ -305,16 +301,16 @@ export default function V2Home() {
         <Reveal className="mt-14">
           <V2Marquee items={customerGroups.flatMap((g) => g.customers.map((c) => c.name))} />
         </Reveal>
-        <div className="mt-12 flex justify-center">
+        <div className="mt-12">
           <MoreLink href="/v2/customers">Customers & past performance</MoreLink>
         </div>
       </Band>
 
       {/* ----------------------------------------------- Testimonials */}
       <Band tone="dark">
-        <BandHeading onDark align="center" eyebrow="Client testimonials" title="What our clients say" />
+        <BandHeading onDark eyebrow="Client testimonials" title="What our clients say" />
         <Reveal delay={0.1}>
-          <figure className="mx-auto mt-14 max-w-4xl text-center">
+          <figure className="mt-14 max-w-4xl border-l-2 border-flame-500 pl-8">
             <blockquote className="text-balance font-display text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white sm:text-3xl lg:text-[2.25rem]">
               “{testimonials[0].quote}”
             </blockquote>
