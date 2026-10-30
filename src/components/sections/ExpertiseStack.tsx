@@ -22,7 +22,8 @@ export function ExpertiseStack() {
             <div className="flex flex-col p-8 sm:p-10 lg:p-12">
               <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.18em]">
                 <span className="text-gold-400">{area.area}</span>
-                <span className="text-white/40">
+                {/* was white/40 — 3.83:1 at this size, under the 4.5:1 floor */}
+                <span className="text-white/70">
                   {pad(i + 1)} / {pad(techExpertise.length)}
                 </span>
               </div>

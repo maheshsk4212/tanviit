@@ -29,9 +29,9 @@ export default function ContactPage() {
 
           <div className="space-y-6">
             <div className="rounded-card border border-line bg-surface-muted p-6">
-              <h3 className="font-display text-lg font-semibold text-fg">
+              <h2 className="font-display text-lg font-semibold text-fg">
                 Get in touch directly
-              </h3>
+              </h2>
               <ul className="mt-5 space-y-4">
                 <li className="flex items-start gap-3 text-sm text-fg-muted">
                   <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" aria-hidden />

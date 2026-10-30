@@ -51,7 +51,7 @@ export default function V2Sewp() {
           title="Fair opportunity and requests for quotes"
           lead="Contract language, reproduced in full."
         />
-        {/* Verbatim from the NASA SEWP VI terms — do not edit or summarise. */}
+        {/* Verbatim from the NASA SEWP VI terms — do not edit or summarize. */}
         <div className="mt-10 max-w-4xl space-y-5 rounded-xl border border-navy-100 bg-white p-8 text-[16px] leading-[1.75] text-fg sm:p-10">
           {sewpVi.fairOpportunity.map((paragraph) => (
             <p key={paragraph.slice(0, 48)}>{paragraph}</p>
@@ -64,7 +64,7 @@ export default function V2Sewp() {
         <BandHeading
           eyebrow="What's in scope"
           title="Category C — IT Mission-Based Services"
-          lead="Summarised from Tanvi IT's SEWP VI Category C Ordering Guide. The executed contract, the NASA SEWP Contract Holder User Manual, applicable FAR provisions and current NASA SEWP procedures remain authoritative."
+          lead="Summarized from Tanvi IT's SEWP VI Category C Ordering Guide. The executed contract, the NASA SEWP Contract Holder User Manual, applicable FAR provisions and current NASA SEWP procedures remain authoritative."
         />
         <ul className="mt-10 max-w-4xl space-y-4">
           {sewpVi.scope.map((item) => (

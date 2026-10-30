@@ -15,7 +15,7 @@ export function Label({
   return (
     <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-fg">
       {children}
-      {required ? <span className="ml-0.5 text-gold-600">*</span> : null}
+      {required ? <span className="ml-0.5 text-gold-800">*</span> : null}
     </label>
   );
 }

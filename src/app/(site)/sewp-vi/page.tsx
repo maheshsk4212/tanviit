@@ -36,6 +36,7 @@ const contractFacts = [
   { label: "Period of performance", value: sewp.pop },
   { label: "SEWP surcharge", value: sewp.surcharge },
   { label: "UEI", value: sewp.uei },
+  { label: "NAICS", value: sewp.naics },
 ];
 
 /* Figures quoted from the program overview (sewp.overview) shown beside them. */
@@ -344,7 +345,8 @@ export default function SewpPage() {
 
           <article className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_30px_60px_-40px_rgb(0_0_0/0.35)]">
             <div className="h-1 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-700" aria-hidden />
-            <header className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-7 py-5 sm:px-10">
+            {/* a div, not <header>: this is a card heading, not a page landmark */}
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-7 py-5 sm:px-10">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-deep-900 text-gold-300">
                   <ScrollText className="h-5 w-5" aria-hidden />
@@ -355,7 +357,7 @@ export default function SewpPage() {
                 </div>
               </div>
               <Chip>Verbatim · unedited</Chip>
-            </header>
+            </div>
 
             {/* Generous measure and leading — legal prose is unscannable at
                 tight body settings. */}

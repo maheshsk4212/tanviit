@@ -6,7 +6,7 @@ import { customerGroups } from "@/lib/v2-content";
 export const metadata: Metadata = {
   title: "Customers & past performance",
   description:
-    "Agencies and enterprises Tanvi IT supports, the mission areas we work in, and what clients say about the work.",
+    "Government and commercial organizations Tanvi IT supports, the mission areas we deliver in, and what our clients say about the work.",
 };
 
 export default function V2Customers() {
@@ -29,7 +29,7 @@ export default function V2Customers() {
         <BandHeading
           eyebrow="Customers"
           title="Organizations we support"
-          lead="Government programmes and commercial organizations that have trusted Tanvi IT with delivery."
+          lead="Government programs and commercial organizations that have trusted Tanvi IT with delivery."
         />
         {customerGroups.map((group) => (
           <div key={group.heading} className="mt-12">
@@ -99,7 +99,7 @@ export default function V2Customers() {
           <BandHeading
             onDark
             title="Looking for past performance detail?"
-            lead="We can provide programme references, scope summaries and a capability statement on request."
+            lead="We can provide program references, scope summaries and a capability statement on request."
           />
           <V2Button href="/v2/contact" variant="outline-dark">
             Contact us

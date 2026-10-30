@@ -70,12 +70,12 @@ export function V2Footer() {
               <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-copper-700">
                 {column.heading}
               </h2>
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-3 space-y-1">
                 {column.items.map((item) => (
                   <li key={item.label}>
                     <Link
                       href={item.href}
-                      className="text-[15px] text-fg hover:text-copper-700 hover:underline"
+                      className="-my-1 inline-block py-1.5 text-[15px] text-fg hover:text-copper-700 hover:underline"
                     >
                       {item.label}
                     </Link>

@@ -5,7 +5,7 @@ import { about, careers } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: careers.body,
+  description: "Build your future with Tanvi IT. Culture, benefits and open positions at a federal and commercial technology company in Chantilly, Virginia.",
 };
 
 export default function V2Careers() {

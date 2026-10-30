@@ -193,7 +193,7 @@ export function ServicesExplorer() {
               <div className="flex flex-col p-7 sm:p-10 lg:p-12">
                 <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.18em]">
                   <span className="text-gold-400">Practice {pad(i + 1)}</span>
-                  <span className="text-white/40">
+                  <span className="text-white/70">
                     {pad(i + 1)} / {pad(services.length)}
                   </span>
                 </div>

@@ -10,8 +10,8 @@ const RESULTS_IMAGE =
 
 /* One treatment per card, in order: deep gradient, mustard, photo (double width). */
 const styles = [
-  { card: "result-dark text-white", chip: "accent", sub: "text-white/75" },
-  { card: "bg-gold-500 text-deep-950", chip: "light", sub: "text-deep-950/80" },
+  { card: "result-dark text-white", chip: "accent", sub: "text-white/85" },
+  { card: "bg-gold-500 text-deep-950", chip: "light", sub: "text-deep-950" },
   { card: "text-white sm:col-span-2", chip: "accent", sub: "text-white/80", photo: true },
 ] as const;
 

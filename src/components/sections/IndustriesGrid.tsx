@@ -111,9 +111,9 @@ export function IndustriesGrid({ limit }: { limit?: number; columns?: 3 | 5 }) {
                   <Icon className="h-5 w-5" aria-hidden />
                 </span>
 
-                <h3 className="mt-4 font-display text-xl font-semibold tracking-tight text-white">
+                <h2 className="mt-4 font-display text-xl font-semibold tracking-tight text-white">
                   {industry.name}
-                </h3>
+                </h2>
 
                 {/* Summary stays out of the way until the tile is hovered. */}
                 <div className="grid grid-rows-[0fr] transition-all duration-500 ease-out group-hover/card:grid-rows-[1fr] motion-reduce:grid-rows-[1fr]">

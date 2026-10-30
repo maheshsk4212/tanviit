@@ -90,7 +90,7 @@ function CertificationBadge({
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center px-9 text-center">
         <Icon
-          className={`h-6 w-6 ${dark ? "text-gold-400" : "text-gold-600"}`}
+          className={`h-6 w-6 ${dark ? "text-gold-400" : "text-gold-800"}`}
           strokeWidth={1.75}
           aria-hidden
         />
@@ -132,7 +132,7 @@ function VehicleList({
     <div>
       <p
         className={`flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] ${
-          dark ? "text-gold-400" : "text-gold-600"
+          dark ? "text-gold-400" : "text-gold-800"
         }`}
       >
         <span

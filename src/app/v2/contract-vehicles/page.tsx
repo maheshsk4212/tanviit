@@ -6,7 +6,7 @@ import { naicsCodes, sewpVi } from "@/lib/v2-content";
 export const metadata: Metadata = {
   title: "Contract vehicles",
   description:
-    "Award work to Tanvi IT through NASA SEWP VI, GSA MAS, 8(a) STARS III and the other vehicles we hold.",
+    "Award work to Tanvi IT through NASA SEWP VI Category C, GSA MAS, 8(a) STARS III and cooperative vehicles. Contract details and NAICS 541511.",
 };
 
 const anchors: Record<string, string> = {
@@ -14,6 +14,8 @@ const anchors: Record<string, string> = {
   "8(a) STARS III": "stars-iii",
 };
 
+/* NEEDS-CONFIRMATION (internal): this list carries over from the original
+   site and should be checked against the vehicles active today. */
 export default function V2Vehicles() {
   return (
     <>
@@ -73,7 +75,7 @@ export default function V2Vehicles() {
         <BandHeading
           eyebrow="All vehicles"
           title="Where Tanvi IT can be awarded work"
-          lead="NEEDS-CONFIRMATION: this list is carried over from the current site and should be checked against the vehicles that are active today."
+          lead="Vehicles Tanvi IT holds or can be awarded work through, across federal, state, local and cooperative purchasing."
         />
         <ul className="mt-12 grid gap-px overflow-hidden rounded-xl border border-navy-100 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3">
           {contractVehicles.map((vehicle) => (

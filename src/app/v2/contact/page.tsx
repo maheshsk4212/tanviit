@@ -5,7 +5,7 @@ import { contactPaths, sewpVi, v2Site } from "@/lib/v2-content";
 export const metadata: Metadata = {
   title: "Contact us",
   description:
-    "Government, prime contractor and commercial enquiry routes for Tanvi IT Solutions Inc., plus SEWP VI program contacts.",
+    "Government, prime contractor and commercial inquiry routes for Tanvi IT Solutions Inc., plus SEWP VI program contacts.",
 };
 
 export default function V2Contact() {
@@ -20,7 +20,7 @@ export default function V2Contact() {
       <Band>
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
           <div>
-            <BandHeading eyebrow="Enquiry routes" title="How can we help?" />
+            <BandHeading eyebrow="Inquiry routes" title="How can we help?" />
             <ul className="mt-10 divide-y divide-navy-100 border-y border-navy-100">
               {contactPaths.map((path) => (
                 <li key={path.name} className="py-6">

@@ -4,7 +4,7 @@ import { featuredNews } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "News & insights",
-  description: featuredNews.title,
+  description: "News from Tanvi IT Solutions, including the award of NASA SEWP VI Category C contract 80TECH26D0642 for IT mission-based services.",
 };
 
 export default function V2News() {

@@ -11,7 +11,7 @@ import {
 
 export const metadata: Metadata = {
   title: "About Tanvi IT",
-  description: about.hero.statement,
+  description: "Tanvi IT Solutions Inc. — a technology and consulting company in Chantilly, VA delivering mission-focused IT since 2008. Leadership, credentials and approach.",
 };
 
 export default function V2About() {

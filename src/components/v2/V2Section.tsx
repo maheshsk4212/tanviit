@@ -100,9 +100,9 @@ export function PageHero({
       {video ? (
         <>
           {/* Shown until the first frame decodes, and wherever autoplay is
-              refused: the same shot the loop opens on. */}
+              refused: the first frame of the loop itself. */}
           <Image
-            src="/hero-city-poster.jpg"
+            src="/hero-capitol-poster.jpg"
             alt=""
             fill
             priority
@@ -110,12 +110,12 @@ export function PageHero({
             className="-z-30 object-cover"
           />
           <video
-            src="/hero-city-loop.mp4"
+            src="/hero-capitol-loop.mp4"
             autoPlay
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
             aria-hidden
             tabIndex={-1}
             className="absolute inset-0 -z-20 h-full w-full object-cover motion-reduce:hidden"
@@ -134,7 +134,7 @@ export function PageHero({
 
       {/* Readable from the left, where both backgrounds are near-empty. */}
       <div
-        className="absolute inset-0 -z-10 [background-image:linear-gradient(to_right,rgb(10_24_48/0.94)_0%,rgb(10_24_48/0.84)_42%,rgb(10_24_48/0.6)_70%,rgb(10_24_48/0.42)_100%)]"
+        className="absolute inset-0 -z-10 [background-image:linear-gradient(to_right,rgb(10_24_48/0.96)_0%,rgb(10_24_48/0.88)_45%,rgb(10_24_48/0.62)_72%,rgb(10_24_48/0.4)_100%)]"
         aria-hidden
       />
 
@@ -143,7 +143,7 @@ export function PageHero({
           tall ? "py-24 sm:py-28 lg:py-36" : "py-16 sm:py-20 lg:py-24"
         }`}
       >
-        <div className="max-w-3xl">
+        <div className="max-w-3xl [text-shadow:0_1px_14px_rgb(10_24_48/0.45)]">
           {eyebrow ? (
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-copper-400">
               {eyebrow}

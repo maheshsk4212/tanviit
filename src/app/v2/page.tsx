@@ -225,7 +225,7 @@ export default function V2Home() {
           <BandHeading
             eyebrow="Customers & past performance"
             title="Organizations we support"
-            lead="Government programmes and commercial organizations that have trusted Tanvi IT with delivery."
+            lead="Government programs and commercial organizations that have trusted Tanvi IT with delivery."
           />
           <MoreLink href="/v2/customers">Past performance</MoreLink>
         </div>

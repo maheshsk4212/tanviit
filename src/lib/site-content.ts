@@ -11,6 +11,9 @@
 const unsplash = (id: string, width = 1600) =>
   `https://images.unsplash.com/${id}?w=${width}&q=80&auto=format&fit=crop`;
 
+/** Canonical origin, used by metadata, robots.txt and the sitemap. */
+export const siteUrl = "https://tanviit.netlify.app";
+
 export const siteConfig = {
   name: "Tanvi IT Solutions",
   legalName: "Tanvi IT Solutions Inc.",
@@ -225,56 +228,64 @@ export const contractVehicles = [
  * (10+ vs 15+ years, 95% vs 98% retention, 200+ vs 500+ clients,
  * 100+ vs 250+ contracts). These use the more conservative value.
  */
+/*
+ * Every figure below is one a reader can verify from the contract, the
+ * appraisal certificates or the company record.
+ *
+ * The previous set — 15+ years, 10,000+ IT professionals, 200+ clients, 95%
+ * retention, 500+ satisfied clients, 48–72 hrs average time to fill, 100+
+ * projects, 250+ contracts, 1M+ hours, 20+ clients — was never confirmed, and
+ * unconfirmed capability claims do not belong on a federal contractor's site.
+ * Restore any of them here the moment there is a source for it.
+ */
 export const stats = [
-  { value: "15+", label: "Years of excellence" },
-  { value: "10,000+", label: "IT professionals" },
-  { value: "200+", label: "Clients served" },
-  { value: "95%", label: "Client retention" },
+  { value: "2008", label: "Serving clients since" },
+  { value: "6", label: "Certifications & appraisals" },
+  { value: "14", label: "Contract vehicles" },
+  { value: "8(a)", label: "SBA certified small business" },
 ];
 
 export const trustBar = [
-  { value: "10,000+", label: "IT professionals on our network" },
-  { value: "500+", label: "Satisfied clients" },
-  { value: "48–72 hrs", label: "Average time to fill" },
+  { value: "SEWP VI", label: "NASA Category C contract holder" },
+  { value: "CMMI L3", label: "Appraised for development & services" },
+  { value: "ISO 27001", label: "Information security management" },
   { value: "Nationwide", label: "U.S. coverage, all time zones" },
 ];
 
 export const achievements = [
   {
-    value: "100+",
-    label: "Projects delivered for federal, state & local agencies and Fortune 500 companies",
+    value: "Since 2008",
+    label: "Delivering technology and consulting for federal, state and local agencies and commercial clients",
   },
-  { value: "250+", label: "Contracts delivered on time, within scope and budget" },
-  { value: "1M+", label: "Hours delivered powering mission-critical programs" },
-  { value: "20+", label: "Government & enterprise clients" },
+  { value: "14", label: "Contract vehicles, from NASA SEWP VI to cooperative purchasing agreements" },
+  { value: "6", label: "Independent certifications and process appraisals maintained" },
+  { value: "541511", label: "NAICS — Custom Computer Programming Services" },
 ];
 
 /*
  * Proven-results cards (context tag + big metric + one-line outcome).
- * NEEDS-CONFIRMATION: replace these aggregate figures with specific,
- * named-program outcomes cleared for public use for maximum credibility.
+ * NEEDS-CONTENT: replace these with specific, named-program outcomes cleared
+ * for public use — those carry far more weight than aggregates.
  */
 export const provenResults = [
   {
     context: "Federal & defense",
-    metric: "250+",
-    label: "Contracts delivered on time, on budget, and within scope for federal, state and local agencies.",
+    metric: "SEWP VI",
+    label: "Category C contract 80TECH26D0642 — IT mission-based services for any federal agency.",
     cta: "See contract vehicles",
     href: "/sewp-vi",
   },
   {
     context: "Mission programs",
-    metric: "1M+",
-    label: "Engineering and delivery hours powering mission-critical government and enterprise systems.",
+    metric: "CMMI L3",
+    label: "Appraised at Level 3 for both development and services — the delivery discipline behind every program.",
     cta: "Explore our services",
     href: "/services",
   },
   {
-    // Deliberately not the 95% retention figure — that already leads the stat
-    // bar, and repeating a number on the same page reads as padding.
-    context: "Speed to mission",
-    metric: "48–72 hrs",
-    label: "Average time to fill — pre-vetted talent in place while other pipelines are still screening.",
+    context: "Security & quality",
+    metric: "ISO 27001",
+    label: "Certified information security management, alongside ISO 9001 quality and ISO 20000-1 service management.",
     cta: "Why choose Tanvi IT",
     href: "/about",
   },
@@ -302,14 +313,14 @@ export const services: ServiceItem[] = [
     description:
       "Scale your team quickly with skilled IT professionals on a contract basis. We source, screen and deploy pre-vetted talent so you can meet delivery commitments without carrying permanent headcount.",
     capabilities: [
-      "Rapid sourcing from a 10,000+ professional network",
+      "Rapid sourcing from a nationwide professional network",
       "Pre-screened and verified candidates",
       "Short and long-term contract engagements",
       "Cleared talent for federal programs",
     ],
     image:
       "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1800&q=85&auto=format&fit=crop",
-    visualNote: "48–72 hour average time to fill",
+    visualNote: "Pre-screened, cleared candidates",
   },
   {
     slug: "direct-hire",
@@ -691,6 +702,7 @@ export const sewp = {
   pop: "Nov 2026 – Oct 2036",
   surcharge: "0.34%",
   uei: "VJHWCMQ1AVF5",
+  naics: "541511 — Custom Computer Programming Services",
   contractHolderUrl:
     "https://www.sewp.nasa.gov/sewp6public/contractholders#/detail/01",
   overview:

@@ -4,7 +4,7 @@ import { capabilitiesHero, howWeDeliver, outcomes, solutionAreas } from "@/lib/v
 
 export const metadata: Metadata = {
   title: "Capabilities & Solutions",
-  description: capabilitiesHero.supporting,
+  description: "Application modernization, data and analytics, DevOps and cloud, enterprise architecture, quality engineering and IV&V, and emerging technologies.",
 };
 
 export default function V2Capabilities() {
