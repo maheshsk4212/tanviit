@@ -1,13 +1,20 @@
 import {
   Boxes,
   Brain,
+  CheckCircle2,
   Cloud,
   Code2,
+  Cog,
+  Compass,
   Database,
   Layers,
+  Repeat,
+  Search,
   ShieldCheck,
   TestTube2,
 } from "lucide-react";
+/* Understand, Align, Engineer, Validate, Evolve. */
+const stepIcons = [Search, Compass, Cog, CheckCircle2, Repeat];
 import {
   Band,
   BandHeading,
@@ -248,21 +255,32 @@ export default function V2Home() {
           eyebrow="How we deliver"
           title="Five steps, every engagement"
         />
-        <RevealGroup className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5" stagger={0.08}>
-          {howWeDeliver.map((item, i) => (
-            <RevealItem key={item.step}>
-              <div className="group h-full border-t border-white/20 pt-6 transition-colors duration-300 hover:border-flame-500">
-                <span className="font-display text-sm font-semibold tracking-[0.1em] text-flame-400">
-                  {String(i + 1).padStart(2, "0")}
+        <ol className="relative mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+          <span
+            className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-white/15 lg:block"
+            aria-hidden
+          />
+          {howWeDeliver.map((item, i) => {
+            const Icon = stepIcons[i % stepIcons.length];
+            return (
+              <li key={item.step} className="group relative">
+                <span className="relative flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-navy-950 text-flame-400 transition-colors duration-300 group-hover:border-flame-500 group-hover:bg-flame-600 group-hover:text-white">
+                  <Icon className="h-5 w-5" aria-hidden />
                 </span>
-                <h3 className="mt-3 font-display text-xl font-semibold tracking-[-0.02em] text-white">
+                <p className="mt-5 font-display text-sm font-semibold tracking-[0.12em] text-flame-400">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-1.5 font-display text-lg font-semibold text-white">
                   {item.step}
                 </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-white/75">{item.description}</p>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+                <p className="mt-2.5 text-[15px] leading-relaxed text-white/75">
+                  {item.description}
+                </p>
+              </li>
+            );
+          })}
+
+        </ol>
       </Band>
 
       {/* --------------------------------------------- Certifications */}

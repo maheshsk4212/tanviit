@@ -1,4 +1,36 @@
 import type { Metadata } from "next";
+import {
+  Banknote,
+  Building2,
+  GraduationCap,
+  HeartPulse,
+  Landmark,
+  MapPin,
+  Quote,
+  ShieldCheck,
+  ShoppingCart,
+  Zap,
+} from "lucide-react";
+
+/* Federal, state, local, defense, healthcare, banking, education, energy, retail. */
+const industryIcons = [
+  Landmark,
+  Building2,
+  MapPin,
+  ShieldCheck,
+  HeartPulse,
+  Banknote,
+  GraduationCap,
+  Zap,
+  ShoppingCart,
+];
+
+/** Initials for a customer mark, standing in until real logos arrive. */
+function monogram(name: string) {
+  const words = name.split(/\s+/).filter(Boolean);
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+}
 import { Band, BandHeading, PageHero, V2Button } from "@/components/v2/V2Section";
 import { V2FeatureRow } from "@/components/v2/V2FeatureRow";
 import { industries, testimonials } from "@/lib/site-content";
@@ -41,13 +73,16 @@ export default function V2Customers() {
               {group.customers.map((customer) => (
                 <li
                   key={customer.name}
-                  className="flex h-24 flex-col items-center justify-center rounded-xl border border-navy-200 bg-white px-4 text-center"
+                  className="group flex h-full flex-col items-center justify-center gap-3 rounded-xl border border-navy-200 bg-white px-4 py-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
                 >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-navy-50 font-display text-sm font-semibold text-navy-800 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
+                    {monogram(customer.name)}
+                  </span>
                   <span className="font-display text-base font-semibold text-navy-900">
                     {customer.name}
                   </span>
                   {customer.detail ? (
-                    <span className="mt-1 text-[13px] leading-snug text-fg-subtle">
+                    <span className="text-[13px] leading-snug text-fg-subtle">
                       {customer.detail}
                     </span>
                   ) : null}
@@ -65,12 +100,22 @@ export default function V2Customers() {
           lead="The sectors our teams know, so an engagement starts with the constraints already understood."
         />
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((industry) => (
+          {industries.map((industry, i) => (
             <li
               key={industry.slug}
-              className="rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
+              className="group rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
             >
-              <h3 className="font-display text-lg font-semibold text-navy-900">{industry.name}</h3>
+              {(() => {
+                const Icon = industryIcons[i % industryIcons.length];
+                return (
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                );
+              })()}
+              <h3 className="mt-6 font-display text-lg font-semibold text-navy-900">
+                {industry.name}
+              </h3>
               <p className="mt-2.5 text-[15px] leading-relaxed text-fg">{industry.summary}</p>
             </li>
           ))}
@@ -97,13 +142,24 @@ export default function V2Customers() {
           {testimonials.map((testimonial) => (
             <li
               key={testimonial.company}
-              className="flex h-full flex-col rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
+              className="group flex h-full flex-col rounded-2xl border border-navy-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
             >
-              <blockquote className="flex-1 text-[17px] leading-[1.65] text-fg">
+              <Quote
+                className="h-8 w-8 shrink-0 text-flame-500 transition-transform duration-300 group-hover:-translate-y-0.5"
+                aria-hidden
+              />
+              <blockquote className="mt-5 flex-1 text-[17px] leading-[1.65] text-fg">
                 “{testimonial.quote}”
               </blockquote>
-              <p className="mt-6 text-sm font-semibold text-fg">{testimonial.author}</p>
-              <p className="text-sm text-fg-subtle">{testimonial.company}</p>
+              <div className="mt-7 flex items-center gap-3 border-t border-navy-100 pt-5">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-50 font-display text-sm font-semibold text-navy-800">
+                  {testimonial.initials}
+                </span>
+                <span>
+                  <span className="block text-sm font-semibold text-fg">{testimonial.author}</span>
+                  <span className="block text-sm text-fg-subtle">{testimonial.company}</span>
+                </span>
+              </div>
             </li>
           ))}
         </ul>

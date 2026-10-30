@@ -1,7 +1,38 @@
 import type { Metadata } from "next";
-import { Band, BandHeading, PageHero, V2Button } from "@/components/v2/V2Section";
+import {
+  Band,
+  BandHeading,
+  PageHero,
+  RevealGroup,
+  RevealItem,
+  V2Button,
+} from "@/components/v2/V2Section";
 import { V2FeatureRow } from "@/components/v2/V2FeatureRow";
-import { capabilitiesHero, howWeDeliver, outcomes, solutionAreas } from "@/lib/v2-content";
+import {
+  capabilitiesHero,
+  howWeDeliver,
+  outcomes,
+  solutionAreas,
+  v2Images,
+} from "@/lib/v2-content";
+import {
+  BadgeCheck,
+  BarChart3,
+  CheckCircle2,
+  Cog,
+  Compass,
+  Gauge,
+  Lightbulb,
+  RefreshCw,
+  Repeat,
+  Search,
+  TrendingUp,
+} from "lucide-react";
+/* Understand, Align, Engineer, Validate, Evolve. */
+const stepIcons = [Search, Compass, Cog, CheckCircle2, Repeat];
+
+/* Modernize, Optimize, Inform, Innovate, Scale, Deliver with confidence. */
+const outcomeIcons = [RefreshCw, Gauge, BarChart3, Lightbulb, TrendingUp, BadgeCheck];
 
 export const metadata: Metadata = {
   title: "Capabilities & Solutions",
@@ -25,9 +56,31 @@ export default function V2Capabilities() {
       </PageHero>
 
       <Band>
-        <p className="max-w-4xl text-[17px] leading-[1.75] text-fg sm:text-lg">
-          {capabilitiesHero.statement}
-        </p>
+        <V2FeatureRow
+          eyebrow="How we work"
+          title="Experienced people, practical engineering"
+          description={capabilitiesHero.statement}
+          image={v2Images.team.src}
+          imageAlt={v2Images.team.alt}
+          flip
+        >
+          <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+            {[
+              { value: "6", label: "Solution areas" },
+              { value: "40+", label: "Named services" },
+              { value: "2008", label: "Delivering since" },
+            ].map((fact) => (
+              <li key={fact.label} className="border-t-2 border-flame-500 pt-4">
+                <p className="font-display text-2xl font-semibold tracking-[-0.02em] text-navy-900">
+                  {fact.value}
+                </p>
+                <p className="mt-1 text-[13px] uppercase tracking-[0.12em] text-fg-subtle">
+                  {fact.label}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </V2FeatureRow>
       </Band>
 
       {/* --------------------------------------------------- Solution areas */}
@@ -71,29 +124,56 @@ export default function V2Capabilities() {
       {/* -------------------------------------------------------- Outcomes */}
       <Band id="outcomes">
         <BandHeading eyebrow="Outcomes" title="What we help clients achieve" />
-        <ul className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
-          {outcomes.map((outcome) => (
-            <li key={outcome.name} className="border-t border-navy-200 pt-6">
-              <h3 className="font-display text-lg font-semibold text-navy-900">{outcome.name}</h3>
-              <p className="mt-2.5 text-[17px] leading-[1.7] text-fg">{outcome.description}</p>
-            </li>
-          ))}
-        </ul>
+        <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
+          {outcomes.map((outcome, i) => {
+            const Icon = outcomeIcons[i % outcomeIcons.length];
+            return (
+              <RevealItem key={outcome.name}>
+                <div className="group h-full rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <h3 className="mt-6 font-display text-lg font-semibold text-navy-900">
+                    {outcome.name}
+                  </h3>
+                  <p className="mt-2.5 text-[15px] leading-relaxed text-fg-muted">
+                    {outcome.description}
+                  </p>
+                </div>
+              </RevealItem>
+            );
+          })}
+        </RevealGroup>
       </Band>
 
       {/* ------------------------------------------------------ How we deliver */}
       <Band tone="dark" id="how-we-deliver">
         <BandHeading onDark eyebrow="How we deliver" title="Five steps, every engagement" />
-        <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          {howWeDeliver.map((item, i) => (
-            <li key={item.step} className="border-t border-white/20 pt-6">
-              <span className="font-display text-sm font-semibold text-flame-400">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3 className="mt-2 font-display text-lg font-semibold text-white">{item.step}</h3>
-              <p className="mt-2.5 text-[15px] leading-relaxed text-navy-100">{item.description}</p>
-            </li>
-          ))}
+        <ol className="relative mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+          <span
+            className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-white/15 lg:block"
+            aria-hidden
+          />
+          {howWeDeliver.map((item, i) => {
+            const Icon = stepIcons[i % stepIcons.length];
+            return (
+              <li key={item.step} className="group relative">
+                <span className="relative flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-navy-950 text-flame-400 transition-colors duration-300 group-hover:border-flame-500 group-hover:bg-flame-600 group-hover:text-white">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+                <p className="mt-5 font-display text-sm font-semibold tracking-[0.12em] text-flame-400">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-1.5 font-display text-lg font-semibold text-white">
+                  {item.step}
+                </h3>
+                <p className="mt-2.5 text-[15px] leading-relaxed text-white/75">
+                  {item.description}
+                </p>
+              </li>
+            );
+          })}
+
         </ol>
       </Band>
 

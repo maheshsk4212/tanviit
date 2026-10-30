@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Building2, FileText, Hash, Landmark } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Band, BandHeading, MoreLink, PageHero, V2Button } from "@/components/v2/V2Section";
 import { contractVehicles } from "@/lib/site-content";
 import { naicsCodes, sewpVi, v2Images } from "@/lib/v2-content";
@@ -9,6 +11,18 @@ export const metadata: Metadata = {
   description:
     "Award work to Tanvi IT through NASA SEWP VI Category C, GSA MAS, 8(a) STARS III and cooperative vehicles. Contract details and NAICS 541511.",
 };
+
+/* Vehicles fall into three kinds, and the kind is what a buyer scans for. */
+function vehicleKind(detail: string): { Icon: LucideIcon; label: string } {
+  const text = detail.toLowerCase();
+  if (text.includes("cooperative") || text.includes("state") || text.includes("council")) {
+    return { Icon: Building2, label: "Cooperative" };
+  }
+  if (text.includes("schedule") || text.includes("staffing") || text.includes("professional")) {
+    return { Icon: FileText, label: "Schedule" };
+  }
+  return { Icon: Landmark, label: "Federal" };
+}
 
 const anchors: Record<string, string> = {
   "GSA MAS": "gsa-mas",
@@ -95,9 +109,24 @@ export default function V2Vehicles() {
             <li
               key={vehicle.name}
               id={anchors[vehicle.name]}
-              className="scroll-mt-28 bg-white p-6 transition-colors duration-300 hover:bg-navy-50"
+              className="group scroll-mt-28 bg-white p-6 transition-colors duration-300 hover:bg-navy-50"
             >
-              <h3 className="font-display text-lg font-semibold text-navy-900">{vehicle.name}</h3>
+              {(() => {
+                const kind = vehicleKind(vehicle.detail);
+                return (
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
+                      <kind.Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <span className="rounded-full border border-navy-200 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-navy-700">
+                      {kind.label}
+                    </span>
+                  </div>
+                );
+              })()}
+              <h3 className="mt-5 font-display text-lg font-semibold text-navy-900">
+                {vehicle.name}
+              </h3>
               <p className="mt-2 text-[15px] leading-relaxed text-fg">{vehicle.detail}</p>
               {vehicle.name === "NASA SEWP VI" ? (
                 <div className="mt-4">
@@ -116,11 +145,19 @@ export default function V2Vehicles() {
           title="How to find us"
           lead="Buyers search by code. This is the NAICS code on Tanvi IT's SEWP VI Category C contract."
         />
-        <ul className="mt-10 max-w-3xl divide-y divide-slate-200 border-y border-navy-200">
+        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {naicsCodes.map((code) => (
-            <li key={code.code} className="flex flex-wrap items-baseline gap-x-8 gap-y-1 py-5">
-              <span className="font-display text-xl font-semibold text-navy-700">{code.code}</span>
-              <span className="text-[17px] text-fg">{code.title}</span>
+            <li
+              key={code.code}
+              className="group rounded-2xl border border-navy-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
+            >
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
+                <Hash className="h-5 w-5" aria-hidden />
+              </span>
+              <p className="mt-6 font-display text-3xl font-semibold tracking-[-0.03em] text-navy-900">
+                {code.code}
+              </p>
+              <p className="mt-2 text-[15px] leading-relaxed text-fg-muted">{code.title}</p>
             </li>
           ))}
         </ul>
