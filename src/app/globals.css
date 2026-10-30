@@ -49,6 +49,22 @@
   --color-cream-100: #f7efdd;
   --color-cream-200: #efdfb8;
 
+  /* Federal scale — the second design (/v2) only. A deep institutional blue,
+     deliberately its own hue rather than the mustard brand, because that
+     design's whole argument is the conventional blue-and-white register
+     government buyers expect. 700 and darker clear 7:1 on white. */
+  --color-federal-50: #f1f6fc;
+  --color-federal-100: #e1ecf9;
+  --color-federal-200: #c3d8f2;
+  --color-federal-300: #94b8e6;
+  --color-federal-400: #5e91d6;
+  --color-federal-500: #3570bf;
+  --color-federal-600: #245aa3;
+  --color-federal-700: #1b4680;
+  --color-federal-800: #163a69;
+  --color-federal-900: #132f53;
+  --color-federal-950: #0d1f38;
+
   /* Neutrals */
   --color-slate-50: #f7f7f8;
   --color-slate-100: #eeeef0;
@@ -116,6 +132,18 @@
   --color-cream-50: var(--color-cream-50);
   --color-cream-100: var(--color-cream-100);
   --color-cream-200: var(--color-cream-200);
+
+  --color-federal-50: var(--color-federal-50);
+  --color-federal-100: var(--color-federal-100);
+  --color-federal-200: var(--color-federal-200);
+  --color-federal-300: var(--color-federal-300);
+  --color-federal-400: var(--color-federal-400);
+  --color-federal-500: var(--color-federal-500);
+  --color-federal-600: var(--color-federal-600);
+  --color-federal-700: var(--color-federal-700);
+  --color-federal-800: var(--color-federal-800);
+  --color-federal-900: var(--color-federal-900);
+  --color-federal-950: var(--color-federal-950);
 
   --color-slate-50: var(--color-slate-50);
   --color-slate-100: var(--color-slate-100);
