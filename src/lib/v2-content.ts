@@ -579,3 +579,127 @@ export const v2Images = {
     alt: "Rows of servers in a data centre",
   },
 };
+
+/**
+ * Contract vehicle profiles. Each carries a description of what the programme
+ * is — the context a buyer needs to know whether it is the right route —
+ * alongside whatever identifiers are confirmed.
+ *
+ * Only NASA SEWP VI has its identifiers published here, because that is the
+ * one we hold documentation for (the Category C ordering guide). The rest show
+ * the programme description and say plainly that details come on request,
+ * rather than printing numbers nobody has verified.
+ *
+ * NEEDS-CONTENT: contract numbers, UEI/CAGE per vehicle, and the award dates
+ * for every vehicle other than SEWP VI.
+ */
+export const vehicleProfiles = [
+  {
+    name: "NASA SEWP VI",
+    kind: "Government-wide acquisition contract",
+    summary:
+      "A multi-award GWAC for IT, communications and audio-visual solutions and services, open to every federal agency and their approved contractors. Tanvi IT holds Category C — IT mission-based services.",
+    href: "/v2/contract-vehicles/sewp-vi",
+    facts: [
+      { term: "Contract number", detail: "80TECH26D0642" },
+      { term: "Category", detail: "Category C — ITC/AV Mission-Based Services" },
+      { term: "Period of performance", detail: "Nov 2026 – Oct 2036" },
+      { term: "NAICS", detail: "541511" },
+      { term: "UEI", detail: "VJHWCMQ1AVF5" },
+      { term: "Agency fee", detail: "0.34%" },
+    ],
+  },
+  {
+    name: "GSA MAS",
+    kind: "Multiple Award Schedule",
+    summary:
+      "GSA's Multiple Award Schedule gives federal, state and local buyers a single, pre-competed route to professional services at negotiated rates, without running a new procurement.",
+    facts: [],
+  },
+  {
+    name: "8(a) STARS III",
+    kind: "Government-wide acquisition contract",
+    summary:
+      "A small-business set-aside GWAC for IT services-based solutions, used by agencies to meet socio-economic contracting goals while buying from vetted 8(a) firms.",
+    facts: [],
+  },
+  {
+    name: "OASIS+",
+    kind: "Government-wide multi-agency contract",
+    summary:
+      "GSA's multiple-award IDIQ for professional services, covering both non-IT and IT-enabled requirements across a wide range of service domains.",
+    facts: [],
+  },
+  {
+    name: "Alliant 2",
+    kind: "Government-wide acquisition contract",
+    summary:
+      "A GWAC for integrated IT solutions, spanning systems design, software engineering, infrastructure and the services that wrap around them.",
+    facts: [],
+  },
+  {
+    name: "ITES-3S",
+    kind: "U.S. Army",
+    summary:
+      "The Army's IT Enterprise Solutions contract for IT services supporting Army and Department of Defense programmes worldwide.",
+    facts: [],
+  },
+  {
+    name: "SeaPort NxG",
+    kind: "U.S. Navy",
+    summary:
+      "The Navy's multiple-award contract for engineering, technical and programme management services across its systems commands.",
+    facts: [],
+  },
+  {
+    name: "FAA eFAST",
+    kind: "Federal Aviation Administration",
+    summary:
+      "The FAA's streamlined vehicle for IT staffing and professional support services across its programmes.",
+    facts: [],
+  },
+];
+
+/** Cooperative and state-level routes, listed compactly. */
+export const cooperativeVehicles = [
+  { name: "NASPO ValuePoint", detail: "State & local cooperative purchasing" },
+  { name: "OMNIA Partners", detail: "Public sector cooperative" },
+  { name: "NCPA", detail: "National Cooperative Purchasing Alliance" },
+  { name: "Sourcewell", detail: "Cooperative purchasing" },
+  { name: "HGACBuy", detail: "Houston-Galveston Area Council" },
+  { name: "State & local", detail: "Multiple state, county and municipal contracts" },
+];
+
+/** The identifiers a contracting officer asks for first. */
+export const buyerSnapshot = [
+  { term: "UEI", detail: "VJHWCMQ1AVF5" },
+  { term: "NAICS", detail: "541511 — Custom Computer Programming Services" },
+  { term: "Business status", detail: "Small business · SBA 8(a) certified" },
+  { term: "Appraisals", detail: "CMMI-DEV L3 · CMMI-SVC L3" },
+  { term: "Certifications", detail: "ISO 9001 · ISO/IEC 20000-1 · ISO/IEC 27001" },
+  { term: "Headquarters", detail: "Chantilly, Virginia" },
+];
+
+/** How a requirement reaches award, whichever vehicle it travels on. */
+export const howToBuy = [
+  {
+    step: "Define the requirement",
+    description:
+      "Objectives, users, technical areas, deliverables, security and Section 508 needs, period of performance and evaluation criteria.",
+  },
+  {
+    step: "Pick the route",
+    description:
+      "Choose the vehicle your agency already holds. If you are not sure which fits, we will tell you which of ours applies — and say so if none do.",
+  },
+  {
+    step: "Talk to us early",
+    description:
+      "Send the request number, due date, agency, scope and submission instructions. For SEWP VI, that goes to the program manager named on the ordering page.",
+  },
+  {
+    step: "Evaluate and award",
+    description:
+      "Your office evaluates responses and issues the order under FAR 16.505 and agency procedures. Work starts once the processed order is transmitted.",
+  },
+];
