@@ -570,6 +570,14 @@ export const v2Images = {
     src: unsplash("photo-1483600516620-7254872369ae"),
     alt: "Classical columns of a federal building",
   },
+  leaders: {
+    src: unsplash("photo-1573496130141-209d200cebd8"),
+    alt: "Two colleagues in a professional setting",
+  },
+  group: {
+    src: unsplash("photo-1758691736975-9f7f643d178e"),
+    alt: "The wider team together",
+  },
   workstation: {
     src: unsplash("photo-1605379399642-870262d3d051"),
     alt: "A developer's workstation with code on screen",
@@ -760,3 +768,45 @@ export const howToBuy = [
       "Your office evaluates responses and issues the order under FAR 16.505 and agency procedures. Work starts once the processed order is transmitted.",
   },
 ];
+
+/**
+ * The story as milestones. Only points the supplied documents support: the
+ * founding year, what the company began doing, how the capability widened,
+ * and the SEWP VI award with its announced date.
+ *
+ * NEEDS-CONTENT: further dated milestones — first federal award, each ISO and
+ * CMMI appraisal, the TA Federal joint venture — would make this a fuller
+ * timeline.
+ */
+export const storyMilestones = [
+  {
+    year: "2008",
+    title: "Founded",
+    detail:
+      "Tanvi IT is founded on a simple idea: technology should make a meaningful difference.",
+  },
+  {
+    year: "Early years",
+    title: "IT solutions and custom applications",
+    detail:
+      "The work begins with IT solutions and custom application development for government and commercial clients.",
+  },
+  {
+    year: "Since",
+    title: "The capability widens",
+    detail:
+      "Application modernization, data, cloud and DevSecOps, cybersecurity, enterprise architecture, software and quality engineering, and emerging technologies.",
+  },
+  {
+    year: "2026",
+    title: "NASA SEWP VI Category C",
+    detail:
+      "Awarded contract 80TECH26D0642 for IT mission-based services, opening a route for every federal agency.",
+  },
+];
+
+/** Direct contacts for the leadership team, as published in the SEWP VI guide. */
+export const leadershipContacts: Record<string, { email: string; phone: string }> = {
+  "Nagoor Inaganti": { email: "nagoor@tanviit.com", phone: "703-864-7551" },
+  "Eswara Prasad Gatamaneni": { email: "prasad@tanviit.com", phone: "703-574-2108" },
+};
