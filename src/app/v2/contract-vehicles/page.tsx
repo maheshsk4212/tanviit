@@ -261,17 +261,46 @@ export default function V2Vehicles() {
 
       {/* --------------------------------------------------- How to buy */}
       <Band tone="dark" id="how-to-buy">
-        <BandHeading
-          onDark
-          eyebrow="How to buy"
-          title="From requirement to award"
-          lead="The route is the same whichever vehicle it travels on; only the paperwork at step three changes."
-        />
-        <ol className="relative mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-          <span
-            className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-white/15 lg:block"
-            aria-hidden
-          />
+        {/* Statement first, steps second — the reference leads this section
+            with a claim and a photograph, not with a process diagram. */}
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+          <Reveal>
+            <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-flame-400">
+              Work with us
+            </span>
+            <h2 className="mt-6 text-balance font-display text-4xl font-semibold leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.5rem]">
+              Procurement made simple.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+              Tanvi IT is already on the vehicles most agencies hold, so there is no new
+              solicitation to run. Tell us the requirement and we will tell you which route fits —
+              and say so plainly if none of ours do.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <V2Button href="/v2/contact">Talk to our team</V2Button>
+              <V2Button href="/v2/contract-vehicles/sewp-vi" variant="outline-dark">
+                SEWP VI ordering
+              </V2Button>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.12} direction="right" className="relative aspect-[5/4] overflow-hidden rounded-3xl">
+            <Image
+              src={v2Images.team.src}
+              alt={v2Images.team.alt}
+              fill
+              quality={90}
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              className="object-cover"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-tr from-navy-950/55 to-transparent"
+              aria-hidden
+            />
+          </Reveal>
+        </div>
+
+        <ol className="relative mt-20 grid gap-10 border-t border-white/15 pt-14 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {howToBuy.map((item, i) => (
             <li key={item.step} className="group relative">
               <span className="relative flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-navy-950 font-display text-sm font-semibold text-flame-400 transition-colors duration-300 group-hover:border-flame-500 group-hover:bg-flame-600 group-hover:text-white">
@@ -282,11 +311,6 @@ export default function V2Vehicles() {
             </li>
           ))}
         </ol>
-        <div className="mt-14">
-          <V2Button href="/v2/contact" variant="outline-dark">
-            Talk to our team
-          </V2Button>
-        </div>
       </Band>
 
       {/* ------------------------------------------------------------ NAICS */}

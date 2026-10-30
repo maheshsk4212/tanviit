@@ -1,5 +1,15 @@
 import type { Metadata } from "next";
-import { Band, BandHeading, MoreLink, PageHero, V2Button } from "@/components/v2/V2Section";
+import {
+  Band,
+  BandHeading,
+  MoreLink,
+  PageHero,
+  Reveal,
+  RevealGroup,
+  RevealItem,
+  V2Button,
+} from "@/components/v2/V2Section";
+import Image from "next/image";
 import { V2FeatureRow } from "@/components/v2/V2FeatureRow";
 import {
   about,
@@ -15,6 +25,9 @@ export const metadata: Metadata = {
   title: "About Tanvi IT",
   description: "Tanvi IT Solutions Inc. — a technology and consulting company in Chantilly, VA delivering mission-focused IT since 2008. Leadership, credentials and approach.",
 };
+
+/* Talent, Technology, Trust — a photograph for each. */
+const valueImages = [v2Images.team, v2Images.workstation, v2Images.people];
 
 export default function V2About() {
   return (
@@ -52,25 +65,56 @@ export default function V2About() {
       </Band>
 
       {/* ----------------------------------------------------- Our approach */}
-      <Band motif tone="tint" id="approach">
+      <Band tone="dark" id="approach">
         <BandHeading
+          onDark
           eyebrow="Our approach"
           title="Focused on outcomes. Built on trust."
           lead={about.approachIntro}
         />
-        <ul className="mt-12 grid gap-5 lg:grid-cols-3">
-          {about.approach.map((item) => (
-            <li
-              key={item.name}
-              className="rounded-2xl border border-navy-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
-            >
-              <h3 className="font-display text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
-                {item.name}
-              </h3>
-              <p className="mt-4 text-[17px] leading-[1.7] text-fg">{item.description}</p>
-            </li>
+        <RevealGroup className="mt-16 grid gap-5 lg:grid-cols-3" stagger={0.08}>
+          {about.approach.map((item, i) => (
+            <RevealItem key={item.name}>
+              <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white/[0.06] transition-colors duration-300 hover:bg-white/[0.1]">
+                <div className="relative aspect-[16/10] overflow-hidden">
+                  <Image
+                    src={valueImages[i].src}
+                    alt={valueImages[i].alt}
+                    fill
+                    quality={90}
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                  />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-navy-950/70 to-transparent"
+                    aria-hidden
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-8">
+                  <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] text-flame-400">
+                    {item.name}
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-white/80">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealGroup>
+      </Band>
+
+      {/* The promise, set large — the reference gives its mission a band of
+          its own rather than a line inside another section. */}
+      <Band tone="tint">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-navy-700">
+            The Tanvi IT promise
+          </p>
+          <p className="mt-6 text-balance font-display text-3xl font-semibold leading-[1.2] tracking-[-0.03em] text-navy-900 sm:text-4xl lg:text-[2.75rem]">
+            {about.promise}
+          </p>
+        </Reveal>
       </Band>
 
       {/* -------------------------------------------------------- Why Tanvi */}
@@ -190,6 +234,25 @@ export default function V2About() {
             </a>
           </div>
         </div>
+      </Band>
+
+      {/* ------------------------------------------------- Work with us */}
+      <Band>
+        <V2FeatureRow
+          eyebrow="Work with us"
+          title="Buying from Tanvi IT is straightforward"
+          description="We are already on the vehicles most agencies hold — NASA SEWP VI Category C, GSA MAS, 8(a) STARS III and the cooperative agreements state and local buyers use. That means a requirement can reach award without a new procurement."
+          image={v2Images.capitol.src}
+          imageAlt={v2Images.capitol.alt}
+          flip
+        >
+          <div className="mt-8 flex flex-wrap gap-3">
+            <V2Button href="/v2/contract-vehicles">View contract vehicles</V2Button>
+            <V2Button href="/v2/contract-vehicles/sewp-vi" variant="outline">
+              NASA SEWP VI
+            </V2Button>
+          </div>
+        </V2FeatureRow>
       </Band>
 
       {/* ---------------------------------------------------------- Closing */}
