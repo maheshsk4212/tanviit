@@ -139,7 +139,7 @@ export function PageHero({
             preload="metadata"
             aria-hidden
             tabIndex={-1}
-            className="absolute inset-0 -z-20 h-full w-full object-cover motion-reduce:hidden"
+            className="absolute inset-0 -z-20 h-full w-full animate-[hero-drift_30s_ease-in-out_infinite_alternate] object-cover motion-reduce:hidden motion-reduce:animate-none"
           />
         </>
       ) : (
@@ -156,7 +156,7 @@ export function PageHero({
       {/* Weighted left, where the type sits; the right stays open so the
           building and the sky still read. */}
       <div
-        className="absolute inset-0 -z-10 [background-image:linear-gradient(to_right,rgb(6_26_46/0.96)_0%,rgb(6_26_46/0.88)_45%,rgb(6_26_46/0.62)_72%,rgb(6_26_46/0.4)_100%)]"
+        className="absolute inset-0 -z-10 [background-image:linear-gradient(118deg,rgb(6_26_46/0.95)_0%,rgb(6_26_46/0.9)_30%,rgb(6_26_46/0.6)_58%,rgb(6_26_46/0.3)_80%,rgb(6_26_46/0.16)_100%)]"
         aria-hidden
       />
 

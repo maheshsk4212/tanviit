@@ -523,3 +523,14 @@ html {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Hero background: a slow push in and out, so even the quiet stretches of the
+   time-lapse keep moving. Paired with the footage's own light change. */
+@keyframes hero-drift {
+  from {
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
