@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Band, BandHeading, MoreLink, PageHero, V2Button } from "@/components/v2/V2Section";
 import { contractVehicles } from "@/lib/site-content";
-import { naicsCodes, sewpVi } from "@/lib/v2-content";
+import { naicsCodes, sewpVi, v2Images } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "Contract vehicles",
@@ -34,8 +35,8 @@ export default function V2Vehicles() {
 
       {/* ------------------------------------------------------- SEWP VI */}
       <Band>
-        <div className="grid gap-10 rounded-2xl border border-navy-200 bg-navy-50 p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
-          <div>
+        <div className="grid items-stretch gap-0 overflow-hidden rounded-3xl border border-navy-200 bg-navy-50 lg:grid-cols-[1.25fr_1fr]">
+          <div className="p-8 sm:p-10 lg:p-14">
             <p className="text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
               Featured vehicle
             </p>
@@ -57,16 +58,28 @@ export default function V2Vehicles() {
               </a>
             </div>
           </div>
-          <dl className="space-y-5">
+          <div className="relative min-h-[18rem] overflow-hidden lg:min-h-full">
+            <Image
+              src={v2Images.launch.src}
+              alt={v2Images.launch.alt}
+              fill
+              quality={90}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover"
+            />
+            {/* the exhaust trail is near-white; this keeps the facts over it legible */}
+            <div className="absolute inset-0 bg-navy-950/85" aria-hidden />
+            <dl className="relative space-y-5 p-8 sm:p-10 lg:p-12">
             {sewpVi.contract.slice(0, 5).map((row) => (
               <div key={row.term}>
-                <dt className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
+                <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-flame-400">
                   {row.term}
                 </dt>
-                <dd className="mt-1 text-[17px] leading-relaxed text-fg">{row.detail}</dd>
+                <dd className="mt-1 text-[15px] leading-relaxed text-white">{row.detail}</dd>
               </div>
             ))}
-          </dl>
+            </dl>
+          </div>
         </div>
       </Band>
 
@@ -77,12 +90,12 @@ export default function V2Vehicles() {
           title="Where Tanvi IT can be awarded work"
           lead="Vehicles Tanvi IT holds or can be awarded work through, across federal, state, local and cooperative purchasing."
         />
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+        <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2 lg:grid-cols-3">
           {contractVehicles.map((vehicle) => (
             <li
               key={vehicle.name}
               id={anchors[vehicle.name]}
-              className="scroll-mt-28 bg-white p-6"
+              className="scroll-mt-28 bg-white p-6 transition-colors duration-300 hover:bg-navy-50"
             >
               <h3 className="font-display text-lg font-semibold text-navy-900">{vehicle.name}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-fg">{vehicle.detail}</p>

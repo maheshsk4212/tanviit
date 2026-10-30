@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Band, BandHeading, PageHero, V2Button } from "@/components/v2/V2Section";
+import { V2FeatureRow } from "@/components/v2/V2FeatureRow";
 import { industries, testimonials } from "@/lib/site-content";
-import { customerGroups } from "@/lib/v2-content";
+import { customerGroups, v2Images } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "Customers & past performance",
@@ -76,7 +77,21 @@ export default function V2Customers() {
         </ul>
       </Band>
 
-      <Band id="testimonials">
+      <Band>
+        <V2FeatureRow
+          eyebrow="Past performance"
+          title="Delivery that holds up under review"
+          description="Program references, scope summaries and a capability statement are available on request — the detail an evaluator needs, rather than a logo wall alone."
+          image={v2Images.workstation.src}
+          imageAlt={v2Images.workstation.alt}
+        >
+          <div className="mt-8">
+            <V2Button href="/v2/contact">Request past performance</V2Button>
+          </div>
+        </V2FeatureRow>
+      </Band>
+
+      <Band tone="tint" id="testimonials">
         <BandHeading eyebrow="Client testimonials" title="What our clients say" />
         <ul className="mt-12 grid gap-5 lg:grid-cols-3">
           {testimonials.map((testimonial) => (

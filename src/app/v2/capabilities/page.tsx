@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Band, BandHeading, PageHero, V2Button } from "@/components/v2/V2Section";
+import { V2FeatureRow } from "@/components/v2/V2FeatureRow";
 import { capabilitiesHero, howWeDeliver, outcomes, solutionAreas } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
@@ -36,45 +37,35 @@ export default function V2Capabilities() {
           title="Six areas we deliver in"
           lead="Each area lists the services it covers, so a requirement can be matched against it directly."
         />
-        {/* Numbered rows rather than a card grid: each area gets the width to
-            list its services, and the page reads as an index. */}
-        <ul className="mt-14 border-t border-navy-200">
+        {/* Each area faces its own photograph, alternating sides down the
+            page, so the section reads as work rather than as a list. */}
+        <div className="mt-16 space-y-20 lg:space-y-28">
           {solutionAreas.map((area, i) => (
-            <li
-              key={area.slug}
-              id={area.slug}
-              className="scroll-mt-28 border-b border-navy-200 py-10"
-            >
-              <div className="grid gap-x-10 gap-y-5 lg:grid-cols-[3.5rem_1fr_1.1fr]">
-                <span className="font-display text-sm font-semibold tracking-[0.1em] text-navy-600">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-display text-2xl font-semibold leading-snug tracking-[-0.015em] text-navy-900">
-                    {area.name}
-                  </h3>
-                  <p className="mt-3 text-[17px] leading-[1.7] text-fg">{area.description}</p>
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
-                    Key service areas
-                  </h4>
-                  <ul className="mt-4 grid gap-x-6 gap-y-2 sm:grid-cols-2">
-                    {area.services.map((service) => (
-                      <li
-                        key={service}
-                        className="flex gap-2.5 text-[15px] leading-snug text-fg"
-                      >
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-flame-500" aria-hidden />
-                        {service}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </li>
+            <div key={area.slug} id={area.slug} className="scroll-mt-28">
+              <V2FeatureRow
+                index={i + 1}
+                eyebrow="Key solution area"
+                title={area.name}
+                description={area.description}
+                image={area.image}
+                imageAlt={area.imageAlt}
+                flip={i % 2 === 1}
+              >
+                <ul className="mt-7 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+                  {area.services.map((service) => (
+                    <li key={service} className="flex gap-3 text-[15px] leading-snug text-fg">
+                      <span
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-flame-500"
+                        aria-hidden
+                      />
+                      {service}
+                    </li>
+                  ))}
+                </ul>
+              </V2FeatureRow>
+            </div>
           ))}
-        </ul>
+        </div>
       </Band>
 
       {/* -------------------------------------------------------- Outcomes */}

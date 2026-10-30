@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Band, BandHeading, PageHero, V2Button } from "@/components/v2/V2Section";
+import { V2FeatureRow } from "@/components/v2/V2FeatureRow";
 import { benefits } from "@/lib/site-content";
-import { about, careers } from "@/lib/v2-content";
+import { about, careers, v2Images } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -24,12 +25,15 @@ export default function V2Careers() {
       </PageHero>
 
       <Band id="culture">
-        <BandHeading split
+        <V2FeatureRow
           eyebrow="Culture"
           title="Talent, technology and trust — applied to how we work"
-          lead={about.approachIntro}
+          description={about.approachIntro}
+          image={v2Images.people.src}
+          imageAlt={v2Images.people.alt}
+          flip
         />
-        <ul className="mt-12 grid gap-5 lg:grid-cols-3">
+        <ul className="mt-16 grid gap-5 lg:grid-cols-3">
           {about.approach.map((item) => (
             <li key={item.name} className="rounded-2xl border border-navy-200 bg-navy-50 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
               <h3 className="font-display text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">

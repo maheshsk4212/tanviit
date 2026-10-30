@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Band, BandHeading, MoreLink, PageHero, V2Button } from "@/components/v2/V2Section";
+import { V2FeatureRow } from "@/components/v2/V2FeatureRow";
 import {
   about,
   certificationsIntro,
@@ -7,6 +8,7 @@ import {
   leadership,
   leadershipIntro,
   v2Certifications,
+  v2Images,
 } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
@@ -32,14 +34,18 @@ export default function V2About() {
 
       {/* ----------------------------------------------------- Who we are */}
       <Band id="overview">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
-          <BandHeading eyebrow="Company overview" title="Who we are" />
-          <div className="space-y-5 text-[17px] leading-[1.7] text-fg sm:text-lg">
+        <V2FeatureRow
+          eyebrow="Company overview"
+          title="Who we are"
+          image={v2Images.team.src}
+          imageAlt={v2Images.team.alt}
+        >
+          <div className="mt-5 space-y-5 text-base leading-relaxed text-fg-muted sm:text-lg">
             {about.overview.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}
           </div>
-        </div>
+        </V2FeatureRow>
         <p className="mt-14 border-l-4 border-flame-500 pl-6 font-display text-2xl font-semibold leading-snug tracking-[-0.015em] text-navy-900 sm:text-3xl">
           {about.pullQuote}
         </p>
@@ -84,7 +90,7 @@ export default function V2About() {
       <Band tone="dark" id="story">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <BandHeading onDark eyebrow="Our story" title="Built to make a difference" />
-          <div className="space-y-5 text-[17px] leading-[1.7] text-navy-100 sm:text-lg">
+          <div className="space-y-5 text-base leading-relaxed text-white/80 sm:text-lg">
             {about.story.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}

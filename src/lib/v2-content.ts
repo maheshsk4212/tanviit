@@ -16,6 +16,9 @@
  * address has been retired from both designs.
  */
 
+const unsplash = (id: string, width = 1600) =>
+  `https://images.unsplash.com/${id}?w=${width}&q=85&auto=format&fit=crop`;
+
 export const v2Site = {
   name: "Tanvi IT Solutions",
   legalName: "Tanvi IT Solutions Inc.",
@@ -96,6 +99,8 @@ export const capabilitiesHero = {
 export const solutionAreas = [
   {
     slug: "application-development-modernization",
+    image: unsplash("photo-1687603917313-ccae1a289a9d"),
+    imageAlt: "Source code open on a developer's monitor",
     name: "Application Development & Modernization",
     description:
       "Develop, enhance, integrate, and modernize applications to support changing mission and business requirements.",
@@ -110,6 +115,8 @@ export const solutionAreas = [
   },
   {
     slug: "data-analytics",
+    image: unsplash("photo-1551288049-bebda4e38f71"),
+    imageAlt: "Analytics dashboards showing charts and trend lines",
     name: "Data & Analytics",
     description:
       "Transform data into actionable information through business intelligence, analytics, data engineering, integration, and reporting.",
@@ -125,6 +132,8 @@ export const solutionAreas = [
   },
   {
     slug: "devops-cloud-enablement",
+    image: unsplash("photo-1558494949-ef010cbdcc31"),
+    imageAlt: "Rows of servers in a data centre",
     name: "DevOps & Cloud Enablement",
     description:
       "Improve software delivery and technology operations through DevOps practices, automation, and cloud-oriented engineering approaches.",
@@ -140,6 +149,8 @@ export const solutionAreas = [
   },
   {
     slug: "enterprise-architecture",
+    image: unsplash("photo-1522071820081-009f0129c71c"),
+    imageAlt: "A team planning around a shared table",
     name: "Enterprise Architecture & Technology Strategy",
     description:
       "Connect applications, data, infrastructure, and technology strategy to create scalable and adaptable environments.",
@@ -154,6 +165,8 @@ export const solutionAreas = [
   },
   {
     slug: "quality-engineering-ivv",
+    image: unsplash("photo-1605379399642-870262d3d051"),
+    imageAlt: "A developer's workstation with code on screen",
     name: "Quality Engineering, IV&V & Testing",
     description:
       "Improve reliability, performance, maintainability, and scalability through structured quality engineering and testing.",
@@ -168,6 +181,8 @@ export const solutionAreas = [
   },
   {
     slug: "emerging-technologies",
+    image: unsplash("photo-1457364887197-9150188c107b"),
+    imageAlt: "A rocket launch climbing through the sky",
     name: "Emerging Technologies & Innovation",
     description:
       "Evaluate and apply emerging technologies and innovative approaches to address evolving technology challenges and create practical value.",
@@ -533,3 +548,34 @@ export const customerGroups = [
 export const naicsCodes = [
   { code: "541511", title: "Custom Computer Programming Services" },
 ];
+
+/**
+ * Photographs used across the interior pages. Each was checked against the
+ * section it illustrates before being assigned.
+ */
+export const v2Images = {
+  team: {
+    src: unsplash("photo-1522071820081-009f0129c71c"),
+    alt: "The Tanvi IT team working together around a table",
+  },
+  people: {
+    src: unsplash("photo-1521791136064-7986c2920216"),
+    alt: "Colleagues shaking hands at the start of an engagement",
+  },
+  launch: {
+    src: unsplash("photo-1457364887197-9150188c107b"),
+    alt: "A rocket launch climbing through the sky",
+  },
+  capitol: {
+    src: unsplash("photo-1483600516620-7254872369ae"),
+    alt: "Classical columns of a federal building",
+  },
+  workstation: {
+    src: unsplash("photo-1605379399642-870262d3d051"),
+    alt: "A developer's workstation with code on screen",
+  },
+  security: {
+    src: unsplash("photo-1558494949-ef010cbdcc31"),
+    alt: "Rows of servers in a data centre",
+  },
+};

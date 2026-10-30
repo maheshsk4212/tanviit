@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Band, BandHeading, MoreLink, PageHero } from "@/components/v2/V2Section";
-import { featuredNews } from "@/lib/v2-content";
+import Image from "next/image";
+import { Band, BandHeading, MoreLink, PageHero, Reveal } from "@/components/v2/V2Section";
+import { featuredNews, v2Images } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "News & insights",
@@ -17,6 +18,19 @@ export default function V2News() {
       />
 
       <Band>
+        <Reveal className="relative mb-14 aspect-[21/9] overflow-hidden rounded-3xl bg-navy-900">
+          <Image
+            src={v2Images.launch.src}
+            alt={v2Images.launch.alt}
+            fill
+            priority
+            quality={90}
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 to-transparent" aria-hidden />
+        </Reveal>
+
         <article className="max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-[0.12em] text-navy-700">
             Featured — contract award
