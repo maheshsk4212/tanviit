@@ -10,6 +10,7 @@ import {
   V2Button,
 } from "@/components/v2/V2Section";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import { V2FeatureRow } from "@/components/v2/V2FeatureRow";
 import {
@@ -297,6 +298,7 @@ export default function V2About() {
           title={jointVenture.name}
           image={v2Images.people.src}
           imageAlt={v2Images.people.alt}
+          align="start"
         >
           {/* The two partners, named as a pair. */}
           <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -334,22 +336,57 @@ export default function V2About() {
       </Band>
 
       {/* ------------------------------------------------- Work with us */}
-      <Band>
-        <V2FeatureRow
-          eyebrow="Work with us"
-          title="Buying from Tanvi IT is straightforward"
-          description="We are already on the vehicles most agencies hold — NASA SEWP VI Category C, GSA MAS, 8(a) STARS III and the cooperative agreements state and local buyers use. That means a requirement can reach award without a new procurement."
-          image={v2Images.capitol.src}
-          imageAlt={v2Images.capitol.alt}
-          flip
-        >
-          <div className="mt-8 flex flex-wrap gap-3">
-            <V2Button href="/v2/contract-vehicles">View contract vehicles</V2Button>
-            <V2Button href="/v2/contract-vehicles/sewp-vi" variant="outline">
-              NASA SEWP VI
-            </V2Button>
-          </div>
-        </V2FeatureRow>
+      <Band tone="tint">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
+          <Reveal>
+            <span className="inline-flex items-center rounded-full border border-navy-200 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-navy-700">
+              Work with us
+            </span>
+            <h2 className="mt-5 text-balance font-display text-3xl font-semibold leading-[1.1] tracking-[-0.03em] text-navy-900 sm:text-4xl">
+              Already on the vehicles you hold
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg">
+              A requirement can reach award without a new procurement.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <V2Button href="/v2/contract-vehicles">View contract vehicles</V2Button>
+            </div>
+          </Reveal>
+
+          {/* The routes themselves, rather than another photograph. */}
+          <RevealGroup className="grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2" stagger={0.05}>
+            {[
+              { name: "NASA SEWP VI", detail: "Category C — 80TECH26D0642", href: "/v2/contract-vehicles/sewp-vi" },
+              { name: "GSA MAS", detail: "Multiple Award Schedule" },
+              { name: "8(a) STARS III", detail: "Small business GWAC" },
+              { name: "Cooperatives", detail: "State, local & education" },
+            ].map((route) => (
+              <RevealItem key={route.name}>
+                {route.href ? (
+                  <Link
+                    href={route.href}
+                    className="group flex h-full flex-col justify-between gap-3 bg-white p-6 transition-colors duration-300 hover:bg-navy-50"
+                  >
+                    <span className="font-display text-lg font-semibold text-navy-900">
+                      {route.name}
+                    </span>
+                    <span className="text-[14px] leading-snug text-fg-muted">{route.detail}</span>
+                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-flame-700">
+                      Ordering details
+                    </span>
+                  </Link>
+                ) : (
+                  <div className="flex h-full flex-col gap-3 bg-white p-6">
+                    <span className="font-display text-lg font-semibold text-navy-900">
+                      {route.name}
+                    </span>
+                    <span className="text-[14px] leading-snug text-fg-muted">{route.detail}</span>
+                  </div>
+                )}
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
       </Band>
 
       {/* ---------------------------------------------------------- Closing */}

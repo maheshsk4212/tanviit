@@ -20,6 +20,7 @@ export function V2FeatureRow({
   description,
   children,
   index,
+  align = "center",
 }: {
   image: string;
   imageAlt: string;
@@ -31,9 +32,15 @@ export function V2FeatureRow({
   children?: ReactNode;
   /** Shown as 01, 02 … beside the title. */
   index?: number;
+  /** `start` when the text column is much taller than the picture. */
+  align?: "center" | "start";
 }) {
   return (
-    <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+    <div
+      className={`grid gap-10 lg:grid-cols-2 lg:gap-16 ${
+        align === "start" ? "lg:items-start" : "lg:items-center"
+      }`}
+    >
       <Reveal
         direction={flip ? "right" : "left"}
         className={`group relative aspect-[4/3] overflow-hidden rounded-3xl bg-navy-900 lg:aspect-[5/4] ${
