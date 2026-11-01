@@ -363,21 +363,32 @@ export const leadership = [
   },
 ];
 
+/**
+ * Each credential carries its own icon key. The real certification marks are
+ * copyrighted artwork we do not hold, so these stand in for them — but one
+ * icon per credential, not the same tick seven times, because a reader should
+ * be able to tell a security certificate from a socioeconomic one at a glance.
+ *
+ * NEEDS-CONTENT: the official ISO, CMMI, SBA and SWaM badge files, if the
+ * client is licensed to display them. They would replace the icons.
+ */
 export const v2Certifications = [
-  { name: "ISO 9001:2015", detail: "Quality Management System", group: "Quality & process" },
-  { name: "ISO/IEC 20000-1:2018", detail: "IT Service Management", group: "Quality & process" },
+  { name: "ISO 9001:2015", detail: "Quality Management System", group: "Quality & process", icon: "quality" },
+  { name: "ISO/IEC 20000-1:2018", detail: "IT Service Management", group: "Quality & process", icon: "service" },
   {
     name: "ISO/IEC 27001:2013",
     detail: "Information Security Management",
     group: "Quality & process",
+    icon: "security",
   },
-  { name: "CMMI-DEV Level 3", detail: "Development Process Maturity", group: "Quality & process" },
-  { name: "CMMI-SVC Level 3", detail: "Services Process Maturity", group: "Quality & process" },
-  { name: "SBA 8(a)", detail: "Small Business Development Program", group: "Federal / socioeconomic" },
+  { name: "CMMI-DEV Level 3", detail: "Development Process Maturity", group: "Quality & process", icon: "development" },
+  { name: "CMMI-SVC Level 3", detail: "Services Process Maturity", group: "Quality & process", icon: "services" },
+  { name: "SBA 8(a)", detail: "Small Business Development Program", group: "Federal / socioeconomic", icon: "federal" },
   {
     name: "SWaM Certified",
     detail: "Small, Women-Owned & Minority-Owned Business",
     group: "Federal / socioeconomic",
+    icon: "ownership",
   },
 ];
 

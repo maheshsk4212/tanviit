@@ -1,5 +1,4 @@
 import {
-  BadgeCheck,
   Boxes,
   Brain,
   CheckCircle2,
@@ -36,6 +35,7 @@ import {
 import { V2Marquee, V2Mosaic } from "@/components/v2/V2Mosaic";
 import { V2HomeHero } from "@/components/v2/V2HomeHero";
 import { V2CtaBanner } from "@/components/v2/V2CtaBanner";
+import { V2CredentialCards } from "@/components/v2/V2CredentialCards";
 import { AnimatedCounter } from "@/components/motion/AnimatedCounter";
 import {
   about,
@@ -354,26 +354,9 @@ export default function V2Home() {
           lead="Third-party assessments of how we run quality, security and service management — the evidence behind every proposal we submit."
           action={<MoreLink href="/v2/about#certifications">About our credentials</MoreLink>}
         />
-        <RevealGroup
-          className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
-          stagger={0.05}
-        >
-          {v2Certifications.map((cert) => (
-            <RevealItem key={cert.name}>
-              {/* Each card carries a seal and a gradient rather than being a
-                  white box with two lines of type in it. */}
-              <div className="group flex h-full flex-col items-center justify-start rounded-2xl border border-navy-200 bg-white [background-image:linear-gradient(180deg,rgb(255_255_255)_0%,rgb(242_245_254)_100%)] px-5 py-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.45)]">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-navy-50 text-flame-600 ring-1 ring-navy-200 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white group-hover:ring-flame-600">
-                  <BadgeCheck className="h-5 w-5" aria-hidden />
-                </span>
-                <p className="mt-4 font-display text-base font-semibold leading-tight tracking-[-0.01em] text-fg">
-                  {cert.name}
-                </p>
-                <p className="mt-2 text-[13px] leading-snug text-fg-subtle">{cert.detail}</p>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        <div className="mt-16">
+          <V2CredentialCards credentials={v2Certifications} moreHref="/v2/about#certifications" />
+        </div>
       </Band>
 
       {/* ------------------------------------ Customers — drifting logo rail */}
