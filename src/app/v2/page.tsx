@@ -1,4 +1,5 @@
 import {
+  BadgeCheck,
   Boxes,
   Brain,
   CheckCircle2,
@@ -26,6 +27,7 @@ import {
 } from "@/components/v2/V2Section";
 import { V2Marquee, V2Mosaic } from "@/components/v2/V2Mosaic";
 import { V2HomeHero } from "@/components/v2/V2HomeHero";
+import { V2CtaBanner } from "@/components/v2/V2CtaBanner";
 import { AnimatedCounter } from "@/components/motion/AnimatedCounter";
 import {
   about,
@@ -38,9 +40,11 @@ import {
   homeHero,
   howWeDeliver,
   v2Certifications,
+  v2Images,
   v2Site,
   valueProposition,
 } from "@/lib/v2-content";
+import Image from "next/image";
 import { services, techExpertise, testimonials } from "@/lib/site-content";
 
 /**
@@ -110,7 +114,9 @@ export default function V2Home() {
       </V2HomeHero>
 
       {/* ------------------------------------------------- Credential rule */}
-      <div className="border-b border-navy-100 bg-white">
+      {/* A tinted rule rather than bare text on white, so the credentials
+          read as a band of their own between the hero and the page. */}
+      <div className="border-b border-navy-100 bg-navy-50 [background-image:linear-gradient(90deg,rgb(227_232_252)_0%,rgb(248_250_255)_50%,rgb(227_232_252)_100%)]">
         <div className="mx-auto w-full max-w-7xl px-4 py-7 sm:px-6 lg:px-8">
           <RevealGroup
             className="flex flex-wrap items-center gap-x-8 gap-y-3 sm:gap-x-12"
@@ -118,7 +124,8 @@ export default function V2Home() {
           >
             {credentialStrip.map((item) => (
               <RevealItem key={item}>
-                <span className="text-[13px] font-semibold uppercase tracking-[0.16em] text-fg-subtle">
+                <span className="flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-[0.16em] text-navy-800">
+                  <span className="h-1.5 w-1.5 rounded-full bg-flame-600" aria-hidden />
                   {item}
                 </span>
               </RevealItem>
@@ -153,20 +160,42 @@ export default function V2Home() {
           </Reveal>
         </div>
 
-        <RevealGroup className="mt-20 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-          {about.whyTanvi.map((item) => (
-            <RevealItem key={item.name}>
-              <div className="group border-t-2 border-navy-200 pt-5 transition-colors duration-300 hover:border-flame-500">
-                <h3 className="font-display text-lg font-semibold tracking-[-0.02em] text-fg">
-                  {item.name}
-                </h3>
-                <p className="mt-2.5 text-[15px] leading-relaxed text-fg-muted">
-                  {item.description}
-                </p>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        {/* The section was four columns of prose and nothing else. The
+            photograph gives it something to look at, and the four points sit
+            over it as cards rather than under it as a text list. */}
+        <Reveal className="mt-20">
+          <div className="relative isolate overflow-hidden rounded-3xl bg-navy-950">
+            <Image
+              src={v2Images.team.src}
+              alt={v2Images.team.alt}
+              fill
+              sizes="100vw"
+              quality={85}
+              className="object-cover"
+            />
+            <div
+              className="absolute inset-0 [background-image:linear-gradient(118deg,rgb(5_12_40/0.95)_0%,rgb(5_12_40/0.9)_55%,rgb(5_12_40/0.82)_100%)]"
+              aria-hidden
+            />
+            <RevealGroup
+              className="relative grid gap-x-10 gap-y-10 p-8 sm:grid-cols-2 sm:p-12 lg:grid-cols-4 lg:p-14"
+              stagger={0.06}
+            >
+              {about.whyTanvi.map((item) => (
+                <RevealItem key={item.name}>
+                  <div className="group border-t-2 border-white/20 pt-5 transition-colors duration-300 hover:border-flame-500">
+                    <h3 className="font-display text-lg font-semibold tracking-[-0.02em] text-white">
+                      {item.name}
+                    </h3>
+                    <p className="mt-2.5 text-[15px] leading-relaxed text-white/80">
+                      {item.description}
+                    </p>
+                  </div>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </Reveal>
       </Band>
 
       {/* ------------------------------ Capabilities — photographic mosaic */}
@@ -279,13 +308,18 @@ export default function V2Home() {
           action={<MoreLink href="/v2/about#certifications">About our credentials</MoreLink>}
         />
         <RevealGroup
-          className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6"
+          className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
           stagger={0.05}
         >
           {v2Certifications.map((cert) => (
             <RevealItem key={cert.name}>
-              <div className="flex h-full flex-col justify-center rounded-2xl border border-navy-200 bg-white px-5 py-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.45)]">
-                <p className="font-display text-base font-semibold leading-tight tracking-[-0.01em] text-fg">
+              {/* Each card carries a seal and a gradient rather than being a
+                  white box with two lines of type in it. */}
+              <div className="group flex h-full flex-col items-center justify-start rounded-2xl border border-navy-200 bg-white [background-image:linear-gradient(180deg,rgb(255_255_255)_0%,rgb(242_245_254)_100%)] px-5 py-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.45)]">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-navy-50 text-flame-600 ring-1 ring-navy-200 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white group-hover:ring-flame-600">
+                  <BadgeCheck className="h-5 w-5" aria-hidden />
+                </span>
+                <p className="mt-4 font-display text-base font-semibold leading-tight tracking-[-0.01em] text-fg">
                   {cert.name}
                 </p>
                 <p className="mt-2 text-[13px] leading-snug text-fg-subtle">{cert.detail}</p>
@@ -312,14 +346,32 @@ export default function V2Home() {
       <Band tone="dark">
         <BandHeading onDark eyebrow="Client testimonials" title="What our clients say" />
         <Reveal delay={0.1}>
-          <figure className="mt-14 max-w-4xl border-l-2 border-flame-500 pl-8">
-            <blockquote className="text-balance font-display text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white sm:text-3xl lg:text-[2.25rem]">
-              “{testimonials[0].quote}”
-            </blockquote>
-            <figcaption className="mt-7 text-[15px] text-white/80">
-              <span className="font-semibold text-white">{testimonials[0].author}</span>,{" "}
-              {testimonials[0].company}
-            </figcaption>
+          {/* The lead quote gets the photograph that was already sitting in
+              the content and never being shown. */}
+          <figure className="mt-14 grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-16">
+            <div className="border-l-2 border-flame-500 pl-8">
+              <blockquote className="text-balance font-display text-2xl font-semibold leading-[1.3] tracking-[-0.02em] text-white sm:text-3xl lg:text-[2.25rem]">
+                “{testimonials[0].quote}”
+              </blockquote>
+              <figcaption className="mt-7 text-[15px] text-white/80">
+                <span className="font-semibold text-white">{testimonials[0].author}</span>,{" "}
+                {testimonials[0].company}
+              </figcaption>
+            </div>
+            <div className="relative aspect-[5/4] overflow-hidden rounded-3xl bg-navy-900">
+              <Image
+                src={testimonials[0].image}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 38vw, 100vw"
+                quality={85}
+                className="object-cover"
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-tr from-navy-950/55 via-navy-950/10 to-transparent"
+                aria-hidden
+              />
+            </div>
           </figure>
         </Reveal>
         <RevealGroup className="mt-16 grid gap-6 border-t border-white/15 pt-12 sm:grid-cols-2">
@@ -370,6 +422,23 @@ export default function V2Home() {
           </RevealGroup>
         </div>
       </Band>
+
+      {/* The reference closes on an inset photographic banner rather than a
+          plain CTA strip; this is the same device. */}
+      <V2CtaBanner
+        eyebrow="Work with us"
+        title={about.closing.headline}
+        lead={about.closing.body}
+        image={v2Images.capitol.src}
+        imageAlt=""
+      >
+        <div className="mt-9 flex flex-wrap gap-3">
+          <V2Button href="/v2/contact">Talk to our team</V2Button>
+          <V2Button href="/v2/contract-vehicles" variant="outline-dark">
+            How to buy
+          </V2Button>
+        </div>
+      </V2CtaBanner>
     </>
   );
 }

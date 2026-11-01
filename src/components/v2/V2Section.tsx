@@ -6,12 +6,18 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
 type Tone = "white" | "tint" | "dark";
 
+/*
+ * The reference never uses a flat fill on a full-width band: its light bands
+ * are a brand tint rather than grey, and its dark band carries depth. These
+ * do the same with gradients, so a band reads as lit rather than painted.
+ */
 const tones: Record<Tone, string> = {
   white: "bg-white text-fg",
-  // tinted pale blue, the way the reference tints its light bands rather
-  // than dropping to neutral grey
-  tint: "bg-navy-100 text-fg",
-  dark: "bg-navy-950 text-white",
+  // Pale brand tint, deepening down the band rather than sitting flat.
+  tint: "bg-navy-50 text-fg [background-image:linear-gradient(180deg,rgb(248_250_255)_0%,rgb(227_232_252)_100%)]",
+  // Navy with a cool highlight behind the heading and a trace of flame in the
+  // far corner — enough to keep a tall dark band from going dead.
+  dark: "bg-navy-950 text-white [background-image:radial-gradient(70%_60%_at_12%_0%,rgb(22_43_112/0.55)_0%,transparent_62%),radial-gradient(45%_55%_at_96%_102%,rgb(216_56_10/0.14)_0%,transparent_70%)]",
 };
 
 /**
