@@ -90,9 +90,12 @@ export function V2Marquee({ items }: { items: string[] }) {
           <li
             key={`${item}-${i}`}
             aria-hidden={i >= items.length}
-            className="flex h-24 w-52 shrink-0 items-center justify-center rounded-xl border border-navy-100 bg-white px-5 text-center transition-colors duration-300 hover:border-navy-300"
+            /* Named group: the rail itself already uses the unnamed one to
+               pause the animation, so the card needs its own to swap colour
+               without the two interfering. */
+            className="group/mark flex h-24 w-52 shrink-0 items-center justify-center rounded-xl border border-navy-100 bg-white px-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-flame-600 hover:bg-flame-600 hover:shadow-[0_16px_34px_-18px_rgb(216_56_10/0.6)]"
           >
-            <span className="font-display text-base font-semibold tracking-[-0.01em] text-navy-900">
+            <span className="font-display text-base font-semibold tracking-[-0.01em] text-navy-900 transition-colors duration-300 group-hover/mark:text-white">
               {item}
             </span>
           </li>
