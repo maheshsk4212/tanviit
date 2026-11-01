@@ -11,11 +11,19 @@ import {
   Layers,
   Repeat,
   Search,
+  Handshake,
+  Quote,
   ShieldCheck,
+  Target,
   TestTube2,
+  Users,
+  Zap,
 } from "lucide-react";
 /* Understand, Align, Engineer, Validate, Evolve. */
 const stepIcons = [Search, Compass, Cog, CheckCircle2, Repeat];
+/* Mission-focused, Experienced professionals, Innovation & agility,
+   Long-term partnership. */
+const whyIcons = [Target, Users, Zap, Handshake];
 import {
   Band,
   BandHeading,
@@ -135,24 +143,36 @@ export default function V2Home() {
       </div>
 
       {/* -------------------------------------------- Value proposition */}
-      <Band>
+      <Band motif>
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <Reveal className="lg:sticky lg:top-28 lg:self-start">
             <BandHeading
               eyebrow="Why Tanvi IT"
               title="Value creation, mission outcomes, long-term success."
             />
-            <p className="mt-9 border-l-2 border-flame-500 pl-6 font-display text-xl font-semibold leading-snug tracking-[-0.02em] text-fg">
-              {about.pullQuote}
-            </p>
+            {/* The line the whole section is built around, given the weight
+                of one rather than sitting in the margin as a stray rule. */}
+            <figure className="mt-10 rounded-2xl border border-navy-200 bg-navy-50 [background-image:linear-gradient(160deg,rgb(248_250_255)_0%,rgb(227_232_252)_100%)] p-7 sm:p-8">
+              <Quote className="h-8 w-8 text-flame-600" aria-hidden />
+              <blockquote className="mt-4 font-display text-xl font-semibold leading-snug tracking-[-0.02em] text-fg sm:text-[1.375rem]">
+                {about.pullQuote}
+              </blockquote>
+            </figure>
           </Reveal>
-          <Reveal
-            delay={0.1}
-            direction="right"
-            className="space-y-6 text-base leading-relaxed text-fg-muted sm:text-lg"
-          >
-            {valueProposition.map((paragraph) => (
-              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          <Reveal delay={0.1} direction="right" className="space-y-6">
+            {/* The opening paragraph carries, the second supports — two
+                identical blocks of grey read as one wall. */}
+            {valueProposition.map((paragraph, i) => (
+              <p
+                key={paragraph.slice(0, 40)}
+                className={
+                  i === 0
+                    ? "text-lg leading-relaxed text-fg sm:text-xl"
+                    : "text-base leading-relaxed text-fg-muted sm:text-lg"
+                }
+              >
+                {paragraph}
+              </p>
             ))}
             <div className="pt-2">
               <MoreLink href="/v2/about">About Tanvi IT</MoreLink>
@@ -181,18 +201,24 @@ export default function V2Home() {
               className="relative grid gap-x-10 gap-y-10 p-8 sm:grid-cols-2 sm:p-12 lg:grid-cols-4 lg:p-14"
               stagger={0.06}
             >
-              {about.whyTanvi.map((item) => (
-                <RevealItem key={item.name}>
-                  <div className="group border-t-2 border-white/20 pt-5 transition-colors duration-300 hover:border-flame-500">
-                    <h3 className="font-display text-lg font-semibold tracking-[-0.02em] text-white">
-                      {item.name}
-                    </h3>
-                    <p className="mt-2.5 text-[15px] leading-relaxed text-white/80">
-                      {item.description}
-                    </p>
-                  </div>
-                </RevealItem>
-              ))}
+              {about.whyTanvi.map((item, i) => {
+                const Icon = whyIcons[i % whyIcons.length];
+                return (
+                  <RevealItem key={item.name} className="h-full">
+                    <div className="group h-full rounded-2xl border border-white/12 bg-white/[0.05] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:bg-white/[0.09]">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-flame-400 ring-1 ring-white/15 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white group-hover:ring-flame-600">
+                        <Icon className="h-5 w-5" aria-hidden />
+                      </span>
+                      <h3 className="mt-5 font-display text-lg font-semibold tracking-[-0.02em] text-white">
+                        {item.name}
+                      </h3>
+                      <p className="mt-2.5 text-[15px] leading-relaxed text-white">
+                        {item.description}
+                      </p>
+                    </div>
+                  </RevealItem>
+                );
+              })}
             </RevealGroup>
           </div>
         </Reveal>
