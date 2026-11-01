@@ -22,7 +22,7 @@ import { type HomeHeroProps } from "@/components/v2/V2HomeHeroEditorial";
  */
 export function V2HomeHeroMinimal({ eyebrow, title, accent, lead, facts, award }: HomeHeroProps) {
   return (
-    <section className="relative isolate flex min-h-[36rem] flex-col justify-end overflow-hidden lg:min-h-[44rem]">
+    <section className="relative isolate flex min-h-[34rem] flex-col overflow-hidden lg:min-h-[42rem]">
       <Image
         src="/hero-civic-network.jpg"
         alt="The United States Capitol at blue hour beneath a network of connected points"
@@ -39,7 +39,10 @@ export function V2HomeHeroMinimal({ eyebrow, title, accent, lead, facts, award }
         aria-hidden
       />
 
-      <div className="relative mx-auto w-full max-w-7xl px-4 pb-14 pt-32 sm:px-6 lg:px-8 lg:pb-16 lg:pt-40">
+      {/* flex-1 + items-center splits the spare height evenly above and below
+          the type rather than stacking all of it on top. */}
+      <div className="relative flex flex-1 items-center">
+        <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <Reveal>
           <div className="flex items-center gap-4">
             <span className="h-px w-12 bg-flame-500" aria-hidden />
@@ -56,7 +59,7 @@ export function V2HomeHeroMinimal({ eyebrow, title, accent, lead, facts, award }
               and leaves the picture alone. A two-tone headline was the less
               minimal choice anyway; the accent now lives in the rule above and
               the marker on the award link. */}
-          <h1 className="mt-8 max-w-3xl text-balance font-display text-[2.25rem] font-medium leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.5rem]">
+          <h1 className="mt-8 max-w-5xl text-balance font-display text-[2.5rem] font-medium leading-[1.05] tracking-[-0.03em] text-white sm:text-[3.5rem] lg:text-[4.5rem]">
             {title} {accent}
           </h1>
 
@@ -86,6 +89,7 @@ export function V2HomeHeroMinimal({ eyebrow, title, accent, lead, facts, award }
             </Link>
           </div>
         </Reveal>
+        </div>
       </div>
 
       {/* Credentials as a hairline, not a statistics panel. */}
