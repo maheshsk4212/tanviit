@@ -235,8 +235,8 @@ export const contractVehicles = [
  */
 export const stats = [
   { value: "2008", label: "Serving clients since" },
-  { value: "6", label: "Certifications & appraisals" },
-  { value: "14", label: "Contract vehicles" },
+  { value: "7", label: "Certifications & appraisals" },
+  { value: "12", label: "Contract vehicles" },
   { value: "8(a)", label: "SBA certified small business" },
 ];
 
@@ -252,8 +252,8 @@ export const achievements = [
     value: "Since 2008",
     label: "Delivering technology and consulting for federal, state and local agencies and commercial clients",
   },
-  { value: "14", label: "Contract vehicles, from NASA SEWP VI to cooperative purchasing agreements" },
-  { value: "6", label: "Independent certifications and process appraisals maintained" },
+  { value: "12", label: "Contract vehicles, from NASA SEWP VI to cooperative purchasing agreements" },
+  { value: "7", label: "Independent certifications and process appraisals maintained" },
   { value: "541511", label: "NAICS — Custom Computer Programming Services" },
 ];
 

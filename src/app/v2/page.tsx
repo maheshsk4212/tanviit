@@ -54,8 +54,8 @@ import { services, techExpertise, testimonials } from "@/lib/site-content";
  */
 const heroFacts = [
   { value: "2008", label: "Serving clients since", count: false },
-  { value: "6", label: "Certifications & appraisals", count: true },
-  { value: "14", label: "Contract vehicles held", count: true },
+  { value: "7", label: "Certifications & appraisals", count: true },
+  { value: "12", label: "Contract vehicles held", count: true },
   { value: "8(a)", label: "SBA certified", count: false },
 ];
 

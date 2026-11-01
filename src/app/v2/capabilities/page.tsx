@@ -67,7 +67,7 @@ export default function V2Capabilities() {
           <ul className="mt-8 grid gap-4 sm:grid-cols-3">
             {[
               { value: "6", label: "Solution areas" },
-              { value: "40+", label: "Named services" },
+              { value: "38", label: "Named services" },
               { value: "2008", label: "Delivering since" },
             ].map((fact) => (
               <li key={fact.label} className="border-t-2 border-flame-500 pt-4">
