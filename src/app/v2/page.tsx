@@ -213,8 +213,29 @@ export default function V2Home() {
 
       {/* ------------------------------ Contract feature — split dark panel */}
       <Band>
-        <Reveal className="overflow-hidden rounded-3xl bg-navy-950">
-          <div className="grid gap-12 p-10 sm:p-14 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:p-16">
+        <Reveal className="group relative isolate overflow-hidden rounded-3xl bg-navy-950">
+          {/* A launch, for the contract this panel is announcing. It sits
+              under a heavy wash — it is there for depth, not to be read. */}
+          <Image
+            src={v2Images.launch.src}
+            alt=""
+            fill
+            sizes="100vw"
+            quality={85}
+            className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+          />
+          <div
+            className="absolute inset-0 [background-image:linear-gradient(104deg,rgb(5_12_40/0.97)_0%,rgb(5_12_40/0.96)_42%,rgb(5_12_40/0.86)_100%)]"
+            aria-hidden
+          />
+          {/* The hover: a flame bloom from the corner the award sits in,
+              fading up rather than switching on. */}
+          <div
+            className="absolute inset-0 opacity-0 transition-opacity duration-500 [background-image:radial-gradient(55%_70%_at_88%_12%,rgb(216_56_10/0.26)_0%,transparent_72%)] group-hover:opacity-100"
+            aria-hidden
+          />
+
+          <div className="relative grid gap-12 p-10 sm:p-14 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:p-16">
             <div>
               <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-flame-400">
                 Latest news
@@ -238,7 +259,7 @@ export default function V2Home() {
               </div>
             </div>
 
-            <Reveal delay={0.15} direction="right" className="rounded-2xl bg-white/[0.06] p-8 sm:p-10">
+            <Reveal delay={0.15} direction="right" className="rounded-2xl border border-white/10 bg-navy-950/70 p-8 backdrop-blur-sm transition-colors duration-500 group-hover:border-flame-500/40 sm:p-10">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-flame-400">
                 Contract number
               </p>
