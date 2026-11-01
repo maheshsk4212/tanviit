@@ -356,10 +356,10 @@ export default function V2About() {
           {/* The routes themselves, rather than another photograph. */}
           <RevealGroup className="grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2" stagger={0.05}>
             {[
-              { name: "NASA SEWP VI", detail: "Category C — 80TECH26D0642", href: "/v2/contract-vehicles/sewp-vi" },
-              { name: "GSA MAS", detail: "Multiple Award Schedule" },
-              { name: "8(a) STARS III", detail: "Small business GWAC" },
-              { name: "Cooperatives", detail: "State, local & education" },
+              { name: "NASA SEWP VI", detail: "Category C — 80TECH26D0642", href: "/v2/contract-vehicles/sewp-vi", cue: "Ordering details" },
+              { name: "Federal vehicles", detail: "OASIS+, Alliant 2, ITES-3S, SeaPort NxG, eFAST", href: "/v2/contract-vehicles#all-vehicles", cue: "See the list" },
+              { name: "Cooperatives", detail: "State, local & education", href: "/v2/contract-vehicles#cooperative", cue: "See the routes" },
+              { name: "NAICS 541511", detail: "Custom Computer Programming Services", href: "/v2/contract-vehicles#naics", cue: "How to find us" },
             ].map((route) => (
               <RevealItem key={route.name}>
                 {route.href ? (
@@ -372,7 +372,7 @@ export default function V2About() {
                     </span>
                     <span className="text-[14px] leading-snug text-fg-muted">{route.detail}</span>
                     <span className="text-xs font-semibold uppercase tracking-[0.12em] text-flame-700">
-                      Ordering details
+                      {route.cue}
                     </span>
                   </Link>
                 ) : (

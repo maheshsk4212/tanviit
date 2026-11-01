@@ -70,7 +70,7 @@ export default function Home() {
         <SectionHeading
           eyebrow="Contract vehicles"
           title="Trusted partner to government and enterprise clients"
-          description="Buy through the vehicles you already hold — including NASA SEWP VI, GSA MAS and 8(a) STARS III."
+          description="Buy through the vehicles you already hold — led by NASA SEWP VI Category C, contract 80TECH26D0642."
           action={<Button href="/sewp-vi">View SEWP VI</Button>}
         />
         <div className="mt-12">

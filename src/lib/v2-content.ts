@@ -358,6 +358,11 @@ export const v2Certifications = [
   { name: "CMMI-DEV Level 3", detail: "Development Process Maturity", group: "Quality & process" },
   { name: "CMMI-SVC Level 3", detail: "Services Process Maturity", group: "Quality & process" },
   { name: "SBA 8(a)", detail: "Small Business Development Program", group: "Federal / socioeconomic" },
+  {
+    name: "SWaM Certified",
+    detail: "Small, Women-Owned & Minority-Owned Business",
+    group: "Federal / socioeconomic",
+  },
 ];
 
 export const certificationsIntro =
@@ -490,6 +495,71 @@ export const featuredNews = {
     attribution: "Nagoor Inaganti, President of Tanvi IT Solutions",
   },
 };
+
+/**
+ * Employee benefits, as supplied by the client for the Careers tab.
+ *
+ * The wording is theirs and deliberately hedged — "eligible employees",
+ * "eligible dependents", and a 401(k) described as an opportunity to
+ * contribute rather than a matched plan. Benefits copy is read as a promise,
+ * so do not tighten it into something more definite than the source.
+ *
+ * NEEDS-CONTENT: the guide's icon list also names Employee Assistance
+ * Programs, but no benefit of that name is described in the body, so it is
+ * not published here. Send a description and it goes in.
+ */
+export const employeeBenefits = {
+  headline: "Supporting our people at every stage",
+  intro: [
+    "At Tanvi IT Solutions, we recognize that our people are central to our success. We believe that supporting our employees means providing benefits that help them take care of their health, protect their families, and plan for their financial future.",
+    "Our employee benefits program includes healthcare coverage, insurance protection, and retirement savings options designed to support employees and their eligible dependents.",
+  ],
+  items: [
+    {
+      name: "Medical insurance",
+      icon: "medical",
+      description:
+        "Access medical coverage is designed to help employees manage healthcare needs and medical expenses.",
+    },
+    {
+      name: "Dental insurance",
+      icon: "dental",
+      description:
+        "Dental coverage helps employees maintain their oral health and access eligible dental care services.",
+    },
+    {
+      name: "Vision insurance",
+      icon: "vision",
+      description: "Vision coverage to support routine eye care and eligible vision-related services.",
+    },
+    {
+      name: "Disability insurance",
+      icon: "disability",
+      description:
+        "Financial protection through disability insurance benefits in the event an eligible employee is unable to work due to a qualifying disability.",
+    },
+    {
+      name: "Life insurance",
+      icon: "life",
+      description:
+        "Life insurance coverage that provides financial protection for employees' designated beneficiaries.",
+    },
+    {
+      name: "401(k) retirement plan",
+      icon: "retirement",
+      description:
+        "An opportunity for eligible employees to contribute toward long-term retirement savings and build financial security for the future.",
+    },
+  ],
+  investing: {
+    heading: "Investing in our people",
+    body: "At Tanvi IT, we value the contributions our employees make and recognize the importance of supporting them beyond their day-to-day responsibilities. Our benefits offerings are part of our commitment to creating a supportive workplace where employees can focus on their professional growth and personal well-being.",
+  },
+  closing: {
+    heading: "Interested in joining Tanvi IT?",
+    body: "Explore career opportunities and learn more about becoming part of our team.",
+  },
+} as const;
 
 export const careers = {
   headline: "Build your future with Tanvi IT",
@@ -666,6 +736,12 @@ export const sectorTabs = [
  *
  * NEEDS-CONTENT: contract numbers, UEI/CAGE per vehicle, and the award dates
  * for every vehicle other than SEWP VI.
+ *
+ * Deliberately absent, and not to be restored from an older deck:
+ *   - 8(a) STARS III. Contract 47QTCB21D0382 belongs to TA Federal LLC, not
+ *     to Tanvi IT Solutions Inc. Publishing it here misattributed the award.
+ *   - GSA MAS. Tanvi IT has not been awarded this vehicle.
+ * Both were removed on the client's written instruction of 1 Nov 2026.
  */
 export const vehicleProfiles = [
   {
@@ -682,22 +758,6 @@ export const vehicleProfiles = [
       { term: "UEI", detail: "VJHWCMQ1AVF5" },
       { term: "Agency fee", detail: "0.34%" },
     ],
-  },
-  {
-    name: "GSA MAS",
-    kind: "Multiple Award Schedule",
-    position: "Tanvi IT is a schedule holder.",
-    summary:
-      "GSA's Multiple Award Schedule gives federal, state and local buyers a single, pre-competed route to professional services at negotiated rates, without running a new procurement.",
-    facts: [],
-  },
-  {
-    name: "8(a) STARS III",
-    kind: "Government-wide acquisition contract",
-    position: "Tanvi IT is an 8(a) certified contract holder.",
-    summary:
-      "A small-business set-aside GWAC for IT services-based solutions, used by agencies to meet socio-economic contracting goals while buying from vetted 8(a) firms.",
-    facts: [],
   },
   {
     name: "OASIS+",

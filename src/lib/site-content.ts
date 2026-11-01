@@ -188,6 +188,11 @@ export const certifications = [
 /**
  * NEEDS-CONFIRMATION: the deck lists different vehicle sets on different
  * slides. This is the union — please confirm which are current and active.
+ *
+ * 8(a) STARS III and GSA MAS were removed on 1 Nov 2026: contract
+ * 47QTCB21D0382 belongs to TA Federal LLC rather than Tanvi IT Solutions
+ * Inc., and the MAS schedule has not been awarded. Do not restore either
+ * from an older deck.
  */
 export const contractVehicles = [
   {
@@ -195,16 +200,6 @@ export const contractVehicles = [
     detail: "Category C — Contract 80TECH26D0642",
     href: "/sewp-vi",
     image: unsplash("photo-1457364887197-9150188c107b", 1200),
-  },
-  {
-    name: "GSA MAS",
-    detail: "Multiple Award Schedule — Professional Services",
-    image: unsplash("photo-1483600516620-7254872369ae", 1200),
-  },
-  {
-    name: "8(a) STARS III",
-    detail: "GWAC Contract Holder",
-    image: unsplash("photo-1543372654-b45dd90eeee5", 1200),
   },
   {
     name: "Alliant 2",
