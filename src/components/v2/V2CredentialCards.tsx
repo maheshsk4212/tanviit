@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -34,6 +35,12 @@ export interface Credential {
   detail: string;
   group: string;
   icon: string;
+  /**
+   * The issued certification mark, once the client supplies it. When present
+   * the card prints it the way the reference does; until then the icon plate
+   * below stands in. See the note in v2-content for what to ask for.
+   */
+  badge?: string;
 }
 
 /**
@@ -60,12 +67,28 @@ export function V2CredentialCards({
         const Icon = icons[cert.icon] ?? Award;
         return (
           <RevealItem key={cert.name} className="h-full">
-            <article className="group relative flex h-full min-h-[15rem] flex-col overflow-hidden rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-flame-500 hover:shadow-[0_26px_55px_-30px_rgb(6_26_46/0.55)]">
+            <article className="group relative flex h-full min-h-[17.5rem] flex-col overflow-hidden rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-flame-500 hover:shadow-[0_26px_55px_-30px_rgb(6_26_46/0.55)]">
               <CornerPattern />
 
-              <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-50 text-flame-600 ring-1 ring-navy-200 transition-all duration-300 group-hover:bg-flame-600 group-hover:text-white group-hover:ring-flame-600">
-                <Icon className="h-6 w-6" aria-hidden />
-              </span>
+              {/* The reference gives this area ~174px of badge artwork, which
+                  is most of why their cards carry. Until the issued marks
+                  arrive, the plate holds the same ground at the same scale
+                  rather than leaving the card top-light. */}
+              {cert.badge ? (
+                <span className="relative flex h-[5.5rem] w-full items-center justify-start">
+                  <Image
+                    src={cert.badge}
+                    alt={`${cert.name} certification mark`}
+                    width={176}
+                    height={88}
+                    className="h-full w-auto object-contain object-left"
+                  />
+                </span>
+              ) : (
+                <span className="relative flex h-[5.5rem] w-[5.5rem] items-center justify-center rounded-2xl bg-navy-50 text-flame-600 ring-1 ring-navy-200 transition-all duration-300 group-hover:bg-flame-600 group-hover:text-white group-hover:ring-flame-600">
+                  <Icon className="h-8 w-8" aria-hidden />
+                </span>
+              )}
 
               {/* mt-auto drops the text to the foot of the card, so the titles
                   line up across the row however long the descriptions run. */}
@@ -87,10 +110,10 @@ export function V2CredentialCards({
       <RevealItem className="h-full">
         <Link
           href={moreHref}
-          className="group relative flex h-full min-h-[15rem] flex-col justify-between overflow-hidden rounded-2xl border border-dashed border-navy-300 bg-navy-50 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-flame-500 hover:bg-white hover:shadow-[0_26px_55px_-30px_rgb(6_26_46/0.55)]"
+          className="group relative flex h-full min-h-[17.5rem] flex-col justify-between overflow-hidden rounded-2xl border border-dashed border-navy-300 bg-navy-50 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-flame-500 hover:bg-white hover:shadow-[0_26px_55px_-30px_rgb(6_26_46/0.55)]"
         >
-          <span className="flex h-14 w-14 items-center justify-center rounded-2xl border border-navy-200 bg-white text-navy-700 transition-colors duration-300 group-hover:border-flame-600 group-hover:bg-flame-600 group-hover:text-white">
-            <ArrowUpRight className="h-6 w-6" aria-hidden />
+          <span className="flex h-[5.5rem] w-[5.5rem] items-center justify-center rounded-2xl border border-navy-200 bg-white text-navy-700 transition-colors duration-300 group-hover:border-flame-600 group-hover:bg-flame-600 group-hover:text-white">
+            <ArrowUpRight className="h-8 w-8" aria-hidden />
           </span>
           <span className="mt-auto pt-10">
             <span className="block font-display text-xl font-semibold leading-tight tracking-[-0.02em] text-fg">

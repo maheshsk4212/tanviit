@@ -369,8 +369,25 @@ export const leadership = [
  * icon per credential, not the same tick seven times, because a reader should
  * be able to tell a security certificate from a socioeconomic one at a glance.
  *
- * NEEDS-CONTENT: the official ISO, CMMI, SBA and SWaM badge files, if the
- * client is licensed to display them. They would replace the icons.
+ * NEEDS-CONTENT — the real badge artwork. The reference prints the issued
+ * marks on each card and that is what gives their cards their weight. Add a
+ * `badge` path here and the card renders the image instead of the icon; no
+ * other change is needed.
+ *
+ * What to ask the client for, one PNG or SVG each, transparent background,
+ * at least 400px on the long edge:
+ *   ISO 9001:2015, ISO/IEC 20000-1:2018, ISO/IEC 27001:2013 — from the
+ *     registrar that issued the certificate (BSI, DNV, TUV or similar); the
+ *     mark is normally supplied with the certificate and carries the
+ *     registrar's logo and the certificate number.
+ *   CMMI-DEV Level 3, CMMI-SVC Level 3 — the appraisal badge from ISACA /
+ *     the CMMI Institute, issued with the appraisal result.
+ *   SBA 8(a) — the SBA programme mark.
+ *   SWaM — the Virginia DSBSD certificate mark.
+ *
+ * These are the certification bodies' trademarks, licensed to the holder for
+ * the term of the certificate. Do not substitute lookalikes: a mark that is
+ * not the issued one misrepresents the credential.
  */
 export const v2Certifications = [
   { name: "ISO 9001:2015", detail: "Quality Management System", group: "Quality & process", icon: "quality" },
