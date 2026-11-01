@@ -33,6 +33,8 @@ import {
   careers,
   customerGroups,
   featuredNews,
+  heroAward,
+  heroFacts,
   homeHero,
   howWeDeliver,
   v2Certifications,
@@ -52,13 +54,6 @@ import { services, techExpertise, testimonials } from "@/lib/site-content";
  * Type and motion come from the original design: Work Sans at weight 500 with
  * tight tracking, and the same Reveal easing and stagger.
  */
-const heroFacts = [
-  { value: "2008", label: "Serving clients since", count: false },
-  { value: "7", label: "Certifications & appraisals", count: true },
-  { value: "12", label: "Contract vehicles held", count: true },
-  { value: "8(a)", label: "SBA certified", count: false },
-];
-
 const credentialStrip = [
   "ISO 9001:2015",
   "ISO/IEC 20000-1:2018",
@@ -104,12 +99,7 @@ export default function V2Home() {
           ...fact,
           node: fact.count ? <AnimatedCounter value={fact.value} /> : undefined,
         }))}
-        award={{
-          label: "Newly awarded",
-          name: "NASA SEWP VI — Category C",
-          detail: "Contract 80TECH26D0642",
-          href: "/v2/contract-vehicles/sewp-vi",
-        }}
+        award={heroAward}
       >
         <div className="mt-9 flex flex-wrap items-center gap-3">
           <V2Button href="/v2/capabilities">View capabilities</V2Button>

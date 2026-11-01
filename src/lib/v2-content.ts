@@ -37,6 +37,22 @@ export const homeHero = {
     "Tanvi IT Solutions Inc. delivers secure, scalable technology and consulting solutions that help government and commercial organizations modernize mission-critical systems, transform data, strengthen technology operations, and accelerate digital outcomes.",
 };
 
+/** The four proof points under the homepage headline, in every hero option. */
+export const heroFacts = [
+  { value: "2008", label: "Serving clients since", count: false },
+  { value: "7", label: "Certifications & appraisals", count: true },
+  { value: "12", label: "Contract vehicles held", count: true },
+  { value: "8(a)", label: "SBA certified", count: false },
+];
+
+/** The award each hero option leads with. */
+export const heroAward = {
+  label: "Newly awarded",
+  name: "NASA SEWP VI — Category C",
+  detail: "Contract 80TECH26D0642",
+  href: "/v2/contract-vehicles/sewp-vi",
+};
+
 export const valueProposition = [
   "Tanvi IT differentiates itself through a focus on value creation, mission outcomes, and long-term client success. Rather than simply delivering to the requirements of an individual engagement, we take the time to understand our clients' broader mission, operational priorities, and strategic objectives.",
   "As a trusted technology partner, Tanvi IT works alongside government and commercial organizations to provide objective expertise, innovative solutions, and practical guidance that drive meaningful results. Our collaborative approach combines technical excellence with a clear understanding of mission and business needs—helping organizations modernize operations, improve performance, strengthen capabilities, and achieve sustainable outcomes.",
