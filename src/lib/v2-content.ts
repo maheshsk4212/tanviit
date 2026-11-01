@@ -586,7 +586,73 @@ export const v2Images = {
     src: unsplash("photo-1558494949-ef010cbdcc31"),
     alt: "Rows of servers in a data centre",
   },
+  health: {
+    src: unsplash("photo-1576091160550-2173dba999ef"),
+    alt: "A clinician working at a laptop beside a stethoscope",
+  },
+  business: {
+    src: unsplash("photo-1454165804606-c3d57bc86b40"),
+    alt: "Colleagues reviewing figures together at a desk",
+  },
 };
+
+/**
+ * Who we serve, grouped into four sectors with a tab apiece — the structure
+ * the reference uses for the same page, rather than one flat grid of ten
+ * equal cards where nothing leads.
+ *
+ * Each tab names the industries it covers by slug; the page resolves them
+ * against `industries` in site-content, so the industry names and summaries
+ * stay written in exactly one place and the two sites cannot drift apart.
+ */
+export const sectorTabs = [
+  {
+    key: "government",
+    tab: "Government",
+    eyebrow: "Federal, state & local",
+    title: "Modernizing the systems citizens rely on",
+    lead:
+      "Agencies at every level are replacing systems older than the people who maintain them. We work inside that constraint — migrating what can move, keeping what must stay, and leaving an agency able to run the result itself.",
+    image: v2Images.capitol,
+    industrySlugs: ["federal-government", "state-government", "local-government"],
+  },
+  {
+    key: "defense",
+    tab: "Defense & Intelligence",
+    eyebrow: "National security",
+    title: "Mission-critical delivery under real constraints",
+    lead:
+      "Classified environments, accreditation boundaries and uptime that is measured against an operation rather than a quarter. Our defense work is built to clear review before it is built to impress.",
+    image: v2Images.security,
+    industrySlugs: ["defense-intelligence"],
+  },
+  {
+    key: "health",
+    tab: "Health",
+    eyebrow: "Health & public benefit",
+    title: "Secure, interoperable systems behind better care",
+    lead:
+      "Health programs live or die on whether their data moves safely between the systems that need it. We build the integrations, protections and interfaces that let a record follow a patient instead of stopping at a department line.",
+    image: v2Images.health,
+    industrySlugs: ["healthcare"],
+  },
+  {
+    key: "commercial",
+    tab: "Commercial",
+    eyebrow: "Industry",
+    title: "Delivery practices that travel beyond government",
+    lead:
+      "The same engineering discipline federal programs demand, applied to regulated commercial sectors where downtime, audit findings and a poor digital experience each carry a price.",
+    image: v2Images.business,
+    industrySlugs: [
+      "banking-financial-services",
+      "education",
+      "energy-utilities",
+      "retail-ecommerce",
+      "telecommunications",
+    ],
+  },
+];
 
 /**
  * Contract vehicle profiles. Each carries a description of what the programme

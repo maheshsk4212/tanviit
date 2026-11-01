@@ -1,40 +1,20 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { Quote } from "lucide-react";
 import {
-  Banknote,
-  Building2,
-  GraduationCap,
-  HeartPulse,
-  Landmark,
-  MapPin,
-  Quote,
-  ShieldCheck,
-  ShoppingCart,
-  Zap,
-} from "lucide-react";
-
-/* Federal, state, local, defense, healthcare, banking, education, energy, retail. */
-const industryIcons = [
-  Landmark,
-  Building2,
-  MapPin,
-  ShieldCheck,
-  HeartPulse,
-  Banknote,
-  GraduationCap,
-  Zap,
-  ShoppingCart,
-];
-
-/** Initials for a customer mark, standing in until real logos arrive. */
-function monogram(name: string) {
-  const words = name.split(/\s+/).filter(Boolean);
-  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
-  return (words[0][0] + words[words.length - 1][0]).toUpperCase();
-}
-import { Band, BandHeading, PageHero, V2Button } from "@/components/v2/V2Section";
+  Band,
+  BandHeading,
+  MoreLink,
+  PageHero,
+  Reveal,
+  RevealGroup,
+  RevealItem,
+  V2Button,
+} from "@/components/v2/V2Section";
 import { V2FeatureRow } from "@/components/v2/V2FeatureRow";
+import { V2Tabs, type SectorPanel } from "@/components/v2/V2Tabs";
 import { industries, testimonials } from "@/lib/site-content";
-import { customerGroups, v2Images } from "@/lib/v2-content";
+import { customerGroups, sectorTabs, v2Images } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "Customers & past performance",
@@ -42,12 +22,34 @@ export const metadata: Metadata = {
     "Government and commercial organizations Tanvi IT supports, the mission areas we deliver in, and what our clients say about the work.",
 };
 
+/** Initials for a customer mark, standing in until real logos arrive. */
+function monogram(name: string) {
+  const words = name.split(/\s+/).filter(Boolean);
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+}
+
+/**
+ * Sector tabs carry their industries by slug; resolve them here so the names
+ * and summaries stay written once, in `industries`.
+ */
+const panels: SectorPanel[] = sectorTabs.map((sector) => ({
+  ...sector,
+  items: sector.industrySlugs.flatMap((slug) => {
+    const industry = industries.find((item) => item.slug === slug);
+    return industry ? [{ name: industry.name, summary: industry.summary }] : [];
+  }),
+}));
+
+const [governmentGroup, commercialGroup] = customerGroups;
+
 export default function V2Customers() {
   return (
     <>
       <PageHero
         eyebrow="Customers & past performance"
-        title="Delivered for agencies and enterprises"
+        title="Delivered for agencies"
+        accent="and enterprises"
         lead="Tanvi IT supports Federal, state and local government alongside commercial organizations — with the same delivery practices behind each engagement."
       >
         <div className="mt-9 flex flex-wrap gap-3">
@@ -58,68 +60,83 @@ export default function V2Customers() {
         </div>
       </PageHero>
 
-      <Band id="customers">
+      <Band id="mission-areas">
         <BandHeading
-          eyebrow="Customers"
-          title="Organizations we support"
-          lead="Government programs and commercial organizations that have trusted Tanvi IT with delivery."
+          eyebrow="Who we serve"
+          title="Four sectors, one standard of delivery"
+          lead="Pick the sector you buy for and see the areas we work in, the systems we touch and what an engagement there tends to involve."
         />
-        {customerGroups.map((group) => (
-          <div key={group.heading} className="mt-12">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
-              {group.heading}
-            </h3>
-            <ul className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-              {group.customers.map((customer) => (
-                <li
-                  key={customer.name}
-                  className="group flex h-full flex-col items-center justify-center gap-3 rounded-xl border border-navy-200 bg-white px-4 py-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-navy-50 font-display text-sm font-semibold text-navy-800 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
-                    {monogram(customer.name)}
-                  </span>
-                  <span className="font-display text-base font-semibold text-navy-900">
-                    {customer.name}
-                  </span>
-                  {customer.detail ? (
-                    <span className="text-[13px] leading-snug text-fg-subtle">
-                      {customer.detail}
-                    </span>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <div className="mt-12">
+          <V2Tabs
+            panels={panels}
+            action={<V2Button href="/v2/capabilities">See the capabilities behind this</V2Button>}
+          />
+        </div>
       </Band>
 
-      <Band motif tone="tint" id="mission-areas">
+      <Band motif tone="tint" id="customers">
         <BandHeading
-          eyebrow="Mission areas"
-          title="Where we work"
-          lead="The sectors our teams know, so an engagement starts with the constraints already understood."
+          eyebrow="Customers"
+          title="Organizations that have trusted us with delivery"
+          lead="Government programs and the systems integrators who put us in front of their own clients."
         />
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((industry, i) => (
-            <li
-              key={industry.slug}
-              className="group rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
+
+        <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_1.9fr] lg:gap-6">
+          {/* The government customer carries the page, so it gets the filled
+              card rather than a slot in the same grid as the rest. */}
+          <Reveal className="h-full">
+            <div className="flex h-full flex-col justify-between gap-10 rounded-2xl bg-navy-950 p-8 text-white">
+              <div>
+                <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-flame-400">
+                  {governmentGroup.heading}
+                </span>
+                {governmentGroup.customers.map((customer) => (
+                  <div key={customer.name} className="mt-8">
+                    <p className="font-display text-4xl font-semibold tracking-[-0.03em] text-white">
+                      {customer.name}
+                    </p>
+                    {customer.detail ? (
+                      <p className="mt-3 text-base leading-relaxed text-white/80">
+                        {customer.detail}
+                      </p>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+              <MoreLink href="/v2/contract-vehicles" onDark>
+                How to buy from us
+              </MoreLink>
+            </div>
+          </Reveal>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-navy-700">
+              {commercialGroup.heading}
+            </h3>
+            <RevealGroup
+              className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
+              stagger={0.04}
             >
-              {(() => {
-                const Icon = industryIcons[i % industryIcons.length];
-                return (
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </span>
-                );
-              })()}
-              <h3 className="mt-6 font-display text-lg font-semibold text-navy-900">
-                {industry.name}
-              </h3>
-              <p className="mt-2.5 text-[15px] leading-relaxed text-fg">{industry.summary}</p>
-            </li>
-          ))}
-        </ul>
+              {commercialGroup.customers.map((customer) => (
+                <RevealItem key={customer.name} className="h-full">
+                  <div className="group flex h-full flex-col items-center justify-center gap-3 rounded-xl border border-navy-200 bg-white px-4 py-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-full bg-navy-50 font-display text-sm font-semibold text-navy-800 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
+                      {monogram(customer.name)}
+                    </span>
+                    <span className="font-display text-base font-semibold leading-snug text-navy-900">
+                      {customer.name}
+                    </span>
+                    {customer.detail ? (
+                      <span className="text-[13px] leading-snug text-fg-subtle">
+                        {customer.detail}
+                      </span>
+                    ) : null}
+                  </div>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </div>
       </Band>
 
       <Band>
@@ -136,45 +153,66 @@ export default function V2Customers() {
         </V2FeatureRow>
       </Band>
 
-      <Band tone="tint" id="testimonials">
-        <BandHeading eyebrow="Client testimonials" title="What our clients say" />
-        <ul className="mt-12 grid gap-5 lg:grid-cols-3">
+      <Band tone="dark" id="testimonials">
+        <BandHeading
+          onDark
+          eyebrow="Client testimonials"
+          title="What our clients say"
+          lead="From the integrators and programs that have worked alongside our teams."
+        />
+        <RevealGroup className="mt-12 grid gap-5 lg:grid-cols-3" stagger={0.08}>
           {testimonials.map((testimonial) => (
-            <li
-              key={testimonial.company}
-              className="group flex h-full flex-col rounded-2xl border border-navy-200 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]"
-            >
-              <Quote
-                className="h-8 w-8 shrink-0 text-flame-500 transition-transform duration-300 group-hover:-translate-y-0.5"
-                aria-hidden
-              />
-              <blockquote className="mt-5 flex-1 text-[17px] leading-[1.65] text-fg">
-                “{testimonial.quote}”
-              </blockquote>
-              <div className="mt-7 flex items-center gap-3 border-t border-navy-100 pt-5">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-50 font-display text-sm font-semibold text-navy-800">
-                  {testimonial.initials}
-                </span>
-                <span>
-                  <span className="block text-sm font-semibold text-fg">{testimonial.author}</span>
-                  <span className="block text-sm text-fg-subtle">{testimonial.company}</span>
-                </span>
-              </div>
-            </li>
+            <RevealItem key={testimonial.company} className="h-full">
+              <figure className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] transition-all duration-300 hover:-translate-y-1 hover:border-flame-500/50">
+                <div className="relative h-44 overflow-hidden">
+                  <Image
+                    src={testimonial.image}
+                    alt=""
+                    fill
+                    quality={85}
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                  />
+                  {/* Deep enough that the quote mark reads against any frame. */}
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/55 to-navy-950/20"
+                    aria-hidden
+                  />
+                  <Quote
+                    className="absolute bottom-5 left-7 h-9 w-9 text-flame-400 transition-transform duration-300 group-hover:-translate-y-0.5"
+                    aria-hidden
+                  />
+                </div>
+
+                <div className="flex flex-1 flex-col p-7">
+                  <blockquote className="flex-1 text-[17px] leading-[1.65] text-white/90">
+                    “{testimonial.quote}”
+                  </blockquote>
+                  <figcaption className="mt-7 flex items-center gap-3 border-t border-white/10 pt-5">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 font-display text-sm font-semibold text-white">
+                      {testimonial.initials}
+                    </span>
+                    <span>
+                      <span className="block text-sm font-semibold text-white">
+                        {testimonial.author}
+                      </span>
+                      <span className="block text-sm text-white/70">{testimonial.company}</span>
+                    </span>
+                  </figcaption>
+                </div>
+              </figure>
+            </RevealItem>
           ))}
-        </ul>
+        </RevealGroup>
       </Band>
 
-      <Band tone="dark">
+      <Band tone="tint">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <BandHeading
-            onDark
             title="Looking for past performance detail?"
             lead="We can provide program references, scope summaries and a capability statement on request."
           />
-          <V2Button href="/v2/contact" variant="outline-dark">
-            Contact us
-          </V2Button>
+          <V2Button href="/v2/contact">Contact us</V2Button>
         </div>
       </Band>
     </>
