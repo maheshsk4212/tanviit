@@ -157,9 +157,13 @@ export function BandHeading({
 }
 
 /**
- * Page hero. The homepage passes `video` for the Capitol time-lapse; interior
- * pages use the still. The headline's second line carries the accent, the way
- * the reference colours the second half of its own hero line.
+ * Interior page hero: the still, a diagonal scrim, type over it. The
+ * headline's second line carries the accent, the way the reference colours the
+ * second half of its own hero line.
+ *
+ * The homepage does not use this — it has its own light hero in V2HomeHero.
+ * That is why the full-bleed video and its drift animation are gone from here:
+ * nothing used them once the homepage stopped being dark.
  */
 export function PageHero({
   eyebrow,
@@ -167,8 +171,6 @@ export function PageHero({
   accent,
   lead,
   children,
-  tall = false,
-  video = false,
 }: {
   eyebrow?: string;
   title: string;
@@ -176,43 +178,17 @@ export function PageHero({
   accent?: string;
   lead?: string;
   children?: ReactNode;
-  tall?: boolean;
-  video?: boolean;
 }) {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950">
-      {video ? (
-        <>
-          <Image
-            src="/hero-capitol-poster.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="-z-30 object-cover"
-          />
-          <video
-            src="/hero-capitol-loop.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden
-            tabIndex={-1}
-            className="absolute inset-0 -z-20 h-full w-full animate-[hero-drift_30s_ease-in-out_infinite_alternate] object-cover motion-reduce:hidden motion-reduce:animate-none"
-          />
-        </>
-      ) : (
-        <Image
-          src="/hero-government-civic.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="-z-20 object-cover object-right"
-        />
-      )}
+      <Image
+        src="/hero-government-civic.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="-z-20 object-cover object-right"
+      />
 
       {/* Weighted left, where the type sits; the right stays open so the
           building and the sky still read. */}
@@ -221,24 +197,14 @@ export function PageHero({
         aria-hidden
       />
 
-      <div
-        className={`mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 ${
-          tall ? "py-24 sm:py-28 lg:py-36" : "py-16 sm:py-20 lg:py-24"
-        }`}
-      >
+      <div className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <Reveal className="max-w-4xl [text-shadow:0_1px_14px_rgb(6_26_46/0.45)]">
           {eyebrow ? (
             <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-flame-400">
               {eyebrow}
             </span>
           ) : null}
-          <h1
-            className={`mt-6 text-balance font-display font-bold leading-[1.02] tracking-[-0.03em] text-white ${
-              tall
-                ? "text-5xl sm:text-6xl lg:text-[4.5rem]"
-                : "text-4xl sm:text-5xl lg:text-[3.5rem]"
-            }`}
-          >
+          <h1 className="mt-6 text-balance font-display text-4xl font-bold leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.5rem]">
             {title}
             {accent ? (
               <>

@@ -19,13 +19,13 @@ import {
   Band,
   BandHeading,
   MoreLink,
-  PageHero,
   Reveal,
   RevealGroup,
   RevealItem,
   V2Button,
 } from "@/components/v2/V2Section";
 import { V2Marquee, V2Mosaic } from "@/components/v2/V2Mosaic";
+import { V2HomeHero } from "@/components/v2/V2HomeHero";
 import { AnimatedCounter } from "@/components/motion/AnimatedCounter";
 import {
   about,
@@ -95,32 +95,29 @@ const mosaic = capabilities.map((capability, i) => ({
 export default function V2Home() {
   return (
     <>
-      <PageHero
-        video
-        tall
+      <V2HomeHero
         eyebrow={v2Site.tagline}
         title="Mission-focused technology."
         accent="Built for what's next."
         lead={homeHero.supporting}
+        facts={heroFacts.map((fact) => ({
+          ...fact,
+          node: fact.count ? <AnimatedCounter value={fact.value} /> : undefined,
+        }))}
+        award={{
+          label: "Newly awarded",
+          name: "NASA SEWP VI — Category C",
+          detail: "Contract 80TECH26D0642",
+          href: "/v2/contract-vehicles/sewp-vi",
+        }}
       >
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="mt-9 flex flex-wrap items-center gap-3">
           <V2Button href="/v2/capabilities">View capabilities</V2Button>
-          <V2Button href="/v2/contract-vehicles/sewp-vi" variant="outline-dark">
+          <V2Button href="/v2/contract-vehicles/sewp-vi" variant="outline">
             NASA SEWP VI
           </V2Button>
         </div>
-
-        <dl className="mt-16 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 border-t border-white/20 pt-8 sm:grid-cols-4">
-          {heroFacts.map((fact) => (
-            <div key={fact.label}>
-              <dd className="font-display text-3xl font-semibold tracking-[-0.03em] text-flame-400">
-                {fact.count ? <AnimatedCounter value={fact.value} /> : fact.value}
-              </dd>
-              <dt className="mt-1 text-[13px] leading-snug text-white">{fact.label}</dt>
-            </div>
-          ))}
-        </dl>
-      </PageHero>
+      </V2HomeHero>
 
       {/* ------------------------------------------------- Credential rule */}
       <div className="border-b border-navy-100 bg-white">
