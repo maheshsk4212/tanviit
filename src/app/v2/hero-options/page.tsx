@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AnimatedCounter } from "@/components/motion/AnimatedCounter";
 import { HeroOptionPicker, type HeroOption } from "@/components/v2/HeroOptionPicker";
 import { V2HomeHero } from "@/components/v2/V2HomeHero";
-import { V2HomeHeroBento } from "@/components/v2/V2HomeHeroBento";
+import { V2HomeHeroMinimal } from "@/components/v2/V2HomeHeroMinimal";
 import { V2HomeHeroEditorial } from "@/components/v2/V2HomeHeroEditorial";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -86,18 +86,18 @@ const options: HeroOption[] = [
     render: <V2HomeHeroEditorial {...shared}>{bannerAction}</V2HomeHeroEditorial>,
   },
   {
-    key: "modular",
-    name: "C — Modular",
+    key: "minimal",
+    name: "C — Minimal",
     summary:
-      "Claim, footage, award and credentials each get their own tile. The award tile is filled in the brand orange so the SEWP VI contract is the first thing the eye lands on after the headline.",
+      "One photograph — the Capitol at blue hour under a network overlay — and as little over it as the page can get away with: a rule, a headline at conversational size, one sentence, two text links. Credentials run along the bottom as a hairline rather than a panel of statistics.",
     strengths: [
-      "Carries the most in one screen — claim, contract and credentials at once",
-      "Gives the SEWP VI award real prominence",
-      "Suits a visitor who is scanning to check we are a real contractor",
+      "The quietest of the three, which is its own kind of confidence",
+      "A still, so nothing moves at all — the calm option",
+      "Loads lightest: one 650KB image, no video",
     ],
     tradeoff:
-      "The headline is no longer the only thing on screen, so it lands a little softer. It also stays tidy only while the tiles stay this few.",
-    render: <V2HomeHeroBento {...shared}>{actions}</V2HomeHeroBento>,
+      "It says the least. There is no SEWP VI card and no statistics panel, only links, so a buyer scanning for the contract has to follow one. Also dark, like option B.",
+    render: <V2HomeHeroMinimal {...shared}>{actions}</V2HomeHeroMinimal>,
   },
 ];
 
@@ -109,8 +109,8 @@ export default function HeroOptions() {
       <div className="border-t border-navy-200 bg-white">
         <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <p className="max-w-3xl text-[15px] leading-relaxed text-fg-muted">
-            Each option is the real page, not a picture of one — the footage plays and the links
-            work. Switching options updates the address bar, so the link in your browser always
+            Each option is the real page, not a picture of one — the links work, and the footage plays
+            in the two options that use it. Switching options updates the address bar, so the link in your browser always
             opens on whichever one you are looking at. Send that link back with your choice.
           </p>
         </div>
