@@ -4,6 +4,8 @@ import { HeroOptionPicker, type HeroOption } from "@/components/v2/HeroOptionPic
 import { V2HomeHero } from "@/components/v2/V2HomeHero";
 import { V2HomeHeroBento } from "@/components/v2/V2HomeHeroBento";
 import { V2HomeHeroEditorial } from "@/components/v2/V2HomeHeroEditorial";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { V2Button } from "@/components/v2/V2Section";
 import { heroAward, heroFacts, homeHero, v2Site } from "@/lib/v2-content";
 
@@ -25,6 +27,25 @@ const shared = {
   })),
   award: heroAward,
 };
+
+/**
+ * Option B's own control. The reference pairs one pill button, filled in its
+ * accent with dark text and a circular arrow chip, against the dark banner —
+ * no secondary button at all. Two light buttons would not read there anyway.
+ */
+const bannerAction = (
+  <div className="mt-9">
+    <Link
+      href="/v2/capabilities"
+      className="group inline-flex items-center gap-6 rounded-full bg-flame-500 py-2 pl-8 pr-2 text-lg font-medium text-navy-950 transition-colors duration-300 hover:bg-flame-400"
+    >
+      Explore our capabilities
+      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-navy-950 text-white transition-transform duration-300 group-hover:translate-x-1">
+        <ArrowRight className="h-5 w-5" aria-hidden />
+      </span>
+    </Link>
+  </div>
+);
 
 const actions = (
   <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -51,18 +72,18 @@ const options: HeroOption[] = [
     render: <V2HomeHero {...shared}>{actions}</V2HomeHero>,
   },
   {
-    key: "editorial",
-    name: "B — Editorial",
+    key: "banner",
+    name: "B — Banner",
     summary:
-      "The headline runs at masthead scale across the full width with nothing beside it. The supporting line and buttons sit under a rule, and the footage follows as a cinematic band edge to edge with the award over it.",
+      "Built to the Alpha Omega hero, measured rather than approximated: a tall band with the footage filling it edge to edge under two diagonal gradients, the headline at display scale with the accent running inline, and a single pill button. The award and credentials sit on a light strip below.",
     strengths: [
-      "The boldest and the fastest to read — for one screen there is only the claim",
-      "Footage gets far more room, at cinema proportions",
-      "Reads as a brand rather than a brochure",
+      "The most striking of the three, and closest to how the firms you are compared with present themselves",
+      "Gives the commissioned footage the whole screen",
+      "Spare by design — one headline, one line of support, one button",
     ],
     tradeoff:
-      "It asks the most of the words. Proof moves below the footage rather than sitting beside the headline, and a longer headline would weaken it.",
-    render: <V2HomeHeroEditorial {...shared}>{actions}</V2HomeHeroEditorial>,
+      "This is the dark option. It is the one section that would not match the light bands running down the rest of the page, and white type over moving footage never reads as crisply as type on a solid field.",
+    render: <V2HomeHeroEditorial {...shared}>{bannerAction}</V2HomeHeroEditorial>,
   },
   {
     key: "modular",
