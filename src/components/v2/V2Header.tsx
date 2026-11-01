@@ -11,11 +11,20 @@ import { v2Nav } from "@/components/v2/v2-nav";
  * that never changes, plain text links, one filled action — the register
  * government buyers read as a contractor's site rather than a studio's.
  *
- * The dropdowns open on hover and on keyboard focus through CSS alone, so
- * there is no menu state to get out of step with the page.
+ * The dropdowns are driven by a single piece of state holding the one open
+ * menu, so two can never be on screen together.
+ *
+ * They used to open on `group-hover` or `group-focus-within` in CSS alone,
+ * which looked like less machinery but had a bug in it: clicking a parent
+ * link left focus on that link, so focus-within pinned its panel open, and
+ * hovering the next item then opened a second panel over the top of it. One
+ * `openMenu` value cannot express that state, which is the point of using it.
  */
 export function V2Header() {
   const [open, setOpen] = useState(false);
+  /** Label of the one open dropdown, or null. */
+  const [menu, setMenu] = useState<string | null>(null);
+  const close = () => setMenu(null);
 
   return (
     <header className="sticky top-0 z-50 border-b border-navy-100 bg-white">
@@ -31,11 +40,33 @@ export function V2Header() {
           />
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center xl:flex">
+        <nav
+          aria-label="Main"
+          className="hidden items-center xl:flex"
+          onKeyDown={(event) => {
+            if (event.key === "Escape") close();
+          }}
+        >
           {v2Nav.map((item) => (
-            <div key={item.href} className="group relative">
+            <div
+              key={item.href}
+              className="group relative"
+              onMouseEnter={() => item.children && setMenu(item.label)}
+              onMouseLeave={close}
+              // Opening on focus keeps the menus reachable from the keyboard;
+              // the matching blur closes only when focus has actually left the
+              // item, not when it moves between the trigger and its own links.
+              onFocus={() => item.children && setMenu(item.label)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) close();
+              }}
+            >
               <Link
                 href={item.href}
+                aria-expanded={item.children ? menu === item.label : undefined}
+                // Clicking the parent navigates, so the panel should not be
+                // left hanging open behind the new page.
+                onClick={close}
                 className="flex items-center gap-1 whitespace-nowrap px-3 py-7 text-[15px] font-medium text-fg group-hover:text-flame-600"
               >
                 {item.label}
@@ -45,13 +76,18 @@ export function V2Header() {
               </Link>
 
               {item.children ? (
-                <div className="invisible absolute left-0 top-full z-10 w-72 border border-navy-100 bg-white py-2 opacity-0 shadow-lg transition-[opacity,visibility] group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                <div
+                  className={`absolute left-0 top-full z-10 w-72 border border-navy-100 bg-white py-2 shadow-lg transition-[opacity,visibility] duration-200 ${
+                    menu === item.label ? "visible opacity-100" : "invisible opacity-0"
+                  }`}
+                >
                   <ul>
                     {item.children.map((child) => (
                       <li key={child.href}>
                         <Link
                           href={child.href}
-                          className="block px-5 py-2.5 text-[15px] text-fg hover:bg-slate-100 hover:text-navy-700"
+                          onClick={close}
+                          className="block px-5 py-2.5 text-[15px] text-fg hover:bg-navy-50 hover:text-navy-700"
                         >
                           {child.label}
                         </Link>
