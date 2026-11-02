@@ -118,16 +118,16 @@ export default function V2Sewp() {
             </div>
           }
         />
-        <RevealGroup className="mt-14 grid gap-4 lg:grid-cols-2" stagger={0.04}>
+        {/* Fourteen of these. As cards it was fourteen boxes with shadows;
+            ruled rows carry the same content without the chrome. */}
+        <RevealGroup
+          className="mt-12 grid gap-x-14 border-t border-navy-200 lg:grid-cols-2"
+          stagger={0.03}
+        >
           {sewpVi.scope.map((item) => (
-            <RevealItem key={item.slice(0, 40)} className="h-full">
-              <div className="group flex h-full gap-4 rounded-2xl border border-navy-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
-                <span
-                  className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-navy-50 text-flame-600 ring-1 ring-navy-200 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white group-hover:ring-flame-600"
-                  aria-hidden
-                >
-                  <Compass className="h-4 w-4" />
-                </span>
+            <RevealItem key={item.slice(0, 40)}>
+              <div className="flex gap-4 border-b border-navy-200 py-5">
+                <Compass className="mt-1 h-4 w-4 shrink-0 text-flame-600" aria-hidden />
                 <p className="text-[15px] leading-relaxed text-fg">{item}</p>
               </div>
             </RevealItem>
@@ -172,28 +172,36 @@ export default function V2Sewp() {
           title="Five steps to an award"
           lead="From defining the requirement to the processed order, with what Tanvi IT needs from you at each point."
         />
-        <ol className="relative mt-14 grid gap-5 lg:grid-cols-5 lg:gap-4">
-          {/* The rail the markers sit on, joining the five steps. */}
-          <span
-            className="pointer-events-none absolute left-0 right-0 top-6 hidden h-px bg-white/15 lg:block"
-            aria-hidden
-          />
+        {/* These descriptions run to forty words. Across five columns that
+            was eleven lines of 15px in a 200px measure; as rows each one gets
+            a readable line length and the section stops shouting. */}
+        <ol className="mt-12 divide-y divide-white/12 border-y border-white/12">
           {sewpVi.ordering.map((item, i) => {
             const Icon = stepIcons[i % stepIcons.length];
             return (
-              <li key={item.step} className="group relative">
-                <span className="relative flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-navy-950 text-flame-400 transition-colors duration-300 group-hover:border-flame-500 group-hover:bg-flame-600 group-hover:text-white">
-                  <Icon className="h-5 w-5" aria-hidden />
-                </span>
-                <p className="mt-5 font-display text-sm font-semibold tracking-[0.12em] text-flame-400">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-1.5 font-display text-lg font-semibold leading-snug text-white">
-                  {item.step}
-                </h3>
-                <p className="mt-2.5 text-[15px] leading-relaxed text-white/85">
-                  {item.description}
-                </p>
+              <li
+                key={item.step}
+                className="group grid gap-x-8 gap-y-4 py-7 sm:grid-cols-[auto_1fr] sm:py-8"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/25 bg-navy-950 text-flame-400 transition-colors duration-300 group-hover:border-flame-500 group-hover:bg-flame-600 group-hover:text-white">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <span className="font-display text-sm font-semibold tracking-[0.14em] text-flame-400 sm:hidden">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <div>
+                  <p className="hidden font-display text-sm font-semibold tracking-[0.14em] text-flame-400 sm:block">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-1 font-display text-xl font-semibold leading-snug text-white">
+                    {item.step}
+                  </h3>
+                  <p className="mt-2.5 max-w-3xl text-[16px] leading-relaxed text-white/85">
+                    {item.description}
+                  </p>
+                </div>
               </li>
             );
           })}
@@ -274,19 +282,22 @@ export default function V2Sewp() {
             <h3 className="mt-3 font-display text-2xl font-semibold tracking-[-0.02em] text-navy-900">
               Customer assistance
             </h3>
-            <RevealGroup className="mt-8 grid gap-4 sm:grid-cols-2" stagger={0.05}>
+            <RevealGroup
+              className="mt-8 divide-y divide-navy-200 border-y border-navy-200"
+              stagger={0.05}
+            >
               {sewpVi.sewpContacts.map((contact, i) => {
                 const Icon = sewpContactIcons[i % sewpContactIcons.length];
                 return (
-                  <RevealItem key={contact.label} className="h-full">
-                    <div className="group h-full rounded-2xl border border-navy-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy-50 text-flame-600 ring-1 ring-navy-200 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white group-hover:ring-flame-600">
-                        <Icon className="h-5 w-5" aria-hidden />
-                      </span>
-                      <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-navy-700">
-                        {contact.label}
-                      </p>
-                      <p className="mt-1.5 text-[15px] leading-snug text-fg">{contact.detail}</p>
+                  <RevealItem key={contact.label}>
+                    <div className="flex items-start gap-4 py-5">
+                      <Icon className="mt-0.5 h-5 w-5 shrink-0 text-flame-600" aria-hidden />
+                      <div>
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-navy-700">
+                          {contact.label}
+                        </p>
+                        <p className="mt-1 text-[15px] leading-snug text-fg">{contact.detail}</p>
+                      </div>
                     </div>
                   </RevealItem>
                 );
