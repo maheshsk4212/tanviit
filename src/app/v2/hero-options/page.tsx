@@ -29,20 +29,34 @@ const shared = {
 };
 
 /**
- * Option B's own control. The reference pairs one pill button, filled in its
- * accent with dark text and a circular arrow chip, against the dark banner —
- * no secondary button at all. Two light buttons would not read there anyway.
+ * Option B's controls. The reference runs a single accent-filled pill with a
+ * circular arrow chip; the second action is a plain text link rather than a
+ * second button, so the primary stays unmistakably dominant.
+ *
+ * Both carry an explicit focus-visible ring. Nothing in the stylesheet sets
+ * one, and a dark banner is exactly where a browser default is least likely
+ * to be visible.
  */
 const bannerAction = (
-  <div className="mt-9">
+  <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
     <Link
       href="/v2/capabilities"
-      className="group inline-flex items-center gap-6 rounded-full bg-flame-500 py-2 pl-8 pr-2 text-lg font-medium text-navy-950 transition-colors duration-300 hover:bg-flame-400"
+      className="group inline-flex items-center gap-6 rounded-full bg-flame-500 py-2 pl-8 pr-2 text-lg font-medium text-navy-950 transition-colors duration-300 hover:bg-flame-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950 active:bg-flame-600"
     >
       Explore our capabilities
       <span className="flex h-11 w-11 items-center justify-center rounded-full bg-navy-950 text-white transition-transform duration-300 group-hover:translate-x-1">
         <ArrowRight className="h-5 w-5" aria-hidden />
       </span>
+    </Link>
+    <Link
+      href="/v2/contact"
+      className="group inline-flex min-h-11 items-center gap-2.5 border-b border-white/40 text-lg font-medium text-white transition-colors duration-300 hover:border-flame-400 hover:text-flame-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-navy-950"
+    >
+      Talk to our team
+      <ArrowRight
+        className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+        aria-hidden
+      />
     </Link>
   </div>
 );
@@ -83,7 +97,11 @@ const options: HeroOption[] = [
     ],
     tradeoff:
       "This is the dark option. It is the one section that would not match the light bands running down the rest of the page, and white type over moving footage never reads as crisply as type on a solid field.",
-    render: <V2HomeHeroEditorial {...shared}>{bannerAction}</V2HomeHeroEditorial>,
+    render: (
+      <V2HomeHeroEditorial {...shared} lead={homeHero.statement}>
+        {bannerAction}
+      </V2HomeHeroEditorial>
+    ),
   },
   {
     key: "minimal",

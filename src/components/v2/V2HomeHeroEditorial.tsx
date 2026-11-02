@@ -91,10 +91,10 @@ export function V2HomeHeroEditorial({
           <Reveal>
             {/* 98px at weight 500, line-height 0.92, tracking -0.03em — the
                 reference's own settings. The accent runs inline. */}
-            <h1 className="max-w-5xl text-balance font-display text-[2.75rem] font-medium leading-[0.95] tracking-[-0.03em] text-white sm:text-6xl lg:text-[6.125rem] lg:leading-[0.92]">
+            <h1 className="max-w-6xl text-balance font-display text-[2.75rem] font-medium leading-[0.98] tracking-[-0.03em] text-white sm:text-6xl lg:text-[4.25rem] lg:leading-[0.96] xl:text-[5.25rem] xl:leading-[0.94]">
               {title} <span className="text-flame-400">{accent}</span>
             </h1>
-            <p className="mt-6 max-w-[48rem] text-lg leading-relaxed text-white">{lead}</p>
+            <p className="mt-6 max-w-[56rem] text-base leading-relaxed text-white sm:text-lg">{lead}</p>
             {children}
           </Reveal>
         </div>
