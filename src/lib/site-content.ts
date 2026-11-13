@@ -1,11 +1,26 @@
 /**
- * Site content, sourced from:
- *  - Tanvi_IT_Solutions_Website_Design_Presentation.pptx (design + copy spec)
- *  - "NASA SEWP VI - Website Content - Tanvi IT.docx" (contract facts)
+ * Content for the original design.
  *
- * Anything marked NEEDS-CONFIRMATION is a placeholder, or has conflicting
- * values between source slides — see the note on each.
+ * The wording is the client's September 2026 implementation guides, as
+ * corrected in their review of 13 Nov 2026 — the same text the second design
+ * (/v2) carries. Wherever the two designs say the same thing, this file reads
+ * it from `v2-content` rather than repeating it, so a correction lands on both
+ * sites at once. What stays here is what belongs to this design alone: its
+ * navigation, its photographs and the shapes its components expect.
  */
+
+import {
+  about,
+  capabilitiesHero,
+  employeeBenefits,
+  gsaMas,
+  homeHero,
+  howWeDeliver,
+  sewpVi,
+  solutionAreas,
+  v2Certifications,
+  v2Site,
+} from "./v2-content";
 
 /** Free-to-use Unsplash photo (Unsplash License), served from its CDN. */
 const unsplash = (id: string, width = 1600) =>
@@ -17,9 +32,8 @@ export const siteUrl = "https://tanviit.netlify.app";
 export const siteConfig = {
   name: "Tanvi IT Solutions",
   legalName: "Tanvi IT Solutions Inc.",
-  tagline: "The Right Partner. The Right Talent. The Right Results.",
-  description:
-    "Tanvi IT Solutions Inc. connects U.S. organizations with skilled IT professionals and delivers end-to-end technology solutions for federal, state, local and commercial clients.",
+  tagline: v2Site.tagline,
+  description: homeHero.statement,
   phone: "+1 (703) 864-7551",
   email: "info@tanviit.com",
   // Headquarters per the September 2026 content guides, which supersede the
@@ -49,33 +63,38 @@ export const mainNav: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   {
-    label: "Services",
+    label: "Capabilities",
     href: "/services",
     menu: [
       {
-        label: "Contract Staffing",
-        href: "/services#contract-staffing",
-        description: "Pre-vetted IT talent, fast — short and long-term.",
+        label: "Application Development & Modernization",
+        href: "/services#application-development-modernization",
+        description: "Develop, enhance, integrate and modernize applications.",
       },
       {
-        label: "Direct Hire",
-        href: "/services#direct-hire",
-        description: "Permanent hires who strengthen your core team.",
+        label: "Data & Analytics",
+        href: "/services#data-analytics",
+        description: "Turn data into actionable information.",
       },
       {
-        label: "Contract-to-Hire",
-        href: "/services#contract-to-hire",
-        description: "Try talent on contract, convert when it fits.",
+        label: "DevOps & Cloud Enablement",
+        href: "/services#devops-cloud-enablement",
+        description: "Better software delivery through DevOps and automation.",
       },
       {
-        label: "RPO Solutions",
-        href: "/services#rpo-solutions",
-        description: "Recruitment process outsourcing at scale.",
+        label: "Enterprise Architecture & Technology Strategy",
+        href: "/services#enterprise-architecture",
+        description: "Scalable, adaptable technology environments.",
       },
       {
-        label: "IT Consulting",
-        href: "/services#it-consulting",
-        description: "Advisory and delivery across the tech lifecycle.",
+        label: "Quality Engineering, IV&V & Testing",
+        href: "/services#quality-engineering-ivv",
+        description: "Structured quality engineering and testing.",
+      },
+      {
+        label: "Emerging Technologies & Innovation",
+        href: "/services#emerging-technologies",
+        description: "New technology applied for practical value.",
       },
     ],
     featured: {
@@ -90,14 +109,14 @@ export const mainNav: NavItem[] = [
         },
         {
           title: "Technology expertise",
-          meta: "Cloud, data, cybersecurity & enterprise platforms",
+          meta: "Software, cloud, data, enterprise platforms & cybersecurity",
           href: "/services#technology",
           image: "/hero-enterprise.png",
           cta: "See the stack",
         },
         {
           title: "How we deliver",
-          meta: "Seven steps from your needs to measured results",
+          meta: "Five steps, every engagement",
           href: "/services#process",
           image: "/hero-talent.png",
           cta: "See the process",
@@ -176,23 +195,16 @@ export const mainNav: NavItem[] = [
 /* Credentials                                                         */
 /* ------------------------------------------------------------------ */
 
-export const certifications = [
-  { name: "ISO 9001:2015", detail: "Quality Management" },
-  { name: "ISO/IEC 20000-1:2018", detail: "IT Service Management" },
-  { name: "ISO/IEC 27001:2013", detail: "Information Security Management" },
-  { name: "CMMI-DEV L3", detail: "Development Excellence" },
-  { name: "CMMI-SVC L3", detail: "Service Excellence" },
-  { name: "8(a)", detail: "SBA Certified" },
-];
+export const certifications = v2Certifications.map(({ name, detail }) => ({ name, detail }));
 
 /**
- * NEEDS-CONFIRMATION: the deck lists different vehicle sets on different
- * slides. This is the union — please confirm which are current and active.
+ * Tanvi IT holds exactly two contract vehicles: NASA SEWP VI and GSA MAS.
+ * That is the client's written correction of 13 Nov 2026.
  *
- * 8(a) STARS III and GSA MAS were removed on 1 Nov 2026: contract
- * 47QTCB21D0382 belongs to TA Federal LLC rather than Tanvi IT Solutions
- * Inc., and the MAS schedule has not been awarded. Do not restore either
- * from an older deck.
+ * Not to be restored from an older deck: Alliant 2, FAA eFAST, SeaPort NxG,
+ * ITES-3S, OASIS+, the cooperative routes (HGACBuy, NASPO ValuePoint, OMNIA
+ * Partners, NCPA, Sourcewell) and 8(a) STARS III, whose contract
+ * 47QTCB21D0382 belongs to TA Federal LLC rather than Tanvi IT Solutions Inc.
  */
 export const contractVehicles = [
   {
@@ -202,59 +214,40 @@ export const contractVehicles = [
     image: unsplash("photo-1457364887197-9150188c107b", 1200),
   },
   {
-    name: "Alliant 2",
-    detail: "SB, SDVOSB, WOSB",
+    name: gsaMas.shortName,
+    detail: "Multiple Award Schedule — Contract 47QTCA27D0018",
+    href: "/about#contract-vehicles",
     image: unsplash("photo-1711895834959-ce9ae8c700dc", 1200),
   },
-  { name: "FAA eFAST", detail: "IT Staffing Services" },
-  { name: "SeaPort NxG", detail: "Professional Services" },
-  { name: "ITES-3S", detail: "U.S. Army" },
-  { name: "OASIS+", detail: "Governmentwide multi-agency" },
-  { name: "HGACBuy", detail: "Houston-Galveston Area Council" },
-  { name: "NASPO ValuePoint", detail: "State & local cooperative" },
-  { name: "OMNIA Partners", detail: "Public sector cooperative" },
-  { name: "NCPA", detail: "National Cooperative Purchasing Alliance" },
-  { name: "Sourcewell", detail: "Cooperative purchasing" },
-  { name: "State & Local", detail: "Multiple state, county & municipal contracts" },
 ];
 
-/**
- * NEEDS-CONFIRMATION: the deck cites conflicting figures across slides
- * (10+ vs 15+ years, 95% vs 98% retention, 200+ vs 500+ clients,
- * 100+ vs 250+ contracts). These use the more conservative value.
- */
 /*
- * Every figure below is one a reader can verify from the contract, the
- * appraisal certificates or the company record.
- *
- * The previous set — 15+ years, 10,000+ IT professionals, 200+ clients, 95%
- * retention, 500+ satisfied clients, 48–72 hrs average time to fill, 100+
- * projects, 250+ contracts, 1M+ hours, 20+ clients — was never confirmed, and
- * unconfirmed capability claims do not belong on a federal contractor's site.
- * Restore any of them here the moment there is a source for it.
+ * Every figure below is one a reader can verify from the contracts, the
+ * appraisal certificates or the company record. Unconfirmed capability
+ * claims do not belong on a federal contractor's site.
  */
 export const stats = [
   { value: "2008", label: "Serving clients since" },
   { value: "7", label: "Certifications & appraisals" },
-  { value: "12", label: "Contract vehicles" },
-  { value: "8(a)", label: "SBA certified small business" },
+  { value: "2", label: "Contract vehicles held" },
+  { value: "8(a)", label: "SBA certified" },
 ];
 
 export const trustBar = [
   { value: "SEWP VI", label: "NASA Category C contract holder" },
+  { value: "GSA MAS", label: "Multiple Award Schedule contract holder" },
   { value: "CMMI L3", label: "Appraised for development & services" },
   { value: "ISO 27001", label: "Information security management" },
-  { value: "Nationwide", label: "U.S. coverage, all time zones" },
 ];
 
 export const achievements = [
   {
     value: "Since 2008",
-    label: "Delivering technology and consulting for federal, state and local agencies and commercial clients",
+    label: "Delivering technology and consulting solutions to government and commercial organizations",
   },
-  { value: "12", label: "Contract vehicles, from NASA SEWP VI to cooperative purchasing agreements" },
-  { value: "7", label: "Independent certifications and process appraisals maintained" },
-  { value: "541511", label: "NAICS — Custom Computer Programming Services" },
+  { value: "2", label: "Contract vehicles: NASA SEWP VI Category C and GSA MAS" },
+  { value: "7", label: "Certifications, appraisals and socioeconomic credentials maintained" },
+  { value: "541511", label: "NAICS on NASA SEWP VI — 541519 on GSA MAS" },
 ];
 
 /*
@@ -266,22 +259,22 @@ export const provenResults = [
   {
     context: "Federal & defense",
     metric: "SEWP VI",
-    label: "Category C contract 80TECH26D0642 — IT mission-based services for any federal agency.",
-    cta: "See contract vehicles",
+    label: "Category C contract 80TECH26D0642 — IT mission-based services, open to every federal agency.",
+    cta: "See the contract",
     href: "/sewp-vi",
   },
   {
     context: "Mission programs",
     metric: "CMMI L3",
     label: "Appraised at Level 3 for both development and services — the delivery discipline behind every program.",
-    cta: "Explore our services",
+    cta: "Explore our capabilities",
     href: "/services",
   },
   {
     context: "Security & quality",
     metric: "ISO 27001",
     label: "Certified information security management, alongside ISO 9001 quality and ISO 20000-1 service management.",
-    cta: "Why choose Tanvi IT",
+    cta: "About Tanvi IT",
     href: "/about",
   },
 ];
@@ -294,95 +287,33 @@ export interface ServiceItem {
   slug: string;
   name: string;
   summary: string;
-  description: string;
   capabilities: string[];
   image: string;
   visualNote: string;
 }
 
-export const services: ServiceItem[] = [
-  {
-    slug: "contract-staffing",
-    name: "Contract Staffing",
-    summary: "Access top IT talent with speed and precision for short and long-term needs.",
-    description:
-      "Scale your team quickly with skilled IT professionals on a contract basis. We source, screen and deploy pre-vetted talent so you can meet delivery commitments without carrying permanent headcount.",
-    capabilities: [
-      "Rapid sourcing from a nationwide professional network",
-      "Pre-screened and verified candidates",
-      "Short and long-term contract engagements",
-      "Cleared talent for federal programs",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1800&q=85&auto=format&fit=crop",
-    visualNote: "Pre-screened, cleared candidates",
-  },
-  {
-    slug: "direct-hire",
-    name: "Direct Hire",
-    summary: "Find the right full-time talent to strengthen your core team.",
-    description:
-      "We run a rigorous search and screening process to place permanent hires who fit your technical requirements, your mission and your culture — and who stay.",
-    capabilities: [
-      "Targeted executive and technical search",
-      "Rigorous skills and culture screening",
-      "Market and compensation benchmarking",
-      "Onboarding and placement support",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1800&q=85&auto=format&fit=crop",
-    visualNote: "Screened for skills, experience and long-term fit",
-  },
-  {
-    slug: "contract-to-hire",
-    name: "Contract-to-Hire",
-    summary: "Evaluate talent on the job before making a long-term commitment.",
-    description:
-      "Bring on professionals as contractors first, then convert top performers to permanent staff — reducing hiring risk while keeping delivery moving.",
-    capabilities: [
-      "Trial-to-permanent conversion pathway",
-      "Reduced hiring risk and cost per hire",
-      "Performance-based conversion decisions",
-      "Seamless transition to full-time employment",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1573496130141-209d200cebd8?w=1800&q=85&auto=format&fit=crop",
-    visualNote: "Evaluate first, commit second",
-  },
-  {
-    slug: "rpo-solutions",
-    name: "RPO Solutions",
-    summary: "Streamline your recruitment with dedicated, end-to-end solutions.",
-    description:
-      "We take on all or part of your recruiting function — sourcing, screening, coordination and reporting — with an outcome-focused model that scales with hiring demand.",
-    capabilities: [
-      "End-to-end recruitment process outsourcing",
-      "Dedicated sourcing and delivery pods",
-      "Employer branding and candidate experience",
-      "Hiring analytics and SLA reporting",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1758691736975-9f7f643d178e?w=1800&q=85&auto=format&fit=crop",
-    visualNote: "End-to-end recruitment, outcome-focused",
-  },
-  {
-    slug: "it-consulting",
-    name: "IT Consulting",
-    summary:
-      "Technology expertise to solve complex challenges and drive digital transformation.",
-    description:
-      "Beyond talent, our consultants deliver strategic technology advisory and hands-on solutions across software, cloud, data, enterprise platforms and cybersecurity.",
-    capabilities: [
-      "Application development & modernization",
-      "Cloud migration and DevOps enablement",
-      "Data engineering, BI and AI/ML",
-      "Cybersecurity, IAM and compliance",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1605379399642-870262d3d051?w=1800&q=85&auto=format&fit=crop",
-    visualNote: "Strategy through delivery, in one team",
-  },
+/* This design's own photographs, one per solution area, in page order. */
+const serviceImages = [
+  "photo-1517048676732-d65bc937f952",
+  "photo-1521791136064-7986c2920216",
+  "photo-1573496130141-209d200cebd8",
+  "photo-1758691736975-9f7f643d178e",
+  "photo-1605379399642-870262d3d051",
+  "photo-1687603917313-ccae1a289a9d",
 ];
+
+/** The six solution areas from the capabilities guide. */
+export const services: ServiceItem[] = solutionAreas.map((area, i) => ({
+  slug: area.slug,
+  name: area.name,
+  summary: area.description,
+  capabilities: area.services,
+  image: `https://images.unsplash.com/${serviceImages[i]}?w=1800&q=85&auto=format&fit=crop`,
+  visualNote: `${area.services.length} services in this area`,
+}));
+
+/** The opening of the capabilities page. */
+export const servicesIntro = capabilitiesHero;
 
 /* ------------------------------------------------------------------ */
 /* Technology expertise                                                */
@@ -393,7 +324,7 @@ export const techExpertise = [
     area: "Software Development",
     headline: "Build and modernize the applications you run on",
     description:
-      "Full-stack engineers across .NET, Java, Python and modern JavaScript frameworks — from new builds to legacy modernization.",
+      "Full-stack engineering across .NET, Java, Python and modern JavaScript frameworks — from new builds to legacy modernization.",
     stack: [".NET", "Java", "Python", "JavaScript", "React", "Angular", "Node.js", "PHP"],
     image: unsplash("photo-1687603917313-ccae1a289a9d"),
     imageAlt: "Source code on a monitor",
@@ -420,7 +351,7 @@ export const techExpertise = [
     area: "Enterprise Solutions",
     headline: "Platforms that run the enterprise",
     description:
-      "Salesforce, SAP, Oracle, ServiceNow and Microsoft 365 specialists who configure, integrate and support.",
+      "Salesforce, SAP, Oracle, ServiceNow and Microsoft 365 — configured, integrated and supported.",
     stack: ["Salesforce", "SAP", "Oracle", "ServiceNow", "SharePoint", "Microsoft 365"],
     image: unsplash("photo-1522071820081-009f0129c71c"),
     imageAlt: "A team working together on laptops",
@@ -429,7 +360,7 @@ export const techExpertise = [
     area: "Cybersecurity",
     headline: "Secure by design, compliant by default",
     description:
-      "Network security, IAM, risk & compliance and SOC talent that keep systems protected and audit-ready.",
+      "Network security, IAM, risk & compliance and security operations that keep systems protected and audit-ready.",
     stack: ["Network Security", "IAM", "Risk & Compliance", "Cloud Security", "SOC"],
     image: unsplash("photo-1633265486064-086b219458ec"),
     imageAlt: "A gold padlock resting on a keyboard",
@@ -510,67 +441,17 @@ export const industries: IndustryItem[] = [
 /* Process, differentiators, clients                                   */
 /* ------------------------------------------------------------------ */
 
-export const processSteps = [
-  {
-    title: "Understand Your Needs",
-    description: "We listen, analyze, and align with your mission, goals and requirements.",
-  },
-  {
-    title: "Define the Strategy",
-    description: "We craft a focused plan that aligns with your objectives and drives value.",
-  },
-  {
-    title: "Source & Screen Top Talent",
-    description: "We identify and vet the best talent for your unique needs.",
-  },
-  {
-    title: "Evaluate & Validate",
-    description: "We ensure the right skills, experience and fit for long-term success.",
-  },
-  {
-    title: "Deliver & Onboard",
-    description: "We enable a smooth transition and quick time-to-value.",
-  },
-  {
-    title: "Manage & Support",
-    description: "We provide ongoing support and proactive performance monitoring.",
-  },
-  {
-    title: "Measure & Optimize",
-    description: "We track results, gather insights and constantly improve.",
-  },
-];
+/** How we deliver — five steps, every engagement. */
+export const processSteps = howWeDeliver.map((item) => ({
+  title: item.step,
+  description: item.description,
+}));
 
-export const whyUs = [
-  {
-    title: "Mission-Focused Partnership",
-    description:
-      "We align with your mission and goals to deliver solutions that create real impact.",
-  },
-  {
-    title: "Proven Expertise",
-    description:
-      "Years of experience delivering IT and professional solutions across government and commercial sectors.",
-  },
-  {
-    title: "Top 1% Talent Network",
-    description:
-      "Access to highly skilled, vetted professionals ready to drive your projects forward.",
-  },
-  {
-    title: "Quality You Can Trust",
-    description:
-      "Rigorous screening, industry standards, and a commitment to excellence in everything we do.",
-  },
-  {
-    title: "Agile & Scalable Solutions",
-    description: "Flexible engagement models that scale with your needs and adapt to change.",
-  },
-  {
-    title: "Results That Matter",
-    description: "We focus on measurable outcomes, efficiency, and long-term value.",
-  },
-];
+/** Why Tanvi IT — what clients rely on us for. */
+export const whyUs = about.whyTanvi.map((item) => ({
+  title: item.name,
+  description: item.description,
+}));
 
 /** Client names as supplied in the design deck. */
 export const clients = [
@@ -614,77 +495,21 @@ export const testimonials = [
 ];
 
 /* ------------------------------------------------------------------ */
-/* Audience split                                                      */
-/* ------------------------------------------------------------------ */
-
-export const audiences = [
-  {
-    eyebrow: "For employers",
-    title: "Build high-performing technology teams",
-    description:
-      "Access pre-vetted IT professionals who integrate seamlessly and deliver measurable impact.",
-    points: [
-      "Pre-screened & verified professionals",
-      "Flexible engagement models",
-      "Domain expertise across sectors",
-      "Scalable teams",
-    ],
-    cta: { label: "Talk to our team", href: "/contact" },
-  },
-  {
-    eyebrow: "For talent",
-    title: "Opportunities that move your career forward",
-    description:
-      "Explore projects with leading U.S. companies and federal programs.",
-    points: [
-      "Top U.S. clients",
-      "Competitive pay",
-      "Growth opportunities",
-      "Long-term assignments",
-    ],
-    cta: { label: "Explore opportunities", href: "/careers" },
-  },
-];
-
-/* ------------------------------------------------------------------ */
 /* Careers                                                             */
 /* ------------------------------------------------------------------ */
 
 export interface BenefitItem {
   title: string;
   description: string;
+  icon: string;
 }
 
-/** NEEDS-CONFIRMATION: not yet verified with Tanvi IT HR. */
-export const benefits: BenefitItem[] = [
-  {
-    title: "Competitive pay",
-    description:
-      "Market-benchmarked compensation on every assignment, reviewed as your engagement grows.",
-  },
-  {
-    title: "Top U.S. clients",
-    description:
-      "Work with federal agencies and Fortune 500 organizations on programs that matter.",
-  },
-  {
-    title: "Health, dental & vision",
-    description: "Comprehensive medical coverage options for you and your dependents.",
-  },
-  {
-    title: "401(k) with company match",
-    description: "Plan for the long term with an employer-matched retirement contribution.",
-  },
-  {
-    title: "Growth opportunities",
-    description:
-      "Certification support and a clear path from assignment to long-term career progression.",
-  },
-  {
-    title: "Long-term assignments",
-    description: "Extended and contract-to-hire engagements, not just short-term placements.",
-  },
-];
+/** Employee benefits, in the client's own wording — see `employeeBenefits`. */
+export const benefits: BenefitItem[] = employeeBenefits.items.map((item) => ({
+  title: item.name,
+  description: item.description,
+  icon: item.icon,
+}));
 
 /* ------------------------------------------------------------------ */
 /* NASA SEWP VI — contract facts (from the SEWP VI content document)    */
@@ -702,20 +527,8 @@ export const sewp = {
     "https://www.sewp.nasa.gov/sewp6public/contractholders#/detail/01",
   overview:
     'The NASA SEWP (Solutions for Enterprise-Wide Procurement), pronounced "soup", provides the latest Information Technology, Communication, and Audio-Visual (ITC/AV) solutions and services for all Federal Agencies and their approved contractors. Created in 1993, SEWP I was the first Government-Wide Acquisition Contract (GWAC) in the federal acquisition space. Originally, the contract vehicle provided only technology products for NASA and all other agencies. SEWP has continually evolved over the past 30 years, expanding its scope to meet the requests of its customers. The SEWP vehicle represents acquisition innovation within the Federal Government. The program is self-funded through usage fees (0.34%) and provides all Federal agencies with acquisition support — more than 50,000 orders a year.',
-  contacts: [
-    {
-      role: "SEWP Program Manager",
-      name: "Nagoor Inaganti",
-      phone: "703-864-7551",
-      email: "nagoor@tanviit.com",
-    },
-    {
-      role: "SEWP Deputy Program Manager",
-      name: "Eswara Prasad Gatamaneni",
-      phone: "703-918-6312",
-      email: "prasad@tanviit.com",
-    },
-  ],
+  /* Program manager and deputy, as published in the SEWP VI ordering guide. */
+  contacts: sewpVi.managers.slice(0, 2),
   fairOpportunity: {
     heading: "A.1.13 Fair Opportunity and Requests for Quotes",
     intro: [

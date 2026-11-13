@@ -10,19 +10,20 @@ import { TestimonialCards } from "@/components/sections/TestimonialCards";
 import { VehicleCards } from "@/components/sections/VehicleCards";
 import { Button } from "@/components/ui/Button";
 import { Section, SectionHeading } from "@/components/ui/Section";
+import { about, homeHero, valueProposition } from "@/lib/v2-content";
 
 export default function Home() {
   return (
     <>
       <Hero />
 
-      {/* What we do — services bento */}
+      {/* What we do — the six solution areas */}
       <Section tone="muted">
         <SectionHeading
           align="split"
           eyebrow="What we do"
-          title="Flexible solutions. Built around your goals."
-          description="From talent to technology, we deliver flexible, scalable IT solutions that help you innovate faster and achieve measurable business outcomes."
+          title="Technology that supports the mission"
+          description={homeHero.statement}
         />
         <div className="mt-14">
           <CapabilitiesBento />
@@ -38,7 +39,7 @@ export default function Home() {
           align="split"
           eyebrow="Technology expertise"
           title="Expertise across the modern stack"
-          description="Beyond talent, our consultants deliver strategic technology advisory and hands-on solutions across software, cloud, data, enterprise platforms and cybersecurity."
+          description="Our capabilities span application modernization, data and analytics, cloud and DevSecOps, cybersecurity, enterprise architecture, software engineering, quality engineering, testing, and emerging technologies."
         />
         <div className="mt-14">
           <ExpertiseStack />
@@ -52,12 +53,12 @@ export default function Home() {
         </Section>
       </div>
 
-      {/* Proven results + client seals */}
+      {/* Why Tanvi IT + client seals */}
       <Section tone="muted">
         <SectionHeading
-          eyebrow="Proven results"
-          title="Outcomes that hold up under scrutiny."
-          description="We turn mission requirements into measurable results — delivered on time, on budget, and built to last."
+          eyebrow="Why Tanvi IT"
+          title="Value creation, mission outcomes, long-term success."
+          description={valueProposition[0]}
           action={<Button href="/contact">Talk to our team</Button>}
         />
         <div className="mt-12">
@@ -69,8 +70,8 @@ export default function Home() {
       <Section>
         <SectionHeading
           eyebrow="Contract vehicles"
-          title="Trusted partner to government and enterprise clients"
-          description="Buy through the vehicles you already hold — led by NASA SEWP VI Category C, contract 80TECH26D0642."
+          title="Access technology solutions through our contract vehicles"
+          description="Agencies may be able to procure services through existing contract vehicles, subject to applicable ordering procedures."
           action={<Button href="/sewp-vi">View SEWP VI</Button>}
         />
         <div className="mt-12">
@@ -85,8 +86,7 @@ export default function Home() {
       <Section>
         <SectionHeading
           eyebrow="Client testimonials"
-          title="Trusted by agencies. Proven by results."
-          description="We build lasting partnerships by delivering high-quality solutions, exceptional service, and measurable impact."
+          title="What our clients say"
           action={<Button href="/contact">Work with us</Button>}
         />
         <div className="mt-12">
@@ -95,9 +95,9 @@ export default function Home() {
       </Section>
 
       <CTASection
-        overline="Tanvi IT + your mission = delivered"
-        title="Let's build what's next, together."
-        description="Whether you need one specialist or an entire technology team, we're ready to help."
+        overline={about.promise}
+        title={about.closing.headline}
+        description={about.closing.body}
         primaryLabel="Talk to our team"
         primaryHref="/contact"
       />

@@ -1,16 +1,19 @@
 import {
-  Briefcase,
+  BarChart3,
+  Cloud,
+  Code2,
   Lightbulb,
-  Repeat,
-  UserCheck,
-  Users,
+  Network,
+  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 
+/** One mark per solution area, shared by the homepage tiles and /services. */
 export const serviceIcons: Record<string, LucideIcon> = {
-  "contract-staffing": Users,
-  "direct-hire": UserCheck,
-  "contract-to-hire": Repeat,
-  "rpo-solutions": Briefcase,
-  "it-consulting": Lightbulb,
+  "application-development-modernization": Code2,
+  "data-analytics": BarChart3,
+  "devops-cloud-enablement": Cloud,
+  "enterprise-architecture": Network,
+  "quality-engineering-ivv": ShieldCheck,
+  "emerging-technologies": Lightbulb,
 };

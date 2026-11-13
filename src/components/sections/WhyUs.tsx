@@ -1,16 +1,14 @@
-import { Award, Gauge, Handshake, ShieldCheck, Target, Users, type LucideIcon } from "lucide-react";
+import { Gauge, Handshake, Target, Users, type LucideIcon } from "lucide-react";
 import { whyUs } from "@/lib/site-content";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
 /* Keyed by title so every reason keeps its own mark (an index list had only
    four icons, which left the last three sharing a fallback). */
 const icons: Record<string, LucideIcon> = {
-  "Mission-Focused Partnership": Handshake,
-  "Proven Expertise": Award,
-  "Top 1% Talent Network": Users,
-  "Quality You Can Trust": ShieldCheck,
-  "Agile & Scalable Solutions": Gauge,
-  "Results That Matter": Target,
+  "Mission-focused": Target,
+  "Experienced professionals": Users,
+  "Innovation & agility": Gauge,
+  "Long-term partnership": Handshake,
 };
 
 const pad = (n: number) => String(n).padStart(2, "0");

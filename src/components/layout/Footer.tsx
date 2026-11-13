@@ -9,12 +9,12 @@ const companyLinks = mainNav.filter((item) => !item.menu && item.href !== "/");
 
 const columns = [
   {
-    title: "Services",
+    title: "Capabilities",
     links: services.map((s) => ({ label: s.name, href: `/services#${s.slug}` })),
   },
   {
     title: "Technology",
-    links: techExpertise.map((t) => ({ label: t.area, href: "/services#it-consulting" })),
+    links: techExpertise.map((t) => ({ label: t.area, href: "/services#technology" })),
   },
   {
     title: "Industries",
@@ -35,9 +35,9 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <h2 className="font-display text-2xl font-medium leading-tight tracking-[-0.02em] sm:text-[1.75rem]">
-              Let&rsquo;s talk talent
+              Ready to solve
               <br />
-              &amp; technology
+              what&rsquo;s next?
             </h2>
             <a
               href={`mailto:${siteConfig.email}`}
@@ -99,7 +99,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-4">
-            <h3 className="text-sm font-semibold">Certifications &amp; accreditations</h3>
+            <h3 className="text-sm font-semibold">Certifications &amp; credentials</h3>
             <ul className="mt-4 flex flex-wrap gap-2">
               {certifications.map((cert) => (
                 <li
@@ -117,7 +117,7 @@ export function Footer() {
           <p>
             &copy; {year} {siteConfig.name}. All rights reserved.
           </p>
-          <p>IT Services &amp; Consulting since 2008</p>
+          <p>Technology. Talent. Trust. Since 2008.</p>
         </div>
       </Container>
     </footer>

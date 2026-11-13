@@ -10,13 +10,15 @@ export function AnimatedCounter({ value }: { value: string }) {
 
   const numeric = parseFloat(value.replace(/[^0-9.]/g, ""));
   // Strip commas too, otherwise the thousands separator lands in the suffix
-  // and "10,000+" renders as "10000,+". We re-add separators on the way out.
+  // and "10,000+" renders as "10000,+". We re-add separators on the way out —
+  // but only where the value had them, so the year 2008 does not become 2,008.
   const suffix = value.replace(/[0-9.,]/g, "");
+  const grouped = value.includes(",");
   const count = useMotionValue(0);
-  const rounded = useTransform(
-    count,
-    (latest) => `${Math.round(latest).toLocaleString("en-US")}${suffix}`,
-  );
+  const rounded = useTransform(count, (latest) => {
+    const whole = Math.round(latest);
+    return `${grouped ? whole.toLocaleString("en-US") : whole}${suffix}`;
+  });
 
   useEffect(() => {
     if (!inView || Number.isNaN(numeric)) return;

@@ -8,7 +8,7 @@ const featured = contractVehicles.filter((v) => v.image).slice(0, 4);
 /** Contract vehicles as editorial cards: branded thumbnail, then title and detail. */
 export function VehicleCards() {
   return (
-    <RevealGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <RevealGroup className="grid max-w-4xl gap-6 sm:grid-cols-2">
       {featured.map((vehicle) => (
         <RevealItem key={vehicle.name}>
           <Link href={vehicle.href ?? "/about"} className="group block">
@@ -17,7 +17,7 @@ export function VehicleCards() {
                 src={vehicle.image ?? ""}
                 alt=""
                 fill
-                sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                sizes="(min-width: 640px) 50vw, 100vw"
                 className="-z-20 object-cover opacity-75 transition-transform duration-700 ease-out group-hover:scale-105"
               />
               <div

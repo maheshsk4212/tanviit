@@ -11,7 +11,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
 const clamp = (i: number) => Math.max(0, Math.min(services.length - 1, i));
 
 /**
- * Every practice in one place: a tab row and arrows above a horizontal,
+ * Every solution area in one place: a tab row and arrows above a horizontal,
  * snap-scrolling strip of big cards (the next card peeks in to invite a
  * swipe). Tabs, arrows, swipes and `/services#slug` deep links all move the
  * same strip, and the active tab follows its scroll position.
@@ -75,7 +75,7 @@ export function ServicesExplorer() {
     };
   }, []);
 
-  // Deep links: arriving on /services#rpo-solutions (or the hash changing)
+  // Deep links: arriving on /services#data-analytics (or the hash changing)
   // scrolls both axes at once — the page down to the strip, honouring the
   // card's scroll margin for the fixed nav, and the strip across to the card.
   useEffect(() => {
@@ -131,7 +131,7 @@ export function ServicesExplorer() {
               type="button"
               onClick={() => select(active - 1)}
               disabled={active === 0}
-              aria-label="Previous practice"
+              aria-label="Previous solution area"
               className="flex h-11 w-11 items-center justify-center rounded-full border border-deep-900/20 text-deep-900 transition-colors hover:bg-deep-900 hover:text-white disabled:pointer-events-none disabled:opacity-35"
             >
               <ArrowLeft className="h-4 w-4" aria-hidden />
@@ -140,7 +140,7 @@ export function ServicesExplorer() {
               type="button"
               onClick={() => select(active + 1)}
               disabled={active === services.length - 1}
-              aria-label="Next practice"
+              aria-label="Next solution area"
               className="flex h-11 w-11 items-center justify-center rounded-full bg-gold-500 text-deep-950 transition-colors hover:bg-gold-400 disabled:pointer-events-none disabled:opacity-35"
             >
               <ArrowRight className="h-4 w-4" aria-hidden />
@@ -153,7 +153,7 @@ export function ServicesExplorer() {
         ref={trackRef}
         role="region"
         aria-roledescription="carousel"
-        aria-label="Our five practices"
+        aria-label="Our six solution areas"
         className="scrollbar-hide relative mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain"
       >
         {services.map((service, i) => {
@@ -192,7 +192,7 @@ export function ServicesExplorer() {
 
               <div className="flex flex-col p-7 sm:p-10 lg:p-12">
                 <div className="flex items-center justify-between gap-4 text-xs font-semibold uppercase tracking-[0.18em]">
-                  <span className="text-gold-400">Practice {pad(i + 1)}</span>
+                  <span className="text-gold-400">Key solution area</span>
                   <span className="text-white/70">
                     {pad(i + 1)} / {pad(services.length)}
                   </span>
@@ -200,8 +200,7 @@ export function ServicesExplorer() {
                 <h3 className="mt-5 font-display text-3xl font-medium leading-[1.05] tracking-[-0.02em] sm:text-4xl lg:text-[2.75rem]">
                   {service.name}
                 </h3>
-                <p className="mt-3 text-lg leading-snug text-gold-200">{service.summary}</p>
-                <p className="mt-4 text-base leading-relaxed text-white/70">{service.description}</p>
+                <p className="mt-4 text-lg leading-relaxed text-white/80">{service.summary}</p>
 
                 <ul className="mt-7 grid gap-3 border-t border-white/10 pt-6 sm:grid-cols-2">
                   {service.capabilities.map((capability) => (
@@ -213,7 +212,7 @@ export function ServicesExplorer() {
                 </ul>
 
                 <div className="mt-auto pt-9">
-                  <Button href={`/contact?practice=${service.slug}`}>Discuss {service.name}</Button>
+                  <Button href={`/contact?area=${service.slug}`}>Talk to our team</Button>
                 </div>
               </div>
             </article>

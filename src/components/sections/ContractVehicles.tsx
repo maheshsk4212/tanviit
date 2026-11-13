@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   ArrowUpRight,
   BadgeCheck,
-  Building2,
   Clock,
   CodeXml,
   FileCheck,
@@ -16,6 +15,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { achievements, certifications, contractVehicles } from "@/lib/site-content";
+import { certificationsIntro, gsaMas } from "@/lib/v2-content";
 import { Chip } from "@/components/ui/Chip";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
@@ -26,9 +26,10 @@ const certificationIcons: Record<string, LucideIcon> = {
   "ISO 9001:2015": BadgeCheck,
   "ISO/IEC 20000-1:2018": ServerCog,
   "ISO/IEC 27001:2013": LockKeyhole,
-  "CMMI-DEV L3": CodeXml,
-  "CMMI-SVC L3": Headset,
-  "8(a)": Landmark,
+  "CMMI-DEV Level 3": CodeXml,
+  "CMMI-SVC Level 3": Headset,
+  "SBA 8(a)": Landmark,
+  "SWaM Certified": Users,
 };
 
 /* Four copies: the marquee slides by half its track (two copies, ~2,600px),
@@ -107,53 +108,47 @@ function CertificationBadge({
   );
 }
 
-/** Federal-wide vehicles read differently from co-ops; group them so the list scans. */
-const COOPERATIVES = new Set([
-  "HGACBuy",
-  "NASPO ValuePoint",
-  "OMNIA Partners",
-  "NCPA",
-  "Sourcewell",
-  "State & Local",
-]);
-
-function VehicleList({
-  items,
-  label,
-  icon: Icon,
-  dark,
-}: {
-  items: typeof contractVehicles;
-  label: string;
-  icon: LucideIcon;
-  dark: boolean;
-}) {
+/** The second vehicle: what it is, then its identifiers as small cards. */
+function ScheduleDetails({ dark }: { dark: boolean }) {
   return (
-    <div>
-      <p
-        className={`flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] ${
-          dark ? "text-gold-400" : "text-gold-800"
-        }`}
-      >
-        <span
-          className={`flex h-7 w-7 items-center justify-center rounded-full ${
-            dark ? "bg-gold-500/15" : "bg-gold-50"
+    <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
+      <div>
+        <p
+          className={`flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] ${
+            dark ? "text-gold-400" : "text-gold-800"
           }`}
         >
-          <Icon className="h-3.5 w-3.5" aria-hidden />
-        </span>
-        {label}
-      </p>
-      {/* Gradient hairline instead of a flat 1px rule. */}
-      <div
-        className={`mt-3 h-px bg-gradient-to-r to-transparent ${
-          dark ? "from-white/25" : "from-line-strong"
-        }`}
-        aria-hidden
-      />
-      <RevealGroup className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2" stagger={0.04}>
-        {items.map((v) => (
-          <RevealItem key={v.name}>
+          <span
+            className={`flex h-7 w-7 items-center justify-center rounded-full ${
+              dark ? "bg-gold-500/15" : "bg-gold-50"
+            }`}
+          >
+            <Landmark className="h-3.5 w-3.5" aria-hidden />
+          </span>
+          {gsaMas.kind}
+        </p>
+        {/* Gradient hairline instead of a flat 1px rule. */}
+        <div
+          className={`mt-3 h-px bg-gradient-to-r to-transparent ${
+            dark ? "from-white/25" : "from-line-strong"
+          }`}
+          aria-hidden
+        />
+        <h3
+          className={`mt-5 font-display text-2xl font-semibold tracking-tight ${
+            dark ? "text-white" : "text-fg"
+          }`}
+        >
+          {gsaMas.name}
+        </h3>
+        <p className={`mt-3 text-sm leading-relaxed ${dark ? "text-slate-300" : "text-fg-muted"}`}>
+          {gsaMas.summary}
+        </p>
+      </div>
+
+      <RevealGroup className="grid grid-cols-1 gap-3 sm:grid-cols-2" stagger={0.04}>
+        {gsaMas.facts.map((fact) => (
+          <RevealItem key={fact.term}>
             <div
               className={`group/v relative h-full overflow-hidden rounded-card border p-4 pl-5 transition-all duration-300 ${
                 dark
@@ -167,18 +162,16 @@ function VehicleList({
                 aria-hidden
               />
               <p
-                className={`font-display text-sm font-semibold ${
+                className={`text-xs leading-relaxed ${dark ? "text-slate-300" : "text-fg-subtle"}`}
+              >
+                {fact.term}
+              </p>
+              <p
+                className={`mt-1 font-display text-sm font-semibold ${
                   dark ? "text-white" : "text-fg"
                 }`}
               >
-                {v.name}
-              </p>
-              <p
-                className={`mt-1 text-xs leading-relaxed ${
-                  dark ? "text-slate-300" : "text-fg-subtle"
-                }`}
-              >
-                {v.detail}
+                {fact.detail}
               </p>
             </div>
           </RevealItem>
@@ -200,8 +193,6 @@ export function ContractVehicles({
   const dark = tone === "dark";
 
   const featured = contractVehicles[0];
-  const federal = contractVehicles.slice(1).filter((v) => !COOPERATIVES.has(v.name));
-  const coops = contractVehicles.slice(1).filter((v) => COOPERATIVES.has(v.name));
 
   return (
     <div>
@@ -235,20 +226,7 @@ export function ContractVehicles({
         </Link>
       </RevealItem>
 
-      <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
-        <VehicleList
-          items={federal}
-          label="Federal-wide vehicles"
-          icon={Landmark}
-          dark={dark}
-        />
-        <VehicleList
-          items={coops}
-          label="State, local & cooperative"
-          icon={Building2}
-          dark={dark}
-        />
-      </div>
+      <ScheduleDetails dark={dark} />
 
       {/* Achievements — a rich dark panel so the numbers carry real weight
           instead of sitting in flat white boxes. */}
@@ -287,14 +265,21 @@ export function ContractVehicles({
           on hover. Only the first copy is exposed to assistive tech; with
           reduced motion the strip stops and scrolls by hand instead. */}
       <div className="mt-16">
-        <Chip tone={dark ? "dark" : "light"}>Certifications &amp; trusted standards</Chip>
+        <Chip tone={dark ? "dark" : "light"}>Certifications &amp; credentials</Chip>
         <h3
           className={`mt-4 max-w-2xl text-balance font-display text-2xl font-medium leading-tight tracking-[-0.02em] sm:text-3xl ${
             dark ? "text-white" : "text-fg"
           }`}
         >
-          The process maturity mission-critical programs require.
+          Our commitment to quality, security &amp; continuous improvement
         </h3>
+        <p
+          className={`mt-4 max-w-3xl text-base leading-relaxed ${
+            dark ? "text-slate-300" : "text-fg-muted"
+          }`}
+        >
+          {certificationsIntro}
+        </p>
         <div className="relative mt-10 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)] motion-reduce:overflow-x-auto">
           <ul className="animate-marquee flex w-max py-2">
             {badgeTrack.map((c, i) => (

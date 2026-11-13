@@ -6,39 +6,40 @@ import { Process } from "@/components/sections/Process";
 import { ServicesExplorer } from "@/components/services/ServicesExplorer";
 import { TechExpertise } from "@/components/sections/TechExpertise";
 import { WhyUs } from "@/components/sections/WhyUs";
+import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
+import { Card } from "@/components/ui/Card";
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { stats } from "@/lib/site-content";
+import { servicesIntro } from "@/lib/site-content";
+import { about, outcomes } from "@/lib/v2-content";
 
 const WHY_IMAGE =
   "https://images.unsplash.com/photo-1758518729685-f88df7890776?w=1400&q=80&auto=format&fit=crop";
-const retention = stats.find((s) => s.label === "Client retention");
 
 export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Contract staffing, direct hire, contract-to-hire, RPO and IT consulting — delivered by one accountable team for federal, state, local and commercial clients.",
+  title: "Capabilities",
+  description: servicesIntro.supporting,
 };
 
 export default function ServicesPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Services"
+        eyebrow={servicesIntro.eyebrow}
         image="https://images.unsplash.com/photo-1758520145069-782ad713a7ac?w=2400&q=80&auto=format&fit=crop"
         imagePosition="object-[70%_12%]"
-        title="Full-lifecycle IT consulting services"
-        accent="consulting services"
-        description="Five practices, one accountable delivery team — from sourcing specialist talent to running the technology programs that talent supports."
+        title={servicesIntro.headline}
+        accent="your mission"
+        description={servicesIntro.supporting}
       />
 
       {/* Overview and depth in one place: tabs, arrows or a swipe move
-          between one big card per practice. */}
+          between one big card per solution area. */}
       <Section>
         <SectionHeading
           align="split"
-          eyebrow="What we do"
-          title="Five practices. One accountable team."
-          description="Engage us for a single specialist or an entire delivery function — the same standards, governance and people apply either way."
+          eyebrow="Key solution areas"
+          title="Six areas we deliver in"
+          description="Each area lists the services it covers, so a requirement can be matched against it directly."
         />
         <div className="mt-12">
           <ServicesExplorer />
@@ -49,35 +50,48 @@ export default function ServicesPage() {
         <SectionHeading
           tone="dark"
           eyebrow="Technology expertise"
-          title="Deep bench across the modern stack"
-          description="Our consultants and placed professionals cover the platforms and disciplines federal and commercial programs actually run on."
+          title="Experienced people, practical engineering"
+          description={servicesIntro.statement}
         />
         <div className="mt-12">
           <TechExpertise />
         </div>
       </Section>
 
+      <Section tone="muted" id="outcomes">
+        <SectionHeading eyebrow="Outcomes" title="What we help clients achieve" />
+        <RevealGroup
+          className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          stagger={0.06}
+        >
+          {outcomes.map((outcome) => (
+            <RevealItem key={outcome.name}>
+              <Card className="h-full">
+                <h3 className="font-display text-lg font-semibold text-fg">{outcome.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-fg-muted">{outcome.description}</p>
+              </Card>
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </Section>
+
       <Section id="process">
-        <SectionHeading
-          eyebrow="How we deliver"
-          title="A proven process. Exceptional results."
-          description="Every engagement runs the same streamlined path — so you always know what happens next, and who owns it."
-        />
+        <SectionHeading eyebrow="How we deliver" title="Five steps, every engagement" />
         <div className="mt-12">
           <Process />
         </div>
       </Section>
 
-      {/* Why teams stay — heading and photo hold on the left while the
+      {/* Why Tanvi IT — heading and photo hold on the left while the
           reasons scroll past on the right. */}
       <Section tone="muted">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
               <SectionHeading
-                eyebrow="Why teams stay"
-                title="Experience. Commitment. Results."
-                description="The reasons clients keep coming back after the first engagement closes."
+                eyebrow="Why Tanvi IT"
+                title="What clients rely on us for"
+                description={about.pullQuote}
               />
               <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-2xl bg-deep-900">
                 <Image
@@ -91,14 +105,6 @@ export default function ServicesPage() {
                   className="absolute inset-0 bg-gradient-to-t from-deep-950/85 via-deep-950/10 to-transparent"
                   aria-hidden
                 />
-                {retention ? (
-                  <div className="absolute bottom-5 left-5 text-white sm:bottom-6 sm:left-6">
-                    <p className="font-display text-5xl font-medium tracking-[-0.03em]">
-                      {retention.value}
-                    </p>
-                    <p className="mt-1 text-sm text-white/80">{retention.label}</p>
-                  </div>
-                ) : null}
               </div>
             </div>
           </div>
@@ -109,9 +115,9 @@ export default function ServicesPage() {
       </Section>
 
       <CTASection
-        overline="Tanvi IT + your mission = delivered"
-        title="Not sure where to start?"
-        description="Tell us about your goals and we'll help you scope the right engagement — no obligation."
+        overline={about.promise}
+        title="Tell us what the requirement is."
+        description="We will come back with the contract vehicle, the delivery approach and a timeline."
         primaryLabel="Talk to our team"
         primaryHref="/contact"
         secondaryLabel="View contract vehicles"

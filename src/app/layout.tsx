@@ -10,7 +10,7 @@ const workSans = Work_Sans({
   subsets: ["latin"],
 });
 
-const title = `${siteConfig.name} | IT Services & Consulting`;
+const title = `${siteConfig.name} | Technology & Consulting Solutions`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

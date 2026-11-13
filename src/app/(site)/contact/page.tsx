@@ -4,10 +4,12 @@ import { PageHeader } from "@/components/sections/PageHeader";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Section } from "@/components/ui/Section";
 import { siteConfig } from "@/lib/site-content";
+import { contactPaths } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with Tanvi IT to discuss your project.",
+  description:
+    "Government, prime contractor and commercial inquiry routes for Tanvi IT Solutions Inc.",
 };
 
 export default function ContactPage() {
@@ -16,12 +18,12 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         image="https://images.unsplash.com/photo-1725272544569-e63e7636b171?w=2400&q=80&auto=format&fit=crop"
-        title="Let's talk about your project"
-        accent="your project"
-        description="Tell us a bit about what you're working on and a member of our team will follow up."
+        title="Start the conversation"
+        accent="conversation"
+        description="Tell us the requirement, the vehicle and the timeline — we will come back with the people and the approach."
       />
 
-      <Section>
+      <Section id="contact-form">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-16">
           <div className="lg:col-span-2">
             <ContactForm />
@@ -30,7 +32,7 @@ export default function ContactPage() {
           <div className="space-y-6">
             <div className="rounded-card border border-line bg-surface-muted p-6">
               <h2 className="font-display text-lg font-semibold text-fg">
-                Get in touch directly
+                Head office
               </h2>
               <ul className="mt-5 space-y-4">
                 <li className="flex items-start gap-3 text-sm text-fg-muted">
@@ -49,6 +51,18 @@ export default function ContactPage() {
                     {siteConfig.email}
                   </a>
                 </li>
+              </ul>
+            </div>
+
+            <div className="rounded-card border border-line bg-surface-muted p-6">
+              <h2 className="font-display text-lg font-semibold text-fg">How can we help?</h2>
+              <ul className="mt-5 space-y-4">
+                {contactPaths.map((path) => (
+                  <li key={path.name}>
+                    <h3 className="text-sm font-semibold text-fg">{path.name}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-fg-muted">{path.description}</p>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

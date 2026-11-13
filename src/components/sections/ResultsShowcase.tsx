@@ -61,7 +61,7 @@ export function ResultsShowcase() {
         })}
       </RevealGroup>
 
-      <p className="mt-16 text-sm font-medium text-fg">Trusted by leading organizations:</p>
+      <p className="mt-16 text-sm font-medium text-fg">Organizations we support:</p>
       {/* Wordmark marquee — the list is rendered twice so the loop is
           seamless; the second copy is hidden from assistive tech. Spacing
           lives inside each item so -50% lands exactly on the seam. */}

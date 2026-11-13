@@ -1,25 +1,19 @@
-import { ArrowRight, BriefcaseBusiness, Repeat, UserCheck, Users, Workflow } from "lucide-react";
+import { ArrowRight, Code2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { serviceIcons } from "@/lib/service-icons";
 import { services } from "@/lib/site-content";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
-const icons: Record<string, typeof Users> = {
-  "contract-staffing": Users,
-  "direct-hire": UserCheck,
-  "contract-to-hire": Repeat,
-  "rpo-solutions": Workflow,
-  "it-consulting": BriefcaseBusiness,
-};
-
-/* Bento rhythm on the 4-column grid: row one 1·1·2, row two 2·2. The last
-   tile spans both columns at sm so it never sits alone at half width. */
+/* Bento rhythm on the 4-column grid: row one 1·1·2, row two 2·1·1. Six
+   tiles pair off evenly at sm, so none sits alone at half width. */
 const spans = [
   "lg:col-span-1",
   "lg:col-span-1",
   "lg:col-span-2",
   "lg:col-span-2",
-  "sm:col-span-2 lg:col-span-2",
+  "lg:col-span-1",
+  "lg:col-span-1",
 ];
 
 /** Image tiles for each service; the summary slides up on hover (always shown on touch). */
@@ -27,7 +21,7 @@ export function CapabilitiesBento() {
   return (
     <RevealGroup className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {services.map((service, i) => {
-        const Icon = icons[service.slug] ?? BriefcaseBusiness;
+        const Icon = serviceIcons[service.slug] ?? Code2;
         return (
           <RevealItem key={service.slug} className={spans[i] ?? ""}>
             <Link

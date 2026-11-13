@@ -2,11 +2,12 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { homeHero } from "@/lib/v2-content";
 
 /**
  * Two-column hero: the message on the left, the connection emblem on the
  * right. The artwork is a glowing emblem on pure black — a globe ringed by
- * gold and blue orbits linking a "companies" badge to a "talent" badge — so
+ * gold and blue orbits linking an "organizations" badge to a "people" badge — so
  * it is cropped to the emblem and set on a black section rather than used as
  * a background photo. Its edges then blend into the page with no seam, and
  * nothing is cropped or hidden behind the copy at any width.
@@ -25,18 +26,15 @@ export function Hero() {
       <Container className="grid items-center gap-8 pb-12 pt-24 sm:gap-10 sm:pb-20 sm:pt-32 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:pb-24 lg:pt-36">
         <Reveal>
           <h1 className="text-balance font-display text-[2.5rem] font-medium leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.25rem] xl:text-6xl">
-            <span className="block">Connecting U.S. companies</span>
-            <span className="block">
-              with the right <span className="text-gold-400">IT&nbsp;talent</span>
-            </span>
+            <span className="block">Mission-focused technology.</span>
+            <span className="block text-gold-400">Built for what&rsquo;s next.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base font-medium leading-relaxed text-white sm:mt-7 sm:text-lg">
-            We connect organizations with skilled IT professionals to accelerate innovation, reduce
-            time-to-hire, and deliver results.
+            {homeHero.supporting}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10 sm:gap-4">
             <Button href="/services" size="lg">
-              Explore our solutions
+              View capabilities
             </Button>
             <Button href="/sewp-vi" size="lg" variant="ghost-dark" arrow={false}>
               View SEWP VI contract
@@ -48,7 +46,7 @@ export function Hero() {
         <Reveal delay={0.1} className="relative mx-auto aspect-[898/616] w-full max-w-[300px] sm:max-w-[430px] lg:max-w-none">
           <Image
             src="/hero-emblem.png"
-            alt="A globe ringed by gold and blue orbits, linking a badge of office towers to a badge of people — U.S. companies connected to IT talent"
+            alt="A globe ringed by gold and blue orbits, linking a badge of office towers to a badge of people"
             fill
             priority
             sizes="(min-width: 1024px) 45vw, 100vw"

@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import {
-  Building2,
-  CalendarClock,
-  HeartPulse,
+  Eye,
+  LifeBuoy,
   Mail,
   MapPin,
   Phone,
   PiggyBank,
   Sparkles,
-  TrendingUp,
-  Wallet,
+  Stethoscope,
+  Umbrella,
   type LucideIcon,
 } from "lucide-react";
 import { PageHeader } from "@/components/sections/PageHeader";
@@ -18,21 +17,22 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { benefits, siteConfig } from "@/lib/site-content";
+import { careers, employeeBenefits } from "@/lib/v2-content";
 
-/** Icon per benefit, matched by title (falls back to a spark). */
+/* No tooth in the icon set, so dental borrows the mark used for oral care. */
 const benefitIcons: Record<string, LucideIcon> = {
-  "Competitive pay": Wallet,
-  "Top U.S. clients": Building2,
-  "Health, dental & vision": HeartPulse,
-  "401(k) with company match": PiggyBank,
-  "Growth opportunities": TrendingUp,
-  "Long-term assignments": CalendarClock,
+  medical: Stethoscope,
+  dental: Sparkles,
+  vision: Eye,
+  disability: LifeBuoy,
+  life: Umbrella,
+  retirement: PiggyBank,
 };
 
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Build your career at Tanvi IT — a senior-led IT consulting firm delivering for public and private sector clients since 2008.",
+    "Build your future with Tanvi IT. Culture and benefits at a federal and commercial technology company in Chantilly, Virginia.",
 };
 
 export default function CareersPage() {
@@ -41,23 +41,26 @@ export default function CareersPage() {
       <PageHeader
         eyebrow="Careers"
         image="https://images.unsplash.com/photo-1780072773684-028dafcfff0b?w=2400&q=80&auto=format&fit=crop"
-        title="Build your career at Tanvi IT"
-        accent="at Tanvi IT"
-        description="We're always looking for senior-minded consultants who want to own outcomes, not just fill seats. We don't have a public job board right now — reach out and tell us what you do best."
+        title={careers.headline}
+        accent="with Tanvi IT"
+        description={careers.body}
       />
 
       <Section tone="muted">
         <SectionHeading
-          eyebrow="What we offer"
-          title="Benefits that support the long haul"
-          description="Consulting is demanding work. Our package is built so people can do it sustainably, and keep growing while they do."
+          eyebrow="Employee benefits"
+          title={employeeBenefits.headline}
+          description={employeeBenefits.intro[0]}
         />
+        <p className="mt-5 max-w-3xl text-base leading-relaxed text-fg-muted">
+          {employeeBenefits.intro[1]}
+        </p>
         <RevealGroup
           className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
           stagger={0.07}
         >
           {benefits.map((benefit) => {
-            const Icon = benefitIcons[benefit.title] ?? Sparkles;
+            const Icon = benefitIcons[benefit.icon] ?? Sparkles;
             return (
               <RevealItem key={benefit.title}>
                 <Card className="h-full">
@@ -77,18 +80,23 @@ export default function CareersPage() {
         </RevealGroup>
       </Section>
 
+      <Section>
+        <SectionHeading
+          title={employeeBenefits.investing.heading}
+          description={employeeBenefits.investing.body}
+        />
+      </Section>
+
       <Section tone="dark">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeading
               tone="dark"
-              eyebrow="Get in touch"
-              title="Tell us what you're great at"
-              description="Send us your resume and a note about the kind of work you want to be doing. If there's a fit — now or when a role opens — we'll reach out."
+              title="Tell us where you fit"
+              description="Send us your résumé and the kind of work you are looking for, and we will route it to the team hiring for it."
             />
-            <Button href={`mailto:${siteConfig.email}`} size="lg" className="mt-8">
-              <Mail className="h-4 w-4" aria-hidden />
-              Email your resume
+            <Button href="/contact#contact-form" size="lg" className="mt-8">
+              Send your résumé
             </Button>
           </div>
 

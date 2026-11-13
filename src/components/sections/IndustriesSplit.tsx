@@ -25,8 +25,8 @@ export function IndustriesSplit() {
         <SectionHeading
           tone="dark"
           eyebrow="Industries we serve"
-          title="Domain expertise. Proven impact."
-          description="We deliver tailored IT solutions across a wide range of public and private sector industries."
+          title="Delivering solutions for government agencies and enterprises"
+          description="Tanvi IT supports Federal, state and local government alongside commercial organizations — with the same delivery practices behind each engagement."
         />
         <div className="mt-10">
           <Button href="/industries">All industries</Button>
