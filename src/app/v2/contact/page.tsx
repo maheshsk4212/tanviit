@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Band, BandHeading, PageHero } from "@/components/v2/V2Section";
+import { V2ContactForm } from "@/components/v2/V2ContactForm";
 import { contactPaths, sewpVi, v2Site } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
@@ -16,6 +17,19 @@ export default function V2Contact() {
         title="Start the conversation"
         lead="Tell us the requirement, the vehicle and the timeline — we will come back with the people and the approach."
       />
+
+      <Band tone="tint" id="contact-form">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <BandHeading
+            eyebrow="Write to us"
+            title="Send us a message"
+            lead="For a requirement, a teaming question or a résumé. Tell us what you need and we will route it to the right person."
+          />
+          <div className="rounded-2xl border border-navy-200 bg-white p-7 sm:p-9">
+            <V2ContactForm to={v2Site.email} />
+          </div>
+        </div>
+      </Band>
 
       <Band>
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">

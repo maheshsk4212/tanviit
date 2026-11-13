@@ -32,7 +32,7 @@ const benefitIcons: Record<string, LucideIcon> = {
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: "Build your future with Tanvi IT. Culture, benefits and open positions at a federal and commercial technology company in Chantilly, Virginia.",
+  description: "Build your future with Tanvi IT. Culture and benefits at a federal and commercial technology company in Chantilly, Virginia.",
 };
 
 export default function V2Careers() {
@@ -43,7 +43,7 @@ export default function V2Careers() {
           {careers.strapline}
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
-          <V2Button href="#openings">View open positions</V2Button>
+          <V2Button href="/v2/contact#contact-form">Send your résumé</V2Button>
           <V2Button href="/v2/about" variant="outline-dark">
             About Tanvi IT
           </V2Button>
@@ -110,7 +110,6 @@ export default function V2Careers() {
 
       <Band>
         <V2FeatureRow
-          eyebrow="Investing in our people"
           title={employeeBenefits.investing.heading}
           description={employeeBenefits.investing.body}
           image={v2Images.group.src}
@@ -122,20 +121,18 @@ export default function V2Careers() {
         </V2FeatureRow>
       </Band>
 
-      {/* NEEDS-CONTENT: no job listings exist in the supplied content guides or
-          on the current website, so there is nothing to publish here yet. The
-          section routes candidates to the team rather than showing an empty
-          list; swap in the feed as soon as one exists. */}
+      {/* No job listings are published, on the client's instruction, so this
+          band carries no "open positions" label. It routes candidates to the
+          form on the contact page. */}
       <Band tone="dark" id="openings">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
           <BandHeading
             onDark
-            eyebrow="Open positions"
             title="Tell us where you fit"
             lead="Send us your résumé and the kind of work you are looking for, and we will route it to the team hiring for it."
           />
           <div className="flex flex-wrap gap-3">
-            <V2Button href="/v2/contact">Send your résumé</V2Button>
+            <V2Button href="/v2/contact#contact-form">Send your résumé</V2Button>
           </div>
         </div>
       </Band>

@@ -1,21 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Check,
-  FileCheck2,
-  FileText,
-  Hash,
-  Landmark,
-  GraduationCap,
-  Handshake,
-  Map,
-  MapPin,
-  Network,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react";
-import { V2Accordion } from "@/components/v2/V2Accordion";
+import { FileCheck2, FileText, Hash, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 import {
   Band,
   BandHeading,
@@ -28,41 +14,39 @@ import {
 } from "@/components/v2/V2Section";
 import {
   buyerSnapshot,
-  cooperativeBenefits,
-  cooperativeVehicles,
+  gsaMas,
   howToBuy,
   naicsCodes,
   sewpVi,
   v2Images,
-  v2Site,
   vehicleProfiles,
 } from "@/lib/v2-content";
 
 export const metadata: Metadata = {
   title: "Contract vehicles",
   description:
-    "Award work to Tanvi IT through NASA SEWP VI Category C (contract 80TECH26D0642), federal vehicles and cooperative agreements. Contract details and NAICS 541511.",
+    "Award work to Tanvi IT through NASA SEWP VI Category C (contract 80TECH26D0642) and GSA MAS (contract 47QTCA27D0018). Contract details, SINs and NAICS codes.",
 };
 
 /* The snapshot rows, in the order a contracting officer reads them. */
 const snapshotIcons = [Hash, FileText, ShieldCheck, FileCheck2, Sparkles, MapPin];
 
-/* NASPO, OMNIA, Sourcewell, NCPA, HGACBuy, direct state & local. */
-const cooperativeIcons = [Map, Network, Handshake, GraduationCap, MapPin, Landmark];
-
 export default function V2Vehicles() {
-  const [featured, ...others] = vehicleProfiles;
+  const [featured] = vehicleProfiles;
 
   return (
     <>
       <PageHero
         eyebrow="Contract vehicles"
-        title="Buy through a vehicle"
-        accent="you already hold"
-        lead="Tanvi IT is available through government-wide acquisition contracts, schedules and cooperative agreements — so a requirement can move from scope to staffed team without a new procurement."
+        title="Access technology solutions"
+        accent="through our contract vehicles"
+        lead="Tanvi IT holds two contract vehicles: NASA SEWP VI Category C and the GSA Multiple Award Schedule (MAS). Agencies may be able to procure services through existing contract vehicles, subject to applicable ordering procedures."
       >
         <div className="mt-9 flex flex-wrap gap-3">
           <V2Button href="/v2/contract-vehicles/sewp-vi">NASA SEWP VI ordering</V2Button>
+          <V2Button href="#gsa-mas" variant="outline-dark">
+            GSA MAS details
+          </V2Button>
           <V2Button href="/v2/contact" variant="outline-dark">
             Request a quote
           </V2Button>
@@ -166,111 +150,31 @@ export default function V2Vehicles() {
         </div>
       </Band>
 
-      {/* ------------------------------------------- Vehicle by vehicle */}
-      <Band motif id="all-vehicles">
-        <BandHeading
-          eyebrow="Federal vehicles"
-          title="Where Tanvi IT can be awarded work"
-          lead="Open a vehicle to see what the programme covers and where Tanvi IT sits on it."
-        />
-        <div className="mt-14">
-          <V2Accordion
-            defaultOpen={-1}
-            rows={others.map((vehicle) => ({
-              title: vehicle.name,
-              meta: vehicle.kind,
-              children: (
-                <div className="max-w-3xl">
-                  {vehicle.position ? (
-                    <p className="font-display text-lg font-semibold text-navy-900">
-                      {vehicle.position}
-                    </p>
-                  ) : null}
-                  <p className="mt-3 text-[15px] leading-relaxed text-fg-muted sm:text-base">
-                    {vehicle.summary}
-                  </p>
-                  <dl className="mt-6 grid gap-5 border-t border-navy-100 pt-5 sm:grid-cols-2">
-                    <div>
-                      <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-navy-700">
-                        Contract details
-                      </dt>
-                      <dd className="mt-1 text-[15px] text-fg-muted">
-                        Contract number and award dates on request.
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-navy-700">
-                        Point of contact
-                      </dt>
-                      <dd className="mt-1 text-[15px]">
-                        <a
-                          href={`mailto:${v2Site.email}`}
-                          className="text-navy-700 underline-offset-4 hover:text-flame-600 hover:underline"
-                        >
-                          {v2Site.email}
-                        </a>
-                      </dd>
-                    </div>
-                  </dl>
+      {/* ------------------------------------------------------ GSA MAS */}
+      <Band motif id="gsa-mas">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16">
+          <Reveal>
+            <BandHeading eyebrow={gsaMas.kind} title={gsaMas.name} lead={gsaMas.summary} />
+            <div className="mt-8">
+              <MoreLink href="/v2/contact">Ask about ordering on MAS</MoreLink>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1} direction="right">
+            <dl className="grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2">
+              {gsaMas.facts.map((row) => (
+                <div key={row.term} className="bg-white p-7">
+                  <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-navy-700">
+                    {row.term}
+                  </dt>
+                  <dd className="mt-2 font-display text-lg font-semibold leading-snug text-navy-900">
+                    {row.detail}
+                  </dd>
                 </div>
-              ),
-            }))}
-          />
+              ))}
+            </dl>
+          </Reveal>
         </div>
-      </Band>
-
-      {/* ------------------------------------------------- Cooperatives */}
-      <Band tone="tint" id="cooperative">
-        <BandHeading
-          eyebrow="State, local & cooperative"
-          title="Routes outside the federal vehicles"
-          lead="Cooperative agreements let a state, county, city or school district award from a contract that has already been competed — no new solicitation required."
-        />
-
-        {/* Why the route exists, before the list of routes. */}
-        <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-2xl bg-navy-200 sm:grid-cols-3">
-          {cooperativeBenefits.map((benefit) => (
-            <RevealItem key={benefit.title}>
-              <div className="flex h-full items-start gap-3.5 bg-navy-950 p-6">
-                <Check className="mt-0.5 h-5 w-5 shrink-0 text-flame-400" aria-hidden />
-                <span>
-                  <span className="block font-display text-base font-semibold text-white">
-                    {benefit.title}
-                  </span>
-                  <span className="mt-1.5 block text-[14px] leading-relaxed text-white/75">
-                    {benefit.detail}
-                  </span>
-                </span>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-
-        <RevealGroup className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.05}>
-          {cooperativeVehicles.map((vehicle, i) => {
-            const Icon = cooperativeIcons[i % cooperativeIcons.length];
-            return (
-              <RevealItem key={vehicle.name}>
-                <article className="group flex h-full flex-col rounded-2xl border border-navy-200 bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-flame-500 hover:shadow-[0_18px_40px_-24px_rgb(6_26_46/0.35)]">
-                  <div className="flex items-start justify-between gap-3">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-navy-50 text-flame-600 transition-colors duration-300 group-hover:bg-flame-600 group-hover:text-white">
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </span>
-                    <span className="rounded-full border border-navy-200 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-navy-700">
-                      {vehicle.serves}
-                    </span>
-                  </div>
-                  <h3 className="mt-5 font-display text-xl font-semibold tracking-[-0.02em] text-navy-900">
-                    {vehicle.name}
-                  </h3>
-                  <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-fg-muted">
-                    {vehicle.detail}
-                  </p>
-                </article>
-              </RevealItem>
-            );
-          })}
-        </RevealGroup>
       </Band>
 
       {/* --------------------------------------------------- How to buy */}
@@ -286,9 +190,9 @@ export default function V2Vehicles() {
               Procurement made simple.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
-              Tanvi IT is already on the vehicles most agencies hold, so there is no new
-              solicitation to run. Tell us the requirement and we will tell you which route fits —
-              and say so plainly if none of ours do.
+              Agencies may be able to procure services through existing contract vehicles, subject
+              to applicable ordering procedures. Tell us the requirement and we will tell you
+              whether NASA SEWP VI or GSA MAS fits — and say so plainly if neither does.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <V2Button href="/v2/contact">Talk to our team</V2Button>
@@ -332,7 +236,7 @@ export default function V2Vehicles() {
         <BandHeading
           eyebrow="NAICS codes"
           title="How to find us"
-          lead="Buyers search by code. This is the NAICS code on Tanvi IT's SEWP VI Category C contract."
+          lead="Buyers search by code. These are the NAICS codes on Tanvi IT's two contract vehicles."
         />
         <RevealGroup className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.05}>
           {naicsCodes.map((code) => (
@@ -345,6 +249,9 @@ export default function V2Vehicles() {
                   {code.code}
                 </p>
                 <p className="mt-2 text-[15px] leading-relaxed text-fg-muted">{code.title}</p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-navy-700">
+                  {code.vehicle}
+                </p>
               </div>
             </RevealItem>
           ))}

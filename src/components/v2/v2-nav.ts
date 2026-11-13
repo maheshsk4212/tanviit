@@ -35,8 +35,8 @@ export const v2Nav: V2NavItem[] = [
     href: "/v2/contract-vehicles",
     children: [
       { label: "NASA SEWP VI — Category C", href: "/v2/contract-vehicles/sewp-vi" },
+      { label: "GSA MAS", href: "/v2/contract-vehicles#gsa-mas" },
       { label: "How to buy", href: "/v2/contract-vehicles#how-to-buy" },
-      { label: "Cooperative routes", href: "/v2/contract-vehicles#cooperative" },
       { label: "All vehicles & NAICS", href: "/v2/contract-vehicles" },
     ],
   },

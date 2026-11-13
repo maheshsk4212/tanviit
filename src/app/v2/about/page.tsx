@@ -343,10 +343,11 @@ export default function V2About() {
               Work with us
             </span>
             <h2 className="mt-5 text-balance font-display text-3xl font-semibold leading-[1.1] tracking-[-0.03em] text-navy-900 sm:text-4xl">
-              Already on the vehicles you hold
+              Access technology solutions through our contract vehicles
             </h2>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg">
-              A requirement can reach award without a new procurement.
+              Agencies may be able to procure services through existing contract vehicles, subject to
+              applicable ordering procedures.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <V2Button href="/v2/contract-vehicles">View contract vehicles</V2Button>
@@ -357,9 +358,9 @@ export default function V2About() {
           <RevealGroup className="grid gap-px overflow-hidden rounded-2xl border border-navy-200 bg-navy-200 sm:grid-cols-2" stagger={0.05}>
             {[
               { name: "NASA SEWP VI", detail: "Category C — 80TECH26D0642", href: "/v2/contract-vehicles/sewp-vi", cue: "Ordering details" },
-              { name: "Federal vehicles", detail: "OASIS+, Alliant 2, ITES-3S, SeaPort NxG, eFAST", href: "/v2/contract-vehicles#all-vehicles", cue: "See the list" },
-              { name: "Cooperatives", detail: "State, local & education", href: "/v2/contract-vehicles#cooperative", cue: "See the routes" },
-              { name: "NAICS 541511", detail: "Custom Computer Programming Services", href: "/v2/contract-vehicles#naics", cue: "How to find us" },
+              { name: "GSA MAS", detail: "Contract 47QTCA27D0018", href: "/v2/contract-vehicles#gsa-mas", cue: "Contract details" },
+              { name: "NAICS codes", detail: "541511 · 541519", href: "/v2/contract-vehicles#naics", cue: "How to find us" },
+              { name: "GSA MAS SINs", detail: "541512 and 541611", href: "/v2/contract-vehicles#gsa-mas", cue: "See the schedule" },
             ].map((route) => (
               <RevealItem key={route.name}>
                 {route.href ? (

@@ -48,8 +48,8 @@ export default function V2Customers() {
     <>
       <PageHero
         eyebrow="Customers & past performance"
-        title="Delivered for agencies"
-        accent="and enterprises"
+        title="Delivering solutions for"
+        accent="government agencies and enterprises"
         lead="Tanvi IT supports Federal, state and local government alongside commercial organizations — with the same delivery practices behind each engagement."
       >
         <div className="mt-9 flex flex-wrap gap-3">

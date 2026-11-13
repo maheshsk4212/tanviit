@@ -41,7 +41,7 @@ export const homeHero = {
 export const heroFacts = [
   { value: "2008", label: "Serving clients since", count: false },
   { value: "7", label: "Certifications & appraisals", count: true },
-  { value: "12", label: "Contract vehicles held", count: true },
+  { value: "2", label: "Contract vehicles held", count: true },
   { value: "8(a)", label: "SBA certified", count: false },
 ];
 
@@ -658,9 +658,13 @@ export const customerGroups = [
   },
 ];
 
-/** NAICS as listed on the SEWP VI Category C ordering guide. */
+/**
+ * NAICS codes, each with the vehicle it sits on: 541511 from the SEWP VI
+ * Category C ordering guide, 541519 from the GSA MAS contract.
+ */
 export const naicsCodes = [
-  { code: "541511", title: "Custom Computer Programming Services" },
+  { code: "541511", title: "Custom Computer Programming Services", vehicle: "NASA SEWP VI" },
+  { code: "541519", title: "Other Computer Related Services", vehicle: "GSA MAS" },
 ];
 
 /**
@@ -769,23 +773,16 @@ export const sectorTabs = [
 ];
 
 /**
- * Contract vehicle profiles. Each carries a description of what the programme
- * is — the context a buyer needs to know whether it is the right route —
- * alongside whatever identifiers are confirmed.
- *
- * Only NASA SEWP VI has its identifiers published here, because that is the
- * one we hold documentation for (the Category C ordering guide). The rest show
- * the programme description and say plainly that details come on request,
- * rather than printing numbers nobody has verified.
- *
- * NEEDS-CONTENT: contract numbers, UEI/CAGE per vehicle, and the award dates
- * for every vehicle other than SEWP VI.
+ * Contract vehicle profiles. Tanvi IT holds exactly two vehicles: NASA SEWP VI
+ * and GSA MAS. That is the client's written correction of 13 Nov 2026, and it
+ * replaces the earlier instruction that MAS had not been awarded.
  *
  * Deliberately absent, and not to be restored from an older deck:
+ *   - OASIS+, Alliant 2, ITES-3S, SeaPort NxG, FAA eFAST and the cooperative
+ *     routes (NASPO, OMNIA, Sourcewell, NCPA, HGACBuy). The client does not
+ *     hold them.
  *   - 8(a) STARS III. Contract 47QTCB21D0382 belongs to TA Federal LLC, not
- *     to Tanvi IT Solutions Inc. Publishing it here misattributed the award.
- *   - GSA MAS. Tanvi IT has not been awarded this vehicle.
- * Both were removed on the client's written instruction of 1 Nov 2026.
+ *     to Tanvi IT Solutions Inc.
  */
 export const vehicleProfiles = [
   {
@@ -803,112 +800,31 @@ export const vehicleProfiles = [
       { term: "Agency fee", detail: "0.34%" },
     ],
   },
-  {
-    name: "OASIS+",
-    kind: "Government-wide multi-agency contract",
-    position: "Tanvi IT is a contract holder.",
-    summary:
-      "GSA's multiple-award IDIQ for professional services, covering both non-IT and IT-enabled requirements across a wide range of service domains.",
-    facts: [],
-  },
-  {
-    name: "Alliant 2",
-    kind: "Government-wide acquisition contract",
-    position: "Tanvi IT is a contract holder (SB, SDVOSB, WOSB tracks).",
-    summary:
-      "A GWAC for integrated IT solutions, spanning systems design, software engineering, infrastructure and the services that wrap around them.",
-    facts: [],
-  },
-  {
-    name: "ITES-3S",
-    kind: "U.S. Army",
-    position: "Tanvi IT is a contract holder.",
-    summary:
-      "The Army's IT Enterprise Solutions contract for IT services supporting Army and Department of Defense programmes worldwide.",
-    facts: [],
-  },
-  {
-    name: "SeaPort NxG",
-    kind: "U.S. Navy",
-    position: "Tanvi IT is a contract holder.",
-    summary:
-      "The Navy's multiple-award contract for engineering, technical and programme management services across its systems commands.",
-    facts: [],
-  },
-  {
-    name: "FAA eFAST",
-    kind: "Federal Aviation Administration",
-    position: "Tanvi IT is a contract holder for IT staffing services.",
-    summary:
-      "The FAA's streamlined vehicle for IT staffing and professional support services across its programmes.",
-    facts: [],
-  },
 ];
 
 /**
- * Cooperative and state-level routes. Each line describes who the programme
- * serves — the thing a state, city or school district buyer is checking —
- * rather than repeating the word "cooperative" six times.
+ * GSA MAS, as supplied by the client. The wording of `summary` is theirs.
+ *
+ * NEEDS-CONTENT: the period of performance and the MAS ordering contact.
  */
-export const cooperativeVehicles = [
-  {
-    name: "NASPO ValuePoint",
-    serves: "All 50 states",
-    detail:
-      "The cooperative run by state procurement officials, used by state agencies and their political subdivisions nationwide.",
-  },
-  {
-    name: "OMNIA Partners",
-    serves: "Public sector & education",
-    detail:
-      "A national purchasing cooperative whose agreements are competitively solicited by a lead public agency and shared across its members.",
-  },
-  {
-    name: "Sourcewell",
-    serves: "Government, education & non-profit",
-    detail:
-      "A government agency and national cooperative whose members award from contracts it has already competed on their behalf.",
-  },
-  {
-    name: "NCPA",
-    serves: "Public agencies & schools",
-    detail:
-      "The National Cooperative Purchasing Alliance, serving public agencies, school districts and higher education across the country.",
-  },
-  {
-    name: "HGACBuy",
-    serves: "Local government",
-    detail:
-      "The Houston-Galveston Area Council's purchasing programme, open to local governments and qualifying public agencies.",
-  },
-  {
-    name: "State & local contracts",
-    serves: "Direct award",
-    detail:
-      "Multiple state, county and municipal contracts held directly, for buyers who award outside a cooperative.",
-  },
-];
-
-/** Why a buyer would take a cooperative route at all. */
-export const cooperativeBenefits = [
-  {
-    title: "Already competed",
-    detail: "The solicitation has been run by a lead agency, so you are not starting a new one.",
-  },
-  {
-    title: "Faster to award",
-    detail: "Members award directly from the agreement, which removes months from the timeline.",
-  },
-  {
-    title: "Open to more buyers",
-    detail: "States, counties, cities, school districts and public agencies can all use them.",
-  },
-];
+export const gsaMas = {
+  name: "GSA Multiple Award Schedule (MAS)",
+  shortName: "GSA MAS",
+  kind: "Governmentwide schedule contract",
+  summary:
+    "Tanvi IT Solutions Inc. holds a GSA Multiple Award Schedule (MAS) contract, providing federal agencies and eligible state and local government entities with access to the company's IT services through the GSA procurement platform.",
+  facts: [
+    { term: "Contract number", detail: "47QTCA27D0018" },
+    { term: "Contract vehicle", detail: "GSA Multiple Award Schedule (MAS)" },
+    { term: "NAICS", detail: "541519" },
+    { term: "SIN", detail: "541512 and 541611" },
+  ],
+};
 
 /** The identifiers a contracting officer asks for first. */
 export const buyerSnapshot = [
   { term: "UEI", detail: "VJHWCMQ1AVF5" },
-  { term: "NAICS", detail: "541511 — Custom Computer Programming Services" },
+  { term: "NAICS", detail: "541511 · 541519" },
   { term: "Business status", detail: "Small business · SBA 8(a) certified" },
   { term: "Appraisals", detail: "CMMI-DEV L3 · CMMI-SVC L3" },
   { term: "Certifications", detail: "ISO 9001 · ISO/IEC 20000-1 · ISO/IEC 27001" },
@@ -925,7 +841,7 @@ export const howToBuy = [
   {
     step: "Pick the route",
     description:
-      "Choose the vehicle your agency already holds. If you are not sure which fits, we will tell you which of ours applies — and say so if none do.",
+      "NASA SEWP VI or GSA MAS. If you are not sure which fits, we will tell you which applies — and say so if neither does.",
   },
   {
     step: "Talk to us early",
@@ -935,14 +851,17 @@ export const howToBuy = [
   {
     step: "Evaluate and award",
     description:
-      "Your office evaluates responses and issues the order under FAR 16.505 and agency procedures. Work starts once the processed order is transmitted.",
+      "Your office evaluates responses and issues the order under the vehicle's ordering procedures and your agency's own. Work starts once the processed order is transmitted.",
   },
 ];
 
 /**
  * The story as milestones. Only points the supplied documents support: the
  * founding year, what the company began doing, how the capability widened,
- * and the SEWP VI award with its announced date.
+ * the SEWP VI award with its announced date, and the GSA MAS contract.
+ *
+ * The MAS entry is dated 2026 from its contract number: the "27" in
+ * 47QTCA27D0018 is fiscal year 2027, which opened on 1 Oct 2026.
  *
  * NEEDS-CONTENT: further dated milestones — first federal award, each ISO and
  * CMMI appraisal, the TA Federal joint venture — would make this a fuller
@@ -953,17 +872,17 @@ export const storyMilestones = [
     year: "2008",
     title: "Founded",
     detail:
-      "Tanvi IT is founded on a simple idea: technology should make a meaningful difference.",
+      "Tanvi IT was founded on a simple idea: technology should make a meaningful difference.",
   },
   {
     year: "Early years",
     title: "IT solutions and custom applications",
     detail:
-      "The work begins with IT solutions and custom application development for government and commercial clients.",
+      "Our work began with IT solutions and custom application development for government and commercial clients.",
   },
   {
     year: "Since",
-    title: "The capability widens",
+    title: "Our capabilities expand",
     detail:
       "Application modernization, data, cloud and DevSecOps, cybersecurity, enterprise architecture, software and quality engineering, and emerging technologies.",
   },
@@ -972,6 +891,12 @@ export const storyMilestones = [
     title: "NASA SEWP VI Category C",
     detail:
       "Awarded contract 80TECH26D0642 for IT mission-based services, opening a route for every federal agency.",
+  },
+  {
+    year: "2026",
+    title: "GSA Multiple Award Schedule (MAS) Award",
+    detail:
+      "Tanvi IT Solutions Inc. holds a GSA Multiple Award Schedule (MAS) contract, 47QTCA27D0018, providing federal agencies and eligible state and local government entities with access to the company's IT services through the GSA procurement platform.",
   },
 ];
 
