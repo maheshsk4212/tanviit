@@ -74,6 +74,7 @@ const credentialStrip = [
   "CMMI-SVC L3",
   "SBA 8(a)",
   "NASA SEWP VI",
+  "GSA MAS",
 ];
 
 /* Photographs already vetted for the original design, reused here so the
